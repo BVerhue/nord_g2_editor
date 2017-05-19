@@ -1,4 +1,4 @@
-First generation of the open source editor for the G2 is a Windows only application. It also includes a VST which I made using Tobybear's VST SDK for Delphi. It can be used with Windows user interface reader (JAWS) for visually impaired users.
+First generation of the open source editor for the G2 is a Windows only application. It also includes a VST which I made using Tobybear's VST SDK for Delphi. It can be used with Windows user interface reader (JAWS) for blind users.
 
 Project files are Delphi version specific. There might be differences in Delphi IDE and sourcecode library between Delphi versions, so project files (application and packages) are made for each Delphi version specifically and the code units are shared, possibly with IFDEF's with version numbers to make them compile in each Delphi version.
 
