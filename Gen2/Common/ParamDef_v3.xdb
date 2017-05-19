@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.yourtargetnamespace.com" xmlns="http://www.yourtargetnamespace.com" xmlns:xdb="http://www.borland.com/schemas/delphi/10.0/XMLDataBinding">
+  <element xmlns="http://www.w3.org/2001/XMLSchema" name="ParamDefList" type="ParamDefListType"/>
+  <complexType xmlns="http://www.w3.org/2001/XMLSchema" name="ParamDefListType"><annotation>
+      <appinfo xdb:docElement="ParamDefList"/>
+    </annotation>
+    <sequence>
+      <element name="ParamDef" type="ParamDefType" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="xmlns" type="xs:integer"/>
+    <attribute name="version" type="xs:integer"/>
+  </complexType>
+  <complexType xmlns="http://www.w3.org/2001/XMLSchema" name="ParamDefType">
+    <attribute name="id" type="xs:integer"/>
+    <attribute name="paramType" type="xs:integer"/>
+    <attribute name="rangeType" type="xs:integer"><annotation>
+        <appinfo xdb:dataType="string"/>
+      </annotation>
+    </attribute>
+    <attribute name="lowValue" type="xs:integer"/>
+    <attribute name="highValue" type="xs:integer"/>
+    <attribute name="defaultValue" type="xs:integer"/>
+    <attribute name="definitions" type="xs:string"><annotation>
+        <appinfo xdb:dataType="string"/>
+      </annotation>
+    </attribute>
+    <attribute name="comments" type="xs:string"><annotation>
+        <appinfo xdb:dataType="string"/>
+      </annotation>
+    </attribute>
+    <attribute name="buttonText" type="xs:integer"><annotation>
+        <appinfo xdb:dataType="string"/>
+      </annotation>
+    </attribute>
+  </complexType>
+</xs:schema>

@@ -1,0 +1,48 @@
+package MidiComponentsXE2;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'MIDI I/O components'}
+{$IMPLICITBUILD ON}
+
+requires
+  vcl;
+
+contains
+  CircBuf in '..\Source\CircBuf.pas',
+  MidiCallback in '..\Source\MidiCallback.pas',
+  MidiCons in '..\Source\MidiCons.pas',
+  MidiDefs in '..\Source\MidiDefs.pas',
+  MidiFile in '..\Source\MidiFile.pas',
+  MidiIn in '..\Source\MidiIn.pas',
+  MidiOut in '..\Source\MidiOut.pas',
+  MidiType in '..\Source\MidiType.pas',
+  MidiKeyPatchArray in '..\Source\MidiKeyPatchArray.pas',
+  MidiScope in '..\Source\MidiScope.pas',
+  MidiDeviceComboBox in '..\Source\MidiDeviceComboBox.pas',
+  MidiEventStreamer in '..\Source\MidiEventStreamer.pas';
+
+end.

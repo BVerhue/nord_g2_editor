@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.yourtargetnamespace.com" xmlns="http://www.yourtargetnamespace.com" xmlns:xdb="http://www.borland.com/schemas/delphi/10.0/XMLDataBinding">
+	<element xmlns="http://www.w3.org/2001/XMLSchema" name="ModuleDefList" type="ModuleDefListType"/>
+	<complexType xmlns="http://www.w3.org/2001/XMLSchema" name="ModuleDefListType">
+		<sequence>
+			<element name="ModuleDef" type="ModuleDefType" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="xmlns" type="xs:integer"><annotation>
+				<appinfo xdb:dataType="string"/>
+			</annotation>
+		</attribute>
+		<attribute name="version" type="xs:integer"><annotation>
+				<appinfo xdb:dataType="string"/>
+			</annotation>
+		</attribute>
+	</complexType>
+	<complexType xmlns="http://www.w3.org/2001/XMLSchema" name="ModuleDefType">
+		<sequence>
+			<element name="Inputs" type="InputsType"/>
+			<element name="Outputs" type="OutputsType"/>
+			<element name="Params" type="ParamsType"/>
+			<element name="Modes" type="ModesType"/>
+		</sequence>
+		<attribute name="moduleType" type="xs:integer"/>
+		<attribute name="isLed" type="xs:integer"/>
+		<attribute name="uprate" type="xs:integer"/>
+		<attribute name="page" type="xs:integer"><annotation>
+				<appinfo xdb:dataType="string"/>
+			</annotation>
+		</attribute>
+		<attribute name="pageIndex" type="xs:integer"/>
+		<attribute name="shortName" type="xs:integer"><annotation>
+				<appinfo xdb:dataType="string"/>
+			</annotation>
+		</attribute>
+		<attribute name="longName" type="xs:integer"><annotation>
+				<appinfo xdb:dataType="string"/>
+			</annotation>
+		</attribute>
+		<attribute name="height" type="xs:integer"/>
+	</complexType>
+	<complexType xmlns="http://www.w3.org/2001/XMLSchema" name="InputsType">
+		<sequence>
+			<element name="Connector" type="ConnectorType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<complexType xmlns="http://www.w3.org/2001/XMLSchema" name="ConnectorType">
+		<attribute name="name" type="xs:integer"><annotation>
+				<appinfo xdb:dataType="string"/>
+			</annotation>
+		</attribute>
+		<attribute name="type" type="xs:integer"><annotation>
+				<appinfo xdb:dataType="string"/>
+			</annotation>
+		</attribute>
+	</complexType>
+	<complexType xmlns="http://www.w3.org/2001/XMLSchema" name="OutputsType">
+		<sequence>
+			<element name="Connector" type="ConnectorType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<complexType xmlns="http://www.w3.org/2001/XMLSchema" name="ParamsType">
+		<sequence>
+			<element name="Param" type="ParamType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<complexType xmlns="http://www.w3.org/2001/XMLSchema" name="ParamType">
+		<attribute name="name" type="xs:integer"><annotation>
+				<appinfo xdb:dataType="string"/>
+			</annotation>
+		</attribute>
+		<attribute name="defaultValue" type="xs:integer"/>
+		<attribute name="id" type="xs:integer"/>
+		<attribute name="defaultKnob" type="xs:integer"/>
+		<attribute name="buttonParam" type="xs:integer"/>
+		<attribute name="paramLabel" type="xs:string"><annotation>
+				<appinfo xdb:dataType="string"/>
+			</annotation>
+		</attribute>
+	</complexType>
+	<complexType xmlns="http://www.w3.org/2001/XMLSchema" name="ModesType">
+		<sequence>
+			<element name="Param" type="ParamType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<complexType xmlns="http://www.w3.org/2001/XMLSchema" name="InputsType2"><annotation>
+			<appinfo xdb:bound="False"/>
+		</annotation>
+	</complexType>
+	<complexType xmlns="http://www.w3.org/2001/XMLSchema" name="ParamsType2"><annotation>
+			<appinfo xdb:bound="False"/>
+		</annotation>
+	</complexType>
+	<complexType xmlns="http://www.w3.org/2001/XMLSchema" name="ModesType2"><annotation>
+			<appinfo xdb:bound="False"/>
+		</annotation>
+	</complexType>
+	<complexType xmlns="http://www.w3.org/2001/XMLSchema" name="OutputsType2"><annotation>
+			<appinfo xdb:bound="False"/>
+		</annotation>
+	</complexType>
+</xs:schema>

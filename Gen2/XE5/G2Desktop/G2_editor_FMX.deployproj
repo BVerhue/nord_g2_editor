@@ -1,0 +1,215 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Condition="Exists('$(BDS)\bin\CodeGear.Deployment.targets')" Project="$(BDS)\bin\CodeGear.Deployment.targets"/>
+    <ProjectExtensions>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <ItemGroup Condition="'$(Platform)'=='Android'"/>
+    <ItemGroup Condition="'$(Platform)'=='iOSDevice'"/>
+    <ItemGroup Condition="'$(Platform)'=='Win32'">
+        <DeployFile Include="..\..\Deploy\Symbols.svg">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>Symbols.svg</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\libusb-1.0.0.dylib">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>libusb-1.0.0.dylib</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\g2EditorColorScheme.xml">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>g2EditorColorScheme.xml</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\Roboto_Hinted_20111129.zip">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>Roboto_Hinted_20111129.zip</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="Win32\Debug\G2_editor_FMX.exe" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>G2_editor_FMX.exe</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\QuickReference.txt">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>QuickReference.txt</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='OSX32'">
+        <DeployFile Include="..\..\Deploy\Symbols.svg">
+            <RemoteDir>G2_editor_FMX.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>Symbols.svg</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="OSX32\Debug\G2_editor_FMX.info.plist" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>G2_editor_FMX.app\Contents\</RemoteDir>
+            <RemoteName>Info.plist</RemoteName>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\libusb-1.0.0.dylib">
+            <RemoteDir>G2_editor_FMX.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libusb-1.0.0.dylib</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="OSX32\Debug\G2_editor_FMX" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>G2_editor_FMX.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>G2_editor_FMX</RemoteName>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="OSX32\Release\G2_editor_FMX" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>G2_editor_FMX</RemoteName>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\g2EditorColorScheme.xml">
+            <RemoteDir>G2_editor_FMX.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>g2EditorColorScheme.xml</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="G2_editor_FMX_Icns.icns" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>G2_editor_FMX.app\Contents\Resources\</RemoteDir>
+            <RemoteName>G2_editor_FMX.icns</RemoteName>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\Roboto_Hinted_20111129.zip">
+            <RemoteDir>G2_editor_FMX.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>Roboto_Hinted_20111129.zip</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib">
+            <RemoteDir>G2_editor_FMX.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgunwind.1.0.dylib</RemoteName>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="OSX32\Debug\G2_editor_FMX.entitlements" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>G2_editor_FMX.app\Contents\</RemoteDir>
+            <RemoteName>Entitlements.plist</RemoteName>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="OSX32\Debug\G2_editor_FMX.rsm" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>G2_editor_FMX.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>G2_editor_FMX.rsm</RemoteName>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib">
+            <RemoteDir>G2_editor_FMX.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgunwind.1.0.dylib</RemoteName>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\QuickReference.txt">
+            <RemoteDir>G2_editor_FMX.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>QuickReference.txt</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="OSX32\Release\G2_editor_FMX.info.plist" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX.app\Contents\</RemoteDir>
+            <RemoteName>Info.plist</RemoteName>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="OSX32\Release\G2_editor_FMX.entitlements" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX.app\Contents\</RemoteDir>
+            <RemoteName>Entitlements.plist</RemoteName>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="G2_editor_FMX_Icns1.icns" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX.app\Contents\Resources\</RemoteDir>
+            <RemoteName>G2_editor_FMX.icns</RemoteName>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Win64'">
+        <DeployFile Include="..\..\Deploy\Symbols.svg">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>Symbols.svg</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\libusb-1.0.0.dylib">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>libusb-1.0.0.dylib</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\g2EditorColorScheme.xml">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>g2EditorColorScheme.xml</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\Roboto_Hinted_20111129.zip">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>Roboto_Hinted_20111129.zip</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\QuickReference.txt">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>QuickReference.txt</RemoteName>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='iOSSimulator'">
+        <DeployFile Include="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib">
+            <RemoteDir>G2_editor_FMX.app\</RemoteDir>
+            <RemoteName>libcgunwind.1.0.dylib</RemoteName>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+        </DeployFile>
+    </ItemGroup>
+</Project>

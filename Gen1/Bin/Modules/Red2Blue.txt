@@ -1,0 +1,36 @@
+<#Module
+  Name:"Red2Blue"
+  FileName:"Red2Blue"
+  Tooltip:"Red 2 Blue"
+  Height:2
+  XPos:0
+  YPos:0
+  Version:238
+  <#Input
+    ID:0
+    XPos:209
+    YPos:9
+    CodeRef:0
+    InfoFunc:0
+    Type:"Audio"
+    Bandwidth:"Static"
+  #>
+  <#Output
+    ID:1
+    XPos:239
+    YPos:9
+    CodeRef:0
+    InfoFunc:0
+    Type:"Control"
+    Bandwidth:"Static"
+  #>
+  <#Line
+    ID:2
+    XPos:214
+    YPos:15
+    ZPos:0
+    Length:28
+    Orientation:"Horizontal"
+    Width:"Thin"
+  #>
+#>

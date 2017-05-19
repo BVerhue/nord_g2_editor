@@ -1,0 +1,60 @@
+<#Module
+  Name:"Status"
+  FileName:"Status"
+  Tooltip:"Status"
+  Height:2
+  XPos:3
+  YPos:19
+  Version:230
+  <#Output
+    ID:0
+    XPos:166
+    YPos:13
+    CodeRef:1
+    InfoFunc:0
+    Type:"Logic"
+    Bandwidth:"Static"
+  #>
+  <#Text
+    ID:1
+    XPos:148
+    YPos:3
+    ZPos:0
+    FontSize:9
+    Text:"Var. Active"
+  #>
+  <#Text
+    ID:2
+    XPos:83
+    YPos:3
+    ZPos:0
+    FontSize:9
+    Text:"Patch Active"
+  #>
+  <#Output
+    ID:3
+    XPos:107
+    YPos:13
+    CodeRef:0
+    InfoFunc:0
+    Type:"Logic"
+    Bandwidth:"Static"
+  #>
+  <#Text
+    ID:4
+    XPos:212
+    YPos:3
+    ZPos:0
+    FontSize:9
+    Text:"Voice No."
+  #>
+  <#Output
+    ID:5
+    XPos:225
+    YPos:13
+    CodeRef:2
+    InfoFunc:0
+    Type:"Control"
+    Bandwidth:"Static"
+  #>
+#>

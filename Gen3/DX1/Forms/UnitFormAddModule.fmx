@@ -1,0 +1,14 @@
+object frmAddModule: TfrmAddModule
+  Left = 0
+  Top = 0
+  Caption = 'Add module'
+  ClientHeight = 768
+  ClientWidth = 1024
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnResize = FormResize
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+end

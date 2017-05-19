@@ -1,0 +1,22 @@
+object frmKnobs: TfrmKnobs
+  Left = 0
+  Top = 0
+  Caption = 'Knobs'
+  ClientHeight = 510
+  ClientWidth = 786
+  FormStyle = fsStayOnTop
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop, dkiPhone, dkiPad]
+  DesignerMobile = False
+  DesignerWidth = 0
+  DesignerHeight = 0
+  DesignerDeviceName = ''
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  inline frameKnobs: TframeKnobs
+    Align = alCenter
+    Height = 487.000000000000000000
+    Width = 792.000000000000000000
+  end
+end

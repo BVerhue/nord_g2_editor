@@ -1,0 +1,182 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{2529a2c2-7d6a-4d5c-ab87-34e5422dcd3c}</ProjectGuid>
+			<MainSource>G2_vst.dpr</MainSource>
+			<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<DCC_DependencyCheckOutputName>..\..\Build\G2_vst.dll</DCC_DependencyCheckOutputName>
+			<FrameworkType>VCL</FrameworkType>
+			<ProjectVersion>13.4</ProjectVersion>
+			<Base>True</Base>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<Platform Condition="'$(Platform)'==''">Win32</Platform>
+			<TargetedPlatforms>1</TargetedPlatforms>
+			<AppType>Library</AppType>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+			<Base_Win32>true</Base_Win32>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+			<Cfg_2_Win32>true</Cfg_2_Win32>
+			<CfgParent>Cfg_2</CfgParent>
+			<Cfg_2>true</Cfg_2>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<Manifest_File>None</Manifest_File>
+			<DCC_ExeOutput>..\..\Bin</DCC_ExeOutput>
+			<DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+			<DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Winapi;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+			<GenDll>true</GenDll>
+			<VerInfo_Locale>1043</VerInfo_Locale>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base_Win32)'!=''">
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<DCC_Namespace>System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+			<Debugger_HostApplication>C:\Program Files\Ableton\Live 8.2.1\Program\Live 8.2.1.exe</Debugger_HostApplication>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<VerInfo_DLL>true</VerInfo_DLL>
+			<VerInfo_AutoGenVersion>true</VerInfo_AutoGenVersion>
+			<Version>7.0</Version>
+			<DCC_DebugInformation>False</DCC_DebugInformation>
+			<DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+			<Version>7.0</Version>
+			<DCC_ResourcePath>CommonVST;..\NMG2Controls;..\NMG2Controls\Delphi\xml;$(DCC_ResourcePath)</DCC_ResourcePath>
+			<DCC_ObjPath>CommonVST;..\NMG2Controls;..\NMG2Controls\Delphi\xml;$(DCC_ObjPath)</DCC_ObjPath>
+			<DCC_IncludePath>CommonVST;..\NMG2Controls;..\NMG2Controls\Delphi\xml;$(DCC_IncludePath)</DCC_IncludePath>
+			<DCC_ObjOutput>..\..\Build\Dcu</DCC_ObjOutput>
+			<DCC_HppOutput>..\..\Build\Dcu</DCC_HppOutput>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+			<VerInfo_DLL>true</VerInfo_DLL>
+			<VerInfo_AutoGenVersion>true</VerInfo_AutoGenVersion>
+			<Debugger_HostApplication>C:\Program Files (x86)\Ableton\Live 8.2.6\Program\Live 8.2.6.exe</Debugger_HostApplication>
+			<DCC_Define>G2_VST;$(DCC_Define)</DCC_Define>
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+		</PropertyGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>VCLApplication</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+						<Parameters Name="HostApplication">C:\Program Files\Ableton\Live 8.2.1\Program\Live 8.2.1.exe</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1043</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages/>
+					<Source>
+						<Source Name="MainSource">G2_vst.dpr</Source>
+					</Source>
+				</Delphi.Personality>
+				<Platforms>
+					<Platform value="Win64">False</Platform>
+					<Platform value="OSX32">False</Platform>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+		<ItemGroup>
+			<DelphiCompile Include="$(MainSource)">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="..\..\Source\VST\uPlugin.pas"/>
+			<DCCReference Include="..\..\Source\VST\uEditor.pas">
+				<Form>PluginEditorWindow</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Third_party_code\TobyBear_vst_template\CommonVST\DAEffectX.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\TobyBear_vst_template\CommonVST\DAudioEffect.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\TobyBear_vst_template\CommonVST\DAudioEffectX.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\TobyBear_vst_template\CommonVST\DDspUtils.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\TobyBear_vst_template\CommonVST\DVstTemplate.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\TobyBear_vst_template\CommonVST\DVstUtils.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\TobyBear_vst_template\CommonVST\DAEffect.pas"/>
+			<DCCReference Include="..\..\Source\Common\fastbitmap.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_classes.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_database.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_file.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_graph.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_mess.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_midi.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_types.pas"/>
+			<DCCReference Include="..\..\Source\Common\G2_USB.pas"/>
+			<DCCReference Include="..\..\Source\Common\graph_util_vcl.pas"/>
+			<DCCReference Include="..\..\Source\Common\LibUSBWinDyn.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\FPC_XML\Source\dom.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\FPC_XML\Source\uriparser.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\FPC_XML\Source\xmlread.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\FPC_XML\Source\xmlutils.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\FPC_XML\Source\xmlwrite.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\MIDIIO\Source\CircBuf.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\MIDIIO\Source\MidiDefs.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\MIDIIO\Source\MidiType.pas"/>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+	</Project>

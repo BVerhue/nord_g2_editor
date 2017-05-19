@@ -1,0 +1,52 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 768
+  ClientWidth = 1024
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnCloseQuery = FormCloseQuery
+  OnDestroy = FormDestroy
+  OnResize = FormResize
+  DesignerMasterStyle = 3
+  object TimerConnect: TTimer
+    Enabled = False
+    OnTimer = TimerConnectTimer
+    Left = 344
+    Top = 152
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 432
+    Top = 88
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    StyledSettings = [Size, Style, FontColor]
+    TextSettings.Font.Family = 'Courier New'
+    Align = Client
+    Size.Width = 1024.000000000000000000
+    Size.Height = 711.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Viewport.Width = 1016.000000000000000000
+    Viewport.Height = 703.000000000000000000
+  end
+  object TimerCreate: TTimer
+    Enabled = False
+    Interval = 250
+    OnTimer = TimerCreateTimer
+    Left = 344
+    Top = 88
+  end
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 1024.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 14
+  end
+end

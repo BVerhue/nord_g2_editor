@@ -1,0 +1,103 @@
+object FrameAddModule: TFrameAddModule
+  Height = 450.000000000000000000
+  Width = 260.000000000000000000
+  object rbeModulePages: TG2BtnRadioEdit
+    Tag = 1
+    Buffered = True
+    StateStyleList.DefaultFont.Family = 'Roboto'
+    StateStyleList.DefaultFont.Size = 7.000000000000000000
+    StateStyleList.DefaultFontColor = xFF202020
+    StateStyleList.FocusedFont.Family = 'Roboto'
+    StateStyleList.FocusedFont.Size = 7.000000000000000000
+    StateStyleList.FocusedFontColor = xFF202020
+    StateStyleList.SelectedFont.Family = 'Roboto'
+    StateStyleList.SelectedFont.Size = 7.000000000000000000
+    StateStyleList.SelectedFontColor = xFF202020
+    StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+    StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+    StateStyleList.FocusedSelectedFontColor = xFF202020
+    StateStyleList.DisabledFont.Family = 'Roboto'
+    StateStyleList.DisabledFont.Size = 7.000000000000000000
+    StateStyleList.DisabledFontColor = claWhite
+    Align = alRight
+    Width = 49.000000000000000000
+    Height = 450.000000000000000000
+    Position.X = 211.000000000000000000
+    ButtonText.Strings = (
+      'In/Out'
+      'Note'
+      'Osc'
+      'LFO'
+      'Rnd'
+      'Env'
+      'Filter'
+      'FX'
+      'Delay'
+      'Shaper'
+      'Level'
+      'Mixer'
+      'Switch'
+      'Logic'
+      'Seq'
+      'MIDI')
+    ImageCount = 0
+    CanFocus = True
+    TabOrder = 0
+    OnMouseUp = rbeModulePagesMouseUp
+    OnPaintElement = rbeModulePagesPaintElement
+    Value = 0
+    ButtonColumns = 1
+    ButtonRows = 16
+  end
+  object Layout1: TLayout
+    Align = alClient
+    Height = 450.000000000000000000
+    Width = 211.000000000000000000
+    object ArrayLayout1: TArrayLayout
+      Align = alBottom
+      Height = 32.000000000000000000
+      Position.Y = 418.000000000000000000
+      Width = 211.000000000000000000
+      Rows = 1
+      Columns = 1
+      object btInsertModule: TG2BtnText
+        Buffered = True
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = xFF202020
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = xFF202020
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = xFF202020
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        Width = 211.000000000000000000
+        Height = 32.000000000000000000
+        ButtonText.Strings = (
+          'Insert'
+          'Insert')
+        ImageCount = 0
+        CanFocus = True
+        TabOrder = 0
+        OnChangeValue = btInsertModuleChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkMomentary
+      end
+    end
+    object sbAddModule: TVertScrollBox
+      Align = alClient
+      Height = 418.000000000000000000
+      ShowScrollBars = False
+      TabOrder = 1
+      Width = 211.000000000000000000
+      OnDblClick = sbAddModuleDblClick
+      OnMouseDown = sbAddModuleMouseDown
+    end
+  end
+end

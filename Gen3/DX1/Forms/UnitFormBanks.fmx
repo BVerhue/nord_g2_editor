@@ -1,0 +1,17 @@
+object frmBanks: TfrmBanks
+  Left = 0
+  Top = 0
+  Caption = 'Banks'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object OpenDialog1: TOpenDialog
+    Left = 32
+    Top = 64
+  end
+end

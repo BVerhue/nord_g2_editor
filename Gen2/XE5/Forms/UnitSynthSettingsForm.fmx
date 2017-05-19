@@ -1,0 +1,22 @@
+object frmSynthSettings: TfrmSynthSettings
+  Left = 0
+  Top = 0
+  Caption = 'Synth settings'
+  ClientHeight = 424
+  ClientWidth = 739
+  FormStyle = fsStayOnTop
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop, dkiPhone, dkiPad]
+  DesignerMobile = False
+  DesignerWidth = 0
+  DesignerHeight = 0
+  DesignerDeviceName = ''
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  inline frameSynthSettings: TframeSynthSettings
+    Align = alCenter
+    Height = 411.000000000000000000
+    Width = 723.000000000000000000
+  end
+end

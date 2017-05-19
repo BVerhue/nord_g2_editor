@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E0CB1F52-D18F-42EF-94F1-B468B124BB9C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="G2Editor.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="G2GenTex.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="G2Editor">
+        <MSBuild Projects="G2Editor.dproj"/>
+    </Target>
+    <Target Name="G2Editor:Clean">
+        <MSBuild Projects="G2Editor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="G2Editor:Make">
+        <MSBuild Projects="G2Editor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="G2GenTex">
+        <MSBuild Projects="G2GenTex.dproj"/>
+    </Target>
+    <Target Name="G2GenTex:Clean">
+        <MSBuild Projects="G2GenTex.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="G2GenTex:Make">
+        <MSBuild Projects="G2GenTex.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="G2Editor;G2GenTex"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="G2Editor:Clean;G2GenTex:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="G2Editor:Make;G2GenTex:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

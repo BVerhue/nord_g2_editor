@@ -1,0 +1,22 @@
+object frmPatchSettings: TfrmPatchSettings
+  Left = 0
+  Top = 0
+  Caption = 'Patch settings'
+  ClientHeight = 399
+  ClientWidth = 715
+  FormStyle = fsStayOnTop
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop, dkiPhone, dkiPad]
+  DesignerMobile = False
+  DesignerWidth = 0
+  DesignerHeight = 0
+  DesignerDeviceName = ''
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  inline framePatchSettings: TframePatchSettings
+    Align = alCenter
+    Height = 382.000000000000000000
+    Width = 706.000000000000000000
+  end
+end

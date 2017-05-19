@@ -1,0 +1,66 @@
+Alternative G2 editor quick reference
+=====================================
+
+General
+-------
+
+V               : select location VA
+F               : select location FX
+
+A               : select slot A
+B               : select slot B
+C               : select slot C
+D               : select slot D
+
+1..8            : select variation 1 to 8
+
+R               : start/stop master clock
+
+Shift+Arrows    : move module cursor
+Shift+Ctrl      : multi select
+Shift+Enter     : Enter add module mode
+
+Arrow left      : move to previous parameter in module
+Arrow right     : move to next parameter in module
+Arrow up        : increase parameter value
+Arrow down      : decrease parameter value
+Ctrl+Arrow up   : increase morph value
+Ctrl+Arrow down : decrease morph value
+
+Ctrl+A          : select all modules
+Ctrl+B          : show banks subform
+Ctrl+C          : copy selected modules
+Ctrl+E          : paste parameters
+Ctrl+F          : show knobs subform
+Ctrl+G          : show synth settings subform
+Ctrl+N          : init patch
+Ctrl+O          : select file browser tab
+Ctrl+P          : show patch settings subform
+Ctrl+S          : show application settings subform
+Ctrl+V          : paste modules
+Ctrl+X          : cut selected modules
+Ctrl+Z          : undo
+
+Delete          : delete selected modules
+
+F1              : Quick reference
+
+Add module mode
+---------------
+Enter mode by selecting "Add module" tab or Shift+Enter key
+
+Shift+Arrows    : move green cursor
+Shift+Enter     : add module add cursor position
+
+
+Add cable mode
+--------------
+Enter mode by selecting a connector
+
+Delete          : delete all cables of connector
+
+
+
+
+
+

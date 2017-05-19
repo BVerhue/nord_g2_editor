@@ -1,0 +1,478 @@
+object frameAppSettings: TframeAppSettings
+  Height = 473.000000000000000000
+  Width = 610.000000000000000000
+  object Panel2: TPanel
+    Align = alTop
+    Height = 209.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Width = 610.000000000000000000
+    TabOrder = 0
+    object G2Label12: TG2Label
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 10.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 10.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 10.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Align = alTop
+      Width = 610.000000000000000000
+      Height = 25.000000000000000000
+      TextAlign = taCenter
+      LabelText = 'GUI settings'
+    end
+    object bfSplitterVisible: TG2BtnFlat
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 65.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 312.000000000000000000
+      Position.Y = 37.000000000000000000
+      ButtonText.Strings = (
+        'No'
+        'Yes')
+      ImageCount = 0
+      CanFocus = True
+      TabOrder = 1
+      OnChangeValue = bfSplitterVisibleChangeValue
+      HighValue = 1
+      LowValue = 0
+      Value = 0
+    end
+    object eZoom1: TEdit
+      Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+      TabOrder = 2
+      Font.Family = 'Roboto'
+      Font.Size = 12.000000000000000000
+      TextAlign = taCenter
+      Position.X = 125.000000000000000000
+      Position.Y = 40.000000000000000000
+      Width = 60.000000000000000000
+      Height = 25.000000000000000000
+      StyledSettings = [ssStyle, ssFontColor]
+      KillFocusByReturn = True
+      OnExit = eZoom1Exit
+    end
+    object eZoom2: TEdit
+      Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+      TabOrder = 3
+      Font.Family = 'Roboto'
+      Font.Size = 12.000000000000000000
+      TextAlign = taCenter
+      Position.X = 125.000000000000000000
+      Position.Y = 80.000000000000000000
+      Width = 60.000000000000000000
+      Height = 25.000000000000000000
+      StyledSettings = [ssStyle, ssFontColor]
+      KillFocusByReturn = True
+      OnExit = eZoom2Exit
+    end
+    object eZoom3: TEdit
+      Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+      TabOrder = 4
+      Font.Family = 'Roboto'
+      Font.Size = 12.000000000000000000
+      TextAlign = taCenter
+      Position.X = 125.000000000000000000
+      Position.Y = 120.000000000000000000
+      Width = 60.000000000000000000
+      Height = 25.000000000000000000
+      StyledSettings = [ssStyle, ssFontColor]
+      KillFocusByReturn = True
+      OnExit = eZoom3Exit
+    end
+    object G2Label10: TG2Label
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 10.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 10.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 10.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 97.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 120.000000000000000000
+      TextAlign = taLeading
+      LabelText = 'Zoom setting 3'
+    end
+    object G2Label7: TG2Label
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 10.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 10.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 10.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 89.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 216.000000000000000000
+      Position.Y = 37.000000000000000000
+      TextAlign = taLeading
+      LabelText = 'Splitter visible'
+    end
+    object G2Label8: TG2Label
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 10.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 10.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 10.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 89.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 40.000000000000000000
+      TextAlign = taLeading
+      LabelText = 'Zoom setting 1'
+    end
+    object G2Label9: TG2Label
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 10.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 10.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 10.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 97.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 80.000000000000000000
+      TextAlign = taLeading
+      LabelText = 'Zoom setting 2'
+    end
+    object bfCableStyle: TG2BtnFlat
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 65.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 312.000000000000000000
+      Position.Y = 120.000000000000000000
+      ButtonText.Strings = (
+        'Flat'
+        'Gradient')
+      ImageCount = 0
+      CanFocus = True
+      TabOrder = 9
+      OnChangeValue = bfCableStyleChangeValue
+      HighValue = 1
+      LowValue = 0
+      Value = 0
+    end
+    object bfKnobControl: TG2BtnFlat
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 65.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 312.000000000000000000
+      Position.Y = 79.000000000000000000
+      ButtonText.Strings = (
+        'Circular'
+        'Horizontal'
+        'Vertical')
+      ImageCount = 0
+      CanFocus = True
+      TabOrder = 10
+      OnChangeValue = bfKnobControlChangeValue
+      HighValue = 2
+      LowValue = 0
+      Value = 0
+    end
+    object G2Label4: TG2Label
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 10.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 10.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 10.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 81.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 216.000000000000000000
+      Position.Y = 80.000000000000000000
+      TextAlign = taLeading
+      LabelText = 'Knob control'
+    end
+    object G2Label5: TG2Label
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 10.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 10.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 10.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 81.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 216.000000000000000000
+      Position.Y = 120.000000000000000000
+      TextAlign = taLeading
+      LabelText = 'Cable style'
+    end
+    object ePatchDir: TEdit
+      Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+      TabOrder = 13
+      Font.Family = 'Roboto'
+      Font.Size = 12.000000000000000000
+      Position.X = 128.000000000000000000
+      Position.Y = 168.000000000000000000
+      Width = 433.000000000000000000
+      Height = 25.000000000000000000
+      StyledSettings = [ssStyle, ssFontColor]
+      KillFocusByReturn = True
+      OnExit = ePatchDirExit
+    end
+    object G2Label6: TG2Label
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 10.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 10.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 10.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 105.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 168.000000000000000000
+      TextAlign = taLeading
+      LabelText = 'Patch directory'
+    end
+    object Panel1: TPanel
+      Height = 57.000000000000000000
+      Position.X = 448.000000000000000000
+      Position.Y = 104.000000000000000000
+      Width = 137.000000000000000000
+      TabOrder = 15
+      object btInitDefaults: TG2BtnText
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = xFF202020
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = xFF202020
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = xFF202020
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        Width = 89.000000000000000000
+        Height = 25.000000000000000000
+        Position.X = 24.000000000000000000
+        Position.Y = 16.000000000000000000
+        ButtonText.Strings = (
+          'Init defaults'
+          'Init defaults')
+        ImageCount = 0
+        CanFocus = True
+        TabOrder = 0
+        OnChangeValue = btInitDefaultsChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkMomentary
+      end
+    end
+    object G2Label1: TG2Label
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 10.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 10.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 10.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 85.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 421.000000000000000000
+      Position.Y = 37.000000000000000000
+      TextAlign = taLeading
+      LabelText = 'Auto assign midi'
+    end
+    object bfAutoAssignMidi: TG2BtnFlat
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 65.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 518.000000000000000000
+      Position.Y = 37.000000000000000000
+      ButtonText.Strings = (
+        'No'
+        'Yes')
+      ImageCount = 0
+      CanFocus = True
+      TabOrder = 17
+      OnChangeValue = bfAutoAssignMidiChangeValue
+      HighValue = 1
+      LowValue = 0
+      Value = 0
+    end
+  end
+  object tcSynthSettings: TTabControl
+    Align = alClient
+    Height = 195.000000000000000000
+    TabOrder = 1
+    Width = 610.000000000000000000
+  end
+  object Panel3: TPanel
+    Align = alBottom
+    Height = 59.000000000000000000
+    Position.Y = 414.000000000000000000
+    Width = 610.000000000000000000
+    TabOrder = 2
+    object lblWeblink: TLabel
+      Align = alClient
+      FontColor = claBlue
+      StyledSettings = [ssFamily, ssSize]
+      Height = 25.000000000000000000
+      HitTest = True
+      Text = 
+        'G2 editor v0.4 - 2011/2014 Bruno Verhue - BVerhue@gmail.com - ww' +
+        'w.bverhue.nl/g2dev'
+      TextAlign = taCenter
+      Width = 610.000000000000000000
+      OnClick = lblWeblinkClick
+      OnMouseEnter = lblWeblinkMouseEnter
+      OnMouseLeave = lblWeblinkMouseLeave
+    end
+    object Label2: TLabel
+      Align = alBottom
+      Height = 17.000000000000000000
+      Position.Y = 42.000000000000000000
+      Text = 'This software is not associated with Clavia DMI AB '
+      TextAlign = taCenter
+      Width = 610.000000000000000000
+    end
+    object Label3: TLabel
+      Align = alBottom
+      Height = 17.000000000000000000
+      Position.Y = 25.000000000000000000
+      Text = 'Press F1 for quick reference'
+      TextAlign = taCenter
+      Width = 610.000000000000000000
+    end
+  end
+end

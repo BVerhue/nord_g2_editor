@@ -1,0 +1,326 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{fc980960-6434-429c-b598-13bf86acd484}</ProjectGuid>
+			<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<DCC_DependencyCheckOutputName>..\Build\G2_editor.exe</DCC_DependencyCheckOutputName>
+			<MainSource>G2_editor.dpr</MainSource>
+			<FrameworkType>VCL</FrameworkType>
+			<ProjectVersion>13.4</ProjectVersion>
+			<Base>True</Base>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<Platform Condition="'$(Platform)'==''">Win32</Platform>
+			<TargetedPlatforms>1</TargetedPlatforms>
+			<AppType>Application</AppType>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+			<Base_Win64>true</Base_Win64>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+			<Base_Win32>true</Base_Win32>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+			<Cfg_2_Win32>true</Cfg_2_Win32>
+			<CfgParent>Cfg_2</CfgParent>
+			<Cfg_2>true</Cfg_2>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_ExeOutput>..\..\Bin</DCC_ExeOutput>
+			<DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
+			<DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;System.Win;Web.Win;$(DCC_Namespace)</DCC_Namespace>
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+			<VerInfo_Locale>1043</VerInfo_Locale>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base_Win64)'!=''">
+			<Icon_MainIcon>G2_editor_Icon.ico</Icon_MainIcon>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base_Win32)'!=''">
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<Icon_MainIcon>G2_editor_Icon.ico</Icon_MainIcon>
+			<DCC_Namespace>Data.Win;Datasnap.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+			<Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<Version>7.0</Version>
+			<DCC_DebugInformation>False</DCC_DebugInformation>
+			<DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<Version>7.0</Version>
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_Optimize>False</DCC_Optimize>
+			<DCC_ResourcePath>NMG2Controls\;NMG2Controls\Delphi\xml;$(DCC_ResourcePath)</DCC_ResourcePath>
+			<DCC_ObjPath>NMG2Controls\;NMG2Controls\Delphi\xml;$(DCC_ObjPath)</DCC_ObjPath>
+			<DCC_IncludePath>NMG2Controls\;NMG2Controls\Delphi\xml;$(DCC_IncludePath)</DCC_IncludePath>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+			<VerInfo_AutoGenVersion>true</VerInfo_AutoGenVersion>
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+			<VerInfo_Keys>CompanyName=B.J.H. Verhue;FileDescription=Open source Clavia Nord Modular 2 editor;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+		</PropertyGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1043</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Source>
+						<Source Name="MainSource">G2_editor.dpr</Source>
+					</Source>
+					<Excluded_Packages/>
+				</Delphi.Personality>
+				<Platforms>
+					<Platform value="Win64">False</Platform>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+				<ModelSupport>False</ModelSupport>
+				<Deployment>
+					<DeployFile Class="ProjectOutput" Configuration="Debug" LocalName="..\..\Bin\G2_editor.exe">
+						<Platform Name="Win32"/>
+					</DeployFile>
+					<DeployFile Class="DebugSymbols" Configuration="Debug" LocalName="..\..\Bin\G2_editor.rsm">
+						<Platform Name="Win32">
+							<RemoteName>G2_editor.rsm</RemoteName>
+						</Platform>
+					</DeployFile>
+					<DeployClass Name="ProjectOutput" Required="true">
+						<Platform Name="OSX32">
+							<RemoteDir>Contents\MacOS</RemoteDir>
+							<Operation>1</Operation>
+						</Platform>
+						<Platform Name="Win32">
+							<Operation>0</Operation>
+						</Platform>
+					</DeployClass>
+					<DeployClass Name="DependencyPackage" Required="true">
+						<Platform Name="OSX32">
+							<RemoteDir>Contents\MacOS</RemoteDir>
+							<Operation>1</Operation>
+							<Extensions>.dylib</Extensions>
+						</Platform>
+						<Platform Name="Win32">
+							<Operation>0</Operation>
+							<Extensions>.bpl</Extensions>
+						</Platform>
+					</DeployClass>
+					<DeployClass Name="DependencyModule">
+						<Platform Name="OSX32">
+							<RemoteDir>Contents\MacOS</RemoteDir>
+							<Operation>1</Operation>
+							<Extensions>.dylib</Extensions>
+						</Platform>
+						<Platform Name="Win32">
+							<Operation>0</Operation>
+							<Extensions>.dll;.bpl</Extensions>
+						</Platform>
+					</DeployClass>
+					<DeployClass Name="ProjectOSXInfoPList">
+						<Platform Name="OSX32">
+							<RemoteDir>Contents</RemoteDir>
+							<Operation>1</Operation>
+						</Platform>
+					</DeployClass>
+					<DeployClass Name="File">
+						<Platform Name="OSX32">
+							<RemoteDir>Contents\MacOS</RemoteDir>
+							<Operation>0</Operation>
+						</Platform>
+						<Platform Name="Win32">
+							<Operation>0</Operation>
+						</Platform>
+					</DeployClass>
+					<DeployClass Name="DebugSymbols">
+						<Platform Name="OSX32">
+							<RemoteDir>Contents\MacOS</RemoteDir>
+							<Operation>1</Operation>
+						</Platform>
+						<Platform Name="Win32">
+							<Operation>0</Operation>
+						</Platform>
+					</DeployClass>
+					<DeployClass Name="DependencyFramework">
+						<Platform Name="OSX32">
+							<RemoteDir>Contents\MacOS</RemoteDir>
+							<Operation>1</Operation>
+							<Extensions>.framework</Extensions>
+						</Platform>
+						<Platform Name="Win32">
+							<Operation>0</Operation>
+						</Platform>
+					</DeployClass>
+					<DeployClass Name="AdditionalDebugSymbols">
+						<Platform Name="OSX32">
+							<RemoteDir>Contents\MacOS</RemoteDir>
+							<Operation>1</Operation>
+						</Platform>
+						<Platform Name="Win32">
+							<Operation>0</Operation>
+						</Platform>
+					</DeployClass>
+					<DeployClass Name="ProjectOSXResource">
+						<Platform Name="OSX32">
+							<RemoteDir>Contents\Resources</RemoteDir>
+							<Operation>1</Operation>
+						</Platform>
+					</DeployClass>
+					<ProjectRoot Name="$(PROJECTNAME).app" Platform="OSX32"/>
+					<ProjectRoot Name="$(PROJECTNAME)" Platform="Win64"/>
+					<ProjectRoot Name="$(PROJECTNAME)" Platform="Win32"/>
+				</Deployment>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+		<ItemGroup>
+			<DelphiCompile Include="$(MainSource)">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="..\..\Source\Common\g2_database.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_types.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_file.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_mess.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_usb.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_midi.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_graph.pas"/>
+			<DCCReference Include="..\..\Source\Common\g2_classes.pas"/>
+			<DCCReference Include="..\..\Source\Common\OSCUtils.pas"/>
+			<DCCReference Include="..\..\Source\Windows\UnitG2Editor.pas">
+				<Form>frmG2Main</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitPatchSettings.pas">
+				<Form>frmPatchSettings</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitLog.pas">
+				<Form>frmLog</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitParameterPages.pas">
+				<Form>frmParameterPages</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitSeqGrid.pas">
+				<Form>frmSeqGrid</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitSynthSettings.pas">
+				<Form>frmSynthSettings</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitPerfSettings.pas">
+				<Form>frmPerfSettings</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitEditLabel.pas">
+				<Form>frmEditLabel</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitSettings.pas">
+				<Form>frmSettings</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitEditorTools.pas">
+				<Form>frmEditorTools</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitPatchBrowser.pas">
+				<Form>frmPatchBrowser</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitModuleDef.pas">
+				<Form>frmModuleDef</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitPatchNotes.pas">
+				<Form>frmPatchNotes</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitMidiMapping.pas">
+				<Form>frmMidiMapping</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitPatchManager.pas">
+				<Form>frmPatchManager</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Windows\UnitPatchBrowserFilterModules.pas">
+				<Form>frmPatchBrowserModuleFilter</Form>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Third_party_code\FPC_XML\Source\dom.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\FPC_XML\Source\uriparser.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\FPC_XML\Source\xmlread.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\FPC_XML\Source\xmlutils.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\FPC_XML\Source\xmlwrite.pas"/>
+			<DCCReference Include="..\..\Source\Common\LibUSBWinDyn.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\MIDIIO\Source\MidiIn.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\MIDIIO\Source\MidiOut.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\MIDIIO\Source\MidiType.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\MIDIIO\Source\CircBuf.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\MIDIIO\Source\MidiDefs.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\MIDIIO\Source\MidiCallback.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\MIDIIO\Source\MidiCons.pas"/>
+			<DCCReference Include="..\..\Source\Third_party_code\MIDIIO\Source\MidiKeyPatchArray.pas"/>
+			<DCCReference Include="..\..\Source\Common\graph_util_vcl.pas"/>
+			<DCCReference Include="..\..\Source\Common\fastbitmap.pas"/>
+			<DCCReference Include="..\..\Source\Common\JawsCtrls.pas"/>
+			<DCCReference Include="..\..\Source\Common\MusicalKeyboard.pas"/>
+			<DCCReference Include="..\..\Source\Windows\UnitPatchBuffer.pas">
+				<Form>frmPatchBuffer</Form>
+				<FormType>dfm</FormType>
+			</DCCReference>
+			<DCCReference Include="..\..\Source\Common\Sidepanel.pas"/>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+		<Import Condition="Exists('$(MSBuildProjectName).deployproj')" Project="$(MSBuildProjectName).deployproj"/>
+	</Project>

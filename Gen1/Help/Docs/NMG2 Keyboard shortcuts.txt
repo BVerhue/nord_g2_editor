@@ -1,0 +1,205 @@
+Overview shortcuts NMG2 Open source editor v0.23
+================================================
+
+The shortcut keys and for the most part the same as in the original clavia edtor
+
+Some shortcut keys and a number of popup menus are added to be comapitble with "Jaws" screenreading software for users that are visually impaired.
+
+A number of sections and dialogs in the application are not Jaws compaitble at the moment.
+
+Important:
+
+For the menu's to be Jaws compatible, it seems there may not be any images in the menu's, so in the "Application settings dialog of the NMG2 OS editor, page "Edtor" you should enable the checkbox  "Only text menus" to work with Jaws.
+
+
+A. Menus and shortcuts
+======================
+
+
+1. File Menu
+------------
+
+There are no shortcuts in the file menu.
+
+
+2a. Edit menu and shortcuts
+---------------------------
+
+Ctrl + Z		: Undo
+Ctrl + X		: Cut
+Ctrl + C		: Copy
+Ctrl + V		: Paste
+Del			: Delete
+
+Alt+V                   : Copy variation popup menu
+
+Alt+M                   : Edit module properties
+Alt+P                   : Edit parameter properties  
+
+2b. Other editting keys
+-----------------------
+
+Arrow Up		: Increase selected parameter value
+Arrow Down		: Decrease selected parameter value
+
+Ctrl + Arrow Up		: Increase selected parameter morph value
+Ctrl + Arrow Down	: Decrease selected parameter morph value
+
+
+3a. Selection menu and shortcuts
+--------------------------------
+
+S                       : Slot selection popup menu
+L			: Patch location selection popup menu
+M                       : Module selection popup menu
+P 			: Parameter selection popup menu
+E                       : Cable selection popup menu
+
+Ctrl + A		: Select all modules
+
+
+3b. Other selection keys
+------------------------
+
+
+1..8			: Select variation 1 to 8
+F       		: Select patch location FX
+V			: Select patch location VA
+A..D    		: Select slot A to D
+
+Arrow Left		: Select previous parameter of module
+Arrow Right		: Select next parameter of module
+
+Shift + Arrow Left	: Select module left
+Shift + Arrow Right	: Select module right
+Shift + Arrow Up	: Select module up
+Shift + Arrow Down	: Select module down
+
+
+4. Add menu and shortcuts
+-------------------------
+
+Shift + M		: Add new module to patch popup menu
+Shift + E		: Add new cable to module popup menu
+
+
+5. View menu and shortcuts 
+--------------------------
+
+Ctrl + P		: Patch settings (not yet Jaws compatible)
+Ctrl + F		: Parameter pages (not yet Jaws compatible)
+Ctrl + B		: Patch manager
+Ctrl + N                : Patch notes (not yet Jaws compatible)
+
+
+6. Midi sysex shortcuts
+-----------------------
+
+F1			: Get active patch sysex
+F2			: Get active performance sysex
+F3			: Get patch sysex from bank
+F4			: Get performance sysex from bank
+F5			: Send patch sysex
+F6			: Send performance sysex
+
+
+7. Settings Menu and shortcuts
+------------------------------
+
+Ctrl + G		: Synth settings (not yet Jaws compatible)
+Ctrl + R		: Performance settings
+Application settings (no shortcut)                         
+
+
+B. Layout of the application
+============================
+
+The application is layed out as follows:
+
+ 1. Main menu bar
+
+ 2. Application settings bar
+    a. Online checkbox, indicates if the USB connection with the G2 Synth is active
+    b. Clients connected, indicates if VST's or other editors are connected to this editor
+    c. Master clock (not Jaws compatible)
+    d. G2 synth selection radio button. If multiple G2's are connected with the editor (not Jaws compatible)
+
+ 3. Settings bar slot A (not Jaws compatible)
+ 4. Settings bar slot B (not Jaws compatible)
+ 5. Settings bar slot C (not Jaws compatible)
+ 6. Settings bar slot D (not Jaws compatible)
+
+ 7. Patch location VA (see clavia documentation)
+ 8. splitter
+ 9. Patch location FX (see clavia documentation)
+10. Status bar
+
+
+C. Example patching with shortcut keys
+======================================
+
+    Creating a new patch and selecting slot and patch location
+
+ 1. Select "File menu", "Init patch" to create a new patch
+ 2. Press A to select slot A
+ 3. Press V to select patch location VA
+
+    Adding an OscB module to the patch
+
+ 4. Press Shift+M, the "add module" popup menu appears. 
+    ( Modules are grouped in pages, so first a page must be selected and then the actual module )
+
+ 5. Press Arrow down until page "Osc" is selected
+ 6. Press Arrow right, submenu with al the oscilator modules appears
+ 7. Press Arrow down to select "OscB"
+ 8. Press Enter to add a module of type "OscB" to the patch
+
+    Adding an 2-Out module to the patch
+
+ 9. Press Shift+M to add another module
+10. Press Arrow down until page "In/Out" is selected
+11. Press Arrow right, to open the submenu with the input/output modules
+12. Select module "2-Out" and press enter to add the module to the patch
+
+    Selecing a module 
+
+13. Press M, the "select module" popup appears
+14. Press Arrow down until page "Osc" is selected
+15. Press Arrow right, to open the submenu with all the oscilators in the current patch location
+16. Select module "OscB - OscB1" (that's module type - module name)
+
+    Adding a cable
+
+17. Press Shift+E, the "select cable" popup appears with all the connectors of the current module
+18. Press Arrow down to select connector "Output Out"
+19. Now the destination module must be selected, press Arrow right to open the module selection submenu
+20. Select module page "In/Out"
+21. press Arrow right and select module "2-Out1"
+22. Press Arrow right to select a free input connector of the "2-Out1" module, select "input InL" 
+23. Press Enter, you shoud hear a sound now on the left speaker
+
+    Modifying a parameter
+
+24. Select OscB1 ( M - Arrow down - Arrow down - Arrow right - Enter)
+25. Press P, the parameter popup menu appears
+26. Press Arrow down to select parameter "FreqCourse, value 64"
+27. Press Arrow up/Arrow down to change the parameter value
+
+    Deleting a cable
+
+28. Select OscB1
+29. Press E. the select cable menu appears, it shows all connectors of the current module that have cables
+30. Press Arrow down to select connector "Output out"
+31. Press Arrow right, the submenu with all cable destinations appears
+32. Select cable "Connected to 2-Out1, input InL"
+33. Press Arrow right, the submenu with cable options appears
+34. Press Arrow down to select option "Delete cable".
+
+
+
+
+
+ 
+
+
+

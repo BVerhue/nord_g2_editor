@@ -1,0 +1,213 @@
+object framePatch: TframePatch
+  Height = 450.000000000000000000
+  Width = 260.000000000000000000
+  object Rectangle3: TRectangle
+    Align = alRight
+    Height = 450.000000000000000000
+    Position.X = 197.000000000000000000
+    Stroke.Kind = bkNone
+    Width = 63.000000000000000000
+    object btLoadPatch: TG2BtnText
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 57.000000000000000000
+      Height = 33.000000000000000000
+      Position.X = 3.000000000000000000
+      Position.Y = 61.000000000000000000
+      ButtonText.Strings = (
+        'Ld patch'
+        'Ld patch')
+      ImageCount = 0
+      CanFocus = True
+      TabOrder = 0
+      OnChangeValue = btLoadPatchChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkMomentary
+    end
+    object btSavePatch: TG2BtnText
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 57.000000000000000000
+      Height = 33.000000000000000000
+      Position.X = 3.000000000000000000
+      Position.Y = 102.000000000000000000
+      ButtonText.Strings = (
+        'Sv patch'
+        'Sv patch')
+      ImageCount = 0
+      CanFocus = True
+      TabOrder = 1
+      OnChangeValue = btSavePatchChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkMomentary
+    end
+    object btLoadPerf: TG2BtnText
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 57.000000000000000000
+      Height = 33.000000000000000000
+      Position.X = 3.000000000000000000
+      Position.Y = 152.000000000000000000
+      ButtonText.Strings = (
+        'Ld perf'
+        'Ld perf')
+      ImageCount = 0
+      CanFocus = True
+      TabOrder = 2
+      OnChangeValue = btLoadPerfChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkMomentary
+    end
+    object btSavePerf: TG2BtnText
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 57.000000000000000000
+      Height = 33.000000000000000000
+      Position.X = 3.000000000000000000
+      Position.Y = 193.000000000000000000
+      ButtonText.Strings = (
+        'Sv perf'
+        'Sv perf')
+      ImageCount = 0
+      CanFocus = True
+      TabOrder = 3
+      OnChangeValue = btSavePerfChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkMomentary
+    end
+    object btInitPatch: TG2BtnText
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 57.000000000000000000
+      Height = 33.000000000000000000
+      Position.X = 3.000000000000000000
+      Position.Y = 12.000000000000000000
+      ButtonText.Strings = (
+        'Init patch'
+        'Init patch')
+      ImageCount = 0
+      CanFocus = True
+      TabOrder = 4
+      OnChangeValue = btInitPatchChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkMomentary
+    end
+    object btRefresh: TG2BtnText
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 57.000000000000000000
+      Height = 33.000000000000000000
+      Position.X = 3.000000000000000000
+      Position.Y = 243.000000000000000000
+      ButtonText.Strings = (
+        'Refresh'
+        'Refresh')
+      ImageCount = 0
+      CanFocus = True
+      TabOrder = 5
+      OnChangeValue = btRefreshChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkMomentary
+    end
+  end
+  object Layout1: TLayout
+    Align = alClient
+    Height = 450.000000000000000000
+    Width = 197.000000000000000000
+    object lDirs: TLayout
+      Align = alTop
+      Height = 50.000000000000000000
+      Width = 197.000000000000000000
+    end
+    object lbFiles: TListBox
+      Align = alClient
+      Height = 400.000000000000000000
+      TabOrder = 1
+      Width = 197.000000000000000000
+      OnDblClick = lbFilesDblClick
+      DefaultItemStyles.ItemStyle = ''
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      OnChange = lbFilesChange
+      OnKeyDown = lbFilesKeyDown
+    end
+  end
+end

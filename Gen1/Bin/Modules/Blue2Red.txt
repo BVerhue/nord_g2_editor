@@ -1,0 +1,44 @@
+<#Module
+  Name:"Blue2Red"
+  FileName:"Blue2Red"
+  Tooltip:"Blue 2 Red"
+  Height:2
+  XPos:0
+  YPos:0
+  Version:238
+  <#Input
+    ID:0
+    XPos:210
+    YPos:11
+    CodeRef:0
+    InfoFunc:0
+    Type:"Control"
+    Bandwidth:"Static"
+  #>
+  <#Output
+    ID:1
+    XPos:240
+    YPos:11
+    CodeRef:0
+    InfoFunc:0
+    Type:"Audio"
+    Bandwidth:"Static"
+  #>
+  <#Line
+    ID:2
+    XPos:215
+    YPos:16
+    ZPos:0
+    Length:28
+    Orientation:"Horizontal"
+    Width:"Thin"
+  #>
+  <#Text
+    ID:3
+    XPos:5
+    YPos:17
+    ZPos:0
+    FontSize:9
+    Text:"For Clavia indoor debug purposes only"
+  #>
+#>
