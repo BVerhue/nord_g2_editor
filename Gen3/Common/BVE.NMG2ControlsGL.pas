@@ -3168,7 +3168,7 @@ var
 begin
   SaveMatrix := aContext.CurrentMatrix;
   try
-    aContext.SetMatrix(SaveMatrix * FMatrix);
+    aContext.SetMatrix(FMatrix * SaveMatrix);
 
     aContext.DrawTriangles(FMesh.VertexBuffer, FMesh.IndexBuffer, FMat, 0.8);
 

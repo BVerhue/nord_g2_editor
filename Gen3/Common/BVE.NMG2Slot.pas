@@ -840,6 +840,9 @@ end;
 procedure TG2Slot.StartInit(aConnection: IG2Connection;
   const aStartCommAfterInit : boolean);
 begin
+  if not aConnection.Connected then
+    exit;
+
   FInitStep := 1;
   FStartCommAfterInit := aStartCommAfterInit;
   FFinishMsg := aConnection.OnNextMsg;

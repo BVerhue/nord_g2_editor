@@ -1209,8 +1209,13 @@ begin
   begin
     MRect := ModuleRect(Module.Col, Module.Row, Module.HeightUnits);
 
-    Outline := TOutlineGL.Create(Point3D(MRect.Left - Rect.Left,
-      MRect.Top - Rect.Top, 0), MRect.Width, MRect.Height);
+    Outline := TOutlineGL.Create(
+      Point3D(
+        MRect.Left - Rect.Left,
+        MRect.Top - Rect.Top,
+        0),
+      MRect.Width,
+      MRect.Height);
 
     FOutlineList.Add(Outline)
   end;

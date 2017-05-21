@@ -1232,8 +1232,12 @@ begin
     CreateBtnRadio(24, 12, '', 'Up;Down;Up/Dn;Rnd');
     CreateBtnRadio(24, 12, '', '4 oct;3 oct; 2 oct; 1 oct');
 
-    // FormSlot
+    // Edit
     CreateBtnText(24, 12, '', 'Add;Add');
+    CreateBtnText(24, 12, '', 'Copy;Copy');
+    CreateBtnText(24, 12, '', 'Paste;Paste');
+    CreateBtnText(24, 12, '', 'Delete;Delete');
+    CreateBtnText(24, 12, '', 'Cancel;Cancel');
 
     // SelectModule
     CreateBtn(32, 12);

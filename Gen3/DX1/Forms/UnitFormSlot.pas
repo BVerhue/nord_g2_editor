@@ -86,7 +86,7 @@ type
     FBtnCopy: TG2BtnTextGL;
     FBtnPaste: TG2BtnTextGL;
     FBtnDelete: TG2BtnTextGL;
-    FBtnCancel: TBtnRadioGL;
+    FBtnCancel: TG2BtnTextGL;
   private
     procedure CopyClk(Sender: TObject; Shift: TShiftState; const aBtnIndex: integer);
     procedure PasteClk(Sender: TObject; Shift: TShiftState; const aBtnIndex: integer);
@@ -555,6 +555,43 @@ end;
 //
 // -----------------------------------------------------------------------------
 
+constructor TPanelModule.Create(AOwner: TComponent);
+begin
+  inherited;
+
+  ShowScrollBars := False;
+
+  Height := 57;
+
+  FBtnCopy := TG2BtnTextGL.Create(Self);
+  FBtnCopy.Parent := Self;
+  FBtnCopy.TextureID := GetBtnTextTexID(24, 12, '', 'Copy;Copy');
+  FBtnCopy.TextureList := TextureList;
+  FBtnCopy.BtnType := TButtonTextType.bttPush;
+  FBtnCopy.OnClk := CopyClk;
+
+  FBtnPaste := TG2BtnTextGL.Create(Self);
+  FBtnPaste.Parent := Self;
+  FBtnPaste.TextureID := GetBtnTextTexID(24, 12, '', 'Paste;Paste');
+  FBtnPaste.TextureList := TextureList;
+  FBtnPaste.BtnType := TButtonTextType.bttPush;
+  FBtnPaste.OnClk := PasteClk;
+
+  FBtnDelete := TG2BtnTextGL.Create(Self);
+  FBtnDelete.Parent := Self;
+  FBtnDelete.TextureID := GetBtnTextTexID(24, 12, '', 'Delete;Delete');
+  FBtnDelete.TextureList := TextureList;
+  FBtnDelete.BtnType := TButtonTextType.bttPush;
+  FBtnDelete.OnClk := DeleteClk;
+
+  FBtnCancel := TG2BtnTextGL.Create(Self);
+  FBtnCancel.Parent := Self;
+  FBtnCancel.TextureID := GetBtnTextTexID(24, 12, '', 'Cancel;Cancel');
+  FBtnCancel.TextureList := TextureList;
+  FBtnCancel.BtnType := TButtonTextType.bttPush;
+  FBtnCancel.OnClk := CancelClk;
+end;
+
 procedure TPanelModule.CancelClk(Sender: TObject; Shift: TShiftState;
   const aBtnIndex: integer);
 begin
@@ -566,11 +603,6 @@ procedure TPanelModule.CopyClk(Sender: TObject; Shift: TShiftState;
   const aBtnIndex: integer);
 begin
   Connection.Copy;
-end;
-
-constructor TPanelModule.Create(AOwner: TComponent);
-begin
-  inherited;
 end;
 
 procedure TPanelModule.DeleteClk(Sender: TObject; Shift: TShiftState;
@@ -595,6 +627,8 @@ end;
 procedure TPanelModule.Resize;
 begin
   inherited;
+  LayoutControls;
+  FullRepaint
 end;
 
 procedure TPanelModule.Update(aG2Event: TG2Event; const aG2Object: IG2Object);
@@ -648,21 +682,18 @@ end;
 
 destructor TPanelPatchSettings.Destroy;
 begin
-
   inherited;
 end;
 
 procedure TPanelPatchSettings.Resize;
 begin
   inherited;
-
 end;
 
 procedure TPanelPatchSettings.Update(aG2Event: TG2Event;
   const aG2Object: IG2Object);
 begin
   inherited;
-
 end;
 
 end.
