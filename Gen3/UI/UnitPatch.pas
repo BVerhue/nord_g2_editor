@@ -549,14 +549,18 @@ begin
       ;
     EvtPaste:
       begin
-        { if assigned(Connection) and assigned(Connection.CopyPatch) then begin
-          Rect := Connection.CopyPatch.SelectedUnitsRect;
+        if assigned(Connection) and assigned(Connection.CopyPatch) then
+        begin
+          {Rect := Connection.CopyPatch.SelectedUnitsRect;
+
           ActivateSelection(
-          Connection.CopyPatch,
-          smCopy,
-          ((Rect.Left + (Rect.Right - Rect.Left)/2) * (UNITS_COL+UNIT_MARGIN*2)),
-          ((Rect.Top + (Rect.Bottom - Rect.Top)/2) * (UNITS_ROW+UNIT_MARGIN*2)));
-          end; }
+            Connection.CopyPatch,
+            smCopy,
+            ((Rect.Left + (Rect.Right - Rect.Left)/2) * (UNITS_COL+UNIT_MARGIN*2)),
+            ((Rect.Top + (Rect.Bottom - Rect.Top)/2) * (UNITS_ROW+UNIT_MARGIN*2)));}
+
+          OperationMode := omPaste;
+        end;
       end;
     EvtPasteParams:
       ;
@@ -739,14 +743,17 @@ begin
 
   inherited;
 
-  if assigned(MouseDownCtrl)
-  and (MouseDownCtrl is TG2ModuleGL)
-  then
+  if assigned(MouseDownCtrl) and (MouseDownCtrl is TG2ModuleGL) then
   begin
     (MouseDownCtrl as TG2ModuleGL).Selected :=
       not (MouseDownCtrl as TG2ModuleGL).Selected;
 
     OperationMode := omModule;
+  end;
+
+  if OperationMode = omPaste then
+  begin
+    Connection.Paste;
   end;
 end;
 
@@ -786,6 +793,12 @@ begin
       FullRepaint;
     end;
 
+  end;
+
+  if OperationMode = omPaste then
+  begin
+    MoveSelectedPanels(MouseDelta.X, MouseDelta.Y);
+    FullRepaint;
   end;
 end;
 
@@ -875,14 +888,6 @@ begin
     Context.CopyToBitmap(FCableBitmap, Rect(0, 0, FCableBitmap.Width,
       FCableBitmap.Height));
 
-    { if assigned(FCableLayer) then
-      FCableLayer.DisposeOf;
-
-      FCableLayer := TTexControlGL.Create(self);
-      FCableLayer.Texture := FCableBitmap;
-      FCableLayer.Position := Point3D(0, 0, -2);
-      FCableLayer.Width := Context.Width;
-      FCableLayer.Height := Context.Height; }
     FCableMesh.CreateMesh(Context.Width, Context.Height, 0, 1, 1);
 
     FRenderCables := False;
@@ -967,11 +972,6 @@ begin
 
         Context.SetMatrix(SaveMatrix);
 
-        { if assigned(FCableLayer) then
-          begin
-          FCableLayer.Invalidate;
-          FCableLayer.Render(Context, UpdateRectList);
-          end; }
         FCableMat.Texture := FCableBitmap.Texture;
         Context.DrawTriangles(FCableMesh.VertexBuffer, FCableMesh.IndexBuffer,
           FCableMat, 1);
@@ -1070,8 +1070,7 @@ begin
 
             ChangeList := TModuleChangeList.Create;
             try
-              SelectedList := Patch.PatchPart[Location]
-                .CreateSelectedModuleList;
+              SelectedList := Patch.PatchPart[Location].CreateSelectedModuleList;
               try
                 for Module in SelectedList do
                 begin
@@ -1118,15 +1117,25 @@ begin
         begin
           ConMan.SelectedCol := Trunc(LocalMouseDownPoint.X / GRID_UNITS_X);
           ConMan.SelectedRow := Trunc(LocalMouseDownPoint.Y / GRID_UNITS_Y);
-          {FModuleSelection := TSelectionGL.Create(
-            ConMan.SelectedCol,
-            ConMan.SelectedRow, 2);}
         end;
       omSelection:
         begin
           if not assigned(FModuleSelection) then
           begin
             SelectedList := Patch.PatchPart[Location].CreateSelectedModuleList;
+            try
+              FModuleSelection := TSelectionGL.Create(SelectedList);
+            finally
+              SelectedList.Free;
+            end;
+          end;
+        end;
+      omPaste:
+        begin
+          MouseDownCtrl := nil;
+          if assigned(Connection.CopyPatch) then
+          begin
+            SelectedList := Connection.CopyPatch.CreateSelectedModuleList;
             try
               FModuleSelection := TSelectionGL.Create(SelectedList);
             finally
@@ -1185,6 +1194,7 @@ var
   First: Boolean;
 begin
   First := True;
+
   for Module in aModuleList do
   begin
     MRect := ModuleRect(Module.Col, Module.Row, Module.HeightUnits);
@@ -1235,8 +1245,13 @@ begin
 
   FOutlineList := TObjectList<TOutlineGL>.Create(True);
 
-  Outline := TOutlineGL.Create(Point3D(Rect.Left - Rect.Left,
-    Rect.Top - Rect.Top, 0), Rect.Width, Rect.Height);
+  Outline := TOutlineGL.Create(
+    Point3D(
+      Rect.Left - Rect.Left,
+      Rect.Top - Rect.Top,
+      0),
+    Rect.Width,
+    Rect.Height);
 
   FOutlineList.Add(Outline)
 end;

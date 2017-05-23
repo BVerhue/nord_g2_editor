@@ -692,7 +692,7 @@ type
   TKnobControl = (kcCircular, kcHorizontal, kcVertical);
   TCableStyle = (csFlat, csGradient);
 
-  TOperationMode = (omNormal, omSelection, omDrawCable, omAddModule, omModule,
+  TOperationMode = (omNormal, omSelection, omPaste, omDrawCable, omAddModule, omModule,
       omParam, omDragSelect, omBanks, omPianoroll, omLog);
 
 
