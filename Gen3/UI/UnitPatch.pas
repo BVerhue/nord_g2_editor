@@ -78,6 +78,26 @@ type
     property Height: single read FHeight write SetHeight;
   end;
 
+  TModuleCursorGL = class
+  private
+    FCol, FRow, FHeight: integer;
+    FVisible: boolean;
+    procedure SetHeight(const Value: integer);
+    procedure SetVisible(const Value: boolean);
+    procedure SetCol(const Value: integer);
+    procedure SetRow(const Value: integer);
+  public
+    constructor Create(const aCol, aRow, aHeight: integer); overload;
+    destructor Destroy; override;
+
+    procedure Render(aContext: TContext3D);
+
+    property Col: integer read FCol write SetCol;
+    property Row: integer read FRow write SetRow;
+    property Height: integer read FHeight write SetHeight;
+    property Visible: boolean read FVisible write SetVisible;
+  end;
+
   TPatchGL = class(TG2SlotPanelGL)
   private
     FLocation: integer;
@@ -92,6 +112,7 @@ type
     FRenderModules: Boolean;
 
     FModuleSelection: TSelectionGL;
+    FModuleCursor: TModuleCursorGL;
 
     FCableCtrlList: TObjectDictionary<IG2Cable, TG2CableGL>;
     FModuleCtrlList: TObjectDictionary<IG2Module, TG2ModuleGL>;
@@ -213,6 +234,7 @@ begin
   CanTranslate := True;
 
   FModuleSelection := nil;
+  FModuleCursor := TModuleCursorGL.Create(0, 0, 1);
 
   FBackgroundLayer := TTexMatrixControlGL.Create(self);
 
@@ -230,6 +252,11 @@ begin
   FreeAndNil(FCableMesh);
   FreeAndNil(FCableMat);
   FreeAndNil(FCableBitmap);
+
+  if assigned(FModuleSelection) then
+    FreeAndNil(FModuleSelection);
+
+  FreeAndNil(FModuleCursor);
 
   inherited;
 end;
@@ -403,6 +430,7 @@ procedure TPatchGL.Update(aG2Event: TG2Event; const aG2Object: IG2Object);
 var
   ModuleDef: TG2ModuleDef;
   R: TRectF;
+  Rect: TRect;
   Cable: IG2Cable;
   Module: IG2Module;
 begin
@@ -494,11 +522,11 @@ begin
       ;
     EvtModuleAdd:
       begin
-        ModuleDef := GetDataModuleDef(ConMan.SelectedModuleType);
+        //ModuleDef := GetDataModuleDef(ConMan.SelectedModuleType);
+        //ConMan.SelectedRow := ConMan.SelectedRow + ModuleDef.Height;
+        FModuleCursor.Row := ConMan.SelectedRow;
 
-        ConMan.SelectedRow := ConMan.SelectedRow + ModuleDef.Height;
-
-        OperationMode := omNormal;
+        //OperationMode := omNormal;
 
         FRenderModules := True;
         Invalidate;
@@ -559,7 +587,7 @@ begin
             ((Rect.Left + (Rect.Right - Rect.Left)/2) * (UNITS_COL+UNIT_MARGIN*2)),
             ((Rect.Top + (Rect.Bottom - Rect.Top)/2) * (UNITS_ROW+UNIT_MARGIN*2)));}
 
-          OperationMode := omPaste;
+          //OperationMode := omPaste;
         end;
       end;
     EvtPasteParams:
@@ -569,9 +597,9 @@ begin
     EvtSelectModuleType:
       begin
         ModuleDef := GetDataModuleDef(ConMan.SelectedModuleType);
-        R := ModuleRect(0, 0, ModuleDef.Height);
-        OperationMode := omAddModule;
-        //FModuleSelection.Height := R.Height;
+        //R := ModuleRect(0, 0, ModuleDef.Height);
+        //OperationMode := omAddModule;
+        FModuleCursor.Height := ModuleDef.Height;
       end;
     EvtDestroy:
       begin
@@ -743,18 +771,25 @@ begin
 
   inherited;
 
+  OperationMode := omModule;
+
   if assigned(MouseDownCtrl) and (MouseDownCtrl is TG2ModuleGL) then
+    (MouseDownCtrl as TG2ModuleGL).Selected :=
+      not (MouseDownCtrl as TG2ModuleGL).Selected;
+
+  {if assigned(MouseDownCtrl) and (MouseDownCtrl is TG2ModuleGL) then
   begin
     (MouseDownCtrl as TG2ModuleGL).Selected :=
       not (MouseDownCtrl as TG2ModuleGL).Selected;
 
     OperationMode := omModule;
-  end;
+  end;}
 
-  if OperationMode = omPaste then
+  //if OperationMode = omPaste then
+  {if (OperationMode = omModule) and (not assigned(MouseDownCtrl)) and assigned(Connection.CopyPatch) then
   begin
-    Connection.Paste;
-  end;
+    Connection.PatchModulesSelectedCopy(Patch.PatchPart[Location], Connection.CopyPatch);
+  end;}
 end;
 
 procedure TPatchGL.MouseDown(Button: TMouseButton; Shift: TShiftState;
@@ -765,6 +800,16 @@ begin
   FLongClick := False;
 
   inherited;
+
+  case OperationMode of
+    omNormal:
+      begin
+        ConMan.SelectedCol := Trunc(LocalMouseDownPoint.X / GRID_UNITS_X);
+        ConMan.SelectedRow := Trunc(LocalMouseDownPoint.Y / GRID_UNITS_Y);
+        FRenderModules := True;
+        FullRepaint;
+      end;
+  end;
 
   if not assigned(MouseDownCtrl) then
   begin
@@ -795,11 +840,11 @@ begin
 
   end;
 
-  if OperationMode = omPaste then
+  {if OperationMode = omPaste then
   begin
     MoveSelectedPanels(MouseDelta.X, MouseDelta.Y);
     FullRepaint;
-  end;
+  end;}
 end;
 
 procedure TPatchGL.MouseUp(Button: TMouseButton; Shift: TShiftState;
@@ -818,7 +863,12 @@ begin
 
   case OperationMode of
     omNormal:
-      ;
+      begin
+        {ConMan.SelectedCol := Trunc(LocalMouseDownPoint.X / GRID_UNITS_X);
+        ConMan.SelectedRow := Trunc(LocalMouseDownPoint.Y / GRID_UNITS_Y);
+        FRenderModules := True;
+        FullRepaint;}
+      end;
     omSelection:
       begin
         OperationMode := omNormal;
@@ -965,8 +1015,8 @@ begin
         if assigned(ActiveSelectorList) then
         begin
           R := ActiveSelectorList.AbsBoundsRect;
-          Context.SetMatrix(TMatrix3D.CreateTranslation(Point3D(R.Left, R.Top,
-            10)) * PosM);
+          Context.SetMatrix(TMatrix3D.CreateTranslation(
+            Point3D(R.Left, R.Top, 10)) * PosM);
           ActiveSelectorList.Render(Context, UpdateRectList)
         end;
 
@@ -977,8 +1027,13 @@ begin
           FCableMat, 1);
 
         Context.SetMatrix(PosM);
+
         if assigned(FModuleSelection) then
           FModuleSelection.Render(Context);
+
+        FModuleCursor.Col := ConMan.SelectedCol;
+        FModuleCursor.Row := ConMan.SelectedRow;
+        FModuleCursor.Render(Context);
 
       finally
         Context.EndScene;
@@ -1059,9 +1114,9 @@ begin
       omNormal, omAddModule:
         begin
           if assigned(FModuleSelection) then
-          begin
             FreeAndNil(FModuleSelection);
-          end;
+
+          FModuleCursor.Visible := False;
         end;
       omSelection:
         begin
@@ -1112,11 +1167,13 @@ begin
 
     case FOperationMode of
       omNormal:
-        ;
+        begin
+          FModuleCursor.Visible := MouseDownCtrl = nil;
+        end;
       omAddModule:
         begin
-          ConMan.SelectedCol := Trunc(LocalMouseDownPoint.X / GRID_UNITS_X);
-          ConMan.SelectedRow := Trunc(LocalMouseDownPoint.Y / GRID_UNITS_Y);
+          //ConMan.SelectedCol := Trunc(LocalMouseDownPoint.X / GRID_UNITS_X);
+          //ConMan.SelectedRow := Trunc(LocalMouseDownPoint.Y / GRID_UNITS_Y);
         end;
       omSelection:
         begin
@@ -1130,9 +1187,9 @@ begin
             end;
           end;
         end;
-      omPaste:
+      {omPaste:
         begin
-          MouseDownCtrl := nil;
+          //MouseDownCtrl := nil;
           if assigned(Connection.CopyPatch) then
           begin
             SelectedList := Connection.CopyPatch.CreateSelectedModuleList;
@@ -1142,7 +1199,7 @@ begin
               SelectedList.Free;
             end;
           end;
-        end;
+        end;}
     end;
 
     FRenderModules := True;
@@ -1318,5 +1375,69 @@ procedure TSelectionGL.SetWidth(const Value: single);
 begin
   FWidth := Value;
 end;
+
+// -----------------------------------------------------------------------------
+//
+//                           TModuleCursorGL
+//
+// -----------------------------------------------------------------------------
+
+constructor TModuleCursorGL.Create(const aCol, aRow, aHeight: integer);
+var
+  Rect: TRectF;
+begin
+  FCol := aCol;
+  FRow := aRow;
+  FHeight := aHeight;
+
+  FVisible := True;
+end;
+
+destructor TModuleCursorGL.Destroy;
+begin
+  inherited;
+end;
+
+procedure TModuleCursorGL.Render(aContext: TContext3D);
+var
+  SaveMatrix: TMatrix3D;
+  Rect: TRectF;
+  Cursor: TCursorGL;
+begin
+  if not FVisible then
+    exit;
+
+  Rect := ModuleRect(FCol, FRow, FHeight);
+
+  Cursor := TCursorGL.Create(
+    Point3D(Rect.Left, Rect.Top, 0),
+    Rect.Width, Rect.Height);
+  try
+    Cursor.Render(aContext);
+  finally
+    Cursor.Free;
+  end;
+end;
+
+procedure TModuleCursorGL.SetCol(const Value: integer);
+begin
+  FCol := Value;
+end;
+
+procedure TModuleCursorGL.SetHeight(const Value: integer);
+begin
+  FHeight := Value;
+end;
+
+procedure TModuleCursorGL.SetRow(const Value: integer);
+begin
+  FRow := Value;
+end;
+
+procedure TModuleCursorGL.SetVisible(const Value: boolean);
+begin
+  FVisible := Value;
+end;
+
 
 end.

@@ -32,36 +32,4 @@ object frmSlot: TfrmSlot
       OnClick = bDcCancelClick
     end
   end
-  object mbModule: TPanel
-    Align = Top
-    Position.Y = 57.000000000000000000
-    Size.Width = 1024.000000000000000000
-    Size.Height = 57.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 11
-    object mModuleDelete: TButton
-      Position.X = 184.000000000000000000
-      Position.Y = 8.000000000000000000
-      TabOrder = 0
-      Text = 'Delete'
-    end
-    object mbCancel: TButton
-      Position.X = 272.000000000000000000
-      Position.Y = 8.000000000000000000
-      TabOrder = 1
-      Text = 'Cancel'
-    end
-    object bModuleCopy: TButton
-      Position.X = 8.000000000000000000
-      Position.Y = 8.000000000000000000
-      TabOrder = 2
-      Text = 'Copy'
-    end
-    object bModulePaste: TButton
-      Position.X = 96.000000000000000000
-      Position.Y = 8.000000000000000000
-      TabOrder = 3
-      Text = 'Paste'
-    end
-  end
 end

@@ -120,11 +120,6 @@ type
     mbDrawCable: TPanel;
     bDcDelete: TButton;
     bDcCancel: TButton;
-    mbModule: TPanel;
-    mModuleDelete: TButton;
-    mbCancel: TButton;
-    bModuleCopy: TButton;
-    bModulePaste: TButton;
     procedure FormCreate(Sender: TObject);
     procedure bDcCancelClick(Sender: TObject);
     procedure bDcDeleteClick(Sender: TObject);
@@ -138,6 +133,8 @@ type
 
     procedure EnableMenu(aMenu: TObject);
     procedure EnableCtrl(aCtrl: TObject);
+
+    procedure SelectModuleClose(Sender: TObject; var Action: TCloseAction);
 
     procedure OperationModeChange;
 
@@ -205,7 +202,7 @@ procedure TfrmSlot.EnableMenu(aMenu: TObject);
 begin
   FPanelSlot.Visible := (FPanelSlot = aMenu);
   mbDrawCable.Visible := (mbDrawCable = aMenu);
-  FPanelModule.Visible := (mbModule = aMenu);
+  FPanelModule.Visible := (FPanelModule = aMenu);
 end;
 
 procedure TfrmSlot.FormActivate(Sender: TObject);
@@ -235,7 +232,7 @@ begin
 
   FPanelSlot.Visible := True;
   mbDrawCable.Visible := False;
-  mbModule.Visible := False;
+  FPanelModule.Visible := False;
 end;
 
 procedure TfrmSlot.FormShow(Sender: TObject);
@@ -252,6 +249,7 @@ begin
     omAddModule:
       begin
         frmAddModule.Show;
+        frmAddModule.OnClose := SelectModuleClose;
       end;
     omDrawCable:
       begin
@@ -260,7 +258,7 @@ begin
       end;
     omModule:
       begin
-        EnableMenu(mbModule);
+        EnableMenu(FPanelModule);
         EnableCtrl(nil);
       end;
     {omLog:
@@ -274,6 +272,11 @@ begin
       EnableCtrl(nil);
     end;
   end;
+end;
+
+procedure TfrmSlot.SelectModuleClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FPatchCtrl.OperationMode := omNormal;
 end;
 
 procedure TfrmSlot.Update(aG2Event: TG2Event; const aG2Object: IG2Object);
@@ -603,6 +606,7 @@ procedure TPanelModule.CopyClk(Sender: TObject; Shift: TShiftState;
   const aBtnIndex: integer);
 begin
   Connection.Copy;
+  Slot.OperationMode := omNormal;
 end;
 
 procedure TPanelModule.DeleteClk(Sender: TObject; Shift: TShiftState;
@@ -611,6 +615,7 @@ begin
   if assigned(Slot) and assigned(Slot.Patch) then
     Connection.PatchModulesSelectedDelete(
       Slot.Patch.PatchPart[Slot.Patch.SelectedLocation]);
+  Slot.OperationMode := omNormal;
 end;
 
 destructor TPanelModule.Destroy;
@@ -620,8 +625,31 @@ end;
 
 procedure TPanelModule.PasteClk(Sender: TObject; Shift: TShiftState;
   const aBtnIndex: integer);
+var
+  R: TRect;
+  Module: IG2Module;
+  ModuleList: TList<IG2Module>;
 begin
-  Connection.Paste;
+  if assigned(Slot) and assigned(Slot.Patch) and assigned(Connection.CopyPatch) then
+  begin
+    R := Connection.CopyPatch.SelectedUnitsRect;
+
+    ModuleList := Connection.CopyPatch.CreateSelectedModuleList;
+    try
+      for Module in ModuleList do
+      begin
+        Module.Col := (Module.Col - R.Left) + ConMan.SelectedCol;
+        Module.Row := (Module.Row - R.Top) + ConMan.SelectedRow;
+      end;
+    finally
+      ModuleList.Free;
+    end;
+
+    Connection.PatchModulesSelectedCopy(
+      Slot.Patch.PatchPart[Slot.Patch.SelectedLocation],
+      Connection.CopyPatch);
+  end;
+  Slot.OperationMode := omNormal;
 end;
 
 procedure TPanelModule.Resize;

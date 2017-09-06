@@ -319,6 +319,23 @@ type
     property SweepAngle: single read FSweepAngle write FSweepAngle;
   end;
 
+  /// <summary>A rectangle outline mesh.</summary>
+  TRectOutlineMeshGL = class(TMeshGL)
+  private
+    FWidth: single;
+    FHeight: single;
+    FThickness: single;
+  public
+    constructor Create; reintroduce;
+    destructor Destroy; override;
+
+    procedure CreateMesh(const aWidth, aHeight, aThickness: single);
+
+    property Wdith: single read FWidth write FWidth;
+    property Height: single read FHeight write FHeight;
+    property Thickness: single read FThickness write FThickness;
+  end;
+
   /// <summary>An outline (rectangle) to indicate a selected control.</summary>
   TOutlineGL = class
   private
@@ -326,6 +343,21 @@ type
     FWidth, FHeight: single;
     FMat: TColorMaterial;
     FMesh: TSegmentedMeshGL;
+    FMatrix: TMatrix3D;
+  public
+    constructor Create(aPosition: TPoint3D; aWidth, aHeight: single);
+    destructor Destroy; override;
+
+    procedure Render(aContext: TContext3D);
+  end;
+
+  /// <summary>An outline (rectangle) to indicate the position of a control.</summary>
+  TCursorGL = class
+  private
+    FPosition: TPoint3D;
+    FWidth, FHeight: single;
+    FMat: TColorMaterial;
+    FMesh: TRectOutlineMeshGL;
     FMatrix: TMatrix3D;
   public
     constructor Create(aPosition: TPoint3D; aWidth, aHeight: single);
@@ -707,9 +739,10 @@ end;
 
 procedure TSegmentedMeshGL.CreateMesh(const aSegmentWidth, aSegmentHeight,
   aPadding: single; const aColCount, aRowCount: integer);
-var LocalRect: TRectF;
-    Left, Top: single;
-    i, j, idx: integer;
+var
+  LocalRect: TRectF;
+  Left, Top: single;
+  i, j, idx: integer;
 begin
   if (FColCount <> aColCount)
   or (FRowCount <> aRowCount)
@@ -794,8 +827,9 @@ begin
 end;
 
 procedure TArcMeshGL.CreateMesh;
-var a, x, y: single;
-    i, SegmentCount: integer;
+var
+  a, x, y: single;
+  i, SegmentCount: integer;
 begin
 
   SegmentCount := abs(Trunc(FSweepAngle / FAngleStep));
@@ -840,6 +874,95 @@ begin
     FIdx[i * 3 + 1] := i + 1;
     FIdx[i * 3 + 2] := i + 2;
   end;
+end;
+
+
+{ TRectOutlineMeshGL }
+
+constructor TRectOutlineMeshGL.Create;
+begin
+  inherited Create;
+end;
+
+procedure TRectOutlineMeshGL.CreateMesh(const aWidth, aHeight,
+  aThickness: single);
+var
+  w, h, t: Single;
+begin
+  if assigned(FVer) then
+    FVer.Free;
+
+  if assigned(FIdx) then
+    FIdx.Free;
+
+  FVer := TVertexBuffer.Create([TVertexFormat.Vertex], 16);
+  FIdx := TIndexBuffer.Create(6 * 8);
+
+  FWidth := aWidth;
+  FHeight := aHeight;
+  FThickness := aThickness;
+
+  w := FWidth;
+  h := FHeight;
+  t := FThickness;
+
+  FVer.Vertices[0] := TPoint3D.Create(-t, -t, 0);
+  FVer.Vertices[1] := TPoint3D.Create(t, -t, 0);
+  FVer.Vertices[2] := TPoint3D.Create(w - t, -t, 0);
+  FVer.Vertices[3] := TPoint3D.Create(w + t, -t, 0);
+
+  FVer.Vertices[4] := TPoint3D.Create(-t, t, 0);
+  FVer.Vertices[5] := TPoint3D.Create(t, t, 0);
+  FVer.Vertices[6] := TPoint3D.Create(w - t, t, 0);
+  FVer.Vertices[7] := TPoint3D.Create(w + t, t, 0);
+
+  FVer.Vertices[8] := TPoint3D.Create(-t, h - t, 0);
+  FVer.Vertices[9] := TPoint3D.Create(t, h - t, 0);
+  FVer.Vertices[10] := TPoint3D.Create(w - t, h - t, 0);
+  FVer.Vertices[11] := TPoint3D.Create(w + t, h - t, 0);
+
+  FVer.Vertices[12] := TPoint3D.Create(-t, h + t, 0);
+  FVer.Vertices[13] := TPoint3D.Create(t, h + t, 0);
+  FVer.Vertices[14] := TPoint3D.Create(w - t, h + t, 0);
+  FVer.Vertices[15] := TPoint3D.Create(w + t, h + t, 0);
+
+
+  FIdx[ 0] := 0;  FIdx[ 3] := 4;
+  FIdx[ 1] := 1;  FIdx[ 4] := 1;
+  FIdx[ 2] := 4;  FIdx[ 5] := 5;
+
+  FIdx[ 6] := 1;  FIdx[ 9] := 5;
+  FIdx[ 7] := 2;  FIdx[10] := 2;
+  FIdx[ 8] := 5;  FIdx[11] := 6;
+
+  FIdx[12] := 2;  FIdx[15] := 6;
+  FIdx[13] := 3;  FIdx[16] := 3;
+  FIdx[14] := 6;  FIdx[17] := 7;
+
+  FIdx[18] := 4;  FIdx[21] := 8;
+  FIdx[19] := 5;  FIdx[22] := 5;
+  FIdx[20] := 8;  FIdx[23] := 9;
+
+  FIdx[24] := 6;  FIdx[27] := 10;
+  FIdx[25] := 7;  FIdx[28] := 7;
+  FIdx[26] := 10; FIdx[29] := 11;
+
+  FIdx[30] := 8;  FIdx[33] := 12;
+  FIdx[31] := 9;  FIdx[34] := 9;
+  FIdx[32] := 12; FIdx[35] := 13;
+
+  FIdx[36] := 9;  FIdx[39] := 13;
+  FIdx[37] := 10; FIdx[40] := 10;
+  FIdx[38] := 13; FIdx[41] := 14;
+
+  FIdx[42] := 10; FIdx[45] := 14;
+  FIdx[43] := 11; FIdx[46] := 11;
+  FIdx[44] := 14; FIdx[47] := 15;
+end;
+
+destructor TRectOutlineMeshGL.Destroy;
+begin
+  inherited;
 end;
 
 { TPlane3D }
@@ -1044,7 +1167,7 @@ begin
 
   FLongClkTimer := TTimer.Create(nil);
   FLongClkTimer.Enabled := False;
-  FLongClkTimer.Interval := 1000;
+  FLongClkTimer.Interval := 500;
   FLongClkTimer.OnTimer := LongClick;
 end;
 
@@ -1599,6 +1722,7 @@ end;
 constructor TControlGL.Create(AOwner: TComponent);
 begin
   inherited;
+
   FPosition := TPosition3D.Create(Point3D(0.0,0.0,0.0));;
   FAbsoluteOpacity := 1.0;
   FVisible := True;
@@ -2293,6 +2417,8 @@ end;
 
 constructor TColorObject.Create;
 begin
+  inherited Create;
+
   FMesh := TSegmentedMeshGL.Create;
   FColorMat := TColorMaterial.Create;
   FColorMat.Color := 0;
@@ -2511,6 +2637,7 @@ end;
 constructor TTexMatrixObject.Create;
 begin
   inherited;
+
   FRowCount := 0;
   FColCount := 0;
   FPadding := 0;
@@ -2520,6 +2647,7 @@ end;
 destructor TTexMatrixObject.Destroy;
 begin
   Finalize(FCellIndexArray);
+
   inherited;
 end;
 
@@ -2662,6 +2790,8 @@ end;
 
 constructor TMatrixTextObject.Create;
 begin
+  inherited Create;
+
   FMat := TTextureMaterial.Create;
   FMesh := TSegmentedMeshGL.Create;
   FText := '';
@@ -2951,6 +3081,8 @@ end;
 
 constructor TLabelStaticGL.Create;
 begin
+  inherited Create;
+
   FFont := TFont.Create;
   FTexture := TTextureBitmap.Create;
   FMat := TTextureMaterial.Create;
@@ -2965,6 +3097,8 @@ constructor TLabelStaticGL.Create(aFontFamily: string; aFontSize: integer;
   aColor: TAlphaColor; aTextAlign: TTextAlign; aText: string;
   const aWidth, aHeight: single);
 begin
+  inherited Create;
+
   FFont := TFont.Create;
   FFont.Family := aFontFamily;
   FFont.Size := aFontSize;
@@ -2989,6 +3123,7 @@ begin
   FreeAndNil(FMat);
   FreeAndNil(FTexture);
   FreeAndNil(FFont);
+
   inherited;
 end;
 
@@ -3141,6 +3276,8 @@ end;
 
 constructor TOutlineGL.Create(aPosition: TPoint3D; aWidth, aHeight: single);
 begin
+  inherited Create;
+
   FPosition := aPosition;
   FWidth := aWidth;
   FHeight := aHeight;
@@ -3177,6 +3314,46 @@ begin
   end;
 end;
 
+{ TCursorGL }
+
+constructor TCursorGL.Create(aPosition: TPoint3D; aWidth, aHeight: single);
+begin
+  inherited Create;
+
+  FPosition := aPosition;
+  FWidth := aWidth;
+  FHeight := aHeight;
+
+  FMesh := TRectOutlineMeshGL.Create;
+  FMat := TColorMaterial.Create;
+  FMat.Color := TAlphaColorRec.Green;
+
+  FMesh.CreateMesh(FWidth, FHeight, 4);
+
+  FMatrix := TMatrix3D.CreateTranslation(FPosition);
+end;
+
+destructor TCursorGL.Destroy;
+begin
+  FMat.Free;
+  FMesh.Free;
+
+  inherited;
+end;
+
+procedure TCursorGL.Render(aContext: TContext3D);
+var
+  SaveMatrix: TMatrix3D;
+begin
+  SaveMatrix := aContext.CurrentMatrix;
+  try
+    aContext.SetMatrix(FMatrix * SaveMatrix);
+
+    aContext.DrawTriangles(FMesh.VertexBuffer, FMesh.IndexBuffer, FMat, 1.0);
+  finally
+    aContext.SetMatrix(SaveMatrix);
+  end;
+end;
 
 initialization
   RegisterFmxClasses([TBufferedViewPortGL]);

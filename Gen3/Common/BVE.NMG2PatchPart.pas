@@ -1744,7 +1744,7 @@ begin
 end;
 
 procedure TG2PatchPart.AddMessAddPatchPart(aSrcePatchPart: IG2PatchPart;
-aSendMessage, aUndoMessage: TG2SendMessage);
+  aSendMessage, aUndoMessage: TG2SendMessage);
 var
   ModuleChangeList: TModuleChangeList;
   ModuleUprateList: TList<IG2Module>;
