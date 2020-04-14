@@ -13,8 +13,7 @@ Gen1: this can be compiled for Windows and OsX, it is a finished product also. I
 
 Gen3: this is meant to be an Android editor, but can also be compiled for the other operating systems. This project is active, it isn't a finished editor yet. It can be compiled for iOS but there is no solution yet for the USB connection on an iPad.
 
-
-
+Binaries can be found here: http://www.bverhue.nl/g2dev
 
 
 
