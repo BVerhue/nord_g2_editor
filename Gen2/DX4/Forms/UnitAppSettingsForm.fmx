@@ -1,0 +1,23 @@
+object frmAppSettings: TfrmAppSettings
+  Left = 0
+  Top = 0
+  Caption = 'Application settings'
+  ClientHeight = 480
+  ClientWidth = 622
+  FormStyle = fsStayOnTop
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop, dkiPhone, dkiPad]
+  OnKeyDown = FormKeyDown
+  DesignerMobile = False
+  DesignerWidth = 0
+  DesignerHeight = 0
+  DesignerDeviceName = ''
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  inline frameAppSettings: TframeAppSettings
+    Align = alCenter
+    Height = 473.000000000000000000
+    Width = 610.000000000000000000
+  end
+end

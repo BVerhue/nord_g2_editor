@@ -1,0 +1,255 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Condition="Exists('$(BDS)\bin\CodeGear.Deployment.targets')" Project="$(BDS)\bin\CodeGear.Deployment.targets"/>
+    <ProjectExtensions>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <PropertyGroup>
+        <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
+        <DeviceId Condition="'$(Platform)'=='iOSSimulator'"/>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(Platform)'=='Win32'">
+        <DeployFile Include="..\..\Deploy\QuickReference.txt">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>QuickReference.txt</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\Roboto_Hinted_20111129.zip">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>Roboto_Hinted_20111129.zip</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\g2EditorColorScheme.xml">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>g2EditorColorScheme.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\Symbols.svg">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>Symbols.svg</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\libusb-1.0.0.dylib">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>libusb-1.0.0.dylib</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Win64'">
+        <DeployFile Include="..\..\Deploy\QuickReference.txt">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>QuickReference.txt</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\Roboto_Hinted_20111129.zip">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>Roboto_Hinted_20111129.zip</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\g2EditorColorScheme.xml">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>g2EditorColorScheme.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\Symbols.svg">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>Symbols.svg</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\libusb-1.0.0.dylib">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>libusb-1.0.0.dylib</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='iOSDevice64'"/>
+    <ItemGroup Condition="'$(Platform)'=='OSX64'">
+        <DeployFile Include="OSX64\Release\G2_editor_FMX.entitlements" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX.app\..\</RemoteDir>
+            <RemoteName>G2_editor_FMX.entitlements</RemoteName>
+            <DeployClass>ProjectOSXEntitlements</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="OSX64\Debug\G2_editor_FMX.info.plist" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>G2_editor_FMX.app\Contents\</RemoteDir>
+            <RemoteName>Info.plist</RemoteName>
+            <DeployClass>ProjectOSXInfoPList</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\QuickReference.txt" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>G2_editor_FMX.app\Contents\Resources\StartUp\</RemoteDir>
+            <RemoteName>QuickReference.txt</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="G2_editor_FMX_Icns.icns" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>G2_editor_FMX.app\Contents\Resources\</RemoteDir>
+            <RemoteName>G2_editor_FMX.icns</RemoteName>
+            <DeployClass>ProjectOSXResource</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="OSX64\Release\G2_editor_FMX" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>G2_editor_FMX</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="G2_editor_FMX_Icns1.icns" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX.app\Contents\Resources\</RemoteDir>
+            <RemoteName>G2_editor_FMX.icns</RemoteName>
+            <DeployClass>ProjectOSXResource</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="OSX64\Debug\G2_editor_FMX" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>G2_editor_FMX.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>G2_editor_FMX</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="OSX64\Debug\G2_editor_FMX.dSYM" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>G2_editor_FMX.app\..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF\</RemoteDir>
+            <RemoteName>G2_editor_FMX</RemoteName>
+            <DeployClass>ProjectOSXDebug</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="OSX64\Debug\G2_editor_FMX.entitlements" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>G2_editor_FMX.app\..\</RemoteDir>
+            <RemoteName>G2_editor_FMX.entitlements</RemoteName>
+            <DeployClass>ProjectOSXEntitlements</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="OSX64\Release\G2_editor_FMX.info.plist" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX.app\Contents\</RemoteDir>
+            <RemoteName>Info.plist</RemoteName>
+            <DeployClass>ProjectOSXInfoPList</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\QuickReference.txt" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX.app\Contents\Resources\StartUp\</RemoteDir>
+            <RemoteName>QuickReference.txt</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Capabilities.inc" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>G2_editor_FMX.app\Contents\Resources\StartUp\</RemoteDir>
+            <RemoteName>Capabilities.inc</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Capabilities.inc" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX.app\Contents\Resources\StartUp\</RemoteDir>
+            <RemoteName>Capabilities.inc</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="OSX64\Release\G2_editor_FMX.dSYM" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX.app\..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF\</RemoteDir>
+            <RemoteName>G2_editor_FMX</RemoteName>
+            <DeployClass>ProjectOSXDebug</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='iOSSimulator'">
+        <DeployFile Include="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib">
+            <RemoteDir>G2_editor_FMX.app\</RemoteDir>
+            <RemoteName>libcgunwind.1.0.dylib</RemoteName>
+            <DeployClass>DependencyModule</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\iossimulator\libpcre.dylib">
+            <RemoteDir>G2_editor_FMX.app\</RemoteDir>
+            <RemoteName>libpcre.dylib</RemoteName>
+            <DeployClass>DependencyModule</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,193 @@
+object FrameSynthStrip: TFrameSynthStrip
+  Height = 34.000000000000000000
+  Width = 444.000000000000000000
+  object Rectangle1: TRectangle
+    Align = alClient
+    Fill.Color = xFFF0F0F0
+    Height = 34.000000000000000000
+    HitTest = False
+    Width = 444.000000000000000000
+    object btClockRun: TG2BtnText
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 41.000000000000000000
+      Height = 28.000000000000000000
+      Position.X = 302.000000000000000000
+      Position.Y = 3.000000000000000000
+      ButtonText.Strings = (
+        'Run'
+        'Run')
+      ImageCount = 0
+      CanFocus = True
+      OnChangeValue = btClockRunChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkToggle
+    end
+    object btKeyboardSplit: TG2BtnText
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 41.000000000000000000
+      Height = 28.000000000000000000
+      Position.X = 350.000000000000000000
+      Position.Y = 3.000000000000000000
+      ButtonText.Strings = (
+        'KSplit'
+        'KSplit')
+      ImageCount = 0
+      CanFocus = True
+      OnChangeValue = btKeyboardSplitChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkToggle
+    end
+    object btPerfMode: TG2BtnText
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 41.000000000000000000
+      Height = 28.000000000000000000
+      Position.X = 398.000000000000000000
+      Position.Y = 3.000000000000000000
+      ButtonText.Strings = (
+        'Perf'
+        'Perf')
+      ImageCount = 0
+      CanFocus = True
+      OnChangeValue = btPerfModeChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkToggle
+    end
+    object ePerfName: TEdit
+      Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+      TabOrder = 3
+      Font.Family = 'Roboto'
+      Font.Size = 12.000000000000000000
+      Position.X = 88.000000000000000000
+      Position.Y = 1.000000000000000000
+      Width = 104.000000000000000000
+      Height = 32.000000000000000000
+      StyledSettings = [ssStyle, ssFontColor]
+      KillFocusByReturn = True
+      OnExit = ePerfNameExit
+    end
+    object idClockBPM: TG2BtnIncDec
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      ImageIDS.Strings = (
+        '2'
+        '3')
+      Width = 49.000000000000000000
+      Height = 28.000000000000000000
+      Position.X = 245.000000000000000000
+      Position.Y = 3.000000000000000000
+      ImageCount = 0
+      CanFocus = True
+      OnChangeValue = idClockBPMChangeValue
+      Value = 0
+      ButtonCount = 2
+      Orientation = otHorizontal
+      UpsideDown = False
+      HighValue = 0
+      LowValue = 0
+    end
+    object tfMasterClock: TG2TextField
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 10.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 10.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 10.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 46.000000000000000000
+      Height = 28.000000000000000000
+      Position.X = 198.000000000000000000
+      Position.Y = 3.000000000000000000
+      OnGetTextFunc = tfMasterClockGetTextFunc
+    end
+    object Rectangle2: TRectangle
+      Align = alLeft
+      Height = 34.000000000000000000
+      HitTest = False
+      Width = 89.000000000000000000
+      object rLed: TRectangle
+        Align = alLeft
+        Height = 34.000000000000000000
+        Width = 12.000000000000000000
+      end
+      object Layout1: TLayout
+        Align = alLeft
+        Height = 34.000000000000000000
+        Position.X = 12.000000000000000000
+        Width = 3.000000000000000000
+      end
+      object lbSynthName: TLabel
+        Align = alClient
+        Font.Family = 'Roboto'
+        Font.Size = 14.000000000000000000
+        StyledSettings = []
+        Height = 34.000000000000000000
+        Text = 'No synth'
+        Width = 74.000000000000000000
+        WordWrap = False
+      end
+    end
+  end
+end

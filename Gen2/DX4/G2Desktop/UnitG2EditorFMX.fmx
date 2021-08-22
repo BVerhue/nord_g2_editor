@@ -1,0 +1,923 @@
+object frmEditorMain: TfrmEditorMain
+  Left = 0
+  Top = 0
+  Caption = 'G2 editor FMX v0.35'
+  ClientHeight = 698
+  ClientWidth = 1015
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop, dkiPhone, dkiPad]
+  OnCreate = FormCreate
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnKeyUp = FormKeyUp
+  DesignerMobile = False
+  DesignerWidth = 0
+  DesignerHeight = 0
+  DesignerDeviceName = ''
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  object OpenDialog1: TOpenDialog
+    Left = 560
+    Top = 368
+  end
+  object TimerStartup: TTimer
+    Enabled = False
+    Interval = 300
+    OnTimer = TimerStartupTimer
+    Left = 472
+    Top = 368
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 648
+    Top = 367
+  end
+  inline frameEditorCentral: TframeEditorCentral
+    Align = alClient
+    Height = 698.000000000000000000
+    Width = 1015.000000000000000000
+    inherited sbSynths: THorzScrollBox
+      Width = 1015.000000000000000000
+      inherited FrameSynthStrip1: TFrameSynthStrip
+        Height = 33.000000000000000000
+        inherited Rectangle1: TRectangle
+          Height = 33.000000000000000000
+          inherited Rectangle2: TRectangle
+            Height = 33.000000000000000000
+            inherited rLed: TRectangle
+              Height = 33.000000000000000000
+            end
+            inherited Layout1: TLayout
+              Height = 33.000000000000000000
+            end
+            inherited lbSynthName: TLabel
+              Height = 33.000000000000000000
+            end
+          end
+        end
+      end
+      inherited FrameSynthStrip2: TFrameSynthStrip
+        Height = 33.000000000000000000
+        inherited Rectangle1: TRectangle
+          Height = 33.000000000000000000
+          inherited Rectangle2: TRectangle
+            Height = 33.000000000000000000
+            inherited rLed: TRectangle
+              Height = 33.000000000000000000
+            end
+            inherited Layout1: TLayout
+              Height = 33.000000000000000000
+            end
+            inherited lbSynthName: TLabel
+              Height = 33.000000000000000000
+            end
+          end
+        end
+      end
+      inherited FrameSynthStrip3: TFrameSynthStrip
+        Height = 33.000000000000000000
+        inherited Rectangle1: TRectangle
+          Height = 33.000000000000000000
+          inherited Rectangle2: TRectangle
+            Height = 33.000000000000000000
+            inherited rLed: TRectangle
+              Height = 33.000000000000000000
+            end
+            inherited Layout1: TLayout
+              Height = 33.000000000000000000
+            end
+            inherited lbSynthName: TLabel
+              Height = 33.000000000000000000
+            end
+          end
+        end
+      end
+    end
+    inherited tcSynths: TTabControl
+      Height = 699.000000000000000000
+      TabIndex = 2
+      Width = 1015.000000000000000000
+      inherited TabItem1: TTabItem
+        IsSelected = False
+        inherited frameSynth1: TframeSynth
+          Height = 665.000000000000000000
+          Width = 1015.000000000000000000
+          inherited lSlotStrips: TLayout
+            Width = 1015.000000000000000000
+            inherited frameSlotStrip1: TframeSlotStrip
+              Width = 1015.000000000000000000
+              inherited bgRectangle: TRectangle
+                Width = 1015.000000000000000000
+              end
+            end
+            inherited frameSlotStrip2: TframeSlotStrip
+              Width = 1015.000000000000000000
+              inherited bgRectangle: TRectangle
+                Width = 1015.000000000000000000
+              end
+            end
+            inherited frameSlotStrip3: TframeSlotStrip
+              Width = 1015.000000000000000000
+              inherited bgRectangle: TRectangle
+                Width = 1015.000000000000000000
+              end
+            end
+            inherited frameSlotStrip4: TframeSlotStrip
+              Width = 1015.000000000000000000
+              inherited bgRectangle: TRectangle
+                Width = 1015.000000000000000000
+              end
+            end
+          end
+          inherited Layout1: TLayout
+            Position.Y = 623.000000000000000000
+            Width = 1015.000000000000000000
+          end
+          inherited Layout2: TLayout
+            Height = 487.000000000000000000
+            Width = 1015.000000000000000000
+            inherited tcFrame: TTabControl
+              Height = 487.000000000000000000
+              Width = 755.000000000000000000
+              inherited tiSlotA: TTabItem
+                inherited Panel1: TPanel
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited frameSlot1: TframeSlot
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Layout3: TLayout
+                      Height = 464.000000000000000000
+                      Width = 755.000000000000000000
+                      inherited Layout1: TLayout
+                        Height = 464.000000000000000000
+                        Width = 755.000000000000000000
+                        inherited sbVA: TScrollBox
+                          Height = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited Splitter1: TSplitter
+                          Position.Y = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited sbFX: TScrollBox
+                          Position.Y = 254.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiSlotB: TTabItem
+                inherited Panel2: TPanel
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited frameSlot2: TframeSlot
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Layout3: TLayout
+                      Height = 464.000000000000000000
+                      Width = 755.000000000000000000
+                      inherited Layout1: TLayout
+                        Height = 464.000000000000000000
+                        Width = 755.000000000000000000
+                        inherited sbVA: TScrollBox
+                          Height = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited Splitter1: TSplitter
+                          Position.Y = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited sbFX: TScrollBox
+                          Position.Y = 254.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiSlotC: TTabItem
+                inherited Panel3: TPanel
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited frameSlot3: TframeSlot
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Layout3: TLayout
+                      Height = 464.000000000000000000
+                      Width = 755.000000000000000000
+                      inherited Layout1: TLayout
+                        Height = 464.000000000000000000
+                        Width = 755.000000000000000000
+                        inherited sbVA: TScrollBox
+                          Height = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited Splitter1: TSplitter
+                          Position.Y = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited sbFX: TScrollBox
+                          Position.Y = 254.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiSlotD: TTabItem
+                inherited Panel4: TPanel
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited frameSlot4: TframeSlot
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Layout3: TLayout
+                      Height = 464.000000000000000000
+                      Width = 755.000000000000000000
+                      inherited Layout1: TLayout
+                        Height = 464.000000000000000000
+                        Width = 755.000000000000000000
+                        inherited sbVA: TScrollBox
+                          Height = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited Splitter1: TSplitter
+                          Position.Y = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited sbFX: TScrollBox
+                          Position.Y = 254.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiBanks: TTabItem
+                inherited frameBanks1: TframeBanks
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited Layout1: TLayout
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Rectangle2: TRectangle
+                      Width = 755.000000000000000000
+                    end
+                    inherited rbeSlot: TG2BtnRadioEdit
+                      Width = 755.000000000000000000
+                      Height = 363.000000000000000000
+                    end
+                    inherited Rectangle1: TRectangle
+                      Position.Y = 421.000000000000000000
+                      Width = 755.000000000000000000
+                    end
+                    inherited Layout3: TLayout
+                      Width = 755.000000000000000000
+                      inherited rbeBank: TG2BtnRadioEdit
+                        Width = 706.000000000000000000
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiPatchSettings: TTabItem
+                inherited framePatchSettings: TframePatchSettings
+                  Width = 755.000000000000000000
+                end
+                inherited G2Keyboard: TG2Keyboard
+                  Width = 755.000000000000000000
+                end
+              end
+              inherited TabItem5: TTabItem
+                inherited frameKnobs: TframeKnobs
+                  Height = 459.107452392578100000
+                  Width = 755.000000000000000000
+                  inherited Panel1: TPanel
+                    Position.Y = 417.107452392578100000
+                    Width = 755.000000000000000000
+                  end
+                  inherited Panel2: TPanel
+                    Height = 417.107452392578100000
+                  end
+                end
+              end
+              inherited tiSynthSettings: TTabItem
+                inherited frameSynthSettings: TframeSynthSettings
+                  Height = 416.983459472656300000
+                  Width = 755.000000000000000000
+                end
+              end
+              inherited tcLog: TTabItem
+                inherited frameLog: TframeLog
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited Panel1: TPanel
+                    Width = 755.000000000000000000
+                  end
+                  inherited mLog: TMemo
+                    Height = 431.000000000000000000
+                    Width = 755.000000000000000000
+                  end
+                end
+              end
+            end
+            inherited tcPatchFunctions: TTabControl
+              Height = 487.000000000000000000
+              Position.X = 755.000000000000000000
+              inherited TabItem2: TTabItem
+                inherited frameModule: TframeModule
+                  Height = 464.000000000000000000
+                  inherited TabControl1: TTabControl
+                    Height = 422.000000000000000000
+                    inherited TabItem3: TTabItem
+                      inherited rbModuleColor: TG2BtnRadioEdit
+                        Height = 351.000000000000000000
+                      end
+                      inherited btModuleColorDefault: TG2BtnText
+                        Position.Y = 351.000000000000000000
+                      end
+                    end
+                  end
+                end
+              end
+              inherited TabItem3: TTabItem
+                inherited frameParam: TframeParam
+                  Height = 464.000000000000000000
+                  inherited tcParam: TTabControl
+                    Height = 422.000000000000000000
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+      inherited TabItem2: TTabItem
+        inherited frameSynth2: TframeSynth
+          Height = 665.000000000000000000
+          Width = 1015.000000000000000000
+          inherited lSlotStrips: TLayout
+            Width = 1015.000000000000000000
+            inherited frameSlotStrip1: TframeSlotStrip
+              Width = 1015.000000000000000000
+              inherited bgRectangle: TRectangle
+                Width = 1015.000000000000000000
+              end
+            end
+            inherited frameSlotStrip2: TframeSlotStrip
+              Width = 1015.000000000000000000
+              inherited bgRectangle: TRectangle
+                Width = 1015.000000000000000000
+              end
+            end
+            inherited frameSlotStrip3: TframeSlotStrip
+              Width = 1015.000000000000000000
+              inherited bgRectangle: TRectangle
+                Width = 1015.000000000000000000
+              end
+            end
+            inherited frameSlotStrip4: TframeSlotStrip
+              Width = 1015.000000000000000000
+              inherited bgRectangle: TRectangle
+                Width = 1015.000000000000000000
+              end
+            end
+          end
+          inherited Layout1: TLayout
+            Position.Y = 623.000000000000000000
+            Width = 1015.000000000000000000
+          end
+          inherited Layout2: TLayout
+            Height = 487.000000000000000000
+            Width = 1015.000000000000000000
+            inherited tcFrame: TTabControl
+              Height = 487.000000000000000000
+              Width = 755.000000000000000000
+              inherited tiSlotA: TTabItem
+                inherited Panel1: TPanel
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited frameSlot1: TframeSlot
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Layout3: TLayout
+                      Height = 464.000000000000000000
+                      Width = 755.000000000000000000
+                      inherited Layout1: TLayout
+                        Height = 464.000000000000000000
+                        Width = 755.000000000000000000
+                        inherited sbVA: TScrollBox
+                          Height = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited Splitter1: TSplitter
+                          Position.Y = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited sbFX: TScrollBox
+                          Position.Y = 254.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiSlotB: TTabItem
+                inherited Panel2: TPanel
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited frameSlot2: TframeSlot
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Layout3: TLayout
+                      Height = 464.000000000000000000
+                      Width = 755.000000000000000000
+                      inherited Layout1: TLayout
+                        Height = 464.000000000000000000
+                        Width = 755.000000000000000000
+                        inherited sbVA: TScrollBox
+                          Height = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited Splitter1: TSplitter
+                          Position.Y = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited sbFX: TScrollBox
+                          Position.Y = 254.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiSlotC: TTabItem
+                inherited Panel3: TPanel
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited frameSlot3: TframeSlot
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Layout3: TLayout
+                      Height = 464.000000000000000000
+                      Width = 755.000000000000000000
+                      inherited Layout1: TLayout
+                        Height = 464.000000000000000000
+                        Width = 755.000000000000000000
+                        inherited sbVA: TScrollBox
+                          Height = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited Splitter1: TSplitter
+                          Position.Y = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited sbFX: TScrollBox
+                          Position.Y = 254.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiSlotD: TTabItem
+                inherited Panel4: TPanel
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited frameSlot4: TframeSlot
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Layout3: TLayout
+                      Height = 464.000000000000000000
+                      Width = 755.000000000000000000
+                      inherited Layout1: TLayout
+                        Height = 464.000000000000000000
+                        Width = 755.000000000000000000
+                        inherited sbVA: TScrollBox
+                          Height = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited Splitter1: TSplitter
+                          Position.Y = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited sbFX: TScrollBox
+                          Position.Y = 254.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiBanks: TTabItem
+                inherited frameBanks1: TframeBanks
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited Layout1: TLayout
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Rectangle2: TRectangle
+                      Width = 755.000000000000000000
+                    end
+                    inherited rbeSlot: TG2BtnRadioEdit
+                      Width = 755.000000000000000000
+                      Height = 363.000000000000000000
+                    end
+                    inherited Rectangle1: TRectangle
+                      Position.Y = 421.000000000000000000
+                      Width = 755.000000000000000000
+                    end
+                    inherited Layout3: TLayout
+                      Width = 755.000000000000000000
+                      inherited rbeBank: TG2BtnRadioEdit
+                        Width = 706.000000000000000000
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiPatchSettings: TTabItem
+                inherited framePatchSettings: TframePatchSettings
+                  Width = 755.000000000000000000
+                end
+                inherited G2Keyboard: TG2Keyboard
+                  Width = 755.000000000000000000
+                end
+              end
+              inherited TabItem5: TTabItem
+                inherited frameKnobs: TframeKnobs
+                  Height = 459.107452392578100000
+                  Width = 755.000000000000000000
+                  inherited Panel1: TPanel
+                    Position.Y = 417.107452392578100000
+                    Width = 755.000000000000000000
+                  end
+                  inherited Panel2: TPanel
+                    Height = 417.107452392578100000
+                  end
+                end
+              end
+              inherited tiSynthSettings: TTabItem
+                inherited frameSynthSettings: TframeSynthSettings
+                  Height = 416.983459472656300000
+                  Width = 755.000000000000000000
+                end
+              end
+              inherited tcLog: TTabItem
+                inherited frameLog: TframeLog
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited Panel1: TPanel
+                    Width = 755.000000000000000000
+                  end
+                  inherited mLog: TMemo
+                    Height = 431.000000000000000000
+                    Width = 755.000000000000000000
+                  end
+                end
+              end
+            end
+            inherited tcPatchFunctions: TTabControl
+              Height = 487.000000000000000000
+              Position.X = 755.000000000000000000
+              inherited TabItem2: TTabItem
+                inherited frameModule: TframeModule
+                  Height = 464.000000000000000000
+                  inherited TabControl1: TTabControl
+                    Height = 422.000000000000000000
+                    inherited TabItem3: TTabItem
+                      inherited rbModuleColor: TG2BtnRadioEdit
+                        Height = 351.000000000000000000
+                      end
+                      inherited btModuleColorDefault: TG2BtnText
+                        Position.Y = 351.000000000000000000
+                      end
+                    end
+                  end
+                end
+              end
+              inherited TabItem3: TTabItem
+                inherited frameParam: TframeParam
+                  Height = 464.000000000000000000
+                  inherited tcParam: TTabControl
+                    Height = 422.000000000000000000
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+      inherited TabItem3: TTabItem
+        IsSelected = True
+        inherited frameSynth3: TframeSynth
+          Height = 665.000000000000000000
+          Width = 1015.000000000000000000
+          inherited lSlotStrips: TLayout
+            Width = 1015.000000000000000000
+            inherited frameSlotStrip1: TframeSlotStrip
+              Width = 1015.000000000000000000
+              inherited bgRectangle: TRectangle
+                Width = 1015.000000000000000000
+              end
+            end
+            inherited frameSlotStrip2: TframeSlotStrip
+              Width = 1015.000000000000000000
+              inherited bgRectangle: TRectangle
+                Width = 1015.000000000000000000
+              end
+            end
+            inherited frameSlotStrip3: TframeSlotStrip
+              Width = 1015.000000000000000000
+              inherited bgRectangle: TRectangle
+                Width = 1015.000000000000000000
+              end
+            end
+            inherited frameSlotStrip4: TframeSlotStrip
+              Width = 1015.000000000000000000
+              inherited bgRectangle: TRectangle
+                Width = 1015.000000000000000000
+              end
+            end
+          end
+          inherited Layout1: TLayout
+            Position.Y = 623.000000000000000000
+            Width = 1015.000000000000000000
+          end
+          inherited Layout2: TLayout
+            Height = 487.000000000000000000
+            Width = 1015.000000000000000000
+            inherited tcFrame: TTabControl
+              Height = 487.000000000000000000
+              TabIndex = 2
+              Width = 755.000000000000000000
+              inherited tiSlotA: TTabItem
+                inherited Panel1: TPanel
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited frameSlot1: TframeSlot
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Layout3: TLayout
+                      Height = 464.000000000000000000
+                      Width = 755.000000000000000000
+                      inherited Layout1: TLayout
+                        Height = 464.000000000000000000
+                        Width = 755.000000000000000000
+                        inherited sbVA: TScrollBox
+                          Height = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited Splitter1: TSplitter
+                          Position.Y = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited sbFX: TScrollBox
+                          Position.Y = 254.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiSlotB: TTabItem
+                inherited Panel2: TPanel
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited frameSlot2: TframeSlot
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Layout3: TLayout
+                      Height = 464.000000000000000000
+                      Width = 755.000000000000000000
+                      inherited Layout1: TLayout
+                        Height = 464.000000000000000000
+                        Width = 755.000000000000000000
+                        inherited sbVA: TScrollBox
+                          Height = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited Splitter1: TSplitter
+                          Position.Y = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited sbFX: TScrollBox
+                          Position.Y = 254.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiSlotC: TTabItem
+                IsSelected = True
+                inherited Panel3: TPanel
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited frameSlot3: TframeSlot
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Layout3: TLayout
+                      Height = 464.000000000000000000
+                      Width = 755.000000000000000000
+                      inherited Layout1: TLayout
+                        Height = 464.000000000000000000
+                        Width = 755.000000000000000000
+                        inherited sbVA: TScrollBox
+                          Height = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited Splitter1: TSplitter
+                          Position.Y = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited sbFX: TScrollBox
+                          Position.Y = 254.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiSlotD: TTabItem
+                inherited Panel4: TPanel
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited frameSlot4: TframeSlot
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Layout3: TLayout
+                      Height = 464.000000000000000000
+                      Width = 755.000000000000000000
+                      inherited Layout1: TLayout
+                        Height = 464.000000000000000000
+                        Width = 755.000000000000000000
+                        inherited sbVA: TScrollBox
+                          Height = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited Splitter1: TSplitter
+                          Position.Y = 246.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                        inherited sbFX: TScrollBox
+                          Position.Y = 254.000000000000000000
+                          Width = 755.000000000000000000
+                        end
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiBanks: TTabItem
+                inherited frameBanks1: TframeBanks
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited Layout1: TLayout
+                    Height = 464.000000000000000000
+                    Width = 755.000000000000000000
+                    inherited Rectangle2: TRectangle
+                      Width = 755.000000000000000000
+                    end
+                    inherited rbeSlot: TG2BtnRadioEdit
+                      Width = 755.000000000000000000
+                      Height = 363.000000000000000000
+                    end
+                    inherited Rectangle1: TRectangle
+                      Position.Y = 421.000000000000000000
+                      Width = 755.000000000000000000
+                    end
+                    inherited Layout3: TLayout
+                      Width = 755.000000000000000000
+                      inherited rbeBank: TG2BtnRadioEdit
+                        Width = 706.000000000000000000
+                      end
+                    end
+                  end
+                end
+              end
+              inherited tiPatchSettings: TTabItem
+                inherited framePatchSettings: TframePatchSettings
+                  Width = 755.000000000000000000
+                end
+                inherited G2Keyboard: TG2Keyboard
+                  Width = 755.000000000000000000
+                end
+              end
+              inherited TabItem5: TTabItem
+                inherited frameKnobs: TframeKnobs
+                  Height = 459.107452392578100000
+                  Width = 755.000000000000000000
+                  inherited Panel1: TPanel
+                    Position.Y = 417.107452392578100000
+                    Width = 755.000000000000000000
+                  end
+                  inherited Panel2: TPanel
+                    Height = 417.107452392578100000
+                  end
+                end
+              end
+              inherited tiSynthSettings: TTabItem
+                inherited frameSynthSettings: TframeSynthSettings
+                  Height = 416.983459472656300000
+                  Width = 755.000000000000000000
+                end
+              end
+              inherited tcLog: TTabItem
+                IsSelected = False
+                inherited frameLog: TframeLog
+                  Height = 464.000000000000000000
+                  Width = 755.000000000000000000
+                  inherited Panel1: TPanel
+                    Width = 755.000000000000000000
+                  end
+                  inherited mLog: TMemo
+                    Height = 431.000000000000000000
+                    Width = 755.000000000000000000
+                  end
+                end
+              end
+            end
+            inherited tcPatchFunctions: TTabControl
+              Height = 487.000000000000000000
+              Position.X = 755.000000000000000000
+              inherited TabItem2: TTabItem
+                inherited frameModule: TframeModule
+                  Height = 464.000000000000000000
+                  inherited TabControl1: TTabControl
+                    Height = 422.000000000000000000
+                    inherited TabItem3: TTabItem
+                      inherited rbModuleColor: TG2BtnRadioEdit
+                        Height = 351.000000000000000000
+                      end
+                      inherited btModuleColorDefault: TG2BtnText
+                        Position.Y = 351.000000000000000000
+                      end
+                    end
+                  end
+                end
+              end
+              inherited TabItem3: TTabItem
+                inherited frameParam: TframeParam
+                  Height = 464.000000000000000000
+                  inherited tcParam: TTabControl
+                    Height = 422.000000000000000000
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  object ControlStyles: TG2StateStyleList
+    DefaultFont.Family = 'Roboto'
+    DefaultFont.Size = 12.000000000000000000
+    DefaultFontColor = xFF202020
+    FocusedFont.Family = 'Roboto'
+    FocusedFont.Size = 12.000000000000000000
+    FocusedFontColor = xFF202020
+    DisabledFont.Family = 'Roboto'
+    DisabledFont.Size = 12.000000000000000000
+    DisabledFontColor = claWhite
+    SelectedFont.Family = 'Roboto'
+    SelectedFont.Size = 12.000000000000000000
+    SelectedFont.Style = [fsBold]
+    SelectedFontColor = xFF202020
+    Left = 384
+    Top = 368
+  end
+  object DisplayBigStyles: TG2StateStyleList
+    DefaultFont.Family = 'Roboto'
+    DefaultFont.Size = 14.000000000000000000
+    DefaultFont.Style = [fsBold]
+    DefaultFontColor = xFF202020
+    FocusedFont.Family = 'Roboto'
+    FocusedFont.Size = 10.000000000000000000
+    FocusedFontColor = xFF202020
+    DisabledFont.Family = 'Roboto'
+    DisabledFont.Size = 10.000000000000000000
+    DisabledFontColor = claWhite
+    SelectedFont.Family = 'Roboto'
+    SelectedFont.Size = 10.000000000000000000
+    SelectedFontColor = xFF202020
+    Left = 384
+    Top = 424
+  end
+end

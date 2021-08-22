@@ -14,7 +14,7 @@ implementation
 procedure Register;
 begin
   RegisterClasses([TG2BtnArray,TG2BtnIncDec]);
-  RegisterComponents('NMG2', [TBufferedLayout,
+  RegisterComponents('NMG2', [TG2BufferedLayout,
                               TArrayLayout,
                               TG2StateStyleList,
                               TG2Scope,

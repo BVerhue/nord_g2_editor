@@ -1,0 +1,89 @@
+object frameLog: TframeLog
+  Size.Width = 706.000000000000000000
+  Size.Height = 408.000000000000000000
+  Size.PlatformDefault = False
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 706.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object G2BtnText1: TG2BtnText
+      Position.X = 16.000000000000000000
+      Position.Y = 4.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Buffered = False
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      ButtonText.Strings = (
+        'Update'
+        'Update')
+      ImageCount = 0
+      MouseEnable = True
+      CanFocus = True
+      OnChangeValue = G2BtnText1ChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkMomentary
+    end
+    object G2BtnText2: TG2BtnText
+      Position.X = 112.000000000000000000
+      Position.Y = 4.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Buffered = False
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      ButtonText.Strings = (
+        'Clear'
+        'Clear')
+      ImageCount = 0
+      MouseEnable = True
+      CanFocus = True
+      OnChangeValue = G2BtnText2ChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkMomentary
+    end
+  end
+  object mLog: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    StyledSettings = [Size, Style, FontColor]
+    TextSettings.Font.Family = 'Courier New'
+    Align = Client
+    Size.Width = 706.000000000000000000
+    Size.Height = 375.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Viewport.Width = 706.000000000000000000
+    Viewport.Height = 375.000000000000000000
+  end
+end

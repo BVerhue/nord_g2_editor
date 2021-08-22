@@ -1,0 +1,325 @@
+object frameBanks: TframeBanks
+  Size.Width = 910.000000000000000000
+  Size.Height = 474.000000000000000000
+  Size.PlatformDefault = False
+  object Layout1: TLayout
+    Align = Client
+    Size.Width = 910.000000000000000000
+    Size.Height = 474.000000000000000000
+    Size.PlatformDefault = False
+    object Rectangle2: TRectangle
+      Align = Top
+      Position.Y = 50.000000000000000000
+      Size.Width = 910.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object rbeSlot: TG2BtnRadioEdit
+      Align = Client
+      Size.Width = 910.000000000000000000
+      Size.Height = 373.000000000000000000
+      Size.PlatformDefault = False
+      Buffered = False
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      ImageCount = 0
+      MouseEnable = True
+      CanFocus = True
+      TabOrder = 1
+      OnPaintElement = rbeSlotPaintElement
+      Value = 0
+      ButtonColumns = 8
+      ButtonRows = 16
+      OnDblClick = rbeSlotDblClick
+    end
+    object Rectangle1: TRectangle
+      Align = Bottom
+      Position.Y = 431.000000000000000000
+      Size.Width = 910.000000000000000000
+      Size.Height = 43.000000000000000000
+      Size.PlatformDefault = False
+      object btRetreive: TG2BtnText
+        Position.X = 16.000000000000000000
+        Position.Y = 8.000000000000000000
+        Size.Width = 57.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = xFF202020
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = xFF202020
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = xFF202020
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ButtonText.Strings = (
+          'Retreive'
+          'Retreive'
+          '')
+        ImageCount = 0
+        MouseEnable = True
+        CanFocus = True
+        TabOrder = 0
+        OnChangeValue = btRetreiveChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkMomentary
+      end
+      object btStoreCurrentPatch: TG2BtnText
+        Position.X = 91.000000000000000000
+        Position.Y = 8.000000000000000000
+        Size.Width = 57.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = xFF202020
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = xFF202020
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = xFF202020
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ButtonText.Strings = (
+          'Store'
+          'Store')
+        ImageCount = 0
+        MouseEnable = True
+        CanFocus = True
+        TabOrder = 1
+        OnChangeValue = btStoreCurrentPatchChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkMomentary
+      end
+      object btClear: TG2BtnText
+        Position.X = 166.000000000000000000
+        Position.Y = 8.000000000000000000
+        Size.Width = 57.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = xFF202020
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = xFF202020
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = xFF202020
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ButtonText.Strings = (
+          'Clear'
+          'Clear')
+        ImageCount = 0
+        MouseEnable = True
+        CanFocus = True
+        TabOrder = 2
+        OnChangeValue = btClearChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkMomentary
+      end
+      object btLoadBank: TG2BtnText
+        Position.X = 315.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 57.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = xFF202020
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = xFF202020
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = xFF202020
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ButtonText.Strings = (
+          'Ld bank'
+          'Ld bank')
+        ImageCount = 0
+        MouseEnable = True
+        CanFocus = True
+        TabOrder = 3
+        OnChangeValue = btLoadBankChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkMomentary
+      end
+      object btSaveBank: TG2BtnText
+        Position.X = 395.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 57.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = xFF202020
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = xFF202020
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = xFF202020
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ButtonText.Strings = (
+          'Sv bank'
+          'Sv bank')
+        ImageCount = 0
+        MouseEnable = True
+        CanFocus = True
+        TabOrder = 4
+        OnChangeValue = btSaveBankChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkMomentary
+      end
+    end
+    object Layout3: TLayout
+      Align = Top
+      Size.Width = 910.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      object rbPatchType: TG2BtnRadio
+        Align = Left
+        Size.Width = 49.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = xFF202020
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = xFF202020
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = xFF202020
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ButtonText.Strings = (
+          'Patches'
+          'Perfs')
+        ImageCount = 0
+        MouseEnable = True
+        CanFocus = True
+        TabOrder = 0
+        OnChangeValue = rbPatchTypeChangeValue
+        Value = 0
+        ButtonCount = 2
+        Orientation = otVertical
+        UpsideDown = False
+      end
+      object rbeBank: TG2BtnRadioEdit
+        Align = Client
+        Size.Width = 861.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = xFF202020
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = xFF202020
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = xFF202020
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ButtonText.Strings = (
+          '1'
+          '2'
+          '3'
+          '4'
+          '5'
+          '6'
+          '7'
+          '8'
+          '9'
+          '10'
+          '11'
+          '12'
+          '13'
+          '14'
+          '15'
+          '16'
+          '17'
+          '18'
+          '19'
+          '20'
+          '21'
+          '22'
+          '23'
+          '24'
+          '25'
+          '26'
+          '27'
+          '28'
+          '29'
+          '30'
+          '31'
+          '32')
+        ImageCount = 0
+        MouseEnable = True
+        CanFocus = True
+        TabOrder = 1
+        OnChangeValue = rbeBankChangeValue
+        Value = 0
+        ButtonColumns = 16
+        ButtonRows = 2
+      end
+    end
+  end
+end

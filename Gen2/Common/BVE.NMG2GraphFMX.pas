@@ -1,5 +1,4 @@
 unit BVE.NMG2GraphFMX;
-
 //  ////////////////////////////////////////////////////////////////////////////
 //
 //  Copyright (C) 2011 Bruno Verhue
@@ -19,19 +18,17 @@ unit BVE.NMG2GraphFMX;
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 //  ////////////////////////////////////////////////////////////////////////////
-
 {$INCLUDE Capabilities.inc}
-
 interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   System.UIConsts, System.Math, System.Generics.Defaults,
-{$IF Defined(VER270) or Defined(VER280)}
+{$IF Defined(VER270) or Defined(VER280) or Defined(VER340)}
   System.Math.Vectors,
 {$ENDIF}
   System.Generics.Collections,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.Objects, FMX.Layouts,
-{$IF Defined(VER260) or Defined(VER270) or Defined(VER280)}
+{$IF Defined(VER260) or Defined(VER270) or Defined(VER280) or Defined(VER340)}
   FMX.Graphics,
 {$ENDIF}
   //Spring.Collections,
@@ -44,37 +41,29 @@ uses
 {$ENDIF}
   BVE.NMG2ControlsFMX,
   BVE.NMG2Pathdata;
-
 type
   TG2GraphSlotFMX = class;
   TG2GraphModuleFMX = class;
   TG2GraphCableFMX = class;
   TG2GraphPatchPartFMX = class;
-
   TCreateGraphModuleFMXEvent = procedure(Sender : TObject; aLocation : TLocationType; aModule : TG2GraphModuleFMX) of Object;
   TCreateGraphCableFMXEvent = procedure(Sender : TObject; aLocation : TLocationType; aCable : TG2GraphCableFMX) of Object;
   TCreateG2ControlEvent = procedure(Sender : TObject; aControl : TG2BaseControl) of Object;
-
   TG2ParamEvent = (g2pSet, g2pChange);
-
   TModuleListItem = class;
-
   TModuleSelectionList = class(TObjectList<TModuleListItem>)
   private
     [Weak] FScrollbox : TVertScrollbox;
-
     FItemIndex : integer;
     FFillColor : TAlphaColor;
     procedure SetItemIndex(const Value: integer);
   public
     constructor Create( AOwnsObjects : boolean);
     destructor Destroy; override;
-
     property ItemIndex : integer read FItemIndex write SetItemIndex;
     property ScrollBox : TVertScrollBox read FScrollbox write FScrollbox;
     property FillColor : TAlphaColor read FFillColor write FFillColor;
   end;
-
   TModuleListItem = class(TRectangle)
   private
     FTypeID : byte;
@@ -84,13 +73,11 @@ type
   public
     constructor Create(AOwner : TComponent); override;
     destructor Destroy; override;
-
     property PageIndex : byte read FPageIndex write FPageIndex;
     property Image : TImage read FImage;
     property ImageLabel : TG2Label read FLabel;
     property TypeID : byte read FTypeID write FTypeID;
   end;
-
 {$IF Defined(TCPIPNETWORK)}
   TG2GraphFMX = class( TG2TCPIP)
 {$ELSE}
@@ -98,12 +85,9 @@ type
 {$ENDIF}
   private
     [Weak] FSelectedControl    : TG2BaseControl;
-
     FKnobControl : TKnobControl;
     FCableStyle : TCableStyle;
-
     FModulePanelDefs: TModuleDefList;
-
     procedure SetCableStyle(const Value: TCableStyle);
     procedure SetKnobControl(const Value: TKnobControl);
   protected
@@ -114,14 +98,11 @@ type
     constructor Create( AOwner: TComponent); override;
     destructor Destroy; override;
     function CreatePerformance : TG2FilePerformance; override;
-
     property SelectedSlot : TG2GraphSlotFMX read GetSelectedSlot;
     property SelectedControl : TG2BaseControl read FSelectedControl write SetSelectedControl;
-
     property KnobControl : TKnobControl read FKnobControl write SetKnobControl;
     property CableStyle : TCableStyle read FCableStyle write SetCableStyle;
   end;
-
 {$IF Defined(TCPIPNETWORK)}
   TG2GraphPerformanceFMX = class( TG2TCPIPPerformance)
 {$ELSE}
@@ -132,7 +113,6 @@ type
     destructor Destroy; override;
     function CreateSlot : TG2FileSlot; override;
   end;
-
 {$IF Defined(TCPIPNETWORK)}
   TG2GraphSlotFMX = class( TG2TCPIPSlot)
 {$ELSE}
@@ -143,7 +123,6 @@ type
     destructor Destroy; override;
     function CreatePatch : TG2FilePatch; override;
   end;
-
   TG2GraphPatchPartFMX = class(TG2FilePatchPart)
   private
     FModulePanelDefs : TModuleDefList;
@@ -152,20 +131,14 @@ type
     destructor Destroy; override;
     property ModulePanelDefs : TModuleDefList read FModulePanelDefs write FModulePanelDefs;
   end;
-
   //TG2GraphParameterFMX = class;
-
   TG2GraphPatchFMX = class( TG2USBPatch)
   private
     FVisible            : boolean;
-
     FZoomSetting : integer;
     FSplitterVisible : boolean;
-
     FSelectedMorphIndex : integer;
-
     FSelectMultiple: boolean;
-
     FOnCreateModuleFMX : TCreateGraphModuleFMXEvent;
     FOnCreateCableFMX : TCreateGraphCableFMXEvent;
   protected
@@ -174,31 +147,24 @@ type
     constructor Create( AOwner: TComponent); override;
     destructor Destroy; override;
     procedure Init; override;
-
     function CreatePatchPart( aLocation : TLocationType): TG2FilePatchPart; override;
     function CreateModule( aLocation : TLocationType; aModuleIndex : byte; aModuleType : byte): TG2FileModule; override;
     function CreateCable( aLocation : TLocationType; aColor : byte; aFromModule : byte; aFromConnector : byte; aLinkType : byte; aToModule : byte; aToConnector : byte): TG2FileCable; override;
     //function CreateParameter( aModuleIndex : byte): TG2FileParameter; override;
     //function CreateLed( const aLedType : TLedType; const aLocation : TLocationType; const aModuleIndex, aGroupID : byte; const aGroupCount : integer): IG2DataLed; override;
-
     procedure SetCablesVisible( aColor : integer; aVisible : boolean);
     function GetCableVisible( aColor : integer): boolean;
-
     //function GetMorphParameter( aIndex : integer): TG2FileParameter;
     //function GetPatchParameter( aIndex : integer): TG2FileParameter;
-
     property ZoomSetting : integer read FZoomSetting write FZoomSetting;
     property SplitterVisible : boolean read FSplitterVisible write FSplitterVisible;
-
     property SelectMultiple : boolean read FSelectMultiple write FSelectMultiple default False;
     property OnCreateModuleFMX : TCreateGraphModuleFMXEvent read FOnCreateModuleFMX write FOnCreateModuleFMX;
     property OnCreateCableFMX : TCreateGraphCableFMXEvent read FOnCreateCableFMX write FOnCreateCableFMX;
   end;
-
   TG2GraphModuleFMX = class( TG2FileModule)
   private
     [Weak] FG2Module : TG2Module;
-
     FOnCreateG2Control : TCreateG2ControlEvent;
   protected
     function GetOutlineRect: TRectF;
@@ -214,25 +180,17 @@ type
     constructor CopyCreate( aPatchPart : TG2FilePatchPart; aModule : TG2GraphModuleFMX);
     function CreateCopy( aPatchPart : TG2FilePatchPart) : TG2FileModule; override;
     destructor Destroy; override;
-
     procedure SelectModule(const aValue, aExclusive : boolean); override;
-
     procedure InitPanel;
     procedure FreePanel;
-
     //function CreateParameter: TG2FileParameter; override;
     function CreateConnector: TG2FileConnector; override;
-
     procedure InvalidateControl; override;
-
     procedure PaintOnCanvas( aCanvas : TCanvas; aScale : single);
-
     property G2Module : TG2Module read FG2Module write FG2Module;
     property OutlineRect : TRectF read GetOutlineRect;
-
     property OnCreateG2Control : TCreateG2ControlEvent read FOnCreateG2Control write FOnCreateG2Control;
   end;
-
   {TG2GraphParameterFMX = class(TG2FileParameter)
   protected
     procedure GetLabel(Sender : TObject; const aIndex : integer; var aLabel : string);
@@ -242,10 +200,8 @@ type
   public
     constructor Create( aPatch : TG2FilePatch; aLocation : TLocationType; aModuleIndex : integer; aModule : TG2FileModule);
     destructor Destroy; override;
-
     procedure GetTextFunc(Sender : TObject; var aTextFunc : string);
   end;}
-
   TG2GraphConnectorFMX = class(TG2FileConnector)
   private
     [Weak] FG2Connector : TG2Connector;
@@ -253,14 +209,10 @@ type
   public
     constructor Create( aPatch : TG2FilePatch; aLocation : TLocationType; aModule : TG2FileModule); override;
     destructor Destroy; override;
-
     procedure CreateCable( Sender : TObject; aToConnector : TG2Connector);
-
     procedure InvalidateControl; override;
-
     property G2Connector : TG2Connector read FG2Connector write SetG2Connector;
   end;
-
   {TG2GraphLedFMX = class(TG2FileLed)
   private
     FGroupCount : integer;
@@ -271,7 +223,6 @@ type
         aGroupID : byte; const aGroupCount : integer);
     destructor Destroy; override;
   end;}
-
   TG2GraphCableFMX = class( TG2FileCable)
   protected
     [Weak] FG2Cable : TG2Cable;
@@ -286,11 +237,9 @@ type
     destructor Destroy; override;
     procedure InitCable;
     procedure ConnectorMoved; override;
-
     property Visible : boolean read GetVisible write SetVisible;
     property G2Control : TG2Cable read FG2Cable write FG2Cable;
   end;
-
 procedure CreateModuleImages( aBitmapList : TObjectDictionary<integer, TBitmap>);
 procedure CreateModuleImage( const aModuleType : byte; aBitmap : TBitmap);
 procedure CreateModuleControls( aModule : TG2GraphModuleFMX; aControl : TControl; aConnectParams, aConnectConnectors : boolean);
@@ -299,15 +248,12 @@ procedure ComponentSetStateStylesRecursive( aControl : TControl; aStateStyleList
 function ConvertToAlpha( aColor : integer): TAlphaColor;
 procedure AdvanceFocus( aControl : IControl; const MoveForward: Boolean);
 function GetFocusedControl( aFMXObject : TFMXObject): IControl;
-
 implementation
-
 //------------------------------------------------------------------------------
 //
 //                                 Utils
 //
 //------------------------------------------------------------------------------
-
 function ConvertToAlpha( aColor : integer): TAlphaColor;
 begin
   Result := $ff000000
@@ -315,7 +261,6 @@ begin
           + (Cardinal(aColor) and $0000ff00)
           + (Cardinal(aColor) and $00ff0000) shr 16;
 end;
-
 function CreateUnityMatrix : TMatrix;
 begin
   Result.m11 := 1;
@@ -328,7 +273,6 @@ begin
   Result.m32 := 0;
   Result.m33 := 1;
 end;
-
 {$IF Defined(VER260) or Defined(VER270) or Defined(VER280)}
 function CreateScaleMatrix( sx, sy : single): TMatrix;
 begin
@@ -342,7 +286,6 @@ begin
   Result.m32 := 0;
   Result.m33 := 1;
 end;
-
 function CreateTranslateMatrix( tx, ty : single): TMatrix;
 begin
   Result.m11 := 1;
@@ -355,7 +298,6 @@ begin
   Result.m32 := ty;
   Result.m33 := 1;
 end;
-
 function MatrixMultiply(const M1, M2: TMatrix): TMatrix;
 begin
   Result.m11 := M1.m11 * M2.m11 + M1.m12 * M2.m21 + M1.m13 * M2.m31;
@@ -369,7 +311,6 @@ begin
   Result.m33 := M1.m31 * M2.m13 + M1.m32 * M2.m23 + M1.m33 * M2.m33;
 end;
 {$ENDIF}
-
 procedure ComponentSetStateStylesRecursive( aControl : TControl; aStateStyleList : TG2StateStyleList);
 var i : integer;
 begin
@@ -381,7 +322,6 @@ begin
         ComponentSetStateStylesRecursive( aControl.Children[i] as TControl, aStateStyleList);
   end;
 end;
-
 procedure GetTabOrderList( aFMXObject : TFMXObject; const List: TInterfaceList; AChildren: Boolean);
 var
   I: Integer;
@@ -390,7 +330,7 @@ begin
   //if Assigned(FTabList) then
     for I := 0 to aFMXObject.ChildrenCount - 1 do
     begin
-{$IF Defined(VER280)}
+{$IF Defined(VER280) or Defined(VER340)}
       if True then begin
 {$ELSE}
       if aFMXObject.Children[I].IsIControl then begin
@@ -402,22 +342,18 @@ begin
       end;
     end;
 end;
-
 procedure AdvanceFocus( aControl : IControl; const MoveForward: Boolean);
 var
   NewFocus: IControl;
   List: TInterfaceList;
   I, CurIdx: Integer;
-
 begin
   if not assigned(aControl) then
     exit;
-
   NewFocus := nil;
   List := TInterfaceList.Create;
   try
     GetTabOrderList(aControl.Parent, List, True);
-
     CurIdx := List.IndexOf(aControl);
     for I := 0 to List.Count-1 do
     begin
@@ -428,7 +364,6 @@ begin
         CurIdx := CurIdx - 1;
         if CurIdx < 0 then CurIdx := List.Count - 1;
       end;
-
       if IControl(List[CurIdx]).CheckForAllowFocus then
       begin
         NewFocus := IControl(List[CurIdx]);
@@ -441,7 +376,6 @@ begin
   if Assigned(NewFocus) then
     NewFocus.SetFocus;
 end;
-
 function GetFocusedControl( aFMXObject : TFMXObject): IControl;
 begin
   if aFMXObject is TForm then
@@ -453,7 +387,6 @@ begin
       Result := nil;
 end;
 
-
 procedure CreateModuleImage( const aModuleType : byte; aBitmap : TBitmap);
 var Module : TG2GraphModuleFMX;
     Scale : single;
@@ -461,28 +394,24 @@ var Module : TG2GraphModuleFMX;
 begin
   Module := TG2GraphModuleFMX.Create(nil);
   try
-    Module.ModuleIndex := 0;
+
+    Module.ModuleIndex := 0;
     Module.Location := ltVA;
     Module.TypeID := aModuleType;
     Module.InitModule( ltVA, aModuleType);
-
     Module.G2Module := TG2Module.Create(Module);
     Module.G2Module.Parent := nil;
     Module.InitPanel;
-
     CreateModuleControls(Module, Module.FG2Module, True, True);
-
     Scale := aBitmap.Width/(UNITS_COL+UNIT_MARGIN*2);
     aBitmap.Clear(TAlphaColorRec.Alpha);
     Module.PaintOnCanvas( aBitmap.Canvas, Scale);
-
 
     //ModuleImage.Bitmap.SaveToFile(Module.ModuleFileName + '.png');
   finally
     Module.DisposeOf;
   end;
 end;
-
 procedure CreateModuleImages( aBitmapList : TObjectDictionary<integer, TBitmap>);
 var i : integer;
     Bitmap : TBitmap;
@@ -490,32 +419,30 @@ begin
   i := 0;
   while i <= High(ModuleDefs) do begin
     //i := 118;
-    Bitmap := TBitmap.Create(UNITS_COL+UNIT_MARGIN*2, (UNITS_ROW+UNIT_MARGIN*2)*ModuleDefs[i].Height);
-    CreateModuleImage( ModuleDefs[i].ModuleID, Bitmap);
-    aBitmapList.Add( ModuleDefs[i].ModuleID, Bitmap);
 
+    Bitmap := TBitmap.Create(UNITS_COL+UNIT_MARGIN*2, (UNITS_ROW+UNIT_MARGIN*2)*ModuleDefs[i].Height);
+
+    CreateModuleImage( ModuleDefs[i].ModuleID, Bitmap);
+
+    aBitmapList.Add( ModuleDefs[i].ModuleID, Bitmap);
     inc(i);
   end;
 end;
-
 //------------------------------------------------------------------------------
 //
 //                            TModuleSelectionList
 //
 //------------------------------------------------------------------------------
-
 constructor TModuleSelectionList.Create(AOwnsObjects: boolean);
 begin
   inherited Create(AOwnsObjects);
   FItemIndex := -1;
   FFillColor := claWhite;
 end;
-
 destructor TModuleSelectionList.Destroy;
 begin
   inherited;
 end;
-
 procedure TModuleSelectionList.SetItemIndex(const Value: integer);
 var ItemTop, ItemBottom : single;
     i : integer;
@@ -527,9 +454,7 @@ begin
       Items[FItemIndex].Fill.Color := FFillColor;
       Items[FItemIndex].FLabel.StateStyleList.StateStyle[csDefault].FontColor := claBlack;
     end;
-
     FItemIndex := Value;
-
     if FItemIndex <> -1 then begin
       Items[FItemIndex].Fill.Color := claCyan;
       ItemTop := 0;
@@ -540,33 +465,25 @@ begin
       NewViewportPosition := FScrollbox.ViewportPosition;
       if ItemBottom > FScrollbox.ViewportPosition.Y + FScrollbox.Height then
         NewViewportPosition.Y := ItemBottom - FScrollbox.Height;
-
       if ItemTop < FScrollbox.ViewportPosition.Y then
         NewViewportPosition.Y := ItemTop;
-
       FScrollbox.ViewportPosition := NewViewportPosition;
-
       //if ItemBottom >  (FScrollbox.ViewportPosition.Y + FScrollbox.Height) then
       //  FScrollbox.ScrollTo(0, (FScrollbox.ViewportPosition.Y + FScrollbox.Height) - ItemBottom);
       //if ItemTop < FScrollbox.ViewportPosition.Y then
       //  FScrollbox.ScrollTo(0, FScrollbox.ViewportPosition.Y - ItemTop);
-
     end;
   end;
 end;
-
 //------------------------------------------------------------------------------
 //
 //                              TModuleListItem
 //
 //------------------------------------------------------------------------------
-
 constructor TModuleListItem.Create(AOwner: TComponent);
 begin
   inherited;
-
   Stroke.Kind := TBrushKind.bkNone;
-
   FLabel := TG2Label.Create(self);
   FLabel.Parent := self;
   FLabel.Align := TAlignLayout.alTop;
@@ -577,45 +494,37 @@ begin
   FLabel.StateStyleList.StateStyle[csDefault].Font.Size := 12;
   FLabel.StateStyleList.StateStyle[csSelected].Font.Style := [TFontStyle.fsBold];
   FLabel.StateStyleList.StateStyle[csSelected].Font.Size := 12;
-
   FImage := TImage.Create(self);
   FImage.Parent := self;
   FImage.Align := TAlignLayout.alClient;
   FImage.HitTest := False;
 end;
-
 destructor TModuleListItem.Destroy;
 begin
   inherited;
 end;
-
 //------------------------------------------------------------------------------
 //
 //                              TG2GraphFMX
 //
 //------------------------------------------------------------------------------
-
 constructor TG2GraphFMX.Create(AOwner: TComponent);
 begin
   inherited;
   FSelectedControl := nil;
 end;
-
 destructor TG2GraphFMX.Destroy;
 begin
   inherited;
 end;
-
 function TG2GraphFMX.GetSelectedSlot: TG2GraphSlotFMX;
 begin
   Result := GetSlot(Performance.SelectedSlot) as TG2GraphSlotFMX;
 end;
-
 procedure TG2GraphFMX.SelectControl(Sender: TObject);
 begin
   SelectedControl := Sender as TG2BaseControl;
 end;
-
 procedure TG2GraphFMX.SetCableStyle(const Value: TCableStyle);
 var p, l, c : integer;
     Patch : TG2FilePatch;
@@ -625,10 +534,8 @@ var p, l, c : integer;
 begin
   if FCableStyle <> Value then begin
     FCableStyle := Value;
-
     for p := 0 to 3 do begin
       Patch := GetSlot(p).Patch;
-
       for l := 0 to 1 do begin
         for c := 0 to Patch.PatchPart[l].CableList.Count - 1 do begin
           Cable := Patch.PatchPart[l].CableList[c] as TG2GraphCableFMX;
@@ -639,7 +546,6 @@ begin
     end;
   end;
 end;
-
 procedure TG2GraphFMX.SetKnobControl(const Value: TKnobControl);
 var p, l, m, c : integer;
     Patch : TG2FilePatch;
@@ -649,10 +555,8 @@ var p, l, m, c : integer;
 begin
   if FKnobControl <> Value then begin
     FKnobControl := Value;
-
     for p := 0 to 3 do begin
       Patch := GetSlot(p).Patch;
-
       for l := 0 to 1 do begin
         for m := 0 to Patch.PatchPart[l].ModuleList.Count - 1 do begin
           Module := Patch.PatchPart[l].ModuleList[m] as TG2GraphModuleFMX;
@@ -667,89 +571,72 @@ begin
     end;
   end;
 end;
-
 function TG2GraphFMX.CreatePerformance: TG2FilePerformance;
 begin
   Result := TG2GraphPerformanceFMX.Create(self);
 end;
-
 procedure TG2GraphFMX.SetSelectedControl(const Value: TG2BaseControl);
 begin
   if Value <> FSelectedControl then begin
     FSelectedControl := Value;
   end;
 end;
-
 //------------------------------------------------------------------------------
 //
 //                          TG2GraphPerformanceFMX
 //
 //------------------------------------------------------------------------------
-
 constructor TG2GraphPerformanceFMX.Create(AOwner: TComponent);
 begin
   inherited;
 end;
-
 function TG2GraphPerformanceFMX.CreateSlot: TG2FileSlot;
 begin
   Result := TG2GraphSlotFMX.Create( self);
 end;
-
 destructor TG2GraphPerformanceFMX.Destroy;
 begin
   inherited;
 end;
-
 //------------------------------------------------------------------------------
 //
 //                             TG2GraphSlotFMX
 //
 //------------------------------------------------------------------------------
-
 constructor TG2GraphSlotFMX.Create(AOwner: TComponent);
 begin
   inherited;
 end;
-
 function TG2GraphSlotFMX.CreatePatch: TG2FilePatch;
 begin
   Result := TG2GraphPatchFMX.Create( self);
 end;
-
 destructor TG2GraphSlotFMX.Destroy;
 begin
   inherited;
 end;
-
 
 //------------------------------------------------------------------------------
 //
 //                              TG2GraphPatchFMX
 //
 //------------------------------------------------------------------------------
-
 constructor TG2GraphPatchFMX.Create(AOwner: TComponent);
 begin
   FSelectedMorphIndex := 0;
-
   inherited;
 end;
-
 destructor TG2GraphPatchFMX.Destroy;
 begin
   inherited;
 end;
-
 procedure TG2GraphPatchFMX.Init;
 begin
   // Todo, check per patch
   if assigned(G2) then
     (G2 as TG2GraphFMX).SelectedControl := nil;
-
   inherited;
 end;
-
 // CHECK: volgende 2 moeten naar patch part!
 function TG2GraphPatchFMX.CreateModule(aLocation: TLocationType; aModuleIndex,
   aModuleType: byte): TG2FileModule;
@@ -758,24 +645,19 @@ var i : integer;
     ModuleDefStream : TModuleDefStream;
 begin
   // Create a module in a patch file
-
   Result := nil;
   Module := TG2GraphModuleFMX.Create( PatchPart[ ord(aLocation)]);
   Module.ModuleIndex := aModuleIndex;
   Module.Location := aLocation;
   Module.TypeID := aModuleType;
-
   if aLocation <> ltPatch then begin
     Module.InitModule( aLocation, aModuleType);
     CreateLeds( aLocation, aModuleIndex, aModuleType);
   end;
-
   if assigned(FOnCreateModuleFMX) then
     FOnCreateModuleFMX( self, aLocation, Module);
-
   Result := Module;
 end;
-
 function TG2GraphPatchFMX.CreateCable(aLocation: TLocationType; aColor,
   aFromModule, aFromConnector, aLinkType, aToModule,
   aToConnector: byte): TG2FileCable;
@@ -786,17 +668,13 @@ var i : integer;
     ConnectorFrom, ConnectorTo : TG2Connector;
 begin
   // Create a cable connection in a patch file
-
   Result := nil;
-
   ModuleFrom := GetModule( ord(aLocation), aFromModule) as TG2GraphModuleFMX;
   if not assigned(ModuleFrom) then
     raise Exception.Create('ModuleIndex ' + IntToStr( aFromModule) + ' not found.');
-
   ModuleTo := GetModule( ord(aLocation), aToModule) as TG2GraphModuleFMX;
   if not assigned(ModuleTo) then
     raise Exception.Create('ModuleIndex ' + IntToStr( aToModule) + ' not found.');
-
   Cable               := TG2GraphCableFMX.Create( PatchPart[ord(aLocation)]);
   Cable.CableColor    := aColor;
   Cable.ModuleFrom    := aFromModule;
@@ -804,29 +682,23 @@ begin
   Cable.LinkType      := aLinkType;
   Cable.ModuleTo      := aToModule;
   Cable.ConnectorTo   := aToConnector;
-
   // If Linktype is 1 then the first connector is an output, else it's an input
   if aLinkType = 1 then
     FromConnKind := ckOutput
   else
     FromConnKind := ckInput;
 
-
   // Link connectors to cable
   if FromConnKind = ckInput then
     Cable.FromConnector := ModuleFrom.InConnector[ aFromConnector]
   else
     Cable.FromConnector := ModuleFrom.OutConnector[ aFromConnector];
-
   Cable.ToConnector := ModuleTo.InConnector[ aToConnector];
-
   // Add cable to connectors
   Cable.FromConnector.AddCable(Cable);
   Cable.ToConnector.AddCable(Cable);
-
   if assigned(FOnCreateCableFMX) then
     FOnCreateCableFMX(self, aLocation, Cable);
-
   if aLocation = ltFX then begin
     ConnectorFrom := (Cable.FromConnector as TG2GraphConnectorFMX).G2Connector;
     ConnectorTo := (Cable.ToConnector as TG2GraphConnectorFMX).G2Connector;
@@ -840,29 +712,24 @@ begin
       Cable.InitCable;
     Cable.Visible := GetCableVisible( Cable.CableColor);
   end;
-
   Result := Cable;
 end;
-
 {function TG2GraphPatchFMX.CreateParameter(aModuleIndex: byte): TG2FileParameter;
 begin
   Result := TG2GraphParameterFMX.Create( self, ltPatch, aModuleIndex, nil);
 end;}
-
 function TG2GraphPatchFMX.CreatePatchPart(
   aLocation: TLocationType): TG2FilePatchPart;
 begin
   Result := TG2GraphPatchPartFMX.Create( Self);
   Result.Location := aLocation;
 end;
-
 {function TG2GraphPatchFMX.CreateLed(const aLedType : TLedType;
   const aLocation : TLocationType; const aModuleIndex, aGroupID: byte;
   const aGroupCount : integer): IG2DataLed;
 begin
   Result := TG2GraphLedFMX.Create( aLedType, aLocation, aModuleIndex, aGroupID, aGroupCount);
 end;}
-
 function TG2GraphPatchFMX.GetCableVisible(aColor: integer): boolean;
 begin
   case aColor of
@@ -877,7 +744,6 @@ begin
     Result := False;
   end;
 end;
-
 {function TG2GraphPatchFMX.GetMorphParameter(
   aIndex: integer): TG2FileParameter;
 begin
@@ -903,7 +769,6 @@ begin
     raise Exception.Create('Knob index out of range.');
   end;
 end;
-
 function TG2GraphPatchFMX.GetPatchParameter(
   aIndex: integer): TG2FileParameter;
 begin
@@ -929,7 +794,6 @@ begin
     raise Exception.Create('Knob index out of range.');
   end;
 end;}
-
 procedure TG2GraphPatchFMX.SetCablesVisible(aColor: integer; aVisible: boolean);
 var i, j : integer;
 begin
@@ -940,42 +804,35 @@ begin
     end;
   end;
 end;
-
 procedure TG2GraphPatchFMX.SetSelectedLocation(aLocation: TLocationType);
 begin
   //if aLocation in [ltFX, ltVA] then
     inherited;
 end;
 
-
 //------------------------------------------------------------------------------
 //
 //                          TG2GraphPatchPartFMX
 //
 //------------------------------------------------------------------------------
-
 constructor TG2GraphPatchPartFMX.Create(aPatch: TG2FilePatch);
 begin
   inherited;
 end;
-
 destructor TG2GraphPatchPartFMX.Destroy;
 begin
   inherited;
 end;
-
 //------------------------------------------------------------------------------
 //
 //                           TG2GraphConnectorFMX
 //
 //------------------------------------------------------------------------------
-
 constructor TG2GraphConnectorFMX.Create(aPatch: TG2FilePatch;
   aLocation: TLocationType; aModule: TG2FileModule);
 begin
   inherited Create( aPatch, aLocation, aModule);
 end;
-
 procedure TG2GraphConnectorFMX.CreateCable(Sender: TObject;
   aToConnector: TG2Connector);
 var ConnectorTo : TG2FileConnector;
@@ -983,22 +840,18 @@ var ConnectorTo : TG2FileConnector;
 begin
   ModuleTo := Module.PatchPart.Patch.Modules[ ord(Location), aToConnector.ModuleIndex];
   if assigned(ModuleTo) then begin
-
     if aToConnector.ConnectorKind = ckInput then
       ConnectorTo := ModuleTo.InConnector[ aToConnector.CodeRef]
     else
       ConnectorTo := ModuleTo.OutConnector[ aToConnector.CodeRef];
-
     if assigned(ConnectorTo) then
       (Module.PatchPart.Patch as TG2GraphPatchFMX).MessAddConnection( Location, self, ConnectorTo);
   end;
 end;
-
 destructor TG2GraphConnectorFMX.Destroy;
 begin
   inherited;
 end;
-
 procedure TG2GraphConnectorFMX.InvalidateControl;
 begin
   inherited;
@@ -1007,7 +860,6 @@ begin
     FG2Connector.Connected := CableCount > 0;
   end;
 end;
-
 procedure TG2GraphConnectorFMX.SetG2Connector(const aValue: TG2Connector);
 begin
   if FG2Connector <> aValue then begin
@@ -1025,101 +877,81 @@ begin
     end;
   end;
 end;
-
 //------------------------------------------------------------------------------
 //
 //                          TG2GraphParameterFMX
 //
 //------------------------------------------------------------------------------
-
 {constructor TG2GraphParameterFMX.Create(aPatch: TG2FilePatch;
   aLocation: TLocationType; aModuleIndex: integer; aModule: TG2FileModule);
 begin
   inherited Create( aPatch, aLocation, aModuleIndex, aModule);
 end;
-
 destructor TG2GraphParameterFMX.Destroy;
 begin
   inherited;
 end;
-
 procedure TG2GraphParameterFMX.GetInfoFunc(Sender: TObject;
   var aInfoFunc: string);
 begin
   aInfoFunc := InfoFunction( InfoFunctionIndex);
 end;
-
 {procedure TG2GraphParameterFMX.GetLabel(Sender: TObject; const aIndex: integer;
   var aLabel: string);
 begin
   aLabel := GetParamLabel( aIndex);
 end;
-
 procedure TG2GraphParameterFMX.GetTextFunc(Sender: TObject;
   var aTextFunc: string);
 begin
   aTextFunc := TextFunction;
 end;
-
 procedure TG2GraphParameterFMX.SetInfoFunc(Sender: TObject; const aInfoFunc: integer);
 begin
   InfoFunctionIndex := aInfoFunc;
 end;
-
 procedure TG2GraphParameterFMX.SetLabel(Sender: TObject; const aIndex: integer;
   const aLabel: string);
 begin
   SetParamLabel( aIndex, aLabel);
 end;}
-
 //------------------------------------------------------------------------------
 //
 //                              TG2GraphLedFMX
 //
 //------------------------------------------------------------------------------
-
 {constructor TG2GraphLedFMX.Create( const aLedType : TLedType;
   const aLocationType : TLocationType; const aModuleIndex, aGroupID: byte;
   const aGroupCount : integer);
 begin
   inherited;
-
   FOldValue := 0;
 end;
-
 destructor TG2GraphLedFMX.Destroy;
 begin
   inherited;
 end;}
-
 //------------------------------------------------------------------------------
 //
 //                             TG2GraphCableFMX
 //
 //------------------------------------------------------------------------------
-
 constructor TG2GraphCableFMX.Create( aPatchPart : TG2FilePatchPart);
 var i : integer;
 begin
   inherited;
-
   FromConnector := nil;
   ToConnector   := nil;
-
   FG2Cable := nil;
 end;
-
 destructor TG2GraphCableFMX.Destroy;
 begin  // Remove the cable from the connectors
   if assigned(FromConnector) then
     FromConnector.DelCable( self);
-
   if assigned(ToConnector) then
     ToConnector.DelCable( self);
-
   inherited;
 end;
-
 function TG2GraphCableFMX.GetVisible: boolean;
 begin
   if assigned(FG2Cable) then
@@ -1127,13 +959,11 @@ begin
   else
     Result := False;
 end;
-
 procedure TG2GraphCableFMX.SetVisible(const Value: boolean);
 begin
   if assigned(FG2Cable) then
     FG2Cable.Visible := Value;
 end;
-
 procedure TG2GraphCableFMX.ConnectorMoved;
 var ModuleFrom, ModuleTo : TG2Module;
     ConnectorFrom, ConnectorTo : TG2Connector;
@@ -1145,29 +975,22 @@ begin
          and assigned(FromConnector.Module)
          and assigned(ToConnector.Module)) then
     exit;
-
   ModuleFrom := (FromConnector.Module as TG2GraphModuleFMX).G2Module;
   ModuleTo := (ToConnector.Module as TG2GraphModuleFMX).G2Module;
-
   ConnectorFrom := (FromConnector as TG2GraphConnectorFMX).G2Connector;
   ConnectorTo := (ToConnector as TG2GraphConnectorFMX).G2Connector;
-
   P.X := ConnectorFrom.Position.X + ConnectorFrom.Width/2;
   P.Y := ConnectorFrom.Position.Y + ConnectorFrom.Height/2;
   FG2Cable.Point1X := P.X + ModuleFrom.Position.X;
   FG2Cable.Point1Y := P.Y + ModuleFrom.Position.Y;
-
   P.X := ConnectorTo.Position.X + ConnectorTo.Width/2;
   P.Y := ConnectorTo.Position.Y + ConnectorTo.Height/2;
   FG2Cable.Point2X := P.X + ModuleTo.Position.X;
   FG2Cable.Point2Y := P.Y + ModuleTo.Position.Y;
-
   FG2Cable.Color := ConvertToAlpha( CableColors[ CableColor]);
-
   //FG2Cable.StartTimer;
   FG2Cable.InitCable;
 end;
-
 procedure TG2GraphCableFMX.InitCable;
 var ModuleFrom, ModuleTo : TG2Module;
     ConnectorFrom, ConnectorTo : TG2Connector;
@@ -1179,63 +1002,48 @@ begin
          and assigned(FromConnector.Module)
          and assigned(ToConnector.Module)) then
     exit;
-
   ModuleFrom := (FromConnector.Module as TG2GraphModuleFMX).G2Module;
   ModuleTo := (ToConnector.Module as TG2GraphModuleFMX).G2Module;
-
   ConnectorFrom := (FromConnector as TG2GraphConnectorFMX).G2Connector;
   ConnectorTo := (ToConnector as TG2GraphConnectorFMX).G2Connector;
-
   P.X := ConnectorFrom.UnscaledLeft + ConnectorFrom.UnscaledWidth/2;
   P.Y := ConnectorFrom.UnscaledTop + ConnectorFrom.UnscaledHeight/2;
   FG2Cable.Point1X := P.X + ModuleFrom.UnscaledLeft;
   FG2Cable.Point1Y := P.Y + ModuleFrom.UnscaledTop;
-
   P.X := ConnectorTo.UnscaledLeft + ConnectorTo.UnscaledWidth/2;
   P.Y := ConnectorTo.UnscaledTop + ConnectorTo.UnscaledHeight/2;
   FG2Cable.Point2X := P.X + ModuleTo.UnscaledLeft;
   FG2Cable.Point2Y := P.Y + ModuleTo.UnscaledTop;
-
   FG2Cable.Color := ConvertToAlpha( CableColors[ CableColor]);
-
   FG2Cable.InitCable;
 end;
-
 procedure TG2GraphCableFMX.SetCableColor(Value: byte);
 begin
   inherited;
   if Assigned(FG2Cable) then
     FG2Cable.Color := ConvertToAlpha( CableColors[ Value]);
 end;
-
 //------------------------------------------------------------------------------
 //
 //                             TG2GraphModuleFMX
 //
 //------------------------------------------------------------------------------
-
 constructor TG2GraphModuleFMX.Create(aPatchPart: TG2FilePatchPart);
 begin
   inherited Create( aPatchPart);
-
   FG2Module := nil;
 end;
-
 constructor TG2GraphModuleFMX.CopyCreate(aPatchPart: TG2FilePatchPart;
   aModule: TG2GraphModuleFMX);
 begin
   inherited Create( aPatchPart);
-
   FG2Module := nil;
-
   Copy( aModule);
 end;
-
 procedure TG2GraphModuleFMX.InitPanel;
 begin
   if not assigned(FG2Module) then
     exit;
-
   FG2Module.ModuleIndex := ModuleIndex;
   FG2Module.Location := Location;
   if assigned(PatchPart) then
@@ -1244,55 +1052,44 @@ begin
     FG2Module.ModuleLabel := ModuleName;
   //FG2Module.Fill.Color := ConvertToAlpha(ModuleColors[ModuleColor]);
   FG2Module.UnscaledHeight := (UNITS_ROW+UNIT_MARGIN*2) * HeightUnits;
-
   FG2Module.Row := Row;
   FG2Module.Col := Col;
   FG2Module.StateStyleList.DefaultFill.Color := ConvertToAlpha(ModuleColors[ModuleColor]);
   FG2Module.StateStyleList.SelectedFill.Color := ConvertToAlpha(ModuleColors[ModuleColor]);
 end;
-
 function TG2GraphModuleFMX.CreateCopy( aPatchPart: TG2FilePatchPart): TG2FileModule;
 begin
   Result := TG2GraphModuleFMX.CopyCreate( aPatchPart, self);
 end;
-
 {function TG2GraphModuleFMX.CreateParameter: TG2FileParameter;
 var Patch : TG2FilePatch;
 begin
   Patch := nil;
   if assigned(PatchPart) then
     Patch := PatchPart.Patch;
-
   Result := TG2GraphParameterFMX.Create( Patch, TLocationType(Location), ModuleIndex, self);
 end;}
-
 function TG2GraphModuleFMX.CreateConnector: TG2FileConnector;
 var Patch : TG2FilePatch;
 begin
   Patch := nil;
   if assigned(PatchPart) then
     Patch := PatchPart.Patch;
-
   Result := TG2GraphConnectorFMX.Create( Patch, TLocationType(Location), self);
 end;
-
 destructor TG2GraphModuleFMX.Destroy;
 begin
   inherited;
 end;
-
 procedure TG2GraphModuleFMX.FreePanel;
 var i : integer;
 begin
   for i := 0 to InConnectorCount - 1 do
     (InConnector[i] as TG2GraphConnectorFMX).FG2Connector := nil;
-
   for i := 0 to OutConnectorCount - 1 do
     (OutConnector[i] as TG2GraphConnectorFMX).FG2Connector := nil;
-
   FG2Module.DisposeOf;
 end;
-
 function TG2GraphModuleFMX.GetOutlineRect: TRectF;
 begin
   Result.Left := Col * (UNITS_COL+UNIT_MARGIN*2);
@@ -1300,7 +1097,6 @@ begin
   Result.Right := (Col + 1) * (UNITS_COL+UNIT_MARGIN*2);
   Result.Bottom := (Row + HeightUnits) * (UNITS_ROW+UNIT_MARGIN*2);
 end;
-
 procedure TG2GraphModuleFMX.InvalidateControl;
 begin
   if assigned(FG2Module) then begin
@@ -1308,7 +1104,6 @@ begin
     FG2Module.Redraw;
   end;
 end;
-
 procedure TG2GraphModuleFMX.SetCol(aValue: TBits7);
 begin
   inherited;
@@ -1316,14 +1111,12 @@ begin
     FG2Module.Col := aValue;
   InvalidateCables;
 end;
-
 procedure TG2GraphModuleFMX.SetLocation(const aValue: TLocationType);
 begin
   inherited;
   if assigned(FG2Module) then
     FG2Module.Location := aValue;
 end;
-
 procedure TG2GraphModuleFMX.SetModuleColor(aValue: TBits8);
 begin
   inherited;
@@ -1333,21 +1126,18 @@ begin
     FG2Module.Redraw;
   end;
 end;
-
 procedure TG2GraphModuleFMX.SetModuleIndex(const aValue: TBits8);
 begin
   inherited;
   if assigned(FG2Module) then
     FG2Module.ModuleIndex := aValue;
 end;
-
 procedure TG2GraphModuleFMX.SetModuleName( aValue: string);
 begin
   inherited;
   if assigned(FG2Module) then
     FG2Module.ModuleLabel := aValue;
 end;
-
 procedure TG2GraphModuleFMX.SetRow(aValue: TBits7);
 begin
   inherited;
@@ -1355,18 +1145,14 @@ begin
     FG2Module.Row := aValue;
   InvalidateCables;
 end;
-
 {procedure TG2GraphModuleFMX.SetSelected(aValue: boolean);
 var Control : TFMXObject;
 begin
   if aValue <> Selected then begin
     inherited;
-
     if assigned(FG2Module) then
       FG2Module.Selected := aValue;
-
       if aValue and assigned(FG2Module) then begin
-
         // Set focus on selected parameter control
         for Control in FG2Module.Children do begin
           if Control is TG2WriteControl then begin
@@ -1379,18 +1165,14 @@ begin
       end;
   end;
 end;}
-
 procedure TG2GraphModuleFMX.SelectModule(const aValue, aExclusive : boolean);
 var Control : TFMXObject;
 begin
   if aValue <> Selected then begin
     inherited;
-
     if assigned(FG2Module) then
       FG2Module.Selected := aValue;
-
       if aValue and aExclusive and assigned(FG2Module) and assigned(SelectedParam) then begin
-
         // Set focus on selected parameter control
         if FG2Module.ChildrenCount > 0 then begin
           for Control in FG2Module.Children do begin
@@ -1406,7 +1188,6 @@ begin
   end;
 end;
 
-
 procedure TG2GraphModuleFMX.PaintOnCanvas(aCanvas: TCanvas; aScale : single);
 var i : Integer;
     G2Control : TG2BaseControl;
@@ -1414,18 +1195,25 @@ var i : Integer;
 begin
   if not assigned(FG2Module) then
     exit;
-
   aCanvas.BeginScene;
   try
     SaveMatrix := aCanvas.Matrix;
+    {$IF Defined(VER340)}
+    M := TMatrix.CreateScaling( aScale, aScale);
+    {$ELSE}
     M := CreateScaleMatrix( aScale, aScale);
+    {$ENDIF}
     aCanvas.SetMatrix(M);
     G2Module.PaintOn( aCanvas);
     for i := 0 to G2Module.ChildrenCount - 1 do begin
       G2Control := (G2Module.Children[i] as TG2BaseControl);
       SaveMatrix := aCanvas.Matrix;
       try
+        {$IF Defined(VER340)}
+        aCanvas.SetMatrix( TMatrix.CreateTranslation( G2Control.UnscaledLeft, G2Control.UnscaledTop) * M);
+        {$ELSE}
         aCanvas.SetMatrix( MatrixMultiply(CreateTranslateMatrix( G2Control.UnscaledLeft, G2Control.UnscaledTop), M));
+        {$ENDIF}
         G2Control.PaintOn( aCanvas);
       finally
         aCanvas.SetMatrix( SaveMatrix);
@@ -1436,7 +1224,6 @@ begin
     aCanvas.EndScene;
   end;
 end;
-
 procedure ParseDependencies( aModule : TG2FileModule; aControl : TG2MultiReadControl);
 var sl : TStringList;
     i, Value, c : integer;
@@ -1446,13 +1233,11 @@ begin
   try
     Param := nil;
     sl.DelimitedText := aControl.Dependencies;
-
     // Find ref to master parameter
     if aControl.MasterRef >= 0  then begin
       i := 0;
       while (i<sl.Count) and (sl[i]<>IntToStr(aControl.MasterRef)) and (sl[i]<>'s'+IntToStr(aControl.MasterRef)) do
         inc(i);
-
       if (i<sl.Count) then begin
         // Assign master parameter first
         if (Lowercase(sl[ i][1]) = 's') then begin // One of the static params
@@ -1473,7 +1258,6 @@ begin
         //aControl.OnGetTextFunc := Param.GetTextFunc;
       end;
     end;
-
     if assigned(Param) then begin
       for i := 0 to sl.Count - 1 do begin
         if (sl[i].Length > 0) and (Lowercase(sl[i].Chars[0]) = 's') then begin
@@ -1495,13 +1279,11 @@ begin
     sl.Free;
   end;
 end;
-
 //------------------------------------------------------------------------------
 //
 //                          Creation of module controls
 //
 //------------------------------------------------------------------------------
-
 procedure CreateModuleControls( aModule : TG2GraphModuleFMX; aControl : TControl;
     aConnectParams, aConnectConnectors : boolean);
 var G2 : TG2GraphFMX;
@@ -1509,75 +1291,62 @@ var G2 : TG2GraphFMX;
     G2WriteControl : TG2WriteControl;
     G2MultiReadControl : TG2MultiReadControl;
     c : integer;
-
   procedure AssignToInConnector( aControl : TG2Connector);
   var Connector : TG2GraphConnectorFMX;
   begin
     if not aConnectConnectors then
       exit;
-
     Connector := aModule.InConnector[ aControl.CodeRef] as TG2GraphConnectorFMX;
     if not assigned(Connector) then
       raise Exception.Create('Connector ' + IntToStr(aControl.CodeRef) + ' not found in module ' + aModule.ModuleName);
     Connector.G2Connector := aControl;
   end;
-
   procedure AssignToOutConnector( aControl : TG2Connector);
   var Connector : TG2GraphConnectorFMX;
   begin
     if not aConnectConnectors then
       exit;
-
     Connector := aModule.OutConnector[ aControl.CodeRef] as TG2GraphConnectorFMX;
     if not assigned(Connector) then
       raise Exception.Create('Connector ' + IntToStr(aControl.CodeRef) + ' not found in module ' + aModule.ModuleName);
     Connector.G2Connector := aControl as TG2Connector;
   end;
-
   procedure AssignReaderToParameter( aControl : TG2ReadControl);
   var Param : TG2FileParameter;
   begin
     if not aConnectParams then
       exit;
-
     Param := aModule.Parameter[ aControl.CodeRef];
     if not assigned(Param) then
       raise Exception.Create('Parameter ' + IntToStr(aControl.CodeRef) + ' not found in module ' + aModule.ModuleName);
     aControl.DataReader := Param;
-
     //aControl.OnGetTextFunc := Param.GetTextFunc;
     if aControl.InfoFunc <> -1 then
       Param.InfoFunctionIndex := aControl.InfoFunc;
   end;
-
   procedure AssignWriterToParameter( aControl : TG2WriteControl);
   var Param : TG2FileParameter;
   begin
     if not aConnectParams then
       exit;
-
     Param := aModule.Parameter[ aControl.CodeRef];
     if not assigned(Param) then
       raise Exception.Create('Parameter ' + IntToStr(aControl.CodeRef) + ' not found in module ' + aModule.ModuleName);
     aControl.DataWriter := Param;
-
     //aControl.OnGetTextFunc := Param.GetTextFunc;
     if aControl.InfoFunc <> -1 then
       Param.InfoFunctionIndex := aControl.InfoFunc;
   end;
-
   procedure AssignWriterToMode( aControl : TG2WriteControl);
   var Param : TG2FileParameter;
   begin
     if not aConnectParams then
       exit;
-
     Param := aModule.Mode[ aControl.CodeRef];
     if not assigned(PAram) then
       raise Exception.Create('Mode ' + IntToStr(aControl.CodeRef) + ' not found in module ' + aModule.ModuleName);
     aControl.DataWriter := Param;
   end;
-
   procedure AddToLedList( aLed : TG2Led);
   var Patch : TG2GraphPatchFMX;
       i : integer;
@@ -1585,41 +1354,37 @@ var G2 : TG2GraphFMX;
     Patch := nil;
     if Assigned(aModule.PatchPart) then
       Patch := aModule.PatchPart.Patch as TG2GraphPatchFMX;
-
     if assigned(Patch) then begin
       i := 0;
       while (i<Patch.LedList.Count) and not((Patch.LedList[i].Location = aModule.Location)
                                         and (Patch.LedList[i].ModuleIndex = aModule.ModuleIndex)
                                         and (Patch.LedList[i].GroupID = aLed.LedGroupID)) do
         inc(i);
-
       if (i<Patch.LedList.Count) then begin
         aLed.DataLed := Patch.LedList[i];
       end;
     end;
   end;
-
   procedure AddToLedStripList( aLed : TG2Led);
   var Patch : TG2GraphPatchFMX;
-      i : integer;
-  begin
+
+      i : integer;
+
+  begin
     Patch := nil;
     if Assigned(aModule.PatchPart) then
       Patch := aModule.PatchPart.Patch as TG2GraphPatchFMX;
-
     if assigned(Patch) then begin
       i := 0;
       while (i<Patch.LedStripList.Count) and not((Patch.LedStripList[i].Location = aModule.Location)
                                              and (Patch.LedStripList[i].ModuleIndex = aModule.ModuleIndex)
                                              and (Patch.LedStripList[i].GroupID = aLed.LedGroupID)) do
         inc(i);
-
       if (i<Patch.LedStripList.Count) then begin
         aLed.DataLed := Patch.LedStripList[i];
       end;
     end;
   end;
-
   procedure SetCommonProperties( aG2Control : TG2BaseControl; aID, aXPos, aYPos : integer);
   begin
     aG2Control.Parent := aControl;
@@ -1631,7 +1396,6 @@ var G2 : TG2GraphFMX;
     if assigned(aModule.OnCreateG2Control) then
       aModule.OnCreateG2Control(aModule, aG2Control);
   end;
-
   function CreateInput( aConnectorDef : TG2ConnectorDef): TG2Connector;
   begin
     Result := TG2Connector.Create(aControl);
@@ -1643,7 +1407,6 @@ var G2 : TG2GraphFMX;
     AssignToInConnector( Result);
     Result.EndUpdate;
   end;
-
   function CreateOutput( aConnectorDef : TG2ConnectorDef): TG2Connector;
   begin
     Result := TG2Connector.Create(aControl);
@@ -1655,7 +1418,6 @@ var G2 : TG2GraphFMX;
     AssignToOutConnector( Result);
     Result.EndUpdate;
   end;
-
   function CreateLabel( aTextDef : TG2TextDef): TG2Label;
   var StyleSet : TG2StyleSet;
   begin
@@ -1667,7 +1429,6 @@ var G2 : TG2GraphFMX;
     StyleSet.Font.Size := aTextDef.FontSize-2;
     Result.EndUpdate;
   end;
-
   function CreateLed( aLedDef : TG2LedDef): TG2LedGreen;
   begin
     Result := TG2LedGreen.Create(aControl);
@@ -1696,7 +1457,6 @@ var G2 : TG2GraphFMX;
     end;
     Result.EndUpdate;
   end;
-
   function CreateMiniVU( aMiniVUDef : TG2MiniVUDef): TG2MiniVU;
   begin
     Result := TG2MiniVU.Create(aControl);
@@ -1709,7 +1469,6 @@ var G2 : TG2GraphFMX;
     AddToLedStripList( Result);
     Result.EndUpdate;
   end;
-
   function CreateTextField( aTextFieldDef : TG2TextFieldDef): TG2TextField;
   begin
     Result := TG2TextField.Create(aControl);
@@ -1722,7 +1481,6 @@ var G2 : TG2GraphFMX;
     ParseDependencies( aModule, Result);
     Result.EndUpdate;
   end;
-
   function CreateTextEdit( aTextEditDef :  TG2TextEditDef): TG2BtnTextEdit;
   begin
     Result := TG2BtnTextEdit.Create(aControl);
@@ -1745,7 +1503,6 @@ var G2 : TG2GraphFMX;
     AssignWriterToParameter( Result);
     Result.EndUpdate;
   end;
-
   function CreateKnob( aKnobDef : TG2KnobDef): TG2Knob;
   begin
     Result := TG2Knob.Create(aControl);
@@ -1756,14 +1513,12 @@ var G2 : TG2GraphFMX;
     Result.KnobType := aKnobDef.KnobType;
     Result.SetDefaultDimensions;
     AssignWriterToParameter( Result);
-
     if assigned(aModule.PatchPart) and assigned(aModule.PatchPart.Patch) and assigned(aModule.PatchPart.Patch.G2) then begin
       G2 := aModule.PatchPart.Patch.G2 as TG2GraphFMX;
       Result.KnobControl := G2.KnobControl;
     end;
     Result.EndUpdate;
   end;
-
   function CreateButtonText( aButtonTextDef : TG2ButtonTextDef): TG2BtnText;
   begin
     Result := TG2BtnText.Create(aControl);
@@ -1780,7 +1535,6 @@ var G2 : TG2GraphFMX;
     AssignWriterToParameter( Result);
     Result.EndUpdate;
   end;
-
   function CreateButtonFlat( aButtonFlatDef : TG2ButtonFlatDef): TG2BtnFlat;
   begin
     Result := TG2BtnFlat.Create(aControl);
@@ -1796,7 +1550,6 @@ var G2 : TG2GraphFMX;
     AssignWriterToParameter( Result);
     Result.EndUpdate;
   end;
-
   function CreateButtonIncDec( aButtonIncDecDef : TG2ButtonIncDecDef): TG2BtnIncDec;
   begin
     Result := TG2BtnIncDec.Create(aControl);
@@ -1818,7 +1571,6 @@ var G2 : TG2GraphFMX;
     AssignWriterToParameter( Result);
     Result.EndUpdate;
   end;
-
   function CreateLevelShift( aLevelShiftDef : TG2LevelShiftDef): TG2BtnFlat;
   begin
     Result := TG2BtnFlat.Create(aControl);
@@ -1831,7 +1583,6 @@ var G2 : TG2GraphFMX;
     AssignWriterToParameter( Result);
     Result.EndUpdate;
   end;
-
   function CreateButtonRadio( aButtonRadioDef : TG2ButtonRadioDef): TG2BtnRadio;
   begin
     Result := TG2BtnRadio.Create(aControl);
@@ -1852,7 +1603,6 @@ var G2 : TG2GraphFMX;
     AssignWriterToParameter( Result);
     Result.EndUpdate;
   end;
-
   function CreateButtonRadioEdit( aButtonRadioEditDef : TG2ButtonRadioEditDef): TG2BtnRadioEdit;
   begin
     Result := TG2BtnRadioEdit.Create(aControl);
@@ -1868,7 +1618,6 @@ var G2 : TG2GraphFMX;
     AssignWriterToParameter( Result);
     Result.EndUpdate;
   end;
-
   function CreatePartSelector( aPartSelectorDef : TG2PartSelectorDef): TG2PartSelector;
   begin
     Result := TG2PartSelector.Create(aControl);
@@ -1887,114 +1636,95 @@ var G2 : TG2GraphFMX;
     AssignWriterToMode( Result);
     Result.EndUpdate;
   end;
-
 begin
   for c := 0 to High(LineDefs) do begin
     if LineDefs[c].ModuleID = aModule.TypeID then begin
       //
     end;
   end;
-
   for c := 0 to High(BitmapDefs) do begin
     if BitmapDefs[c].ModuleID = aModule.TypeID then begin
       //
     end;
   end;
-
   for c := 0 to High(TextDefs) do begin
     if TextDefs[c].ModuleID = aModule.TypeID then begin
       CreateLabel( TextDefs[c]);
     end;
   end;
-
   for c := 0 to High(ModuleInputs) do begin
     if ModuleInputs[c].ModuleID = aModule.TypeID then begin
       CreateInput( ModuleInputs[c]);
     end;
   end;
-
   for c := 0 to High(ModuleOutputs) do begin
     if ModuleOutputs[c].ModuleID = aModule.TypeID then begin
       CreateOutput( ModuleOutputs[c]);
     end;
   end;
-
   for c := 0 to High(TextFieldDefs) do begin
     if TextFieldDefs[c].ModuleID = aModule.TypeID then begin
       CreateTextField( TextFieldDefs[c]);
     end;
   end;
-
   for c := 0 to High(GraphDefs) do begin
     if GraphDefs[c].ModuleID = aModule.TypeID then begin
     end;
   end;
-
   for c := 0 to High(LedDefs) do begin
     if LedDefs[c].ModuleID = aModule.TypeID then begin
       CreateLed( LedDefs[c]);
     end;
   end;
-
   for c := 0 to High(MiniVUDefs) do begin
     if MiniVUDefs[c].ModuleID = aModule.TypeID then begin
       CreateMiniVU( MiniVUDefs[c]);
     end;
   end;
-
   for c := 0 to High(PartSelectorDefs) do begin
     if PartSelectorDefs[c].ModuleID = aModule.TypeID then begin
       CreatePartSelector( PartSelectorDefs[c]);
     end;
   end;
-
   for c := 0 to High(ButtonTextDefs) do begin
     if ButtonTextDefs[c].ModuleID = aModule.TypeID then begin
       CreateButtonText( ButtonTextDefs[c]);
     end;
   end;
-
   for c := 0 to High(TextEditDefs) do begin
     if TextEditDefs[c].ModuleID = aModule.TypeID then begin
       CreateTextEdit( TextEditDefs[c]);
     end;
   end;
-
   for c := 0 to High(ButtonFlatDefs) do begin
     if ButtonFlatDefs[c].ModuleID = aModule.TypeID then begin
       CreateButtonFlat( ButtonFlatDefs[c]);
     end;
   end;
-
   for c := 0 to High(LevelShiftDefs) do begin
     if LevelShiftDefs[c].ModuleID = aModule.TypeID then begin
       CreateLevelShift( LevelShiftDefs[c]);
     end;
   end;
-
   for c := 0 to High(ButtonRadioDefs) do begin
     if ButtonRadioDefs[c].ModuleID = aModule.TypeID then begin
       CreateButtonRadio( ButtonRadioDefs[c]);
     end;
   end;
-
   for c := 0 to High(ButtonRadioEditDefs) do begin
     if ButtonRadioEditDefs[c].ModuleID = aModule.TypeID then begin
       CreateButtonRadioEdit( ButtonRadioEditDefs[c]);
     end;
   end;
-
   for c := 0 to High(ButtonIncDecDefs) do begin
     if ButtonIncDecDefs[c].ModuleID = aModule.TypeID then begin
       CreateButtonIncDec( ButtonIncDecDefs[c]);
     end;
   end;
-
   for c := 0 to High(KnobDefs) do begin
     if KnobDefs[c].ModuleID = aModule.TypeID then begin
       CreateKnob( KnobDefs[c]);
     end;
   end;
 end;
-
 end.

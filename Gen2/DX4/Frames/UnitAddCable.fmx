@@ -1,0 +1,78 @@
+object frameAddCable: TframeAddCable
+  Height = 38.000000000000000000
+  Width = 705.000000000000000000
+  object rCableDialog: TRectangle
+    Align = alBottom
+    Anchors = []
+    Fill.Color = claYellow
+    Height = 38.000000000000000000
+    Width = 705.000000000000000000
+    object btCancel: TG2BtnText
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      Anchors = [akTop, akRight]
+      Width = 65.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 632.000000000000000000
+      Position.Y = 7.000000000000000000
+      ButtonText.Strings = (
+        'Cancel'
+        'Cancel')
+      OnChangeValue = btCancelChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkToggle
+    end
+    object rbDeleteCable: TG2BtnRadio
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      Width = 265.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 97.000000000000000000
+      Position.Y = 7.000000000000000000
+      OnButtonClick = rbDeleteCableButtonClick
+      ButtonCount = 4
+      Orientation = otHorizontal
+      UpsideDown = False
+    end
+    object G2Label1: TG2Label
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 10.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 10.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 10.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 10.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      Width = 81.000000000000000000
+      Height = 25.000000000000000000
+      Position.X = 7.000000000000000000
+      Position.Y = 6.000000000000000000
+      TextAlign = taLeading
+      LabelText = 'Delete cable to'
+    end
+  end
+end

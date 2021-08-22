@@ -1,0 +1,43 @@
+object frmBanks: TfrmBanks
+  Left = 0
+  Top = 0
+  Caption = 'Banks'
+  ClientHeight = 509
+  ClientWidth = 890
+  FormStyle = fsStayOnTop
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop, dkiPhone, dkiPad]
+  DesignerMobile = False
+  DesignerWidth = 0
+  DesignerHeight = 0
+  DesignerDeviceName = ''
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  inline frameBanks: TframeBanks
+    Align = alClient
+    Height = 509.000000000000000000
+    Width = 890.000000000000000000
+    inherited Layout1: TLayout
+      Height = 509.000000000000000000
+      Width = 890.000000000000000000
+      inherited Rectangle2: TRectangle
+        Width = 890.000000000000000000
+      end
+      inherited rbeSlot: TG2BtnRadioEdit
+        Width = 890.000000000000000000
+        Height = 408.000000000000000000
+      end
+      inherited Rectangle1: TRectangle
+        Position.Y = 466.000000000000000000
+        Width = 890.000000000000000000
+      end
+      inherited Layout3: TLayout
+        Width = 890.000000000000000000
+        inherited rbeBank: TG2BtnRadioEdit
+          Width = 841.000000000000000000
+        end
+      end
+    end
+  end
+end

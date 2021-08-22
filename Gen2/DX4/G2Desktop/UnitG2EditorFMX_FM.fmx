@@ -1,0 +1,440 @@
+object frmEditorMain: TfrmEditorMain
+  Left = 0
+  Top = 0
+  Caption = 'G2 editor FMX FM v0.4'
+  ClientHeight = 698
+  ClientWidth = 1116
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  OnCreate = FormCreate
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnKeyUp = FormKeyUp
+  DesignerMasterStyle = 0
+  object OpenDialog1: TOpenDialog
+    Left = 560
+    Top = 368
+  end
+  object TimerStartup: TTimer
+    Enabled = False
+    Interval = 300
+    OnTimer = TimerStartupTimer
+    Left = 472
+    Top = 368
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 648
+    Top = 367
+  end
+  inline frameEditorCentralStrip: TframeEditorCentralStrip
+    Align = Client
+    Size.Width = 1116.000000000000000000
+    Size.Height = 698.000000000000000000
+    Size.PlatformDefault = False
+    inherited Layout1: TLayout
+      Position.X = 858.000000000000000000
+      Size.Height = 529.000000000000000000
+      inherited tcPatchFunctions: TTabControl
+        Size.Height = 529.000000000000000000
+        Sizes = (
+          258s
+          504s
+          258s
+          504s
+          258s
+          504s
+          258s
+          504s)
+        inherited TabItem1: TTabItem
+          Size.Width = 85.000000000000000000
+          Size.Height = 25.000000000000000000
+          ExplicitSize.cx = 50.000000000000000000
+          ExplicitSize.cy = 50.000000000000000000
+          inherited FrameAddModule: TFrameAddModule
+            Size.Height = 504.000000000000000000
+            inherited rbeModulePages: TG2BtnRadioEdit
+              Size.Height = 504.000000000000000000
+            end
+            inherited Layout1: TLayout
+              Size.Height = 504.000000000000000000
+              inherited ArrayLayout1: TArrayLayout
+                Position.Y = 472.000000000000000000
+              end
+              inherited sbAddModule: TVertScrollBox
+                Size.Height = 472.000000000000000000
+                Viewport.Width = 215.000000000000000000
+                Viewport.Height = 472.000000000000000000
+              end
+            end
+          end
+        end
+        inherited TabItem2: TTabItem
+          Size.Width = 61.000000000000000000
+          Size.Height = 25.000000000000000000
+          ExplicitSize.cx = 50.000000000000000000
+          ExplicitSize.cy = 50.000000000000000000
+          inherited frameModule: TframeModule
+            Size.Height = 504.000000000000000000
+            inherited TabControl1: TTabControl
+              Size.Height = 462.000000000000000000
+              Sizes = (
+                258s
+                437s
+                258s
+                437s
+                258s
+                437s)
+              inherited TabItem2: TTabItem
+                Size.Width = 55.000000000000000000
+                Size.Height = 25.000000000000000000
+                ExplicitSize.cx = 50.000000000000000000
+                ExplicitSize.cy = 50.000000000000000000
+              end
+              inherited TabItem1: TTabItem
+                Size.Width = 87.000000000000000000
+                Size.Height = 25.000000000000000000
+                ExplicitSize.cx = 50.000000000000000000
+                ExplicitSize.cy = 50.000000000000000000
+              end
+              inherited TabItem3: TTabItem
+                Size.Width = 49.000000000000000000
+                Size.Height = 25.000000000000000000
+                ExplicitSize.cx = 50.000000000000000000
+                ExplicitSize.cy = 50.000000000000000000
+                inherited rbModuleColor: TG2BtnRadioEdit
+                  Size.Height = 389.000000000000000000
+                end
+                inherited btModuleColorDefault: TG2BtnText
+                  Position.Y = 389.000000000000000000
+                end
+              end
+            end
+          end
+        end
+        inherited TabItem3: TTabItem
+          Size.Width = 56.000000000000000000
+          Size.Height = 25.000000000000000000
+          ExplicitSize.cx = 50.000000000000000000
+          ExplicitSize.cy = 50.000000000000000000
+          inherited frameParam: TframeParam
+            Size.Height = 504.000000000000000000
+            inherited tcParam: TTabControl
+              Size.Height = 462.000000000000000000
+              Sizes = (
+                258s
+                437s
+                258s
+                437s
+                258s
+                437s)
+              inherited TabItem6: TTabItem
+                Size.Width = 61.000000000000000000
+                Size.Height = 25.000000000000000000
+                ExplicitSize.cx = 50.000000000000000000
+                ExplicitSize.cy = 50.000000000000000000
+              end
+              inherited TabItem7: TTabItem
+                Size.Width = 94.000000000000000000
+                Size.Height = 25.000000000000000000
+                ExplicitSize.cx = 50.000000000000000000
+                ExplicitSize.cy = 50.000000000000000000
+              end
+              inherited TabItem1: TTabItem
+                Size.Width = 87.000000000000000000
+                Size.Height = 25.000000000000000000
+                ExplicitSize.cx = 50.000000000000000000
+                ExplicitSize.cy = 50.000000000000000000
+              end
+            end
+          end
+        end
+        inherited TabItem4: TTabItem
+          Size.Width = 52.000000000000000000
+          Size.Height = 25.000000000000000000
+          ExplicitSize.cx = 50.000000000000000000
+          ExplicitSize.cy = 50.000000000000000000
+          inherited framePatch: TframePatch
+            Size.Height = 504.000000000000000000
+            inherited Rectangle3: TRectangle
+              Size.Height = 504.000000000000000000
+            end
+            inherited Layout1: TLayout
+              Size.Height = 504.000000000000000000
+              inherited lbFiles: TListBox
+                Size.Height = 454.000000000000000000
+                Viewport.Width = 191.000000000000000000
+                Viewport.Height = 450.000000000000000000
+              end
+            end
+          end
+        end
+      end
+    end
+    inherited lSlotStrips: TLayout
+      Size.Width = 1116.000000000000000000
+      inherited frameSlotStrip1: TframeSlotStrip
+        Size.Width = 1116.000000000000000000
+        inherited bgRectangle: TRectangle
+          Size.Width = 1116.000000000000000000
+          inherited lbSlot: TLabel
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+          end
+        end
+      end
+      inherited frameSlotStrip2: TframeSlotStrip
+        Size.Width = 1116.000000000000000000
+        inherited bgRectangle: TRectangle
+          Size.Width = 1116.000000000000000000
+          inherited lbSlot: TLabel
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+          end
+        end
+      end
+      inherited frameSlotStrip3: TframeSlotStrip
+        Size.Width = 1116.000000000000000000
+        inherited bgRectangle: TRectangle
+          Size.Width = 1116.000000000000000000
+          inherited lbSlot: TLabel
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+          end
+        end
+      end
+      inherited frameSlotStrip4: TframeSlotStrip
+        Size.Width = 1116.000000000000000000
+        inherited bgRectangle: TRectangle
+          Size.Width = 1116.000000000000000000
+          inherited lbSlot: TLabel
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+          end
+        end
+      end
+    end
+    inherited rSynths: TRectangle
+      Size.Width = 1116.000000000000000000
+    end
+    inherited tcPatch: TTabControl
+      Size.Width = 858.000000000000000000
+      Size.Height = 529.000000000000000000
+      Sizes = (
+        858s
+        529s
+        858s
+        529s
+        858s
+        529s
+        858s
+        529s)
+      inherited tiSlot1A: TTabItem
+        ExplicitSize.cx = 50.000000000000000000
+        ExplicitSize.cy = 50.000000000000000000
+        inherited frameSlot1: TframeSlot
+          Size.Width = 858.000000000000000000
+          Size.Height = 529.000000000000000000
+          inherited Rectangle1: TRectangle
+            Size.Width = 858.000000000000000000
+            Size.Height = 529.000000000000000000
+            inherited Layout1: TLayout
+              Size.Width = 858.000000000000000000
+              Size.Height = 529.000000000000000000
+              inherited lFX: TLayout
+                Position.Y = 309.000000000000000000
+                Size.Width = 858.000000000000000000
+                inherited Image1: TImage
+                  MultiResBitmap.Height = 138
+                  MultiResBitmap.Width = 173
+                end
+                inherited sbFX: TScrollBox
+                  Size.Width = 858.000000000000000000
+                  Viewport.Width = 858.000000000000000000
+                  Viewport.Height = 220.000000000000000000
+                end
+              end
+              inherited lVA: TLayout
+                Size.Width = 858.000000000000000000
+                Size.Height = 301.000000000000000000
+                inherited Image2: TImage
+                  MultiResBitmap.Height = 138
+                  MultiResBitmap.Width = 157
+                end
+                inherited sbVA: TScrollBox
+                  Size.Width = 858.000000000000000000
+                  Size.Height = 301.000000000000000000
+                  Viewport.Width = 858.000000000000000000
+                  Viewport.Height = 301.000000000000000000
+                end
+              end
+              inherited Splitter1: TSplitter
+                Position.Y = 301.000000000000000000
+                Size.Width = 858.000000000000000000
+              end
+            end
+          end
+        end
+      end
+      inherited tiSlot1B: TTabItem
+        ExplicitSize.cx = 50.000000000000000000
+        ExplicitSize.cy = 50.000000000000000000
+        inherited frameSlot2: TframeSlot
+          Size.Width = 858.000000000000000000
+          Size.Height = 529.000000000000000000
+          inherited Rectangle1: TRectangle
+            Size.Width = 858.000000000000000000
+            Size.Height = 529.000000000000000000
+            inherited Layout1: TLayout
+              Size.Width = 858.000000000000000000
+              Size.Height = 529.000000000000000000
+              inherited lFX: TLayout
+                Position.Y = 309.000000000000000000
+                Size.Width = 858.000000000000000000
+                inherited Image1: TImage
+                  MultiResBitmap.Height = 138
+                  MultiResBitmap.Width = 173
+                end
+                inherited sbFX: TScrollBox
+                  Size.Width = 858.000000000000000000
+                  Viewport.Width = 858.000000000000000000
+                  Viewport.Height = 220.000000000000000000
+                end
+              end
+              inherited lVA: TLayout
+                Size.Width = 858.000000000000000000
+                Size.Height = 301.000000000000000000
+                inherited Image2: TImage
+                  MultiResBitmap.Height = 138
+                  MultiResBitmap.Width = 157
+                end
+                inherited sbVA: TScrollBox
+                  Size.Width = 858.000000000000000000
+                  Size.Height = 301.000000000000000000
+                  Viewport.Width = 858.000000000000000000
+                  Viewport.Height = 301.000000000000000000
+                end
+              end
+              inherited Splitter1: TSplitter
+                Position.Y = 301.000000000000000000
+                Size.Width = 858.000000000000000000
+              end
+            end
+          end
+        end
+      end
+      inherited tiSlot1C: TTabItem
+        ExplicitSize.cx = 50.000000000000000000
+        ExplicitSize.cy = 50.000000000000000000
+        inherited frameSlot3: TframeSlot
+          Size.Width = 858.000000000000000000
+          Size.Height = 529.000000000000000000
+          inherited Rectangle1: TRectangle
+            Size.Width = 858.000000000000000000
+            Size.Height = 529.000000000000000000
+            inherited Layout1: TLayout
+              Size.Width = 858.000000000000000000
+              Size.Height = 529.000000000000000000
+              inherited lFX: TLayout
+                Position.Y = 309.000000000000000000
+                Size.Width = 858.000000000000000000
+                inherited Image1: TImage
+                  MultiResBitmap.Height = 138
+                  MultiResBitmap.Width = 173
+                end
+                inherited sbFX: TScrollBox
+                  Size.Width = 858.000000000000000000
+                  Viewport.Width = 858.000000000000000000
+                  Viewport.Height = 220.000000000000000000
+                end
+              end
+              inherited lVA: TLayout
+                Size.Width = 858.000000000000000000
+                Size.Height = 301.000000000000000000
+                inherited Image2: TImage
+                  MultiResBitmap.Height = 138
+                  MultiResBitmap.Width = 157
+                end
+                inherited sbVA: TScrollBox
+                  Size.Width = 858.000000000000000000
+                  Size.Height = 301.000000000000000000
+                  Viewport.Width = 858.000000000000000000
+                  Viewport.Height = 301.000000000000000000
+                end
+              end
+              inherited Splitter1: TSplitter
+                Position.Y = 301.000000000000000000
+                Size.Width = 858.000000000000000000
+              end
+            end
+          end
+        end
+      end
+      inherited tiSlot1D: TTabItem
+        ExplicitSize.cx = 50.000000000000000000
+        ExplicitSize.cy = 50.000000000000000000
+        inherited frameSlot4: TframeSlot
+          Size.Width = 858.000000000000000000
+          Size.Height = 529.000000000000000000
+          inherited Rectangle1: TRectangle
+            Size.Width = 858.000000000000000000
+            Size.Height = 529.000000000000000000
+            inherited Layout1: TLayout
+              Size.Width = 858.000000000000000000
+              Size.Height = 529.000000000000000000
+              inherited lFX: TLayout
+                Position.Y = 309.000000000000000000
+                Size.Width = 858.000000000000000000
+                inherited Image1: TImage
+                  MultiResBitmap.Height = 138
+                  MultiResBitmap.Width = 173
+                end
+                inherited sbFX: TScrollBox
+                  Size.Width = 858.000000000000000000
+                  Viewport.Width = 858.000000000000000000
+                  Viewport.Height = 220.000000000000000000
+                end
+              end
+              inherited lVA: TLayout
+                Size.Width = 858.000000000000000000
+                Size.Height = 301.000000000000000000
+                inherited Image2: TImage
+                  MultiResBitmap.Height = 138
+                  MultiResBitmap.Width = 157
+                end
+                inherited sbVA: TScrollBox
+                  Size.Width = 858.000000000000000000
+                  Size.Height = 301.000000000000000000
+                  Viewport.Width = 858.000000000000000000
+                  Viewport.Height = 301.000000000000000000
+                end
+              end
+              inherited Splitter1: TSplitter
+                Position.Y = 301.000000000000000000
+                Size.Width = 858.000000000000000000
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  object ControlStyles: TG2StateStyleList
+    DefaultFont.Family = 'Roboto'
+    DefaultFont.Size = 10.000000000000000000
+    DefaultFontColor = xFF202020
+    FocusedFont.Family = 'Roboto'
+    FocusedFont.Size = 10.000000000000000000
+    FocusedFontColor = xFF202020
+    SelectedFont.Family = 'Roboto'
+    SelectedFont.Size = 10.000000000000000000
+    SelectedFont.StyleExt = {00070000000000000004000000}
+    SelectedFontColor = xFF202020
+    FocusedSelectedFont.Family = 'Roboto'
+    FocusedSelectedFont.Size = 10.000000000000000000
+    FocusedSelectedFontColor = xFF202020
+    DisabledFont.Family = 'Roboto'
+    DisabledFont.Size = 10.000000000000000000
+    DisabledFontColor = claWhite
+    Left = 384
+    Top = 368
+  end
+end

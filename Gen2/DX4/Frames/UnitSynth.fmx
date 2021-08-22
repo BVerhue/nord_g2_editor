@@ -1,0 +1,848 @@
+object frameSynth: TframeSynth
+  Height = 700.000000000000000000
+  Width = 977.000000000000000000
+  TabOrder = 0
+  object lSlotStrips: TLayout
+    Align = Top
+    Height = 136.000000000000000000
+    Width = 977.000000000000000000
+    inline frameSlotStrip1: TframeSlotStrip
+      Align = Top
+      Height = 34.000000000000000000
+      Width = 977.000000000000000000
+      inherited bgRectangle: TRectangle
+        Width = 977.000000000000000000
+      end
+    end
+    inline frameSlotStrip2: TframeSlotStrip
+      Align = Top
+      Height = 34.000000000000000000
+      Position.Y = 34.000000000000000000
+      Width = 977.000000000000000000
+      inherited bgRectangle: TRectangle
+        Width = 977.000000000000000000
+      end
+    end
+    inline frameSlotStrip3: TframeSlotStrip
+      Align = Top
+      Height = 34.000000000000000000
+      Position.Y = 68.000000000000000000
+      Width = 977.000000000000000000
+      inherited bgRectangle: TRectangle
+        Width = 977.000000000000000000
+      end
+    end
+    inline frameSlotStrip4: TframeSlotStrip
+      Align = Top
+      Height = 34.000000000000000000
+      Position.Y = 102.000000000000000000
+      Width = 977.000000000000000000
+      inherited bgRectangle: TRectangle
+        Width = 977.000000000000000000
+      end
+    end
+  end
+  object Layout1: TLayout
+    Align = Bottom
+    Height = 42.000000000000000000
+    Position.Y = 658.000000000000000000
+    Width = 977.000000000000000000
+    object rbZoom: TG2BtnRadio
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 113.000000000000000000
+      Height = 28.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 8.000000000000000000
+      ButtonText.Strings = (
+        'z1'
+        'z2'
+        'z3')
+      ImageCount = 0
+      CanFocus = True
+      OnChangeValue = rbZoomChangeValue
+      Value = 0
+      ButtonCount = 3
+      Orientation = otHorizontal
+      UpsideDown = False
+    end
+    object rbLocation: TG2BtnRadio
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 109.000000000000000000
+      Height = 28.000000000000000000
+      Position.X = 216.000000000000000000
+      Position.Y = 8.000000000000000000
+      ButtonText.Strings = (
+        'FX'
+        'VA'
+        '')
+      ImageCount = 0
+      CanFocus = True
+      OnChangeValue = rbLocationChangeValue
+      Value = 0
+      ButtonCount = 2
+      Orientation = otHorizontal
+      UpsideDown = False
+    end
+    object btSplitter: TG2BtnText
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Width = 57.000000000000000000
+      Height = 28.000000000000000000
+      Position.X = 144.000000000000000000
+      Position.Y = 8.000000000000000000
+      ButtonText.Strings = (
+        'Splitter'
+        'Splitter')
+      ImageCount = 0
+      CanFocus = True
+      OnChangeValue = btSplitterChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkToggle
+    end
+    object btInfo: TG2BtnText
+      StateStyleList.DefaultFont.Family = 'Roboto'
+      StateStyleList.DefaultFont.Size = 7.000000000000000000
+      StateStyleList.DefaultFontColor = xFF202020
+      StateStyleList.FocusedFont.Family = 'Roboto'
+      StateStyleList.FocusedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedFontColor = xFF202020
+      StateStyleList.SelectedFont.Family = 'Roboto'
+      StateStyleList.SelectedFont.Size = 7.000000000000000000
+      StateStyleList.SelectedFontColor = xFF202020
+      StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+      StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+      StateStyleList.FocusedSelectedFontColor = xFF202020
+      StateStyleList.DisabledFont.Family = 'Roboto'
+      StateStyleList.DisabledFont.Size = 7.000000000000000000
+      StateStyleList.DisabledFontColor = claWhite
+      Anchors = [akTop, akRight]
+      Width = 16.000000000000000000
+      Height = 28.000000000000000000
+      Position.X = 944.000000000000000000
+      Position.Y = 8.000000000000000000
+      ButtonText.Strings = (
+        'i'
+        'i'
+        '')
+      ImageCount = 0
+      CanFocus = True
+      OnChangeValue = btInfoChangeValue
+      ButtonType = bttPush
+      ButtonKind = bkMomentary
+    end
+    object ArrayLayout1: TArrayLayout
+      Height = 28.000000000000000000
+      Position.X = 392.000000000000000000
+      Position.Y = 8.000000000000000000
+      Width = 217.000000000000000000
+      Rows = 1
+      Columns = 7
+      object btCablesRed: TG2BtnText
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = claRed
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = claRed
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = claRed
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ImageIDS.Strings = (
+          '39'
+          '39')
+        Width = 31.000000000000000000
+        Height = 28.000000000000000000
+        ButtonText.Strings = (
+          'Red'
+          'Red')
+        ImageCount = 0
+        CanFocus = True
+        OnChangeValue = btCablesRedChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkToggle
+      end
+      object btCablesBlue: TG2BtnText
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = claBlue
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = claBlue
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = claBlue
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ImageIDS.Strings = (
+          '39'
+          '39')
+        Width = 31.000000000000000000
+        Height = 28.000000000000000000
+        Position.X = 31.000000000000000000
+        ButtonText.Strings = (
+          'Blue'
+          'Blue')
+        ImageCount = 0
+        CanFocus = True
+        OnChangeValue = btCablesBlueChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkToggle
+      end
+      object btCablesYellow: TG2BtnText
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = claYellow
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = claYellow
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = claYellow
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ImageIDS.Strings = (
+          '39'
+          '39'
+          '')
+        Width = 31.000000000000000000
+        Height = 28.000000000000000000
+        Position.X = 62.000000000000000000
+        ButtonText.Strings = (
+          'Yellow'
+          'Yellow')
+        ImageCount = 0
+        CanFocus = True
+        OnChangeValue = btCablesYellowChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkToggle
+      end
+      object btCablesOrange: TG2BtnText
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = claOrange
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = claOrange
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = claOrange
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ImageIDS.Strings = (
+          '39'
+          '39')
+        Width = 31.000000000000000000
+        Height = 28.000000000000000000
+        Position.X = 93.000000000000000000
+        ButtonText.Strings = (
+          'Orange'
+          'Orange')
+        ImageCount = 0
+        CanFocus = True
+        OnChangeValue = btCablesOrangeChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkToggle
+      end
+      object btCablesGreen: TG2BtnText
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = claGreen
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = claGreen
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = claGreen
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ImageIDS.Strings = (
+          '39'
+          '39')
+        Width = 31.000000000000000000
+        Height = 28.000000000000000000
+        Position.X = 124.000000000000000000
+        ButtonText.Strings = (
+          'Green'
+          'Green')
+        ImageCount = 0
+        CanFocus = True
+        OnChangeValue = btCablesGreenChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkToggle
+      end
+      object btCablesPurple: TG2BtnText
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = claPurple
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = claPurple
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = claPurple
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ImageIDS.Strings = (
+          '39'
+          '39')
+        Width = 31.000000000000000000
+        Height = 28.000000000000000000
+        Position.X = 155.000000000000000000
+        ButtonText.Strings = (
+          'Purple'
+          'Purple')
+        ImageCount = 0
+        CanFocus = True
+        OnChangeValue = btCablesPurpleChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkToggle
+      end
+      object btCablesWhite: TG2BtnText
+        StateStyleList.DefaultFont.Family = 'Roboto'
+        StateStyleList.DefaultFont.Size = 7.000000000000000000
+        StateStyleList.DefaultFontColor = claWhite
+        StateStyleList.FocusedFont.Family = 'Roboto'
+        StateStyleList.FocusedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedFontColor = claWhite
+        StateStyleList.SelectedFont.Family = 'Roboto'
+        StateStyleList.SelectedFont.Size = 7.000000000000000000
+        StateStyleList.SelectedFontColor = claWhite
+        StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+        StateStyleList.FocusedSelectedFont.Size = 7.000000000000000000
+        StateStyleList.FocusedSelectedFontColor = xFF202020
+        StateStyleList.DisabledFont.Family = 'Roboto'
+        StateStyleList.DisabledFont.Size = 7.000000000000000000
+        StateStyleList.DisabledFontColor = claWhite
+        ImageIDS.Strings = (
+          '39'
+          '39')
+        Width = 31.000000000000000000
+        Height = 28.000000000000000000
+        Position.X = 186.000000000000000000
+        ButtonText.Strings = (
+          'White'
+          'White')
+        ImageCount = 0
+        CanFocus = True
+        OnChangeValue = btCablesWhiteChangeValue
+        ButtonType = bttPush
+        ButtonKind = bkToggle
+      end
+    end
+  end
+  object Layout2: TLayout
+    Align = Client
+    Height = 522.000000000000000000
+    Width = 977.000000000000000000
+    object tcFrame: TTabControl
+      Align = Client
+      Height = 522.000000000000000000
+      TabIndex = 0
+      TabOrder = 0
+      Width = 717.000000000000000000
+      OnChange = tcFrameChange
+      object tiSlotA: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Family = 'Roboto'
+        StyledSettings = [Style, FontColor]
+        Height = 5.000000000000000000
+        IsSelected = True
+        TabOrder = 0
+        Text = 'Slot A'
+        Width = 0.000000000000000000
+        object Panel1: TPanel
+          Align = Client
+          Height = 517.000000000000000000
+          Width = 717.000000000000000000
+          TabOrder = 0
+          inline frameSlot1: TframeSlot
+            Align = Client
+            Locked = True
+            Height = 517.000000000000000000
+            Width = 717.000000000000000000
+            inherited Layout3: TLayout
+              Height = 517.000000000000000000
+              Width = 717.000000000000000000
+              inherited Layout1: TLayout
+                Height = 517.000000000000000000
+                Width = 717.000000000000000000
+                inherited sbVA: TScrollBox
+                  Height = 297.000000000000000000
+                  Width = 717.000000000000000000
+                end
+                inherited Splitter1: TSplitter
+                  Position.Y = 297.000000000000000000
+                  Width = 717.000000000000000000
+                end
+                inherited sbFX: TScrollBox
+                  Position.Y = 307.000000000000000000
+                  Width = 717.000000000000000000
+                end
+              end
+            end
+          end
+        end
+      end
+      object tiSlotB: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Family = 'Roboto'
+        StyledSettings = [Style, FontColor]
+        Height = 5.000000000000000000
+        IsSelected = False
+        TabOrder = 0
+        Text = 'Slot B'
+        Width = 0.000000000000000000
+        object Panel2: TPanel
+          Align = Client
+          Height = 517.000000000000000000
+          Width = 717.000000000000000000
+          TabOrder = 0
+          inline frameSlot2: TframeSlot
+            Align = Client
+            Locked = True
+            Height = 517.000000000000000000
+            Width = 717.000000000000000000
+            inherited Layout3: TLayout
+              Height = 517.000000000000000000
+              Width = 717.000000000000000000
+              inherited Layout1: TLayout
+                Height = 517.000000000000000000
+                Width = 717.000000000000000000
+                inherited sbVA: TScrollBox
+                  Height = 297.000000000000000000
+                  Width = 717.000000000000000000
+                end
+                inherited Splitter1: TSplitter
+                  Position.Y = 297.000000000000000000
+                  Width = 717.000000000000000000
+                end
+                inherited sbFX: TScrollBox
+                  Position.Y = 307.000000000000000000
+                  Width = 717.000000000000000000
+                end
+              end
+            end
+          end
+        end
+      end
+      object tiSlotC: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Family = 'Roboto'
+        StyledSettings = [Style, FontColor]
+        Height = 5.000000000000000000
+        IsSelected = False
+        TabOrder = 0
+        Text = 'Slot C'
+        Width = 0.000000000000000000
+        object Panel3: TPanel
+          Align = Client
+          Height = 517.000000000000000000
+          Width = 717.000000000000000000
+          TabOrder = 0
+          inline frameSlot3: TframeSlot
+            Align = Client
+            Locked = True
+            Height = 517.000000000000000000
+            Width = 717.000000000000000000
+            inherited Layout3: TLayout
+              Height = 517.000000000000000000
+              Width = 717.000000000000000000
+              inherited Layout1: TLayout
+                Height = 517.000000000000000000
+                Width = 717.000000000000000000
+                inherited sbVA: TScrollBox
+                  Height = 297.000000000000000000
+                  Width = 717.000000000000000000
+                end
+                inherited Splitter1: TSplitter
+                  Position.Y = 297.000000000000000000
+                  Width = 717.000000000000000000
+                end
+                inherited sbFX: TScrollBox
+                  Position.Y = 307.000000000000000000
+                  Width = 717.000000000000000000
+                end
+              end
+            end
+          end
+        end
+      end
+      object tiSlotD: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Family = 'Roboto'
+        StyledSettings = [Style, FontColor]
+        Height = 5.000000000000000000
+        IsSelected = False
+        TabOrder = 0
+        Text = 'Slot D'
+        Width = 0.000000000000000000
+        object Panel4: TPanel
+          Align = Client
+          Height = 517.000000000000000000
+          Width = 717.000000000000000000
+          TabOrder = 0
+          inline frameSlot4: TframeSlot
+            Align = Client
+            Locked = True
+            Height = 517.000000000000000000
+            Width = 717.000000000000000000
+            inherited Layout3: TLayout
+              Height = 517.000000000000000000
+              Width = 717.000000000000000000
+              inherited Layout1: TLayout
+                Height = 517.000000000000000000
+                Width = 717.000000000000000000
+                inherited sbVA: TScrollBox
+                  Height = 297.000000000000000000
+                  Width = 717.000000000000000000
+                end
+                inherited Splitter1: TSplitter
+                  Position.Y = 297.000000000000000000
+                  Width = 717.000000000000000000
+                end
+                inherited sbFX: TScrollBox
+                  Position.Y = 307.000000000000000000
+                  Width = 717.000000000000000000
+                end
+              end
+            end
+          end
+        end
+      end
+      object tiBanks: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Family = 'Roboto'
+        StyledSettings = [Style, FontColor]
+        Height = 5.000000000000000000
+        IsSelected = False
+        TabOrder = 0
+        Text = 'Banks'
+        Width = 0.000000000000000000
+        inline frameBanks1: TframeBanks
+          Align = Client
+          Height = 517.000000000000000000
+          Width = 717.000000000000000000
+          TabOrder = 0
+          inherited Layout1: TLayout
+            Height = 517.000000000000000000
+            Width = 717.000000000000000000
+            inherited Rectangle2: TRectangle
+              Width = 717.000000000000000000
+            end
+            inherited rbeSlot: TG2BtnRadioEdit
+              Width = 717.000000000000000000
+              Height = 416.000000000000000000
+            end
+            inherited Rectangle1: TRectangle
+              Position.Y = 474.000000000000000000
+              Width = 717.000000000000000000
+            end
+            inherited Layout3: TLayout
+              Width = 717.000000000000000000
+              inherited rbeBank: TG2BtnRadioEdit
+                Width = 668.000000000000000000
+              end
+            end
+          end
+        end
+      end
+      object tiPatchSettings: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Family = 'Roboto'
+        StyledSettings = [Style, FontColor]
+        Height = 5.000000000000000000
+        IsSelected = False
+        TabOrder = 0
+        Text = 'Patch set.'
+        Width = 0.000000000000000000
+        inline framePatchSettings: TframePatchSettings
+          Align = Center
+          Height = 361.546752929687500000
+          Width = 717.000000000000000000
+          TabOrder = 0
+        end
+        object G2Keyboard: TG2Keyboard
+          StateStyleList.DefaultFont.Family = 'Roboto'
+          StateStyleList.DefaultFont.Size = 10.000000000000000000
+          StateStyleList.DefaultFontColor = xFF202020
+          StateStyleList.FocusedFont.Family = 'Roboto'
+          StateStyleList.FocusedFont.Size = 10.000000000000000000
+          StateStyleList.FocusedFontColor = xFF202020
+          StateStyleList.SelectedFont.Family = 'Roboto'
+          StateStyleList.SelectedFont.Size = 10.000000000000000000
+          StateStyleList.SelectedFontColor = xFF202020
+          StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+          StateStyleList.FocusedSelectedFont.Size = 10.000000000000000000
+          StateStyleList.FocusedSelectedFontColor = xFF202020
+          StateStyleList.DisabledFont.Family = 'Roboto'
+          StateStyleList.DisabledFont.Size = 10.000000000000000000
+          StateStyleList.DisabledFontColor = claWhite
+          LowKey = 0
+          HighKey = 88
+          SelectedLowKey = 0
+          SelectedHighKey = 0
+          Orientation = kbHorizontal
+          OctaveButtons = True
+          RangeSelect = True
+          State = csDefault
+          Align = Top
+          Width = 717.000000000000000000
+          Height = 65.000000000000000000
+          CanFocus = True
+          TabOrder = 1
+          OnKeyboardKeyUp = G2KeyboardKeyboardKeyUp
+        end
+      end
+      object TabItem5: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Family = 'Roboto'
+        StyledSettings = [Style, FontColor]
+        Height = 5.000000000000000000
+        IsSelected = False
+        TabOrder = 0
+        Text = 'Knobs'
+        Width = 0.000000000000000000
+        inline frameKnobs: TframeKnobs
+          Align = Center
+          Height = 436.000000000000000000
+          Width = 717.000000000000000000
+          TabOrder = 0
+          inherited Panel1: TPanel
+            Position.Y = 394.000000000000000000
+            Width = 717.000000000000000000
+            inherited rbSource: TG2BtnRadio
+              Anchors = [akTop]
+            end
+          end
+          inherited Panel2: TPanel
+            Height = 394.000000000000000000
+            inherited rbPage: TG2BtnRadio
+              Height = 311.546752929687500000
+            end
+          end
+        end
+      end
+      object tiSynthSettings: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Family = 'Roboto'
+        StyledSettings = [Style, FontColor]
+        Height = 5.000000000000000000
+        IsSelected = False
+        TabOrder = 0
+        Text = 'Synth set.'
+        Width = 0.000000000000000000
+        inline frameSynthSettings: TframeSynthSettings
+          Align = Center
+          Height = 395.996154785156300000
+          Width = 717.000000000000000000
+          TabOrder = 0
+        end
+      end
+      object tiAppSettings: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Family = 'Roboto'
+        StyledSettings = [Style, FontColor]
+        Height = 5.000000000000000000
+        IsSelected = False
+        TabOrder = 0
+        Text = 'App settings'
+        Width = 0.000000000000000000
+      end
+      object tcLog: TTabItem
+        CustomIcon = <
+          item
+          end>
+        Height = 5.000000000000000000
+        IsSelected = False
+        TabOrder = 0
+        Text = 'Log'
+        Width = 0.000000000000000000
+        inline frameLog: TframeLog
+          Align = Client
+          Height = 517.000000000000000000
+          Width = 717.000000000000000000
+          TabOrder = 0
+          inherited Panel1: TPanel
+            Width = 717.000000000000000000
+          end
+          inherited mLog: TMemo
+            Height = 484.000000000000000000
+            Width = 717.000000000000000000
+          end
+        end
+      end
+    end
+    object tcPatchFunctions: TTabControl
+      Align = Right
+      Height = 522.000000000000000000
+      Position.X = 717.000000000000000000
+      TabIndex = 3
+      TabOrder = 1
+      Width = 260.000000000000000000
+      OnChange = tcPatchFunctionsChange
+      object TabItem1: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Family = 'Roboto'
+        StyledSettings = [Style, FontColor]
+        Height = 5.000000000000000000
+        IsSelected = False
+        TabOrder = 0
+        Text = 'Add module'
+        Width = 0.000000000000000000
+      end
+      object TabItem2: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Family = 'Roboto'
+        StyledSettings = [Style, FontColor]
+        Height = 5.000000000000000000
+        IsSelected = False
+        TabOrder = 0
+        Text = 'Module'
+        Width = 0.000000000000000000
+        inline frameModule: TframeModule
+          Align = Client
+          Height = 517.000000000000000000
+          Width = 260.000000000000000000
+          TabOrder = 0
+          inherited TabControl1: TTabControl
+            Height = 475.000000000000000000
+            inherited TabItem3: TTabItem
+              inherited rbModuleColor: TG2BtnRadioEdit
+                Height = 422.000000000000000000
+              end
+              inherited btModuleColorDefault: TG2BtnText
+                Position.Y = 422.000000000000000000
+              end
+            end
+          end
+        end
+      end
+      object TabItem3: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Family = 'Roboto'
+        StyledSettings = [Style, FontColor]
+        Height = 5.000000000000000000
+        IsSelected = False
+        TabOrder = 0
+        Text = 'Param'
+        Width = 0.000000000000000000
+        inline frameParam: TframeParam
+          Align = Client
+          Height = 517.000000000000000000
+          Width = 260.000000000000000000
+          TabOrder = 0
+          inherited tcParam: TTabControl
+            Height = 475.000000000000000000
+          end
+        end
+      end
+      object TabItem4: TTabItem
+        CustomIcon = <
+          item
+          end>
+        TextSettings.Font.Family = 'Roboto'
+        StyledSettings = [Style, FontColor]
+        Height = 5.000000000000000000
+        IsSelected = True
+        TabOrder = 0
+        Text = 'Patch'
+        Width = 0.000000000000000000
+      end
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 296
+    Top = 367
+  end
+end

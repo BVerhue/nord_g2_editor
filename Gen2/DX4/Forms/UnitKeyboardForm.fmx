@@ -1,0 +1,47 @@
+object frmKeyboard: TfrmKeyboard
+  Left = 0
+  Top = 0
+  Caption = 'Keyboard'
+  ClientHeight = 94
+  ClientWidth = 894
+  FormStyle = fsStayOnTop
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop, dkiPhone, dkiPad]
+  DesignerMobile = False
+  DesignerWidth = 0
+  DesignerHeight = 0
+  DesignerDeviceName = ''
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  object G2Keyboard: TG2Keyboard
+    StateStyleList.DefaultFont.Family = 'Roboto'
+    StateStyleList.DefaultFont.Size = 10.000000000000000000
+    StateStyleList.DefaultFontColor = xFF202020
+    StateStyleList.FocusedFont.Family = 'Roboto'
+    StateStyleList.FocusedFont.Size = 10.000000000000000000
+    StateStyleList.FocusedFontColor = xFF202020
+    StateStyleList.SelectedFont.Family = 'Roboto'
+    StateStyleList.SelectedFont.Size = 10.000000000000000000
+    StateStyleList.SelectedFontColor = xFF202020
+    StateStyleList.FocusedSelectedFont.Family = 'Roboto'
+    StateStyleList.FocusedSelectedFont.Size = 10.000000000000000000
+    StateStyleList.FocusedSelectedFontColor = xFF202020
+    StateStyleList.DisabledFont.Family = 'Roboto'
+    StateStyleList.DisabledFont.Size = 10.000000000000000000
+    StateStyleList.DisabledFontColor = claWhite
+    LowKey = 0
+    HighKey = 60
+    SelectedLowKey = 0
+    SelectedHighKey = 0
+    Orientation = kbHorizontal
+    OctaveButtons = False
+    RangeSelect = False
+    State = csDefault
+    Align = alClient
+    Width = 894.000000000000000000
+    Height = 94.000000000000000000
+    CanFocus = True
+    TabOrder = 0
+  end
+end
