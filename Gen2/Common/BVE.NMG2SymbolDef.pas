@@ -13,7 +13,10 @@ unit BVE.NMG2SymbolDef;
 
 interface
 
-uses xmldom, XMLDoc, XMLIntf;
+uses
+  XML.xmldom,
+  XML.XMLDoc,
+  XML.XMLIntf;
 
 type
 

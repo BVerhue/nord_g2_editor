@@ -151,8 +151,8 @@ type
     [Weak] FStateStyleList : TG2StateStyleList;
 
     FZoom : single;
-    FlZoomVA : TBufferedLayout;
-    FlZoomFX : TBufferedLayout;
+    FlZoomVA : TG2BufferedLayout;
+    FlZoomFX : TG2BufferedLayout;
 
     [Weak] FPatch : TG2GraphPatchFMX;
     FCopyLocation : TLocationType;
@@ -299,7 +299,7 @@ constructor TframeSlot.Create(AOwner: TComponent);
 begin
   inherited;
 
-  FlZoomVA := TBufferedLayout.Create(self);
+  FlZoomVA := TG2BufferedLayout.Create(self);
   FlZoomVA.Parent := lSizeVA;
 
   FlZoomVA.Buffered := False;
@@ -320,7 +320,7 @@ begin
   sbVA.AniCalculations.BoundsAnimation := True;
   sbVA.AniCalculations.TouchTracking := [ttVertical, ttHorizontal];
 
-  FlZoomFX := TBufferedLayout.Create(self);
+  FlZoomFX := TG2BufferedLayout.Create(self);
   FlZoomFX.Parent := lSizeFX;
 
   FlZoomFX.Buffered := False;
@@ -2072,14 +2072,14 @@ procedure TModuleCursor.ScrollInView;
 var NewViewportPosition : TPointF;
     R : TRectF;
     sb : TScrollbox;
-    bl : TBufferedLayout;
+    bl : TG2BufferedLayout;
     Zoom : single;
     FMXObject : TFMXObject;
 begin
   FMXObject := Parent;
   while assigned(FMXObject) and not(FMXObject is TScrollbox) do begin
-    if FMXObject is TBufferedLayout then
-      bl := FMXObject as TBufferedLayout;
+    if FMXObject is TG2BufferedLayout then
+      bl := FMXObject as TG2BufferedLayout;
 
     FMXObject := FMXObject.Parent;
   end;

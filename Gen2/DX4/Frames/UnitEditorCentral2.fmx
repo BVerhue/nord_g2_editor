@@ -20,13 +20,13 @@ object frameEditorCentralStrip: TframeEditorCentralStrip
       OnChange = tcPatchFunctionsChange
       Sizes = (
         258s
-        482s
+        502s
         258s
-        482s
+        502s
         258s
-        482s
+        502s
         258s
-        482s)
+        502s)
       object TabItem1: TTabItem
         CustomIcon = <
           item
@@ -34,8 +34,8 @@ object frameEditorCentralStrip: TframeEditorCentralStrip
         TextSettings.Font.Family = 'Roboto'
         StyledSettings = []
         IsSelected = True
-        Size.Width = 85.000000000000000000
-        Size.Height = 25.000000000000000000
+        Size.Width = 0.000000000000000000
+        Size.Height = 5.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
         TabOrder = 0
@@ -45,18 +45,18 @@ object frameEditorCentralStrip: TframeEditorCentralStrip
         inline FrameAddModule: TFrameAddModule
           Align = Client
           Size.Width = 258.000000000000000000
-          Size.Height = 482.000000000000000000
+          Size.Height = 502.000000000000000000
           Size.PlatformDefault = False
           inherited rbeModulePages: TG2BtnRadioEdit
             Position.X = 215.000000000000000000
             Size.Width = 43.000000000000000000
-            Size.Height = 482.000000000000000000
+            Size.Height = 502.000000000000000000
           end
           inherited Layout1: TLayout
             Size.Width = 215.000000000000000000
-            Size.Height = 482.000000000000000000
+            Size.Height = 502.000000000000000000
             inherited ArrayLayout1: TArrayLayout
-              Position.Y = 450.000000000000000000
+              Position.Y = 470.000000000000000000
               Size.Width = 215.000000000000000000
               inherited btInsertModule: TG2BtnText
                 Size.Width = 215.000000000000000000
@@ -64,9 +64,9 @@ object frameEditorCentralStrip: TframeEditorCentralStrip
             end
             inherited sbAddModule: TVertScrollBox
               Size.Width = 215.000000000000000000
-              Size.Height = 450.000000000000000000
+              Size.Height = 470.000000000000000000
               Viewport.Width = 215.000000000000000000
-              Viewport.Height = 450.000000000000000000
+              Viewport.Height = 470.000000000000000000
             end
           end
         end
@@ -78,8 +78,8 @@ object frameEditorCentralStrip: TframeEditorCentralStrip
         TextSettings.Font.Family = 'Roboto'
         StyledSettings = []
         IsSelected = False
-        Size.Width = 61.000000000000000000
-        Size.Height = 25.000000000000000000
+        Size.Width = 0.000000000000000000
+        Size.Height = 5.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
         TabOrder = 0
@@ -89,26 +89,30 @@ object frameEditorCentralStrip: TframeEditorCentralStrip
         inline frameModule: TframeModule
           Align = Client
           Size.Width = 258.000000000000000000
-          Size.Height = 482.000000000000000000
+          Size.Height = 502.000000000000000000
           Size.PlatformDefault = False
           inherited Layout1: TLayout
             Size.Width = 258.000000000000000000
           end
           inherited TabControl1: TTabControl
             Size.Width = 258.000000000000000000
-            Size.Height = 440.000000000000000000
+            Size.Height = 460.000000000000000000
             Sizes = (
               258s
-              415s
+              435s
               258s
-              415s
+              435s
               258s
-              415s)
+              435s)
             inherited TabItem2: TTabItem
+              Size.Width = 55.000000000000000000
+              Size.Height = 25.000000000000000000
               ExplicitSize.cx = 50.000000000000000000
               ExplicitSize.cy = 50.000000000000000000
             end
             inherited TabItem1: TTabItem
+              Size.Width = 87.000000000000000000
+              Size.Height = 25.000000000000000000
               ExplicitSize.cx = 50.000000000000000000
               ExplicitSize.cy = 50.000000000000000000
               inherited Panel1: TPanel
@@ -159,14 +163,16 @@ object frameEditorCentralStrip: TframeEditorCentralStrip
               end
             end
             inherited TabItem3: TTabItem
+              Size.Width = 49.000000000000000000
+              Size.Height = 25.000000000000000000
               ExplicitSize.cx = 50.000000000000000000
               ExplicitSize.cy = 50.000000000000000000
               inherited rbModuleColor: TG2BtnRadioEdit
                 Size.Width = 258.000000000000000000
-                Size.Height = 367.000000000000000000
+                Size.Height = 387.000000000000000000
               end
               inherited btModuleColorDefault: TG2BtnText
-                Position.Y = 367.000000000000000000
+                Position.Y = 387.000000000000000000
                 Size.Width = 258.000000000000000000
               end
             end
@@ -180,8 +186,8 @@ object frameEditorCentralStrip: TframeEditorCentralStrip
         TextSettings.Font.Family = 'Roboto'
         StyledSettings = []
         IsSelected = False
-        Size.Width = 56.000000000000000000
-        Size.Height = 25.000000000000000000
+        Size.Width = 0.000000000000000000
+        Size.Height = 5.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
         TabOrder = 0
@@ -202,14 +208,20 @@ object frameEditorCentralStrip: TframeEditorCentralStrip
               260s
               383s)
             inherited TabItem6: TTabItem
+              Size.Width = 61.000000000000000000
+              Size.Height = 25.000000000000000000
               ExplicitSize.cx = 50.000000000000000000
               ExplicitSize.cy = 50.000000000000000000
             end
             inherited TabItem7: TTabItem
+              Size.Width = 94.000000000000000000
+              Size.Height = 25.000000000000000000
               ExplicitSize.cx = 50.000000000000000000
               ExplicitSize.cy = 50.000000000000000000
             end
             inherited TabItem1: TTabItem
+              Size.Width = 87.000000000000000000
+              Size.Height = 25.000000000000000000
               ExplicitSize.cx = 50.000000000000000000
               ExplicitSize.cy = 50.000000000000000000
             end
@@ -223,8 +235,8 @@ object frameEditorCentralStrip: TframeEditorCentralStrip
         TextSettings.Font.Family = 'Roboto'
         StyledSettings = []
         IsSelected = False
-        Size.Width = 52.000000000000000000
-        Size.Height = 25.000000000000000000
+        Size.Width = 0.000000000000000000
+        Size.Height = 5.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
         TabOrder = 0
@@ -234,23 +246,23 @@ object frameEditorCentralStrip: TframeEditorCentralStrip
         inline framePatch: TframePatch
           Align = Client
           Size.Width = 258.000000000000000000
-          Size.Height = 482.000000000000000000
+          Size.Height = 502.000000000000000000
           Size.PlatformDefault = False
           inherited Rectangle3: TRectangle
             Position.X = 195.000000000000000000
-            Size.Height = 482.000000000000000000
+            Size.Height = 502.000000000000000000
           end
           inherited Layout1: TLayout
             Size.Width = 195.000000000000000000
-            Size.Height = 482.000000000000000000
+            Size.Height = 502.000000000000000000
             inherited lDirs: TLayout
               Size.Width = 195.000000000000000000
             end
             inherited lbFiles: TListBox
               Size.Width = 195.000000000000000000
-              Size.Height = 432.000000000000000000
+              Size.Height = 452.000000000000000000
               Viewport.Width = 195.000000000000000000
-              Viewport.Height = 432.000000000000000000
+              Viewport.Height = 452.000000000000000000
             end
           end
         end

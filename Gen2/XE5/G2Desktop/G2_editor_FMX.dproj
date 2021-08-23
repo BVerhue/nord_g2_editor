@@ -63,6 +63,7 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_UnitSearchPath>..\..\Common;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <SanitizedProjectName>G2_editor_FMX</SanitizedProjectName>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
@@ -103,8 +104,9 @@
         <DCC_UnitSearchPath>..\..\Common;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <Icns_MainIcns>..\..\Img\G2_editor_FMX_Icns.icns</Icns_MainIcns>
         <DCC_Optimize>true</DCC_Optimize>
-        <Icon_MainIcon>G2_editor_FMX_Icon1.ico</Icon_MainIcon>
+        <Icon_MainIcon>..\..\Img\G2_editor_FMX_Icon.ico</Icon_MainIcon>
         <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
         <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
         <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
@@ -119,16 +121,18 @@
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_OSX32)'!=''">
+        <Icon_MainIcon>..\..\Img\G2_editor_FMX_Icon.ico</Icon_MainIcon>
         <VerInfo_MinorVer>4</VerInfo_MinorVer>
         <VerInfo_MajorVer>0</VerInfo_MajorVer>
         <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleVersion=0.4.0;CFBundlePackageType=APPL;CFBundleSignature=????;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);NSHighResolutionCapable=true</VerInfo_Keys>
         <Debugger_Launcher>/usr/X11/bin/xterm -e &quot;%debuggee%&quot;</Debugger_Launcher>
         <Manifest_File>None</Manifest_File>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <Icns_MainIcns>G2_editor_FMX_Icns1.icns</Icns_MainIcns>
+        <Icns_MainIcns>..\..\Img\G2_editor_FMX_Icns.icns</Icns_MainIcns>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <Icon_MainIcon>G2_editor_FMX_Icon2.ico</Icon_MainIcon>
+        <Icns_MainIcns>..\..\Img\G2_editor_FMX_Icns.icns</Icns_MainIcns>
+        <Icon_MainIcon>..\..\Img\G2_editor_FMX_Icon.ico</Icon_MainIcon>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
@@ -354,11 +358,6 @@
                         <RemoteName>g2EditorColorScheme.xml</RemoteName>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="G2_editor_FMX_Icns.icns" Configuration="Debug" Class="ProjectOSXResource">
-                    <Platform Name="OSX32">
-                        <RemoteName>G2_editor_FMX.icns</RemoteName>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="..\..\Deploy\Roboto_Hinted_20111129.zip" Class="File">
                     <Platform Name="OSX32">
                         <RemoteName>Roboto_Hinted_20111129.zip</RemoteName>
@@ -368,6 +367,11 @@
                     </Platform>
                     <Platform Name="Win32">
                         <RemoteName>Roboto_Hinted_20111129.zip</RemoteName>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="G2_editor_FMX_Icns.icns" Configuration="Debug" Class="ProjectOSXResource">
+                    <Platform Name="OSX32">
+                        <RemoteName>G2_editor_FMX.icns</RemoteName>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">

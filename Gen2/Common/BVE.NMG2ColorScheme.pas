@@ -13,7 +13,10 @@ unit BVE.NMG2ColorScheme;
 
 interface
 
-uses xmldom, XMLDoc, XMLIntf;
+uses
+  XML.xmldom,
+  XML.XMLDoc,
+  XML.XMLIntf;
 
 type
 
@@ -664,6 +667,7 @@ procedure TXMLColorSchemeType.AfterConstruction;
 begin
   RegisterChildNode('SlotStrip', TXMLSlotStripType);
   RegisterChildNode('ControlStateStyles', TXMLControlStateStylesType);
+
   inherited;
 end;
 
@@ -716,6 +720,7 @@ begin
   RegisterChildNode('ControlStateStyle', TXMLControlStateStyleType);
   ItemTag := 'ControlStateStyle';
   ItemInterface := IXMLControlStateStyleType;
+
   inherited;
 end;
 
@@ -753,6 +758,7 @@ begin
   RegisterChildNode('FocusedSelectedFill', TXMLFocusedSelectedFillType);
   RegisterChildNode('FocusedSelectedFont', TXMLFocusedSelectedFontType);
   RegisterChildNode('FocusedSelectedStroke', TXMLFocusedSelectedStrokeType);
+
   inherited;
 end;
 

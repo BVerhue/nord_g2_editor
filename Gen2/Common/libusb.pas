@@ -2,14 +2,22 @@ unit libusb;
 
 interface
 
+{$IFDEF FPC}
 {$IFDEF LINUX}
 {$LINKLIB /usr/local/lib/libusb-1.0.a}
+{$ENDIF}
 {$ENDIF}
 
 {$IFDEF MACOS}
 type
   DWord = longint;
 {$ENDIF}
+
+{$IFDEF LINUX}
+type
+  DWord = longint;
+{$ENDIF}
+
 //******************************************************************************
 //
 //  * Project name:
@@ -321,6 +329,7 @@ type
 // Library functions and procedures
 //------------------------------------------------------------------------------
 //******************************************************************************
+
 function libusb_init(ctx:PPlibusb_context):longint;cdecl;external;
 procedure libusb_exit(ctx:Plibusb_context);cdecl;external;
 procedure libusb_set_debug(ctx:Plibusb_context; level:integer);cdecl;external;

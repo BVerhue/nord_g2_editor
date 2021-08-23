@@ -232,6 +232,36 @@
             <Overwrite>True</Overwrite>
         </DeployFile>
     </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Linux64'">
+        <DeployFile Include="Linux64\Release\G2_editor_FMX" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>G2_editor_FMX</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="..\..\Deploy\QuickReference.txt" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>QuickReference.txt</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Capabilities.inc" Condition="'$(Config)'=='Release'">
+            <RemoteDir>G2_editor_FMX\</RemoteDir>
+            <RemoteName>Capabilities.inc</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
     <ItemGroup Condition="'$(Platform)'=='iOSSimulator'">
         <DeployFile Include="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib">
             <RemoteDir>G2_editor_FMX.app\</RemoteDir>

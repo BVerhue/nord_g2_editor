@@ -2,8 +2,10 @@ unit libusb_dyn;
 
 interface
 
+{$IFDEF FPC}
 {$IFDEF LINUX}
 {$LINKLIB /usr/local/lib/libusb-1.0.a}
+{$ENDIF}
 {$ENDIF}
 
 {$IFDEF MACOS}
@@ -11,6 +13,10 @@ type
   DWord = longint;
 {$ENDIF}
 {$IFDEF ANDROID}
+type
+  DWord = longint;
+{$ENDIF}
+{$IFDEF LINUX}
 type
   DWord = longint;
 {$ENDIF}
@@ -461,22 +467,27 @@ uses
 
 const
   //LIBUSB_DLL_NAME =  '/usr/local/lib/libusb-1.0.0.dylib';
+  {$IFDEF MACOS}
   LIBUSB_DLL_NAME =  'libusb-1.0.0.dylib';
+  {$ENDIF}
+  {$IFDEF LINUX}
+  LIBUSB_DLL_NAME =  'libusb-1.0.so';
+  {$ENDIF}
 
 var
   LibUSBHandle: HMODULE;
 
 procedure LoadLibUSB;
 begin
-  ctx := nil;
-
-  LibUSBHandle := LoadLibrary(  LIBUSB_DLL_NAME);
+  LibUSBHandle := LoadLibrary(LIBUSB_DLL_NAME);
   if LibUSBHandle <= 32 then
     ShowMessage(LIBUSB_DLL_NAME + ' not found, USB functions are disabled')
   else
   begin
     libusb_open := GetProcAddress( LibUSBHandle, PChar('libusb_open'));
     libusb_close := GetProcAddress( LibUSBHandle, PChar('libusb_close'));
+
+    libusb_reset_device := GetProcAddress( LibUSBHandle, 'libusb_reset_device');
 
     libusb_get_device_list := GetProcAddress( LibUSBHandle, 'libusb_get_device_list');
     libusb_open_device_with_vid_pid := GetProcAddress( LibUSBHandle, 'libusb_open_device_with_vid_pid');
@@ -505,6 +516,7 @@ begin
     libusb_set_debug := GetProcAddress( LibUSBHandle, 'libusb_set_debug');
     libusb_get_device := GetProcAddress( LibUSBHandle, 'libusb_get_device'); // renamed from usb_device because of same named record
 
+    ctx := nil;
     if libusb_init(@ctx) <> 0 then begin
       ShowMessage('Error initializing the LibSUB API, USB functions are disabled');
     end{ else

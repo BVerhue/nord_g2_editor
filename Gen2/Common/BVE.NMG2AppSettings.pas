@@ -13,7 +13,10 @@ unit BVE.NMG2AppSettings;
 
 interface
 
-uses xmldom, XMLDoc, XMLIntf;
+uses
+  XML.xmldom,
+  XML.XMLDoc,
+  XML.XMLIntf;
 
 type
 
@@ -275,6 +278,7 @@ procedure TXMLAppSettingsType.AfterConstruction;
 begin
   RegisterChildNode('General', TXMLGeneralType);
   RegisterChildNode('G2Synths', TXMLG2SynthsType);
+
   inherited;
 end;
 
@@ -387,6 +391,7 @@ begin
   RegisterChildNode('G2Synth', TXMLG2SynthType);
   ItemTag := 'G2Synth';
   ItemInterface := IXMLG2SynthType;
+
   inherited;
 end;
 
@@ -465,6 +470,7 @@ begin
   RegisterChildNode('MidiToKnob', TXMLMidiToKnobType);
   ItemTag := 'MidiToKnob';
   ItemInterface := IXMLMidiToKnobType;
+
   inherited;
 end;
 

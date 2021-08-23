@@ -22,21 +22,15 @@
  * 17-2-2012 Bve modified it for dynamic loading
  *)
 
-
 unit LibUSBWinDyn;
-
 {$IFDEF FPC}
 {$MODE Delphi}
 {$ENDIF}
-
 interface
-
 const
   LIBUSB_PATH_MAX = 512;
   LIBUSB_DLL_NAME =  'libusb0.dll';
-
   USB_OK = 0; // 0 = success from functions < 0 is failed
-
 
   { Device and/or Interface Class codes }
   USB_CLASS_PER_INTERFACE   =   0; { for DeviceClass }
@@ -76,7 +70,6 @@ type
     bLength, 
     bDescriptorType: byte; 
   end;
-
   // String descriptor 
   usb_string_descriptor = packed record 
     bLength, 
@@ -104,7 +97,6 @@ type
     bDescriptorType, 
     bEndpointAddress,
     bmAttributes: byte; 
-
     wMaxPacketSize: word; 
  
     bInterval, 
@@ -119,7 +111,6 @@ type
    packed array [0..65535] of usb_endpoint_descriptor; 
   PArray_usb_endpoint_descriptor = ^TArray_usb_endpoint_descriptor; 
  
-
 const 
   USB_ENDPOINT_ADDRESS_MASK      = $0f; // in bEndpointAddress 
   USB_ENDPOINT_DIR_MASK          = $80; 
@@ -222,7 +213,6 @@ type
     iSerialNumber, 
     bNumConfigurations: byte; 
   end; 
-
   usb_ctrl_setup = packed record 
     bRequestType, 
     bRequest: byte; 
@@ -246,7 +236,6 @@ const
   USB_REQ_GET_INTERFACE      = $0A; 
   USB_REQ_SET_INTERFACE      = $0B; 
   USB_REQ_SYNCH_FRAME        = $0C;
-
   USB_TYPE_STANDARD   = ($00 shl 5); 
   USB_TYPE_CLASS      = ($01 shl 5); 
   USB_TYPE_VENDOR     = ($02 shl 5); 
@@ -256,11 +245,9 @@ const
   USB_RECIP_INTERFACE  = $01; 
   USB_RECIP_ENDPOINT   = $02; 
   USB_RECIP_OTHER      = $03;
-
   // Various libusb API related stuff
   USB_ENDPOINT_IN   = $80; 
   USB_ENDPOINT_OUT  = $00;
-
   // Error codes 
   USB_ERROR_BEGIN  = 500000; 
  
@@ -289,7 +276,6 @@ type
     location: longint;
      root_dev: pusb_device;
    end;
-
   // Version information, Windows specific
   pusb_version = ^usb_version;
   usb_version = packed record
@@ -302,27 +288,21 @@ type
     drivermicro,
     drivernano: longint;
   end;
-
   pusb_dev_handle = pointer; // struct usb_dev_handle;
 
-
 { Function prototypes }
-
 var
   // usb.c
   usb_open : function( dev: pusb_device): pusb_dev_handle; cdecl = nil;
   usb_close : function( dev: pusb_dev_handle): longword; cdecl = nil;
   usb_get_string : function( dev: pusb_dev_handle;index, langid: longword; var buf;buflen: longword): longword; cdecl = nil;
   usb_get_string_simple : function( dev: pusb_dev_handle;index: longword; var buf;buflen: longword): longword; cdecl = nil;
-
   // descriptors.c
   usb_get_descriptor_by_endpoint : function( udev: pusb_dev_handle;ep: longword;ttype: byte;index: byte;var buf;size: longword): longword; cdecl = nil;
   usb_get_descriptor : function( udev: pusb_dev_handle;ttype: byte;index: byte;var buf;size: longword): longword; cdecl = nil;
-
 // <arch>.c
   usb_bulk_write : function( dev: pusb_dev_handle;ep : longword; var bytes;size,timeout:longword): longword; cdecl = nil;
   usb_bulk_read : function( dev: pusb_dev_handle;ep: longword; var bytes; size,timeout:longword): longword; cdecl = nil;
-
   usb_interrupt_write : function( dev: pusb_dev_handle;ep : longword; var bytes; size, timeout: longword): longword; cdecl = nil;
   usb_interrupt_read : function( dev: pusb_dev_handle;ep : longword; var bytes; size, timeout: longword): longword; cdecl = nil;
   usb_control_msg : function( dev: pusb_dev_handle;requesttype, request, value, index: longword;var bytes;size, timeout: longword): longword; cdecl = nil;
@@ -333,16 +313,13 @@ var
   usb_resetep : function( dev: pusb_dev_handle;ep: longword): longword; cdecl = nil;
   usb_clear_halt : function( dev: pusb_dev_handle;ep: longword): longword; cdecl = nil;
   usb_reset : function( dev: pusb_dev_handle): longword; cdecl = nil;
-
   usb_strerror : function : PAnsiChar; cdecl = nil;
-
   usb_init : procedure; cdecl = nil;
   usb_set_debug : procedure( level: longword); cdecl = nil;
   usb_find_busses : function : longword; cdecl = nil;
   usb_find_devices : function : longword; cdecl = nil;
   usb_get_device : function( dev: pusb_dev_handle): pusb_device; cdecl = nil; // renamed from usb_device because of same named record
   usb_get_busses : function : pusb_bus; cdecl = nil;
-
   usb_install_service_np : function : integer; cdecl = nil;
   usb_uninstall_service_np : function : integer; cdecl = nil;
   usb_install_driver_np : function( inf_file: PAnsiChar): integer; cdecl = nil;
@@ -356,14 +333,11 @@ var
   usb_cancel_async : function( context: pointer): integer; cdecl = nil;
   usb_free_async : function( var context: pointer): integer; cdecl = nil;
 
-
 implementation
 uses
   Windows;
-
 var
   LibUSBHandle: Cardinal;
-
 
 {$IFNDEF G2_VST}
 initialization
@@ -378,13 +352,10 @@ initialization
     usb_close := GetProcAddress( LibUSBHandle, 'usb_close');
     usb_get_string := GetProcAddress( LibUSBHandle, 'usb_get_string');
     usb_get_string_simple := GetProcAddress( LibUSBHandle, 'usb_get_string_simple');
-
     usb_get_descriptor_by_endpoint := GetProcAddress( LibUSBHandle, 'usb_get_descriptor_by_endpoint');
     usb_get_descriptor := GetProcAddress( LibUSBHandle, 'usb_get_descriptor');
-
     usb_bulk_write := GetProcAddress( LibUSBHandle, 'usb_bulk_write');
     usb_bulk_read := GetProcAddress( LibUSBHandle, 'usb_bulk_read');
-
     usb_interrupt_write := GetProcAddress( LibUSBHandle, 'usb_interrupt_write');
     usb_interrupt_read := GetProcAddress( LibUSBHandle, 'usb_interrupt_read');
     usb_control_msg := GetProcAddress( LibUSBHandle, 'usb_control_msg');
@@ -395,16 +366,13 @@ initialization
     usb_resetep := GetProcAddress( LibUSBHandle, 'usb_resetep');
     usb_clear_halt := GetProcAddress( LibUSBHandle, 'usb_clear_halt');
     usb_reset := GetProcAddress( LibUSBHandle, 'usb_reset');
-
     usb_strerror := GetProcAddress( LibUSBHandle, 'usb_strerror');
-
     usb_init := GetProcAddress( LibUSBHandle, 'usb_init');
     usb_set_debug := GetProcAddress( LibUSBHandle, 'usb_set_debug');
     usb_find_busses := GetProcAddress( LibUSBHandle, 'usb_find_busses');
     usb_find_devices := GetProcAddress( LibUSBHandle, 'usb_find_devices');
     usb_get_device := GetProcAddress( LibUSBHandle, 'usb_device'); // renamed from usb_device because of same named record
     usb_get_busses := GetProcAddress( LibUSBHandle, 'usb_get_busses');
-
     usb_install_service_np := GetProcAddress( LibUSBHandle, 'usb_install_service_np');
     usb_uninstall_service_np := GetProcAddress( LibUSBHandle, 'usb_uninstall_service_np');
     usb_install_driver_np := GetProcAddress( LibUSBHandle, 'usb_install_driver_np');
@@ -418,8 +386,7 @@ initialization
     usb_cancel_async := GetProcAddress( LibUSBHandle, 'usb_cancel_async');
     usb_free_async := GetProcAddress( LibUSBHandle, 'usb_free_async');
   end
-
 finalization
   FreeLibrary(LibUSBHandle)
 {$ENDIF}
-end.
+end.

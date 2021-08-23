@@ -1,4 +1,5 @@
 unit UnitEditorCentral2;
+
 //  ////////////////////////////////////////////////////////////////////////////
 //
 //  Copyright (C) 2011 Bruno Verhue
@@ -18,22 +19,54 @@ unit UnitEditorCentral2;
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 //  ////////////////////////////////////////////////////////////////////////////
+
+{$I ..\..\Common\CompilerSettings.Inc}
+
 interface
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  System.Generics.Collections, System.UIConsts,
-  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
-  FMX.Layouts, FMX.Edit, FMX.Objects,
-{$IFDEF MSWINDOWS}
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.Generics.Collections,
+  System.UIConsts,
+  FMX.Types,
+  FMX.Graphics,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.StdCtrls,
+  FMX.Layouts,
+  FMX.Edit,
+  FMX.Objects,
+  {$IFDEF MSWINDOWS}
   LibUSBWinDyn,
-{$ENDIF}
-{$IFDEF MACOS}
+  {$ENDIF}
+  {-$IFDEF MACOS}
+  {$IFDEF LIBUSB_UNIX}
   libusb_dyn,
-{$ENDIF}
-  BVE.NMG2Types, BVE.NMG2File, BVE.NMG2USB, BVE.NMG2Mess, BVE.NMG2GraphFMX, BVE.NMG2ControlsFMX,
-  UnitAppSettings, UnitPatch, UnitAddModule,
-  FMX.TabControl, UnitSlotStrip, UnitSlot, UnitBanks, UnitPatchSettings,
-  UnitKnobs, UnitParam, UnitModule, UnitSynthSettings, FMX.Controls.Presentation;
+  {$ENDIF}
+  BVE.NMG2Types,
+  BVE.NMG2File,
+  BVE.NMG2USB,
+  BVE.NMG2Mess,
+  BVE.NMG2GraphFMX,
+  BVE.NMG2ControlsFMX,
+  UnitAppSettings,
+  UnitPatch,
+  UnitAddModule,
+  FMX.TabControl,
+  UnitSlotStrip,
+  UnitSlot,
+  UnitBanks,
+  UnitPatchSettings,
+  UnitKnobs,
+  UnitParam,
+  UnitModule,
+  UnitSynthSettings,
+  FMX.Controls.Presentation;
+
 const
   RBWidth = 24;
   SPACER = 2;
@@ -42,8 +75,10 @@ type
   TFrameTabs = (ftSlotA, ftSlotB, ftSlotC, ftSlotD, ftBanks, ftPatchSettings,
                 ftKnobs, ftSynthSettings, ftAppSettings);
   TPatchTabs = (ptAddModule, ptModule, ptParam, ptPatch);
+
   TAppShowMessageEvent = procedure(Sender: TObject; aMessage : string) of object;
   TAppCloseMessageEvent = procedure(Sender: TObject) of object;
+
   TframeEditorCentralStrip = class(TFrame, IG2Observer)
     lSynth: TLayout;
     tcPatchFunctions: TTabControl;
@@ -179,13 +214,19 @@ type
     property OnShowAppMessage : TAppShowMessageEvent read FOnShowAppMessage write SetOnShowAppMessage;
     property OnCloseAppMessage : TAppCloseMessageEvent read FOnCloseAppMessage write SetOnCloseAppMessage;
   end;
+
 implementation
+
 {$R *.fmx}
 
-
-uses UnitKnobsForm, UnitPatchSettingsForm, UnitSynthSettingsForm,
-
-  UnitAppSettingsForm, UnitBanksForm, UnitKeyboardForm, UnitUtils;
+uses
+  UnitKnobsForm,
+  UnitPatchSettingsForm,
+  UnitSynthSettingsForm,
+  UnitAppSettingsForm,
+  UnitBanksForm,
+  UnitKeyboardForm,
+  UnitUtils;
 
 { TframeG2EditorCentralStrip }
 constructor TframeEditorCentralStrip.Create(AOwner: TComponent);
@@ -239,6 +280,7 @@ begin
   FResponseTimeOut.Interval := 4000;
   FResponseTimeOut.OnTimer := G2MessageTimeOut;
 end;
+
 destructor TframeEditorCentralStrip.Destroy;
 var i : integer;
 begin
@@ -251,6 +293,7 @@ begin
   FModuleImageList.Free;
   inherited;
 end;
+
 procedure TframeEditorCentralStrip.DeviceDiscovery;
 var i : integer;
     G2DeviceList : TList;
@@ -258,9 +301,12 @@ var i : integer;
 begin
   G2DeviceList := TList.Create;
   try
-    GetUSBDeviceList( G2DeviceList);
-    if G2DeviceList.Count > 0 then begin
-      for i := 0 to min(G2DeviceList.Count,3) - 1 do begin
+    GetUSBDeviceList(G2DeviceList);
+
+    if G2DeviceList.Count > 0 then
+    begin
+      for i := 0 to min(G2DeviceList.Count,3) - 1 do
+      begin
         G2 := TG2GraphFMX.Create(self);
         G2.ClientType := ctEditor;
         G2.Host := '127.0.0.1';
@@ -268,11 +314,11 @@ begin
         G2.IsServer := True;
         //G2.LogLevel := 2;
         AddSynth( G2);
-{$IFDEF MSWINDOWS}
+        {$IFDEF MSWINDOWS}
         G2.G2USBDevice := pusb_device(G2DeviceList[i]);
-{$ELSE}
+        {$ELSE}
         G2.G2USBDevice := Plibusb_device(G2DeviceList[i]);
-{$ENDIF}
+        {$ENDIF}
         SelectSynthIndex(i);
       end;
     end else begin
@@ -309,13 +355,16 @@ begin
       ShowMessage('No g2 device found');
       SelectSynthIndex(0);
     end;
+
     // Multiple synth radio button
     rbSynth.ButtonCount := FG2List.Count;
     rbSynth.ButtonText.Clear;
     for i := 0 to FG2List.Count - 1 do
       rbSynth.ButtonText.Add(IntToStr(i+1));
-    rbSynth.Width := RBWIDTH *FG2List.Count + 1;
-    if FG2List.Count > 1 then begin
+    rbSynth.Width := RBWIDTH * FG2List.Count + 1;
+
+    if FG2List.Count > 1 then
+    begin
       rbSynth.Visible := True;
       lSynth.Position.X := rbSynth.Position.X + rbSynth.Width + SPACER;
     end else begin
@@ -326,6 +375,7 @@ begin
     G2DeviceList.Free;
   end;
 end;
+
 procedure TframeEditorCentralStrip.AddSynth(const aSynth: TG2GraphFMX);
 var ti : TTabItem;
     frameSlot : TframeSlot;
@@ -339,12 +389,13 @@ begin
 
       // Add frameslots
 
-{$IF Defined(VER240)}
+      {$IFDEF Ver240Down}
       ti := tcPatch.Add(TTabItem);
-{$ELSE}
+      {$ELSE}
       ti := TTabItem.Create(tcPatch);
       tcPatch.AddObject(ti);
-{$ENDIF}
+      {$ENDIF}
+
       ti.Parent := tcPatch;
       ti.Text := 's' + IntToStr(FG2List.Count - 1) + 't' + IntToStr(i);
       ti.StyleLookup := 'tabdotstyle';
@@ -530,9 +581,9 @@ begin
     FOnShowAppMessage(Self, 'Loading app settings...');
   if assigned(FOnShowAppMessage) then
      FOnShowAppMessage(Self, 'Creating module images...');
-{$IF not Defined(Android)}
+  {$IFnDEF Android}
   CreateModuleImages(FModuleImageList);
-{$ENDIF}
+  {$ENDIF}
   // Only one patch file frame needed
   for G2Synth in FG2List do
     frmAppSettings.frameAppSettings.AddSynth( G2Synth.SynthName, G2Synth);
@@ -1308,11 +1359,13 @@ begin
     FSlotList[ aSlotIndex].Patch.SelectedLocation := ltVA;
   FSynth.Performance.SelectedSlot := aSlotIndex;
 end;
+
 procedure TframeEditorCentralStrip.SelectSynthIndex(aIndex: integer);
 begin
   Synth := FG2List[aIndex];
   rbSynth.Value := aIndex;
 end;
+
 procedure TframeEditorCentralStrip.SelectVariation(const aVariation: integer);
 begin
   if not assigned(FSynth) then
