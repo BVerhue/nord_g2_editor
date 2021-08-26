@@ -1,39 +1,79 @@
 unit UnitG2EditorFMX_FM;
-//  ////////////////////////////////////////////////////////////////////////////
+
+// ////////////////////////////////////////////////////////////////////////////
 //
-//  Copyright (C) 2011 Bruno Verhue
+// Copyright (C) 2011 Bruno Verhue
 //
-//  This program is free software; you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation; either version 2 of the License, or
-//  (at your option) any later version.
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
 //
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
 //
-//  You should have received a copy of the GNU General Public License
-//  along with this program; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-//  ////////////////////////////////////////////////////////////////////////////
-{$INCLUDE Capabilities.inc}
+// ////////////////////////////////////////////////////////////////////////////
+
+
+{$I ..\..\Common\CompilerSettings.Inc}
+{$I Capabilities.inc}
+
 interface
+
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes,
-  System.Variants, System.Contnrs, System.Actions,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.Objects, FMX.Layouts,
-  FMX.Memo, FMX.Ani, FMX.Edit, FMX.Effects, FMX.Menus, FMX.StdCtrls,
-  FMX.ActnList, FMX.TreeView, FMX.TabControl, FMX.Graphics,
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.Contnrs,
+  System.Actions,
   System.Generics.Collections,
-  BVE.NMG2Types, BVE.NMG2File, BVE.NMG2USB, BVE.NMG2GraphFMX,
-  UnitSlot, UnitSlotStrip, BVE.NMG2ControlsFMX, FMX.Gestures,
-  FMX.ListBox, UnitBanks, UnitAppSettings,
-  UnitPatchSettings, UnitMessageDlg,
-  UnitParam, UnitModule, UnitAddModule,
-  BVE.NMG2ColorScheme, xmldom, XMLDoc, XMLIntf,
-  BVE.NMG2PathData, UnitEditorCentral2;
+  XML.xmldom,
+  XML.XMLDoc,
+  XML.XMLIntf,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Objects,
+  FMX.Layouts,
+  FMX.Memo,
+  FMX.Ani,
+  FMX.Edit,
+  FMX.Effects,
+  FMX.Menus,
+  FMX.StdCtrls,
+  FMX.ActnList,
+  FMX.TreeView,
+  FMX.TabControl,
+  FMX.Graphics,
+  FMX.Gestures,
+  FMX.ListBox,
+  BVE.NMG2Types,
+  BVE.NMG2File,
+  BVE.NMG2USB,
+  BVE.NMG2GraphFMX,
+  BVE.NMG2ControlsFMX,
+  BVE.NMG2ColorScheme,
+  BVE.NMG2PathData,
+  UnitSlot,
+  UnitSlotStrip,
+  UnitBanks,
+  UnitAppSettings,
+  UnitPatchSettings,
+  UnitMessageDlg,
+  UnitParam,
+  UnitModule,
+  UnitAddModule,
+  UnitEditorCentral2;
+
 type
   TfrmEditorMain = class(TForm)
     OpenDialog1: TOpenDialog;
@@ -51,80 +91,95 @@ type
       Shift: TShiftState);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
-    FframeMessageDlg : TframeMessageDlg;
+    FframeMessageDlg: TframeMessageDlg;
   public
-    procedure ShowMessageFrame( Sender : TObject; aMessage : string);
-    procedure CloseMessageFrame( Sender : TObject);
+    procedure ShowMessageFrame(Sender: TObject; aMessage: string);
+    procedure CloseMessageFrame(Sender: TObject);
     procedure LoadColorScheme;
     procedure SaveColorScheme;
-    procedure GlobalExceptionHandler(Sender: TObject; E : Exception);
+    procedure GlobalExceptionHandler(Sender: TObject; E: Exception);
   end;
+
 var
   frmEditorMain: TfrmEditorMain;
+
 implementation
+
 {$R *.fmx}
-function MemoryUsed: cardinal;
+
+function MemoryUsed: Cardinal;
 {$IFDEF MSWINDOWS}
-var st: TMemoryManagerState;
-    sb: TSmallBlockTypeState;
+var
+  st: TMemoryManagerState;
+  sb: TSmallBlockTypeState;
 {$ENDIF}
 begin
-{$IFDEF MSWINDOWS}
+  {$IFDEF MSWINDOWS}
   GetMemoryManagerState(st);
-  result := st.TotalAllocatedMediumBlockSize + st.TotalAllocatedLargeBlockSize;
-  for sb in st.SmallBlockTypeStates do begin
-    result := result + sb.UseableBlockSize * sb.AllocatedBlockCount;
+  Result := st.TotalAllocatedMediumBlockSize + st.TotalAllocatedLargeBlockSize;
+  for sb in st.SmallBlockTypeStates do
+  begin
+    Result := Result + sb.UseableBlockSize * sb.AllocatedBlockCount;
   end;
-  //frmEditorMain.eMemory.Text := IntToStr(result);
-{$ENDIF}
+  // frmEditorMain.eMemory.Text := IntToStr(Result);
+  {$ENDIF}
 end;
-//==============================================================================
+
+// ==============================================================================
 //
-//                            TfrmEditorMain
+// TfrmEditorMain
 //
-//==============================================================================
+// ==============================================================================
+
 procedure TfrmEditorMain.FormCreate(Sender: TObject);
-var i : integer;
-    G2DeviceList : TList;
-    FModuleDefsFileName,
-    FParamDefsFileName,
-    path : string;
+var
+  i: Integer;
+  G2DeviceList: TList;
+  FModuleDefsFileName, FParamDefsFileName, path: string;
 begin
   FormatSettings.DecimalSeparator := '.';
   Application.OnException := GlobalExceptionHandler;
   LoadColorScheme;
-  //SaveColorScheme;
-  frameEditorCentralStrip.SetStateStyles( ControlStyles);
+  // SaveColorScheme;
+  frameEditorCentralStrip.SetStateStyles(ControlStyles);
   frameEditorCentralStrip.OnShowAppMessage := ShowMessageFrame;
   frameEditorCentralStrip.OnCloseAppMessage := CloseMessageFrame;
   frameEditorCentralStrip.DeviceDiscovery;
   TimerStartup.Enabled := True;
   ShowMessageFrame(self, 'Starting application...');
 end;
+
 procedure TfrmEditorMain.FormDestroy(Sender: TObject);
 begin
   CloseMessageFrame(self);
   if assigned(FframeMessageDlg) then
     FframeMessageDlg.Free;
 end;
+
 procedure TfrmEditorMain.TimerStartupTimer(Sender: TObject);
-var i : integer;
-    pd : TG2PathDataList;
+var
+  i: Integer;
+  pd: TG2PathDataList;
 begin
   TimerStartup.Enabled := False;
   frameEditorCentralStrip.Init;
-  for i := 0 to frameEditorCentralStrip.G2List.Count - 1 do begin
+
+  for i := 0 to frameEditorCentralStrip.G2List.Count - 1 do
+  begin
     ShowMessageFrame(self, 'Connecting to G2 nr. ' + IntToStr(i) + '...');
     frameEditorCentralStrip.G2List[i].USBActive := True;
   end;
+
   CloseMessageFrame(self);
   MemoryUsed;
 end;
+
 procedure TfrmEditorMain.ShowMessageFrame(Sender: TObject; aMessage: string);
 begin
-  if not assigned(FframeMessageDlg) then begin
+  if not assigned(FframeMessageDlg) then
+  begin
     FframeMessageDlg := TframeMessageDlg.Create(nil);
-    FframeMessageDlg.Parent := Self;
+    FframeMessageDlg.Parent := self;
     FframeMessageDlg.Align := TAlignLayout.alCenter;
   end;
   FframeMessageDlg.BringToFront;
@@ -132,74 +187,83 @@ begin
   FframeMessageDlg.Repaint;
   Application.ProcessMessages;
 end;
-procedure TfrmEditorMain.CloseMessageFrame( Sender : TObject);
+
+procedure TfrmEditorMain.CloseMessageFrame(Sender: TObject);
 begin
   FreeAndNil(FframeMessageDlg);
 end;
+
 procedure TfrmEditorMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-//{$IFDEF MACOS}
-//  UnloadLIBUSB;
-//{$ENDIF}
+  // {$IFDEF MACOS}
+  // UnloadLIBUSB;
+  // {$ENDIF}
 end;
+
 procedure TfrmEditorMain.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   ShowMessageFrame(self, 'Waiting for message stream to stop...');
   CanClose := True;
 end;
+
 procedure TfrmEditorMain.FormKeyDown(Sender: TObject; var Key: Word;
   var KeyChar: Char; Shift: TShiftState);
 begin
   frameEditorCentralStrip.ProcessKeyDown(Key, KeyChar, Shift);
 end;
+
 procedure TfrmEditorMain.FormKeyUp(Sender: TObject; var Key: Word;
   var KeyChar: Char; Shift: TShiftState);
 begin
   frameEditorCentralStrip.ProcessKeyUp(Key, KeyChar, Shift);
 end;
+
 procedure TfrmEditorMain.GlobalExceptionHandler(Sender: TObject; E: Exception);
 begin
   if assigned(FframeMessageDlg) then
     FreeAndNil(FframeMessageDlg);
-  MessageDlg('An error occured : ' + E.Message, TMsgDlgType.mtError, [TMsgDlgBtn.mbOk], 0);
+
+  MessageDlg('An error occured : ' + E.Message, TMsgDlgType.mtError,
+    [TMsgDlgBtn.mbOk], 0);
 end;
+
 procedure TfrmEditorMain.LoadColorScheme;
-var XMLColorScheme : TXMLDocument;
-    XMLColorSchemeType : IXMLColorSchemeType;
-    path, filename : string;
-  function GetColor(const aValue : string): TAlphaColor;
-  var HexValue : string;
+var
+  XMLColorScheme: TXMLDocument;
+  XMLColorSchemeType: IXMLColorSchemeType;
+  path, filename: string;
+
+  function GetColor(const aValue: string): TAlphaColor;
+  var
+    HexValue: string;
   begin
     Assert((Length(aValue)) = 9);
     Assert(aValue.Chars[0] = '#');
-    HexValue := '$' + aValue.Chars[1] + aValue.Chars[2]
-              + aValue.Chars[3] + aValue.Chars[4]  // Red
-              + aValue.Chars[5] + aValue.Chars[6]  // Green
-              + aValue.Chars[7] + aValue.Chars[8]; // Blue
-    Result := strToInt64( HexValue)
+    HexValue := '$' + aValue.Chars[1] + aValue.Chars[2] + aValue.Chars[3] +
+      aValue.Chars[4] // Red
+      + aValue.Chars[5] + aValue.Chars[6] // Green
+      + aValue.Chars[7] + aValue.Chars[8]; // Blue
+    Result := strToInt64(HexValue)
   end;
 
-  function GetFillKind(const aValue : string): TBrushKind;
+  function GetFillKind(const aValue: string): TBrushKind;
   begin
     Result := TBrushKind.bkSolid;
     if trim(Lowercase(aValue)) = 'solid' then
       Result := TBrushKind.bkSolid
-    else
-      if trim(Lowercase(aValue)) = 'none' then
-        Result := TBrushKind.bkNone;
+    else if trim(Lowercase(aValue)) = 'none' then
+      Result := TBrushKind.bkNone;
   end;
 
-  function GetFontStyle(const aValue : string): TFontStyles;
+  function GetFontStyle(const aValue: string): TFontStyles;
   begin
     Result := [];
     if trim(Lowercase(aValue)) = 'bold' then
       Result := [TFontStyle.fsBold]
-    else
-      if trim(Lowercase(aValue)) = 'italic' then
-        Result := [TFontStyle.fsItalic]
-      else
-        if trim(Lowercase(aValue)) = 'underline' then
-          Result := [TFontStyle.fsUnderline];
+    else if trim(Lowercase(aValue)) = 'italic' then
+      Result := [TFontStyle.fsItalic]
+    else if trim(Lowercase(aValue)) = 'underline' then
+      Result := [TFontStyle.fsUnderline];
   end;
 
 begin
@@ -207,12 +271,11 @@ begin
   filename := 'g2EditorColorScheme.xml';
 
   if not FileExists(path + filename) then
-    exit;
-
+    Exit;
 
   XMLColorScheme := TXMLDocument.Create(self);
   try
-    XMLColorScheme.FileName := path + filename;
+    XMLColorScheme.filename := path + filename;
     XMLColorScheme.Active := True;
     try
       XMLColorSchemeType := GetColorScheme(XMLColorScheme);
@@ -274,8 +337,9 @@ begin
 end;
 
 procedure TfrmEditorMain.SaveColorScheme;
-var sl : TStringList;
-    path, filename : string;
+var
+  sl: TStringList;
+  path, filename: string;
 begin
   sl := TStringList.Create;
   try
@@ -294,11 +358,9 @@ begin
     sl.Add('</ColorScheme>');
 
     sl.SaveToFile(path + filename);
-
   finally
     sl.Free;
   end;
 end;
-
 
 end.

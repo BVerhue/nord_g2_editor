@@ -4,19 +4,85 @@ object frmKnobs: TfrmKnobs
   Caption = 'Knobs'
   ClientHeight = 510
   ClientWidth = 786
-  FormStyle = fsStayOnTop
+  FormStyle = StayOnTop
   FormFactor.Width = 320
   FormFactor.Height = 480
-  FormFactor.Devices = [dkDesktop, dkiPhone, dkiPad]
-  DesignerMobile = False
-  DesignerWidth = 0
-  DesignerHeight = 0
-  DesignerDeviceName = ''
-  DesignerOrientation = 0
-  DesignerOSVersion = ''
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  DesignerMasterStyle = 0
   inline frameKnobs: TframeKnobs
-    Align = alCenter
-    Height = 487.000000000000000000
-    Width = 792.000000000000000000
+    Align = Center
+    Size.Width = 792.000000000000000000
+    Size.Height = 487.000000000000000000
+    Size.PlatformDefault = False
+    inherited Rectangle4: TRectangle
+      inherited Rectangle1: TRectangle
+        inherited bfButton1: TG2BtnFlat
+          TabOrder = 12
+        end
+        inherited bfButton2: TG2BtnFlat
+          TabOrder = 13
+        end
+        inherited bfButton3: TG2BtnFlat
+          TabOrder = 14
+        end
+        inherited bfButton4: TG2BtnFlat
+          TabOrder = 15
+        end
+        inherited bfButton5: TG2BtnFlat
+          TabOrder = 16
+        end
+        inherited bfButton6: TG2BtnFlat
+          TabOrder = 17
+        end
+        inherited bfButton7: TG2BtnFlat
+          TabOrder = 19
+        end
+        inherited eMidiCC1: TEdit
+          TabOrder = 33
+        end
+        inherited eMidiCC2: TEdit
+          TabOrder = 34
+        end
+        inherited eMidiCC3: TEdit
+          TabOrder = 35
+        end
+        inherited eMidiCC4: TEdit
+          TabOrder = 36
+        end
+        inherited eMidiCC5: TEdit
+          TabOrder = 37
+        end
+        inherited eMidiCC6: TEdit
+          TabOrder = 38
+        end
+        inherited eMidiCC7: TEdit
+          TabOrder = 39
+        end
+        inherited eMidiCC8: TEdit
+          TabOrder = 40
+        end
+        inherited eMidiCC9: TEdit
+          TabOrder = 42
+        end
+        inherited eMidiCC10: TEdit
+          TabOrder = 43
+        end
+        inherited eMidiCC11: TEdit
+          TabOrder = 46
+        end
+        inherited eMidiCC12: TEdit
+          TabOrder = 47
+        end
+        inherited eMidiCC13: TEdit
+          TabOrder = 50
+        end
+        inherited eMidiCC14: TEdit
+          TabOrder = 53
+        end
+        inherited eMidiCC15: TEdit
+          TabOrder = 58
+        end
+      end
+    end
   end
 end

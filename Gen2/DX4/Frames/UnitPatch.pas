@@ -1,22 +1,61 @@
 unit UnitPatch;
+
+// ////////////////////////////////////////////////////////////////////////////
+//
+// Copyright (C) 2011 Bruno Verhue
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// ////////////////////////////////////////////////////////////////////////////
+
+{$I ..\Common\CompilerSettings.Inc}
+
 interface
+
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Rtti, System.Classes,
-  System.Variants, System.IOUtils,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs,
-  FMX.StdCtrls, FMX.Objects, FMX.Layouts, FMX.ListBox,
-  BVE.NMG2File, BVE.NMG2ControlsFMX, BVE.NMG2GraphFMX,
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Rtti,
+  System.Classes,
+  System.Variants,
+  System.IOUtils,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.StdCtrls,
+  FMX.Objects,
+  FMX.Layouts,
+  FMX.ListBox,
+  BVE.NMG2Types,
+  BVE.NMG2File,
+  BVE.NMG2ControlsFMX,
+  BVE.NMG2GraphFMX,
   UnitAppSettings;
+
 type
-  {TTreeViewItemExpanded = class(TTreeViewItem)
-  private
+  { TTreeViewItemExpanded = class(TTreeViewItem)
+    private
     FOnChangeExpanded: TNotifyEvent;
-  protected
+    protected
     procedure ApplyStyle;override;
     procedure DoChangeExpanded(Sender: TObject);
-  published
+    published
     property OnChangeExpanded: TNotifyEvent read FOnChangeExpanded write FOnChangeExpanded;
-  end;}
+    end; }
 
   TframePatch = class(TFrame)
     Rectangle3: TRectangle;
@@ -33,50 +72,55 @@ type
     procedure btSavePatchChangeValue(Sender: TObject; const aValue: Integer);
     procedure btLoadPerfChangeValue(Sender: TObject; const aValue: Integer);
     procedure btSavePerfChangeValue(Sender: TObject; const aValue: Integer);
-    //procedure tvFilesChange(Sender: TObject);
+    // procedure tvFilesChange(Sender: TObject);
     procedure btInitPatchChangeValue(Sender: TObject; const aValue: Integer);
     procedure btRefreshChangeValue(Sender: TObject; const aValue: Integer);
-    //procedure tvFilesDblClick(Sender: TObject);
+    // procedure tvFilesDblClick(Sender: TObject);
     procedure lbFilesChange(Sender: TObject);
     procedure lbFilesDblClick(Sender: TObject);
     procedure lbFilesKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
       Shift: TShiftState);
   private
-    [Weak] FSynth : TG2GraphFMX;
-    [Weak] FFrameAppSettings : TframeAppSettings;
-    FRootDir : string;
-    FBtnHeight : single;
-    FDirs : TStringList;
-    FLocateFile : string;
-    //function GetNodeDir( aNode : TTreeViewItem): string;
-    //function GetNodeFilename( aNode : TTreeViewItem) : string;
+    [Weak] FSynth: TG2GraphFMX;
+    [Weak] FFrameAppSettings: TframeAppSettings;
+    FRootDir: string;
+    FBtnHeight: single;
+    FDirs: TStringList;
+    FLocateFile: string;
+    // function GetNodeDir( aNode : TTreeViewItem): string;
+    // function GetNodeFilename( aNode : TTreeViewItem) : string;
     procedure SetSynth(const Value: TG2GraphFMX);
   public
-    constructor Create( AOwner : TComponent); override;
+    constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    procedure LoadFileStream(aFilename: string);
-    procedure SavePatch(const aFilename : string);
-    procedure SavePerf(const aFilename : string);
-    function CurrentDir : string;
-    procedure AddDir( aDir : string);
-    procedure DeleteFromDir( aDir : string);
+    //procedure LoadFileStream(aFilename: string);
+    procedure SavePatch(const aFilename: string);
+    procedure SavePerf(const aFilename: string);
+    function CurrentDir: string;
+    procedure AddDir(aDir: string);
+    procedure DeleteFromDir(aDir: string);
     procedure DeleteAllDirs;
-    procedure OnDirBtnClick( Sender : TObject);
+    procedure OnDirBtnClick(Sender: TObject);
     procedure ReadDir;
-    procedure DownDir( aDir : string);
-    procedure UpDir( aDir : string);
-    //procedure TreeNodeExpand( Sender : TObject);
-    //procedure ReadDir( aNode : TFMXObject; aPath : string);
+    procedure DownDir(aDir: string);
+    procedure UpDir(aDir: string);
+    // procedure TreeNodeExpand( Sender : TObject);
+    // procedure ReadDir( aNode : TFMXObject; aPath : string);
     procedure UpdateFiles;
-    //procedure RefreshFiles( aNode : TTreeViewItem);
-    procedure SetStateStyles( aStateStyleList : TG2StateStyleList);
-    property frameAppSettings : TframeAppSettings read FframeAppSettings write FframeAppSettings;
-    property Synth : TG2GraphFMX read FSynth write SetSynth;
+    // procedure RefreshFiles( aNode : TTreeViewItem);
+    procedure SetStateStyles(aStateStyleList: TG2StateStyleList);
+    property frameAppSettings: TframeAppSettings read FFrameAppSettings
+      write FFrameAppSettings;
+    property Synth: TG2GraphFMX read FSynth write SetSynth;
   end;
+
 implementation
+
 uses
   FMX.Ani;
+
 {$R *.fmx}
+
 constructor TframePatch.Create(AOwner: TComponent);
 begin
   inherited;
@@ -85,13 +129,13 @@ begin
   FDirs := TStringList.Create;
   FRootDir := '';
 
-  //FRootDir := 'C:';
-  //AddDir( FRootDir);
-  //ReadDir;
+  // FRootDir := 'C:';
+  // AddDir( FRootDir);
+  // ReadDir;
 
-  //tvFiles.AniCalculations.Animation := True;
-  //tvFiles.AniCalculations.BoundsAnimation := True;
-  //tvFiles.AniCalculations.TouchTracking := [ttVertical];
+  // tvFiles.AniCalculations.Animation := True;
+  // tvFiles.AniCalculations.BoundsAnimation := True;
+  // tvFiles.AniCalculations.TouchTracking := [ttVertical];
 end;
 
 destructor TframePatch.Destroy;
@@ -101,7 +145,8 @@ begin
 end;
 
 procedure TframePatch.AddDir(aDir: string);
-var Btn : TButton;
+var
+  Btn: TButton;
 begin
   Btn := TButton.Create(self);
   Btn.StyledSettings := [];
@@ -113,45 +158,48 @@ begin
   Btn.Height := FBtnHeight;
   Btn.Position.Y := FDirs.Count * FBtnHeight;
   Btn.Align := TAlignLayout.alTop;
-  FDirs.AddObject( aDir, Btn);
+  FDirs.AddObject(aDir, Btn);
   lDirs.Height := FDirs.Count * FBtnHeight;
 end;
 
 procedure TframePatch.DeleteAllDirs;
 begin
   FLocateFile := '';
-  while FDirs.Count > 0 do begin
-    FLocateFile := FDirs[ FDirs.Count - 1];
+  while FDirs.Count > 0 do
+  begin
+    FLocateFile := FDirs[FDirs.Count - 1];
     FDirs.Objects[FDirs.Count - 1].Free;
-    FDirs.Delete( FDirs.Count - 1);
+    FDirs.Delete(FDirs.Count - 1);
   end;
   lDirs.Height := FDirs.Count * FBtnHeight;
 end;
 
 procedure TframePatch.DeleteFromDir(aDir: string);
-var i : integer;
+var
+  i: Integer;
 begin
   FLocateFile := '';
-  i := FDirs.IndexOf( aDir);
-  while FDirs.Count > (i + 1) do begin
-    FLocateFile := FDirs[ FDirs.Count - 1];
+  i := FDirs.IndexOf(aDir);
+  while FDirs.Count > (i + 1) do
+  begin
+    FLocateFile := FDirs[FDirs.Count - 1];
     FDirs.Objects[FDirs.Count - 1].Free;
-    FDirs.Delete( FDirs.Count - 1);
+    FDirs.Delete(FDirs.Count - 1);
   end;
   lDirs.Height := FDirs.Count * FBtnHeight;
 end;
 
 procedure TframePatch.DownDir(aDir: string);
 begin
-  AddDir( aDir);
+  AddDir(aDir);
   ReadDir;
   if lbFiles.Count > 0 then
     lbFiles.ItemIndex := 0;
 end;
 
-procedure TframePatch.UpDir( aDir: string);
+procedure TframePatch.UpDir(aDir: string);
 begin
-  DeleteFromDir( aDir);
+  DeleteFromDir(aDir);
   ReadDir;
 end;
 
@@ -162,7 +210,8 @@ begin
 end;
 
 function TframePatch.CurrentDir: string;
-var i : integer;
+var
+  i: Integer;
 begin
   Result := '';
   for i := 0 to FDirs.Count - 1 do
@@ -170,32 +219,36 @@ begin
 end;
 
 procedure TframePatch.ReadDir;
-var SearchOption : TSearchOption;
-    Predicate : TDirectory.TFilterPredicate;
-    ListBoxItem : TListBoxItem;
-    Path : string;
-    Files : TStringDynArray;
-    i : integer;
+var
+  SearchOption: TSearchOption;
+  Predicate: TDirectory.TFilterPredicate;
+  ListBoxItem: TListBoxItem;
+  Path: string;
+  Files: TStringDynArray;
+  i: Integer;
 begin
   Path := CurrentDir;
 
-  if trim(Path) = '' then
-    exit;
-
+  if Trim(Path) = '' then
+    Exit;
 
   SearchOption := TSearchOption.soTopDirectoryOnly;
 
-  Predicate := function(const Path: string; const SearchRec: TSearchRec): Boolean
-                     begin
-                       Result := (SearchRec.Attr and faHidden)=0;
-                     end;
+  Predicate :=
+    function(const Path: string; const SearchRec: TSearchRec): Boolean
+    begin
+      Result := (SearchRec.Attr and faHidden) = 0;
+    end;
 
   lbFiles.BeginUpdate;
   try
     lbFiles.Items.Clear;
 
-    Files := System.IOUtils.TDirectory.GetDirectories( Path, '*', SearchOption, Predicate);
-    for i := 0 to Length(Files)-1 do begin
+    Files := System.IOUtils.TDirectory.GetDirectories(Path, '*', SearchOption,
+      Predicate);
+
+    for i := 0 to Length(Files) - 1 do
+    begin
       ListBoxItem := TListBoxItem.Create(lbFiles);
       ListBoxItem.StyledSettings := [];
       ListBoxItem.Font.Family := 'Roboto';
@@ -208,8 +261,9 @@ begin
       lbFiles.AddObject(ListBoxItem);
     end;
 
-    Files := System.IOUtils.TDirectory.GetFiles( Path, '*', Predicate);
-    for i := 0 to Length(Files)-1 do begin
+    Files := System.IOUtils.TDirectory.GetFiles(Path, '*', Predicate);
+    for i := 0 to Length(Files) - 1 do
+    begin
       ListBoxItem := TListBoxItem.Create(lbFiles);
       ListBoxItem.StyledSettings := [];
       ListBoxItem.Font.Family := 'Roboto';
@@ -224,521 +278,590 @@ begin
     lbFiles.EndUpdate;
   end;
 
-  if FLocateFile <> '' then begin
-    i := lbFiles.Items.IndexOf( FLocateFile);
-    if i <> - 1 then
+  if FLocateFile <> '' then
+  begin
+    i := lbFiles.Items.IndexOf(FLocateFile);
+    if i <> -1 then
       lbFiles.ItemIndex := i;
   end;
 end;
 
 procedure TframePatch.UpdateFiles;
 begin
-  if FRootDir <> FframeAppSettings.PatchDir then begin
+  if FRootDir <> FFrameAppSettings.PatchDir then
+  begin
     DeleteAllDirs;
-    FRootDir := FframeAppSettings.PatchDir;
-    if System.IOUtils.TDirectory.Exists(FRootDir) then begin
-      AddDir( FRootDir);
+    FRootDir := FFrameAppSettings.PatchDir;
+    if System.IOUtils.TDirectory.Exists(FRootDir) then
+    begin
+      AddDir(FRootDir);
       ReadDir;
     end;
-  end else
+  end
+  else
     ReadDir;
 end;
 
-
 procedure TframePatch.lbFilesChange(Sender: TObject);
-var Item : TListBoxItem;
-    Ext : string;
+var
+  Item: TListBoxItem;
+  Ext: string;
 begin
   Item := lbFiles.Selected;
-  if assigned(Item) and (Item.Tag = 0) then begin
-    Ext := Lowercase( ExtractFileExt(Item.Text));
-    if (Ext = '.prf2') then begin
+  if assigned(Item) and (Item.Tag = 0) then
+  begin
+    Ext := Lowercase(ExtractFileExt(Item.Text));
+    if (Ext = FILE_PERF_EXT) then
+    begin
       btLoadPerf.State := csDefault;
-    end else begin
+    end
+    else
+    begin
       btLoadPerf.State := csDisabled;
     end;
-    if (Ext = '.pch2') then begin
+    if (Ext = FILE_PATCH_EXT) then
+    begin
       btLoadPatch.State := csDefault;
-    end else begin
+    end
+    else
+    begin
       btLoadPatch.State := csDisabled;
     end;
   end;
 end;
 
 procedure TframePatch.lbFilesDblClick(Sender: TObject);
-var Item : TListBoxItem;
-    filename : string;
+var
+  Item: TListBoxItem;
+  filename: string;
 begin
   Item := lbFiles.Selected;
 
-  if assigned(Item) then begin
+  if assigned(Item) then
+  begin
     case Item.Tag of
-    0 : begin
+      0:
+        begin
           filename := CurrentDir + Item.Text;
-          LoadFilestream(filename);
+          Synth.LoadFileStream(filename);
         end;
-    1 : begin
+      1:
+        begin
           if lbFiles.ItemIndex <> -1 then
-            DownDir( lbFiles.Items[ lbFiles.ItemIndex]);
+            DownDir(lbFiles.Items[lbFiles.ItemIndex]);
         end;
     end;
   end;
 end;
-
 
 procedure TframePatch.lbFilesKeyDown(Sender: TObject; var Key: Word;
   var KeyChar: Char; Shift: TShiftState);
 begin
   case Key of
-  vkLeft :
-    begin
-      if FDirs.Count >= 2 then
-        UpDir( FDirs[ FDirs.Count - 2]);
-      Key := 0;
-    end;
-  vkRight :
-    begin
-      if assigned(lbFiles.Selected) and (lbFiles.Selected.Tag = 1) then begin
-        DownDir( lbFiles.Items[ lbFiles.ItemIndex]);
+    vkLeft:
+      begin
+        if FDirs.Count >= 2 then
+          UpDir(FDirs[FDirs.Count - 2]);
+        Key := 0;
       end;
-      Key := 0;
-    end;
-  vkReturn :
-    begin
-      lbFilesDblClick(self);
-    end;
+    vkRight:
+      begin
+        if assigned(lbFiles.Selected) and (lbFiles.Selected.Tag = 1) then
+        begin
+          DownDir(lbFiles.Items[lbFiles.ItemIndex]);
+        end;
+        Key := 0;
+      end;
+    vkReturn:
+      begin
+        lbFilesDblClick(self);
+      end;
   end;
 end;
 
-{procedure TframePatch.ReadDir(aNode: TFMXObject; aPath: string);
-var sr : TSearchRec;
-    ChildNode : TTreeViewItemExpanded;
-    Ext : string;
-    i : integer;
-    sl : TStringList;
-    ItemsDeleted : boolean;
-    function FindChild( aName : string): TTreeViewItem;
-    var j : integer;
-    begin
-      if aNode is TTreeView then begin
-        j := 0;
-        while (j<(aNode as TTreeView).Count) and not((aNode as TTreeView).Items[j].Text = sr.Name) do
-          inc(j);
-         if j<(aNode as TTreeView).Count then
-           Result := (aNode as TTreeView).Items[j]
-         else
-           Result := nil;
-      end else begin
-        j := 0;
-        while (j<(aNode as TTreeViewItem).Count) and not((aNode as TTreeViewItem).Items[j].Text = sr.Name) do
-          inc(j);
-         if j<(aNode as TTreeViewItem).Count then
-           Result := (aNode as TTreeViewItem).Items[j]
-         else
-           Result := nil;
-      end;
-    end;
-begin
+{ procedure TframePatch.ReadDir(aNode: TFMXObject; aPath: string);
+  var sr : TSearchRec;
+  ChildNode : TTreeViewItemExpanded;
+  Ext : string;
+  i : integer;
+  sl : TStringList;
+  ItemsDeleted : boolean;
+  function FindChild( aName : string): TTreeViewItem;
+  var j : integer;
+  begin
+  if aNode is TTreeView then begin
+  j := 0;
+  while (j<(aNode as TTreeView).Count) and not((aNode as TTreeView).Items[j].Text = sr.Name) do
+  inc(j);
+  if j<(aNode as TTreeView).Count then
+  Result := (aNode as TTreeView).Items[j]
+  else
+  Result := nil;
+  end else begin
+  j := 0;
+  while (j<(aNode as TTreeViewItem).Count) and not((aNode as TTreeViewItem).Items[j].Text = sr.Name) do
+  inc(j);
+  if j<(aNode as TTreeViewItem).Count then
+  Result := (aNode as TTreeViewItem).Items[j]
+  else
+  Result := nil;
+  end;
+  end;
+  begin
   if aPath.Length = 0 then
-    exit;
+  Exit;
   if assigned(aNode) and (aNode is TTreeViewItemExpanded)
-     and ((aNode as TTreeViewItemExpanded).ParentItem <> nil)
-     and not((aNode as TTreeViewItemExpanded).ParentItem.IsExpanded) then
-    exit;
+  and ((aNode as TTreeViewItemExpanded).ParentItem <> nil)
+  and not((aNode as TTreeViewItemExpanded).ParentItem.IsExpanded) then
+  Exit;
   sl := TStringList.Create;
   try
-    if aPath.Chars[aPath.Length - 1] <> PathDelim then
-      aPath := aPath + PathDelim;
-    if FindFirst( aPath + '*.*', faAnyFile, sr) = 0 then begin
-      // Remove what doesn't exits anymore, make quick list
-      repeat
-        if (sr.Attr and faDirectory) = 0 then begin
-          Ext := Lowercase(ExtractFileExt(sr.Name));
-          if (Ext = '.prf2') or (Ext = '.pch2') then begin
-            sl.Add(sr.Name);
-          end;
-        end else begin
-          if (sr.Name = '.') or (sr.Name = '..') then begin
-          end else begin
-            sl.Add(sr.Name);
-          end;
-        end;
-      until (FindNext(sr) <> 0);
-      FindClose(sr);
-      if aNode is TTreeview then begin
-        ItemsDeleted := False;
-        i := 0;
-        while (i < (aNode as TTreeView).Count) do begin
-          ChildNode := (aNode as TTreeView).Items[i] as TTreeViewItemExpanded;
-          if sl.IndexOf(ChildNode.Text) = -1 then begin
-            (aNode as TTreeView).RemoveObject(ChildNode);
-            ChildNode.DisposeOf;
-            ItemsDeleted := True;
-          end else
-            inc(i);
-        end;
-        if ItemsDeleted then
-          (aNode as TTreeView).RealignContent;
-      end else begin
-        ItemsDeleted := False;
-        i := 0;
-        while (i < (aNode as TTreeViewItem).Count) do begin
-          ChildNode := (aNode as TTreeViewItem).Items[i] as TTreeViewItemExpanded;;
-          if sl.IndexOf(ChildNode.Text) = -1 then begin
-            (aNode as TTreeViewItem).RemoveObject(ChildNode);
-            ChildNode.DisposeOf;
-            ItemsDeleted := True;
-          end else
-            inc(i);
-        end;
-        if ItemsDeleted then
-          (aNode as TTreeViewItem).TreeView.RealignContent;
-      end;
-    end;
-    if FindFirst( aPath + '*.*', faAnyFile, sr) = 0 then begin
-      repeat
-        if (sr.Attr and faDirectory) = 0 then begin
-          Ext := Lowercase(ExtractFileExt(sr.Name));
-          if (Ext = '.prf2') or (Ext = '.pch2') then begin
-            ChildNode := FindChild(sr.Name) as TTreeViewItemExpanded;
-            if not assigned(ChildNode) then begin
-              ChildNode := TTreeViewItemExpanded.Create(self);
-              ChildNode.Parent := aNode;
-              ChildNode.Text := sr.Name;
-              ChildNode.TagObject := TObject(sr.Attr);
-            end;
-          end;
-        end else begin
-          if (sr.Name = '.') or (sr.Name = '..') then begin
-          end else begin
-            ChildNode := FindChild(sr.Name) as TTreeViewItemExpanded;
-            if not assigned(ChildNode) then begin
-              ChildNode := TTreeViewItemExpanded.Create(self);
-              ChildNode.Parent := aNode;
-              ChildNode.Text := sr.Name;
-              ChildNode.OnChangeExpanded := TreeNodeExpand;
-              ChildNode.TagObject := TObject(sr.Attr);
-            end;
-            ReadDir( ChildNode, aPath + sr.Name);
-          end;
-        end;
-      until (FindNext(sr) <> 0);
-      FindClose(sr);
-    end;
-  finally
-    sl.Free;
+  if aPath.Chars[aPath.Length - 1] <> PathDelim then
+  aPath := aPath + PathDelim;
+  if FindFirst( aPath + '*.*', faAnyFile, sr) = 0 then begin
+  // Remove what doesn't exits anymore, make quick list
+  repeat
+  if (sr.Attr and faDirectory) = 0 then begin
+  Ext := Lowercase(ExtractFileExt(sr.Name));
+  if (Ext = '.prf2') or (Ext = '.pch2') then begin
+  sl.Add(sr.Name);
   end;
-end;
-function TframePatch.GetNodeDir( aNode : TTreeViewItem): string;
-var Attr : integer;
-    BasePath : string;
-begin
+  end else begin
+  if (sr.Name = '.') or (sr.Name = '..') then begin
+  end else begin
+  sl.Add(sr.Name);
+  end;
+  end;
+  until (FindNext(sr) <> 0);
+  FindClose(sr);
+  if aNode is TTreeview then begin
+  ItemsDeleted := False;
+  i := 0;
+  while (i < (aNode as TTreeView).Count) do begin
+  ChildNode := (aNode as TTreeView).Items[i] as TTreeViewItemExpanded;
+  if sl.IndexOf(ChildNode.Text) = -1 then begin
+  (aNode as TTreeView).RemoveObject(ChildNode);
+  ChildNode.DisposeOf;
+  ItemsDeleted := True;
+  end else
+  inc(i);
+  end;
+  if ItemsDeleted then
+  (aNode as TTreeView).RealignContent;
+  end else begin
+  ItemsDeleted := False;
+  i := 0;
+  while (i < (aNode as TTreeViewItem).Count) do begin
+  ChildNode := (aNode as TTreeViewItem).Items[i] as TTreeViewItemExpanded;;
+  if sl.IndexOf(ChildNode.Text) = -1 then begin
+  (aNode as TTreeViewItem).RemoveObject(ChildNode);
+  ChildNode.DisposeOf;
+  ItemsDeleted := True;
+  end else
+  inc(i);
+  end;
+  if ItemsDeleted then
+  (aNode as TTreeViewItem).TreeView.RealignContent;
+  end;
+  end;
+  if FindFirst( aPath + '*.*', faAnyFile, sr) = 0 then begin
+  repeat
+  if (sr.Attr and faDirectory) = 0 then begin
+  Ext := Lowercase(ExtractFileExt(sr.Name));
+  if (Ext = '.prf2') or (Ext = '.pch2') then begin
+  ChildNode := FindChild(sr.Name) as TTreeViewItemExpanded;
+  if not assigned(ChildNode) then begin
+  ChildNode := TTreeViewItemExpanded.Create(self);
+  ChildNode.Parent := aNode;
+  ChildNode.Text := sr.Name;
+  ChildNode.TagObject := TObject(sr.Attr);
+  end;
+  end;
+  end else begin
+  if (sr.Name = '.') or (sr.Name = '..') then begin
+  end else begin
+  ChildNode := FindChild(sr.Name) as TTreeViewItemExpanded;
+  if not assigned(ChildNode) then begin
+  ChildNode := TTreeViewItemExpanded.Create(self);
+  ChildNode.Parent := aNode;
+  ChildNode.Text := sr.Name;
+  ChildNode.OnChangeExpanded := TreeNodeExpand;
+  ChildNode.TagObject := TObject(sr.Attr);
+  end;
+  ReadDir( ChildNode, aPath + sr.Name);
+  end;
+  end;
+  until (FindNext(sr) <> 0);
+  FindClose(sr);
+  end;
+  finally
+  sl.Free;
+  end;
+  end;
+  function TframePatch.GetNodeDir( aNode : TTreeViewItem): string;
+  var Attr : integer;
+  BasePath : string;
+  begin
   Result := '';
   while assigned(aNode) do begin
-    Attr := integer(aNode.TagObject);
-    if (Attr and faDirectory) = faDirectory then
-      Result := aNode.Text + PathDelim + Result;
-    aNode := aNode.ParentItem;
+  Attr := integer(aNode.TagObject);
+  if (Attr and faDirectory) = faDirectory then
+  Result := aNode.Text + PathDelim + Result;
+  aNode := aNode.ParentItem;
   end;
   BasePath := FframeAppSettings.PatchDir;
   if BasePath.Chars[BasePath.Length - 1] <> PathDelim then
-    BasePath := BasePath + PathDelim;
+  BasePath := BasePath + PathDelim;
   Result := BasePath + Result;
-end;
-function TframePatch.GetNodeFilename( aNode : TTreeViewItem): string;
-var Attr : integer;
-    BasePath : string;
-begin
+  end;
+  function TframePatch.GetNodeFilename( aNode : TTreeViewItem): string;
+  var Attr : integer;
+  BasePath : string;
+  begin
   Result := '';
   if not assigned(aNode)  then
-    exit;
+  Exit;
   Result := GetNodeDir(aNode) + aNode.Text;
-end;
+  end;
 
-procedure TframePatch.TreeNodeExpand(Sender: TObject);
-begin
+  procedure TframePatch.TreeNodeExpand(Sender: TObject);
+  begin
   if tvFiles.IsUpdating then
-    Exit;
+  Exit;
 
   if not (Sender as TTreeViewItem).IsExpanded then
-    exit;
+  Exit;
   tvFiles.BeginUpdate;
   try
-    ReadDir( Sender as TTreeViewItem, GetNodeDir( Sender as TTreeViewItem));
+  ReadDir( Sender as TTreeViewItem, GetNodeDir( Sender as TTreeViewItem));
   finally
-    tvFiles.EndUpdate;
-    tvFiles.Repaint;
+  tvFiles.EndUpdate;
+  tvFiles.Repaint;
   end;
-end;
-procedure TframePatch.UpdateFiles;
-begin
+  end;
+  procedure TframePatch.UpdateFiles;
+  begin
   tvFiles.BeginUpdate;
   try
-    ReadDir( tvFiles, FframeAppSettings.PatchDir);
+  ReadDir( tvFiles, FframeAppSettings.PatchDir);
   finally
-    tvFiles.EndUpdate;
-    tvFiles.Repaint;
+  tvFiles.EndUpdate;
+  tvFiles.Repaint;
   end;
-end;
-procedure TframePatch.RefreshFiles( aNode : TTreeViewItem);
-var Attr : integer;
-begin
+  end;
+  procedure TframePatch.RefreshFiles( aNode : TTreeViewItem);
+  var Attr : integer;
+  begin
   if not assigned(aNode) then
-    UpdateFiles
+  UpdateFiles
   else begin
-    tvFiles.BeginUpdate;
-    try
-      Attr := integer(aNode.TagObject);
-      if (Attr and faDirectory) = faDirectory then begin
-        ReadDir( aNode, GetNodeDir(aNode))
-      end else begin
-        if aNode.ParentItem <> nil then
-          ReadDir( aNode.ParentItem, GetNodeDir(aNode))
-        else
-          ReadDir( tvFiles, FframeAppSettings.PatchDir);
-      end;
-    finally
-      tvFiles.EndUpdate;
-      tvFiles.Repaint;
-    end;
+  tvFiles.BeginUpdate;
+  try
+  Attr := integer(aNode.TagObject);
+  if (Attr and faDirectory) = faDirectory then begin
+  ReadDir( aNode, GetNodeDir(aNode))
+  end else begin
+  if aNode.ParentItem <> nil then
+  ReadDir( aNode.ParentItem, GetNodeDir(aNode))
+  else
+  ReadDir( tvFiles, FframeAppSettings.PatchDir);
   end;
-end;}
-procedure TframePatch.LoadFileStream(aFilename: string);
-var G2FileDataStream : TG2FileDataStream;
-    DataName : string;
-    i : integer;
-    FileStream : TFileStream;
-    Lines : TStrings;
-    b : byte;
+  finally
+  tvFiles.EndUpdate;
+  tvFiles.Repaint;
+  end;
+  end;
+  end; }
+
+{procedure TframePatch.LoadFileStream(aFilename: string);
+var
+  G2FileDataStream: TG2FileDataStream;
+  DataName: string;
+  i: Integer;
+  FileStream: TFileStream;
+  Lines: TStrings;
+  b: Byte;
 begin
   if not assigned(Synth) then
-    exit;
-  FileStream := TFileStream.Create( aFileName, fmOpenRead);
+    Exit;
+
+  FileStream := TFileStream.Create(aFilename, fmOpenRead);
   try
-    aFilename := ExtractFilename( aFileName);
+    aFilename := ExtractFilename(aFilename);
+
     // Name patch max size = 16, if shorter end with 0
     DataName := '';
     i := 1;
-    while (i<=Length( aFileName)) and (i<=16) and ( aFileName[i] <> '.') do begin
-      DataName := DataName +Char(byte(aFileName[i]));
+    while (i <= Length(aFilename)) and (i <= 16) and (aFilename[i] <> '.') do
+    begin
+      DataName := DataName + Char(Byte(aFilename[i]));
       inc(i);
     end;
+
     Lines := nil;
     if assigned(Synth.LogLines) then
       Lines := Synth.LogLines;
-    // Check first byte
-    FileStream.Read( b, 1);
+
+    // Check first Byte
+    FileStream.Read(b, 1);
     FileStream.Position := 0;
     case b of
-      $56 : G2FileDataStream := TG2FileDataStream.LoadFileData( self, FileStream, Lines);
-      $F0 : G2FileDataStream := TG2FileDataStream.LoadMidiData( self, FileStream, Lines);
-      else
-        raise Exception.Create('Unknown file data.');
+      $56:
+        G2FileDataStream := TG2FileDataStream.LoadFileData(Self,
+          FileStream, Lines);
+      $F0:
+        G2FileDataStream := TG2FileDataStream.LoadMidiData(Self,
+          FileStream, Lines);
+    else
+      raise Exception.Create('Unknown file data.');
     end;
-    if G2FileDataStream is TG2FilePerformance then begin
-      (Synth.Performance as TG2GraphPerformanceFMX).SendSetPerformanceMessage( DataName, G2FileDataStream as TG2FilePerformance);
-    end else
-      if G2FileDataStream is TG2FilePatch then
-        Synth.SelectedSlot.SendSetPatchMessage( DataName, G2FileDataStream as TG2FilePatch)
-      else
-        raise Exception.Create('Unknown data type');
+
+    if G2FileDataStream is TG2FilePerformance then
+    begin
+      (Synth.Performance as TG2GraphPerformanceFMX).SendSetPerformanceMessage(
+        DataName, G2FileDataStream as TG2FilePerformance);
+    end
+    else if G2FileDataStream is TG2FilePatch then
+      Synth.SelectedSlot.SendSetPatchMessage(DataName,
+        G2FileDataStream as TG2FilePatch)
+    else
+      raise Exception.Create('Unknown data type');
   finally
     FileStream.Free;
   end;
-end;
-procedure TframePatch.SavePatch(const aFilename : string);
-var WriteStream : TFileStream;
+end;}
+
+procedure TframePatch.SavePatch(const aFilename: string);
+var
+  WriteStream: TFileStream;
 begin
   if not assigned(Synth) then
-    exit;
-{$IFDEF FPC}
-  if FileExistsUTF8(aFileName) { *Converted from FileExists*  } then begin
-{$ELSE}
-  if FileExists(aFileName) then begin
-{$ENDIF}
-    if MessageDlg('Overwrite existing file?', TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) = mrNo then
-      exit;
-{$IFDEF FPC}
-    DeleteFileUTF8(aFileName); { *Converted from DeleteFile*  }
-{$ELSE}
-    DeleteFile(aFileName);
-{$ENDIF}
+    Exit;
+
+  {$IFDEF FPC}
+  if FileExistsUTF8(aFilename) { *Converted from FileExists* } then
+  begin
+  {$ELSE}
+  if FileExists(aFilename) then
+  begin
+  {$ENDIF}
+    if MessageDlg('Overwrite existing file?', TMsgDlgType.mtConfirmation,
+      [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) = mrNo then
+      Exit;
+
+    {$IFDEF FPC}
+    DeleteFileUTF8(aFilename); { *Converted from DeleteFile* }
+    {$ELSE}
+    DeleteFile(aFilename);
+    {$ENDIF}
   end;
-  WriteStream := TFileStream.Create(aFileName, fmCreate);
+
+  WriteStream := TFileStream.Create(aFilename, fmCreate);
   try
     Synth.SelectedSlot.Patch.SaveToFile(WriteStream);
   finally
     WriteStream.Free;
   end;
-  //RefreshFiles(tvFiles.Selected);
+  // RefreshFiles(tvFiles.Selected);
   ReadDir;
 end;
-procedure TframePatch.SavePerf(const aFilename : string);
-var WriteStream : TFileStream;
+
+procedure TframePatch.SavePerf(const aFilename: string);
+var
+  WriteStream: TFileStream;
 begin
   if not assigned(Synth) then
-    exit;
-{$IFDEF FPC}
-  if FileExistsUTF8(aFileName) { *Converted from FileExists*  } then begin
-{$ELSE}
-  if FileExists(aFileName) then begin
-{$ENDIF}
-    if MessageDlg('Overwrite existing file?', TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) = mrNo then
-      exit;
-{$IFDEF FPC}
-    DeleteFileUTF8(aFileName); { *Converted from DeleteFile*  }
-{$ELSE}
-    DeleteFile(aFileName);
-{$ENDIF}
+    Exit;
+
+  {$IFDEF FPC}
+  if FileExistsUTF8(aFilename) { *Converted from FileExists* } then
+  begin
+  {$ELSE}
+  if FileExists(aFilename) then
+  begin
+  {$ENDIF}
+    if MessageDlg('Overwrite existing file?', TMsgDlgType.mtConfirmation,
+      [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) = mrNo then
+     Exit;
+
+    {$IFDEF FPC}
+    DeleteFileUTF8(aFilename); { *Converted from DeleteFile* }
+    {$ELSE}
+    DeleteFile(aFilename);
+    {$ENDIF}
   end;
-  WriteStream := TFileStream.Create(aFileName, fmCreate);
+
+  WriteStream := TFileStream.Create(aFilename, fmCreate);
   try
     Synth.Performance.SaveToFile(WriteStream);
   finally
     WriteStream.Free;
   end;
-  //RefreshFiles(tvFiles.Selected);
 
+  // RefreshFiles(tvFiles.Selected);
   ReadDir;
-
 end;
+
 procedure TframePatch.SetStateStyles(aStateStyleList: TG2StateStyleList);
 begin
-  ComponentSetStateStylesRecursive(self, aStateStyleList);
+  ComponentSetStateStylesRecursive(Self, aStateStyleList);
 end;
+
 procedure TframePatch.SetSynth(const Value: TG2GraphFMX);
 begin
   FSynth := Value;
 end;
-{
 
-rocedure TframePatch.tvFilesChange(Sender: TObject);
-var Item : TTreeViewItem;
-    Ext : string;
-begin
+{
+  rocedure TframePatch.tvFilesChange(Sender: TObject);
+  var Item : TTreeViewItem;
+  Ext : string;
+  begin
   Item := tvFiles.Selected;
   if assigned(Item) then begin
-    Ext := Lowercase(ExtractFileExt(Item.Text));
-    //if Ext = '.pchlist' then begin
-    //  btLoadBank.State := csDefault
-    //end else
-    //  btLoadBank.State := csDisabled;
-    if (Ext = '.prf2') then begin
-      btLoadPerf.State := csDefault;
-    end else begin
-      btLoadPerf.State := csDisabled;
-    end;
-    if (Ext = '.pch2') then begin
-      btLoadPatch.State := csDefault;
-    end else begin
-      btLoadPatch.State := csDisabled;
-    end;
+  Ext := Lowercase(ExtractFileExt(Item.Text));
+  //if Ext = '.pchlist' then begin
+  //  btLoadBank.State := csDefault
+  //end else
+  //  btLoadBank.State := csDisabled;
+  if (Ext = '.prf2') then begin
+  btLoadPerf.State := csDefault;
+  end else begin
+  btLoadPerf.State := csDisabled;
   end;
-end;}
-{procedure TframePatch.tvFilesDblClick(Sender: TObject);
-var filename : string;
-begin
+  if (Ext = '.pch2') then begin
+  btLoadPatch.State := csDefault;
+  end else begin
+  btLoadPatch.State := csDisabled;
+  end;
+  end;
+  end; }
+{ procedure TframePatch.tvFilesDblClick(Sender: TObject);
+  var filename : string;
+  begin
   filename := GetNodeFilename(tvFiles.Selected);
   if filename <> '' then
-    LoadFilestream(filename);
-end;}
+  LoadFilestream(filename);
+  end; }
+
 procedure TframePatch.btInitPatchChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
-  if aValue = 0 then begin
+  if aValue = 0 then
+  begin
     FSynth.SelectedSlot.Patch.Init;
-    FSynth.SelectedSlot.SendSetPatchMessage('No name', FSynth.SelectedSlot.Patch);
+    FSynth.SelectedSlot.SendSetPatchMessage('No name',
+      FSynth.SelectedSlot.Patch);
   end;
 end;
+
 procedure TframePatch.btLoadPatchChangeValue(Sender: TObject;
   const aValue: Integer);
-var filename : string;
-    Item : TListBoxItem;
+var
+  filename: string;
+  Item: TListBoxItem;
 begin
-  if aValue = 0 then begin
-    //filename := GetNodeFilename( tvFiles.Selected);
-    //if filename <> '' then
+  if aValue = 0 then
+  begin
+    // filename := GetNodeFilename( tvFiles.Selected);
+    // if filename <> '' then
     Item := lbFiles.Selected;
-    if assigned(Item) and (Item.Tag = 0) then begin
+    if assigned(Item) and (Item.Tag = 0) then
+    begin
       filename := CurrentDir + Item.Text;
-      LoadFilestream(filename);
+      Synth.LoadFileStream(filename);
     end;
   end;
 end;
+
 procedure TframePatch.btLoadPerfChangeValue(Sender: TObject;
   const aValue: Integer);
-var filename : string;
-    Item : TListBoxItem;
+var
+  filename: string;
+  Item: TListBoxItem;
 begin
-  if aValue = 0 then begin
-    //filename := GetNodeFilename( tvFiles.Selected);
+  if aValue = 0 then
+  begin
+    // filename := GetNodeFilename( tvFiles.Selected);
     Item := lbFiles.Selected;
-    if assigned(Item) and (Item.Tag = 0) then begin
+    if assigned(Item) and (Item.Tag = 0) then
+    begin
       filename := CurrentDir + Item.Text;
-      LoadFilestream(filename);
+      Synth.LoadFileStream(filename);
     end;
   end;
 end;
+
 procedure TframePatch.btRefreshChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
-  if aValue = 0 then begin
+  if aValue = 0 then
+  begin
     UpdateFiles;
   end;
 end;
+
 procedure TframePatch.btSavePatchChangeValue(Sender: TObject;
   const aValue: Integer);
-var filename : string;
+var
+  filename: string;
 begin
   if not assigned(Synth) then
-    exit;
-  if aValue = 0 then begin
-    //filename := GetNodeDir(tvFiles.Selected) + Synth.SelectedSlot.PatchName + '.pch2';
-    filename := CurrentDir + Synth.SelectedSlot.PatchName + '.pch2';
+    Exit;
+
+  if aValue = 0 then
+  begin
+    // filename := GetNodeDir(tvFiles.Selected) + Synth.SelectedSlot.PatchName + '.pch2';
+    filename := CurrentDir + Synth.SelectedSlot.PatchName + FILE_PATCH_EXT;
     SavePatch(filename);
   end;
 end;
+
 procedure TframePatch.btSavePerfChangeValue(Sender: TObject;
   const aValue: Integer);
-var filename : string;
+var
+  filename: string;
 begin
   if not assigned(Synth) then
-    exit;
-  if aValue = 0 then begin
-    //filename := GetNodeDir(tvFiles.Selected) + Synth.Performance.PerformanceName + '.prf2';
-    filename := CurrentDir + Synth.Performance.PerformanceName + '.prf2';
+    Exit;
+
+  if aValue = 0 then
+  begin
+    // filename := GetNodeDir(tvFiles.Selected) + Synth.Performance.PerformanceName + '.prf2';
+    filename := CurrentDir + Synth.Performance.PerformanceName + FILE_PERF_EXT;
     SavePerf(filename);
   end;
 end;
+
 // -----------------------------------------------------------------------------
 //
 // TTreeViewItemExpanded
 // Trick for missing onexpand event: http://monkeystyler.com/blog
 //
 // -----------------------------------------------------------------------------
-{procedure TTreeViewItemExpanded.ApplyStyle;
-var Ani: TFloatAnimation;
+{ procedure TTreeViewItemExpanded.ApplyStyle;
+  var Ani: TFloatAnimation;
   O: TFMXObject;
-begin
+  begin
   inherited;
   O := FindStyleResource('button');
   if Assigned(O) then
   begin
-    Ani := TFloatAnimation.Create(O);
-    Ani.Parent := O;
-    Ani.Stored := False;
-    Ani.StartValue := 0.999999999999;
-    Ani.StopValue := 1;
-    Ani.PropertyName := 'Opacity';
-    Ani.Trigger := 'IsExpanded=true';
-    Ani.TriggerInverse := 'IsExpanded=false';
-    Ani.Duration := 0;
-    Ani.OnFinish := DoChangeExpanded;
+  Ani := TFloatAnimation.Create(O);
+  Ani.Parent := O;
+  Ani.Stored := False;
+  Ani.StartValue := 0.999999999999;
+  Ani.StopValue := 1;
+  Ani.PropertyName := 'Opacity';
+  Ani.Trigger := 'IsExpanded=true';
+  Ani.TriggerInverse := 'IsExpanded=false';
+  Ani.Duration := 0;
+  Ani.OnFinish := DoChangeExpanded;
   end;
-end;
-procedure TTreeViewItemExpanded.DoChangeExpanded(Sender: TObject);
-begin
+  end;
+  procedure TTreeViewItemExpanded.DoChangeExpanded(Sender: TObject);
+  begin
   if Assigned(OnChangeExpanded) then
-    OnChangeExpanded(Self);
-end;}
+  OnChangeExpanded(Self);
+  end; }
 end.

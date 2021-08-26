@@ -7772,8 +7772,8 @@ begin
       Key := i;
       for i := FLowKey to FHighKey do
       begin
-        if (i <> Key) and ((FKeyTouchID[i] = aTouchID) or
-          (FMonoKey and (FKeyTouchID[i] <> -1))) then
+        if (i <> Key) and ((FKeyTouchID[i] = aTouchID)
+        or (FMonoKey and (FKeyTouchID[i] <> -1))) then
         begin
           FKeyTouchID[i] := -1;
           FKeyUpdate[i] := 1;
@@ -7782,13 +7782,15 @@ begin
             FOnKeyboardKeyUp(Self, i);
         end;
       end;
+
       if (Key <= FHighKey) then
       begin
         if FKeyTouchID[Key] = -1 then
         begin
           FKeyTouchID[Key] := aTouchID;
           FMonoKeyTouchID := aTouchID;
-          FKeyUpdate[i] := 1;
+          //FKeyUpdate[i] := 1;
+          FKeyUpdate[Key] := 1;
           Redraw;
           if assigned(FOnKeyboardKeyDown) then
             FOnKeyboardKeyDown(Self, Key);

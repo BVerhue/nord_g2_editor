@@ -1,18 +1,27 @@
 object framePianoRoll: TframePianoRoll
-  Height = 464.000000000000000000
-  Width = 708.000000000000000000
+  Size.Width = 708.000000000000000000
+  Size.Height = 464.000000000000000000
+  Size.PlatformDefault = False
   OnResize = FrameResize
   object Panel1: TPanel
-    Align = alClient
-    Height = 464.000000000000000000
-    Width = 708.000000000000000000
+    Align = Client
+    Size.Width = 708.000000000000000000
+    Size.Height = 464.000000000000000000
+    Size.PlatformDefault = False
     TabOrder = 0
     object Layout1: TLayout
-      Align = alBottom
-      Height = 80.000000000000000000
+      Align = Bottom
       Position.Y = 384.000000000000000000
-      Width = 708.000000000000000000
+      Size.Width = 708.000000000000000000
+      Size.Height = 80.000000000000000000
+      Size.PlatformDefault = False
       object idRotate: TG2BtnIncDec
+        Position.X = 176.000000000000000000
+        Position.Y = 26.000000000000000000
+        Size.Width = 64.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -31,11 +40,8 @@ object framePianoRoll: TframePianoRoll
         ImageIDS.Strings = (
           '2'
           '3')
-        Width = 64.000000000000000000
-        Height = 32.000000000000000000
-        Position.X = 176.000000000000000000
-        Position.Y = 26.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
         TabOrder = 0
         Value = 0
@@ -47,6 +53,12 @@ object framePianoRoll: TframePianoRoll
         LowValue = 0
       end
       object idTranspose: TG2BtnIncDec
+        Position.X = 80.000000000000000000
+        Position.Y = 8.000000000000000000
+        Size.Width = 32.000000000000000000
+        Size.Height = 64.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -65,11 +77,8 @@ object framePianoRoll: TframePianoRoll
         ImageIDS.Strings = (
           '0'
           '1')
-        Width = 32.000000000000000000
-        Height = 64.000000000000000000
-        Position.X = 80.000000000000000000
-        Position.Y = 8.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
         TabOrder = 1
         Value = 0
@@ -81,6 +90,12 @@ object framePianoRoll: TframePianoRoll
         LowValue = 0
       end
       object btRandom: TG2BtnText
+        Position.X = 280.000000000000000000
+        Position.Y = 27.000000000000000000
+        Size.Width = 81.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -96,14 +111,11 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 81.000000000000000000
-        Height = 32.000000000000000000
-        Position.X = 280.000000000000000000
-        Position.Y = 27.000000000000000000
         ButtonText.Strings = (
           'Random'
           'Random')
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
         TabOrder = 2
         OnChangeValue = btRandomChangeValue
@@ -111,6 +123,13 @@ object framePianoRoll: TframePianoRoll
         ButtonKind = bkMomentary
       end
       object btClose: TG2BtnText
+        Anchors = [akTop, akRight]
+        Position.X = 600.000000000000000000
+        Position.Y = 26.000000000000000000
+        Size.Width = 85.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -126,15 +145,11 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Anchors = [akTop, akRight]
-        Width = 85.000000000000000000
-        Height = 33.000000000000000000
-        Position.X = 600.000000000000000000
-        Position.Y = 26.000000000000000000
         ButtonText.Strings = (
           'Close'
           'Close')
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
         TabOrder = 3
         OnChangeValue = btCloseChangeValue
@@ -142,6 +157,13 @@ object framePianoRoll: TframePianoRoll
         ButtonKind = bkMomentary
       end
       object G2Label1: TG2Label
+        HitTest = False
+        Position.X = 16.000000000000000000
+        Position.Y = 26.000000000000000000
+        Size.Width = 65.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 10.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -157,14 +179,17 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 10.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 65.000000000000000000
-        Height = 32.000000000000000000
-        Position.X = 16.000000000000000000
-        Position.Y = 26.000000000000000000
-        TextAlign = taLeading
+        TextAlign = Leading
         LabelText = 'Transpose'
       end
       object G2Label2: TG2Label
+        HitTest = False
+        Position.X = 128.000000000000000000
+        Position.Y = 26.000000000000000000
+        Size.Width = 46.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 10.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -180,14 +205,16 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 10.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 46.000000000000000000
-        Height = 32.000000000000000000
-        Position.X = 128.000000000000000000
-        Position.Y = 26.000000000000000000
-        TextAlign = taLeading
+        TextAlign = Leading
         LabelText = 'Rotate'
       end
       object btClear: TG2BtnText
+        Position.X = 392.000000000000000000
+        Position.Y = 27.000000000000000000
+        Size.Width = 81.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -203,14 +230,11 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 81.000000000000000000
-        Height = 32.000000000000000000
-        Position.X = 392.000000000000000000
-        Position.Y = 27.000000000000000000
         ButtonText.Strings = (
           'Clear'
           'Clear')
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
         TabOrder = 6
         OnChangeValue = btClearChangeValue
@@ -218,19 +242,29 @@ object framePianoRoll: TframePianoRoll
         ButtonKind = bkMomentary
       end
       object Line1: TLine
-        Align = alTop
-        Height = 1.000000000000000000
-        LineType = ltDiagonal
-        Width = 708.000000000000000000
+        Align = Top
+        LineType = Diagonal
+        Size.Width = 708.000000000000000000
+        Size.Height = 1.000000000000000000
+        Size.PlatformDefault = False
       end
     end
     object sbPianoRoll: TVertScrollBox
-      Align = alClient
-      Height = 384.000000000000000000
+      Align = Client
+      Size.Width = 708.000000000000000000
+      Size.Height = 384.000000000000000000
+      Size.PlatformDefault = False
       TabOrder = 1
-      Width = 708.000000000000000000
       OnMouseDown = sbPianoRollMouseDown
+      Viewport.Width = 692.000000000000000000
+      Viewport.Height = 384.000000000000000000
       object btNote1: TG2BtnText
+        Position.X = 48.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -246,18 +280,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 48.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 0
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote2: TG2BtnText
         Tag = 1
+        Position.X = 88.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -273,18 +311,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 88.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 1
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote3: TG2BtnText
         Tag = 2
+        Position.X = 128.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -300,18 +342,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 128.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 2
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object BtNote4: TG2BtnText
         Tag = 3
+        Position.X = 168.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -327,18 +373,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 168.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 3
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote5: TG2BtnText
         Tag = 4
+        Position.X = 208.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -354,18 +404,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 208.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 4
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote6: TG2BtnText
         Tag = 5
+        Position.X = 248.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -381,18 +435,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 248.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 5
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote7: TG2BtnText
         Tag = 6
+        Position.X = 288.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -408,18 +466,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 288.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 6
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote8: TG2BtnText
         Tag = 7
+        Position.X = 328.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -435,18 +497,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 328.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 7
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote9: TG2BtnText
         Tag = 8
+        Position.X = 368.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -462,18 +528,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 368.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 8
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote10: TG2BtnText
         Tag = 9
+        Position.X = 408.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -489,18 +559,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 408.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 9
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote11: TG2BtnText
         Tag = 10
+        Position.X = 448.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -516,18 +590,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 448.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 10
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote12: TG2BtnText
         Tag = 11
+        Position.X = 488.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -543,18 +621,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 488.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 11
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote13: TG2BtnText
         Tag = 12
+        Position.X = 528.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -570,18 +652,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 528.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 12
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote14: TG2BtnText
         Tag = 13
+        Position.X = 568.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -597,18 +683,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 568.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 13
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote15: TG2BtnText
         Tag = 14
+        Position.X = 608.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -624,18 +714,22 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 608.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 14
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object btNote16: TG2BtnText
         Tag = 15
+        Position.X = 648.000000000000000000
+        Position.Y = 176.000000000000000000
+        Size.Width = 41.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Buffered = False
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
         StateStyleList.DefaultFontColor = xFF202020
@@ -651,840 +745,944 @@ object framePianoRoll: TframePianoRoll
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 41.000000000000000000
-        Height = 25.000000000000000000
-        Position.X = 648.000000000000000000
-        Position.Y = 176.000000000000000000
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
+        TabOrder = 15
         OnChangeValue = NoteChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
       end
       object lKeyboard: TLayout
-        Height = 2304.000000000000000000
-        Width = 49.000000000000000000
+        Size.Width = 49.000000000000000000
+        Size.Height = 2304.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 16
         object Layout2: TLayout
-          Height = 289.000000000000000000
-          Width = 49.000000000000000000
+          Size.Width = 49.000000000000000000
+          Size.Height = 289.000000000000000000
+          Size.PlatformDefault = False
           object Rectangle12: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 264.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle11: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 240.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle10: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 216.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle9: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 192.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle8: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 168.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle7: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 144.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle6: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 120.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle5: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 96.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle4: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 72.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle3: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 48.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle2: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 24.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle1: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Label1: TLabel
-            Font.Family = 'Roboto'
-            Font.Size = 12.000000000000000000
-            StyledSettings = [ssStyle, ssFontColor]
+            StyledSettings = [Style, FontColor]
             Locked = True
-            Height = 289.000000000000000000
+            Size.Width = 17.000000000000000000
+            Size.Height = 289.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Family = 'Roboto'
+            TextSettings.HorzAlign = Center
             Text = '7'
-            TextAlign = taCenter
-            Width = 17.000000000000000000
           end
         end
         object Layout3: TLayout
-          Height = 289.000000000000000000
           Position.Y = 288.000000000000000000
-          Width = 49.000000000000000000
+          Size.Width = 49.000000000000000000
+          Size.Height = 289.000000000000000000
+          Size.PlatformDefault = False
           object Rectangle13: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 264.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle14: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 240.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle15: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 216.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle16: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 192.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle17: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 168.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle18: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 144.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle19: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 120.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle20: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 96.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle21: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 72.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle22: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 48.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle23: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 24.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle24: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Label2: TLabel
-            Font.Family = 'Roboto'
-            Font.Size = 12.000000000000000000
-            StyledSettings = [ssStyle, ssFontColor]
+            StyledSettings = [Style, FontColor]
             Locked = True
-            Height = 289.000000000000000000
+            Size.Width = 17.000000000000000000
+            Size.Height = 289.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Family = 'Roboto'
+            TextSettings.HorzAlign = Center
             Text = '6'
-            TextAlign = taCenter
-            Width = 17.000000000000000000
           end
         end
         object Layout4: TLayout
-          Height = 289.000000000000000000
           Position.Y = 576.000000000000000000
-          Width = 49.000000000000000000
+          Size.Width = 49.000000000000000000
+          Size.Height = 289.000000000000000000
+          Size.PlatformDefault = False
           object Rectangle25: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 264.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle26: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 240.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle27: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 216.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle28: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 192.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle29: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 168.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle30: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 144.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle31: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 120.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle32: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 96.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle33: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 72.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle34: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 48.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle35: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 24.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle36: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Label3: TLabel
-            Font.Family = 'Roboto'
-            Font.Size = 12.000000000000000000
-            StyledSettings = [ssStyle, ssFontColor]
+            StyledSettings = [Style, FontColor]
             Locked = True
-            Height = 289.000000000000000000
+            Size.Width = 17.000000000000000000
+            Size.Height = 289.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Family = 'Roboto'
+            TextSettings.HorzAlign = Center
             Text = '5'
-            TextAlign = taCenter
-            Width = 17.000000000000000000
           end
         end
         object Layout5: TLayout
-          Height = 289.000000000000000000
           Position.Y = 864.000000000000000000
-          Width = 49.000000000000000000
+          Size.Width = 49.000000000000000000
+          Size.Height = 289.000000000000000000
+          Size.PlatformDefault = False
           object Rectangle37: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 264.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle38: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 240.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle39: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 216.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle40: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 192.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle41: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 168.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle42: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 144.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle43: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 120.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle44: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 96.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle45: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 72.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle46: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 48.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle47: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 24.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle48: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Label4: TLabel
-            Font.Family = 'Roboto'
-            Font.Size = 12.000000000000000000
-            StyledSettings = [ssStyle, ssFontColor]
+            StyledSettings = [Style, FontColor]
             Locked = True
-            Height = 289.000000000000000000
+            Size.Width = 17.000000000000000000
+            Size.Height = 289.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Family = 'Roboto'
+            TextSettings.HorzAlign = Center
             Text = '4'
-            TextAlign = taCenter
-            Width = 17.000000000000000000
           end
         end
         object Layout6: TLayout
-          Height = 289.000000000000000000
           Position.Y = 1152.000000000000000000
-          Width = 49.000000000000000000
+          Size.Width = 49.000000000000000000
+          Size.Height = 289.000000000000000000
+          Size.PlatformDefault = False
           object Rectangle49: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 264.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle50: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 240.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle51: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 216.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle52: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 192.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle53: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 168.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle54: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 144.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle55: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 120.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle56: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 96.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle57: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 72.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle58: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 48.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle59: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 24.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle60: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Label5: TLabel
-            Font.Family = 'Roboto'
-            Font.Size = 12.000000000000000000
-            StyledSettings = [ssStyle, ssFontColor]
+            StyledSettings = [Style, FontColor]
             Locked = True
-            Height = 289.000000000000000000
+            Size.Width = 17.000000000000000000
+            Size.Height = 289.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Family = 'Roboto'
+            TextSettings.HorzAlign = Center
             Text = '3'
-            TextAlign = taCenter
-            Width = 17.000000000000000000
           end
         end
         object Layout7: TLayout
-          Height = 289.000000000000000000
           Position.Y = 1440.000000000000000000
-          Width = 49.000000000000000000
+          Size.Width = 49.000000000000000000
+          Size.Height = 289.000000000000000000
+          Size.PlatformDefault = False
           object Rectangle61: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 264.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle62: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 240.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle63: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 216.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle64: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 192.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle65: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 168.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle66: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 144.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle67: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 120.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle68: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 96.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle69: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 72.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle70: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 48.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle71: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 24.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle72: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Label6: TLabel
-            Font.Family = 'Roboto'
-            Font.Size = 12.000000000000000000
-            StyledSettings = [ssStyle, ssFontColor]
+            StyledSettings = [Style, FontColor]
             Locked = True
-            Height = 289.000000000000000000
+            Size.Width = 17.000000000000000000
+            Size.Height = 289.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Family = 'Roboto'
+            TextSettings.HorzAlign = Center
             Text = '2'
-            TextAlign = taCenter
-            Width = 17.000000000000000000
           end
         end
         object Layout8: TLayout
-          Height = 289.000000000000000000
           Position.Y = 1728.000000000000000000
-          Width = 49.000000000000000000
+          Size.Width = 49.000000000000000000
+          Size.Height = 289.000000000000000000
+          Size.PlatformDefault = False
           object Rectangle73: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 264.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle74: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 240.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle75: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 216.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle76: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 192.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle77: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 168.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle78: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 144.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle79: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 120.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle80: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 96.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle81: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 72.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle82: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 48.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle83: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 24.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle84: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Label7: TLabel
-            Font.Family = 'Roboto'
-            Font.Size = 12.000000000000000000
-            StyledSettings = [ssStyle, ssFontColor]
+            StyledSettings = [Style, FontColor]
             Locked = True
-            Height = 289.000000000000000000
+            Size.Width = 17.000000000000000000
+            Size.Height = 289.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Family = 'Roboto'
+            TextSettings.HorzAlign = Center
             Text = '1'
-            TextAlign = taCenter
-            Width = 17.000000000000000000
           end
         end
         object Layout9: TLayout
-          Height = 289.000000000000000000
           Position.Y = 2016.000000000000000000
-          Width = 49.000000000000000000
+          Size.Width = 49.000000000000000000
+          Size.Height = 289.000000000000000000
+          Size.PlatformDefault = False
           object Rectangle85: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 264.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle86: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 240.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle87: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 216.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle88: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 192.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle89: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 168.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle90: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 144.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle91: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 120.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle92: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 96.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle93: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 72.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle94: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 48.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle95: TRectangle
             Fill.Color = claBlack
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
             Position.Y = 24.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Rectangle96: TRectangle
             Locked = True
-            Height = 25.000000000000000000
             Position.X = 16.000000000000000000
-            Width = 33.000000000000000000
+            Size.Width = 33.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
           end
           object Label8: TLabel
-            Font.Family = 'Roboto'
-            Font.Size = 12.000000000000000000
-            StyledSettings = [ssStyle, ssFontColor]
+            StyledSettings = [Style, FontColor]
             Locked = True
-            Height = 289.000000000000000000
+            Size.Width = 17.000000000000000000
+            Size.Height = 289.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Family = 'Roboto'
+            TextSettings.HorzAlign = Center
             Text = '0'
-            TextAlign = taCenter
-            Width = 17.000000000000000000
           end
         end
       end

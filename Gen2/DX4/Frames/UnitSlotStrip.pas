@@ -1,30 +1,50 @@
 unit UnitSlotStrip;
-//  ////////////////////////////////////////////////////////////////////////////
+
+// ////////////////////////////////////////////////////////////////////////////
 //
-//  Copyright (C) 2011 Bruno Verhue
+// Copyright (C) 2011 Bruno Verhue
 //
-//  This program is free software; you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation; either version 2 of the License, or
-//  (at your option) any later version.
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
 //
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
 //
-//  You should have received a copy of the GNU General Public License
-//  along with this program; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-//  ////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////
+
+{$I ..\Common\CompilerSettings.Inc}
+
 interface
+
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Rtti, System.Classes,
-  System.Variants, FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs,
-  FMX.StdCtrls, FMX.Edit, FMX.Objects,
-  BVE.NMG2ControlsFMX, BVE.NMG2Types, BVE.NMG2File, BVE.NMG2GraphFMX,
-  FMX.Layouts, FMX.Controls.Presentation;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Rtti,
+  System.Classes,
+  System.Variants,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.StdCtrls,
+  FMX.Edit,
+  FMX.Objects,
+  FMX.Layouts,
+  FMX.Controls.Presentation,
+  BVE.NMG2ControlsFMX,
+  BVE.NMG2Types,
+  BVE.NMG2File,
+  BVE.NMG2GraphFMX;
+
 type
   TframeSlotStrip = class(TFrame, IG2Observer)
     lbSlot: TLabel;
@@ -62,59 +82,77 @@ type
     procedure tfFXCyclesGetTextFunc(Sender: TObject; var aTextFunc: string);
     procedure btEditAllVarsChangeValue(Sender: TObject; const aValue: Integer);
   private
-    [Weak] FSlot : TG2GraphSlotFMX;
-    FBackColor,
-    FSelectedColor : TAlphaColor;
-    FVACycles : single;
-    FVAMem : single;
-    FFXCycles : single;
-    FFXMem : single;
+    [Weak] FSlot: TG2GraphSlotFMX;
+    FBackColor, FSelectedColor: TAlphaColor;
+    FVACycles: Single;
+    FVAMem: Single;
+    FFXCycles: Single;
+    FFXMem: Single;
     procedure ConnectControls;
-    procedure Update( aG2Event : TG2Event);
-    procedure RemoveReference( aData : IG2Subject);
-    function GetSelected: boolean;
-    procedure SetSelected(const Value: boolean);
+    procedure Update(aG2Event: TG2Event);
+    procedure RemoveReference(aData: IG2Subject);
+    function GetSelected: Boolean;
+    procedure SetSelected(const Value: Boolean);
     procedure SetSlot(const Value: TG2GraphSlotFMX);
-    procedure SetFXCycles(const Value: single);
-    procedure SetFXMem(const Value: single);
-    procedure SetVACycles(const Value: single);
-    procedure SetVAMem(const Value: single);
+    procedure SetFXCycles(const Value: Single);
+    procedure SetFXMem(const Value: Single);
+    procedure SetVACycles(const Value: Single);
+    procedure SetVAMem(const Value: Single);
     procedure SetBackColor(const Value: TAlphaColor);
-    procedure SetSelectedColor(const Value: TAlphaColor);  public
-    constructor Create(AOwner : TComponent); override;
+    procedure SetSelectedColor(const Value: TAlphaColor);
+  public
+    constructor Create(AOwner: TComponent); override;
     procedure UpdateControls;
-    procedure SetStateStyles( aStateStyleList : TG2StateStyleList);
-    property BackColor : TAlphaColor read FBackColor write SetBackColor;
-    property SelectedColor : TAlphaColor read FSelectedColor write SetSelectedColor;
-    property Slot : TG2GraphSlotFMX read FSlot write SetSlot;
-    property Selected : boolean read GetSelected write SetSelected;
-    property VACycles : single read FVACycles write SetVACycles;
-    property VAMem : single read FVAMem write SetVAMem;
-    property FXCycles : single read FFXCycles write SetFXCycles;
-    property FXMem : single read FFXMem write SetFXMem;
+    procedure SetStateStyles(aStateStyleList: TG2StateStyleList);
+    property BackColor: TAlphaColor read FBackColor write SetBackColor;
+    property SelectedColor: TAlphaColor read FSelectedColor
+      write SetSelectedColor;
+    property Slot: TG2GraphSlotFMX read FSlot write SetSlot;
+    property Selected: Boolean read GetSelected write SetSelected;
+    property VACycles: Single read FVACycles write SetVACycles;
+    property VAMem: Single read FVAMem write SetVAMem;
+    property FXCycles: Single read FFXCycles write SetFXCycles;
+    property FXMem: Single read FFXMem write SetFXMem;
   end;
+
 implementation
+
 {$R *.fmx}
+
 procedure TframeSlotStrip.Update(aG2Event: TG2Event);
 begin
   case aG2Event of
-    EvtUSBActiveChange: ;
-    EvtUSBError: ;
-    EvtBeforeSendMessage: ;
-    EvtReceiveResponseMessage: ;
-    EvtNextInitStep: ;
-    EvtAfterG2Init: ;
-    EvtAfterPerfInit: ;
-    EvtAfterSlotInit: ;
-    EvtPerfsSettingsUpdate: ;
-    EvtPerfUpdate: ;
-    EvtSynthSettingsUpdate: ;
-    EvtBeforePatchUpdate: ;
+    EvtUSBActiveChange:
+      ;
+    EvtUSBError:
+      ;
+    EvtBeforeSendMessage:
+      ;
+    EvtReceiveResponseMessage:
+      ;
+    EvtNextInitStep:
+      ;
+    EvtAfterG2Init:
+      ;
+    EvtAfterPerfInit:
+      ;
+    EvtAfterSlotInit:
+      ;
+    EvtPerfsSettingsUpdate:
+      ;
+    EvtPerfUpdate:
+      ;
+    EvtSynthSettingsUpdate:
+      ;
+    EvtBeforePatchUpdate:
+      ;
     EvtPatchUpdate:
       begin
-        if assigned(Slot) then begin
+        if assigned(Slot) then
+        begin
           ConnectControls;
-          if (not Slot.Initializing) and (Slot.G2.AutoAssignMidi) then begin
+          if (not Slot.Initializing) and (Slot.G2.AutoAssignMidi) then
+          begin
             Slot.AutoAssignMidiToKnobs;
           end;
         end;
@@ -124,24 +162,30 @@ begin
       begin
         UpdateControls;
       end;
-    EvtCopyVariation: ;
-    EvtMidiClockReceive: ;
-    EvtClockRunChange: ;
-    EvtClockBPMChange: ;
-    EvtMidiCCRecieve: ;
+    EvtCopyVariation:
+      ;
+    EvtMidiClockReceive:
+      ;
+    EvtClockRunChange:
+      ;
+    EvtClockBPMChange:
+      ;
+    EvtMidiCCRecieve:
+      ;
     EvtAfterGetAssignedVoices:
       begin
         bidVoices.HighValue := 32;
         bidVoices.LowValue := 0;
-        bidVoices.Value := FSlot.Patch.PatchDescription.VoiceCount + 2 - FSlot.Patch.PatchDescription.MonoPoly - 1;
+        bidVoices.Value := FSlot.Patch.PatchDescription.VoiceCount + 2
+          - FSlot.Patch.PatchDescription.MonoPoly - 1;
         tfVoices.Redraw;
       end;
     EvtPatchLoadChange:
       begin
-        VACycles := FSLot.PatchloadCyclesVA;
-        VAMem := FSLot.PatchloadMemVA;
-        FXCycles := FSLot.PatchloadCyclesFX;
-        FXMem := FSLot.PatchloadMemFX;
+        VACycles := FSlot.PatchloadCyclesVA;
+        VAMem := FSlot.PatchloadMemVA;
+        FXCycles := FSlot.PatchloadCyclesFX;
+        FXMem := FSlot.PatchloadMemFX;
         tfVACycles.Redraw;
         tfVAMem.Redraw;
         tfFXCycles.Redraw;
@@ -151,44 +195,68 @@ begin
       begin
         UpdateControls;
       end;
-    EvtSelectLocation: ;
-    EvtSelectModule: ;
-    EvtSelectParam: ;
-    EvtLabelValueChange: ;
-    EvtMorphChange: ;
-    EvtDeleteModule: ;
-    EvtAfterRetreivePatch: ;
-    EvtAfterBankList: ;
-    EvtAfterStore: ;
-    EvtAfterClear: ;
-    EvtAfterClearBank: ;
-    EvtAfterBankDownload: ;
-    EvtDeassignKnob: ;
-    EvtAssignKnob: ;
-    EvtDeassignGlobalKnob: ;
-    EvtAssignGlobalKnob: ;
+    EvtSelectLocation:
+      ;
+    EvtSelectModule:
+      ;
+    EvtSelectParam:
+      ;
+    EvtLabelValueChange:
+      ;
+    EvtMorphChange:
+      ;
+    EvtDeleteModule:
+      ;
+    EvtAfterRetreivePatch:
+      ;
+    EvtAfterBankList:
+      ;
+    EvtAfterStore:
+      ;
+    EvtAfterClear:
+      ;
+    EvtAfterClearBank:
+      ;
+    EvtAfterBankDownload:
+      ;
+    EvtDeassignKnob:
+      ;
+    EvtAssignKnob:
+      ;
+    EvtDeassignGlobalKnob:
+      ;
+    EvtAssignGlobalKnob:
+      ;
   end;
 end;
 
 procedure TframeSlotStrip.UpdateControls;
 begin
-  if Selected then begin
+  if Selected then
+  begin
     lbSlot.FontColor := FBackColor;
     lbCPU.FontColor := FBackColor;
     lbMem.FontColor := FBackColor;
     bgRectangle.Fill.Color := FSelectedColor;
-  end else begin
+  end
+  else
+  begin
     lbSlot.FontColor := FSelectedColor;
     lbCPU.FontColor := FSelectedColor;
     lbMem.FontColor := FSelectedColor;
     bgRectangle.Fill.Color := FBackColor;
   end;
-  if assigned(FSlot) then begin
+  if assigned(FSlot) then
+  begin
     case FSlot.SlotIndex of
-      0 : lbSlot.Text := 'A';
-      1 : lbSlot.Text := 'B';
-      2 : lbSlot.Text := 'C';
-      3 : lbSlot.Text := 'D';
+      0:
+        lbSlot.Text := 'A';
+      1:
+        lbSlot.Text := 'B';
+      2:
+        lbSlot.Text := 'C';
+      3:
+        lbSlot.Text := 'D';
     end;
     ePatchName.Text := string(FSlot.PatchName);
     rbVariation.Value := FSlot.Patch.ActiveVariation;
@@ -201,75 +269,88 @@ begin
     btHold.Value := FSlot.Hold;
   end;
 end;
+
 procedure TframeSlotStrip.bgRectangleMouseUp(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Single);
 begin
-  FSLot.Performance.SelectedSlot := FSLot.SlotIndex;
+  FSlot.Performance.SelectedSlot := FSlot.SlotIndex;
 end;
+
 procedure TframeSlotStrip.bidVoicesChangeValue(Sender: TObject;
   const aValue: Integer);
-var FPatchDescription : TPatchDescription;
+var
+  FPatchDescription: TPatchDescription;
 begin
   FPatchDescription := FSlot.Patch.PatchDescription;
   case bidVoices.Value of
-  0 : begin // Legato
+    0:
+      begin // Legato
         FPatchDescription.VoiceCount := 1;
         FPatchDescription.MonoPoly := 2;
       end;
-  1 : begin // Mono
+    1:
+      begin // Mono
         FPatchDescription.VoiceCount := 1;
         FPatchDescription.MonoPoly := 1;
       end;
-  2..32 :
+    2 .. 32:
       begin
         FPatchDescription.VoiceCount := bidVoices.Value - 1;
         FPatchDescription.MonoPoly := 0;
       end;
   end;
-  (FSlot.Patch as TG2GraphPatchFMX).MessSetPatchDescription( FPatchDescription);
+  (FSlot.Patch as TG2GraphPatchFMX).MessSetPatchDescription(FPatchDescription);
   tfVoices.Redraw;
 end;
+
 procedure TframeSlotStrip.btEditAllVarsChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
   FSlot.Patch.EditAllVariations := aValue = 1;
 end;
+
 procedure TframeSlotStrip.btEnableChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
   FSlot.Enabled := btEnable.Value;
   (FSlot.Performance as TG2GraphPerformanceFMX).SendSetPerfSettingsMessage;
 end;
+
 procedure TframeSlotStrip.btKeybChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
   FSlot.Keyboard := btKeyb.Value;
   (FSlot.Performance as TG2GraphPerformanceFMX).SendSetPerfSettingsMessage;
 end;
+
 procedure TframeSlotStrip.btHoldChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
   FSlot.Hold := btHold.Value;
   (FSlot.Performance as TG2GraphPerformanceFMX).SendSetPerfSettingsMessage;
 end;
+
 procedure TframeSlotStrip.rbVariationChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
-  FSlot.SendSelectVariationMessage( aValue);
+  FSlot.SendSelectVariationMessage(aValue);
 end;
+
 procedure TframeSlotStrip.RemoveReference(aData: IG2Subject);
 begin
   //
 end;
 
 procedure TframeSlotStrip.ConnectControls;
-var VolumeParam, MuteParam : TG2FileParameter;
+var
+  VolumeParam, MuteParam: TG2FileParameter;
 begin
   VolumeParam := FSlot.Patch.Modules[ord(ltPatch), PATCH_VOLUME].Parameter[VOLUME_LEVEL];
   kVolume.DataWriter := VolumeParam;
   MuteParam := FSlot.Patch.Modules[ord(ltPatch), PATCH_VOLUME].Parameter[VOLUME_MUTE];
   btMute.DataWriter := MuteParam;
 end;
+
 constructor TframeSlotStrip.Create(AOwner: TComponent);
 begin
   inherited;
@@ -279,55 +360,67 @@ end;
 
 procedure TframeSlotStrip.ePatchNameExit(Sender: TObject);
 begin
-  FSlot.SendSetPatchName( ePatchName.Text);
+  FSlot.SendSetPatchName(ePatchName.Text);
 end;
+
 procedure TframeSlotStrip.tfFXCyclesGetTextFunc(Sender: TObject;
   var aTextFunc: string);
 begin
   if not assigned(FSlot) then
-    exit;
+    Exit;
   aTextFunc := Format('%.1f', [FSlot.PatchloadCyclesFX]);
 end;
+
 procedure TframeSlotStrip.tfFXMemGetTextFunc(Sender: TObject;
   var aTextFunc: string);
 begin
   if not assigned(FSlot) then
-    exit;
+    Exit;
   aTextFunc := Format('%.1f', [FSlot.PatchloadMemFX]);
 end;
+
 procedure TframeSlotStrip.tfVACyclesGetTextFunc(Sender: TObject;
   var aTextFunc: string);
 begin
   if not assigned(FSlot) then
-    exit;
+    Exit;
   aTextFunc := Format('%.1f', [FSlot.PatchloadCyclesVA]);
 end;
+
 procedure TframeSlotStrip.tfVAMemGetTextFunc(Sender: TObject;
   var aTextFunc: string);
 begin
   if not assigned(FSlot) then
-    exit;
+    Exit;
   aTextFunc := Format('%.1f', [FSlot.PatchloadMemVA]);
 end;
+
 procedure TframeSlotStrip.tfVoicesGetTextFunc(Sender: TObject;
   var aTextFunc: string);
 begin
   aTextFunc := '';
   if not assigned(FSlot) then
-    exit;
+    Exit;
   if not assigned(FSlot.G2) then
-    exit;
-  if bidVoices.Value <= 1 then begin
+    Exit;
+  if bidVoices.Value <= 1 then
+  begin
     aTextFunc := FSlot.G2.TextFunction(0, bidVoices.Value, 0, 0);
-  end else begin
-    aTextFunc := IntToStr(FSlot.AssignedVoices) + ' (' + FSlot.G2.TextFunction(0, bidVoices.Value, 0, 0) + ')';
+  end
+  else
+  begin
+    aTextFunc := IntToStr(FSlot.AssignedVoices) + ' (' +
+      FSlot.G2.TextFunction(0, bidVoices.Value, 0, 0) + ')';
   end;
 end;
-function TframeSlotStrip.GetSelected: boolean;
+
+function TframeSlotStrip.GetSelected: Boolean;
 begin
+  Result := False;
   if assigned(FSlot) then
     Result := FSlot.GetPerformance.SelectedSlot = FSlot.SlotIndex;
 end;
+
 procedure TframeSlotStrip.SetBackColor(const Value: TAlphaColor);
 begin
   FBackColor := Value;
@@ -340,50 +433,62 @@ begin
   UpdateControls;
 end;
 
-procedure TframeSlotStrip.SetFXCycles(const Value: single);
+procedure TframeSlotStrip.SetFXCycles(const Value: Single);
 begin
   FFXCycles := Value;
 end;
-procedure TframeSlotStrip.SetFXMem(const Value: single);
+
+procedure TframeSlotStrip.SetFXMem(const Value: Single);
 begin
   FFXMem := Value;
 end;
-procedure TframeSlotStrip.SetSelected(const Value: boolean);
+
+procedure TframeSlotStrip.SetSelected(const Value: Boolean);
 begin
   if not assigned(FSlot) then
-    exit;
-  if Value then begin
-    (FSlot.Performance as TG2GraphPerformanceFMX).SendSelectSlotMessage(FSlot.SlotIndex);
+    Exit;
+  if Value then
+  begin
+    (FSlot.Performance as TG2GraphPerformanceFMX).SendSelectSlotMessage
+      (FSlot.SlotIndex);
   end;
 end;
+
 procedure TframeSlotStrip.SetSlot(const Value: TG2GraphSlotFMX);
 begin
-  if FSlot <> VAlue then begin
-    if assigned(FSLot) then begin
-      FSlot.RemoveObserver( self);
+  if FSlot <> Value then
+  begin
+    if assigned(FSlot) then
+    begin
+      FSlot.RemoveObserver(self);
       if assigned(FSlot.Performance) then
         FSlot.Performance.RemoveObserver(self);
     end;
     FSlot := Value;
-    if assigned(FSlot) then begin
-      FSlot.RegisterObserver( self);
-      if assigned(FSLot.Performance) then
+    if assigned(FSlot) then
+    begin
+      FSlot.RegisterObserver(self);
+      if assigned(FSlot.Performance) then
         FSlot.Performance.RegisterObserver(self);
     end;
     ConnectControls;
     UpdateControls;
   end;
 end;
+
 procedure TframeSlotStrip.SetStateStyles(aStateStyleList: TG2StateStyleList);
 begin
   ComponentSetStateStylesRecursive(self, aStateStyleList);
 end;
-procedure TframeSlotStrip.SetVACycles(const Value: single);
+
+procedure TframeSlotStrip.SetVACycles(const Value: Single);
 begin
   FVACycles := Value;
 end;
-procedure TframeSlotStrip.SetVAMem(const Value: single);
+
+procedure TframeSlotStrip.SetVAMem(const Value: Single);
 begin
   FVAMem := Value;
 end;
+
 end.

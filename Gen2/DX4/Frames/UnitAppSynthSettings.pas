@@ -1,36 +1,52 @@
 unit UnitAppSynthSettings;
-//  ////////////////////////////////////////////////////////////////////////////
+
+// ////////////////////////////////////////////////////////////////////////////
 //
-//  Copyright (C) 2011 Bruno Verhue
+// Copyright (C) 2011 Bruno Verhue
 //
-//  This program is free software; you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation; either version 2 of the License, or
-//  (at your option) any later version.
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
 //
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
 //
-//  You should have received a copy of the GNU General Public License
-//  along with this program; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-//  ////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////
+
+{$I ..\Common\CompilerSettings.Inc}
+
 interface
+
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
   System.Generics.Collections,
   FMX.Types,
-{$IFDEF VER260}
+  {$IFDEF Ver260Up}
   FMX.Graphics,
-{$ENDIF}
-{$IF NOT Defined(ANDROID)}
+  {$ENDIF}
+  {$IFnDEF ANDROID}
   UnitUtils,
-{$ENDIF}
-  FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
-  FMX.Edit, BVE.NMG2ControlsFMX, BVE.NMG2GraphFMX, FMX.Controls.Presentation;
+  {$ENDIF}
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.StdCtrls,
+  FMX.Edit,
+  FMX.Controls.Presentation,
+  BVE.NMG2ControlsFMX,
+  BVE.NMG2GraphFMX;
+
 type
   TframeAppSynthSettings = class(TFrame)
     bfUSBConnection: TG2BtnFlat;
@@ -49,69 +65,80 @@ type
     procedure btEnableLogChangeValue(Sender: TObject; const aValue: Integer);
     procedure btSaveLogChangeValue(Sender: TObject; const aValue: Integer);
   private
-    [Weak] FSynth : TG2GraphFMX;
-    FLogLines : TStringList;
-    FUSBConnection : boolean;
-    FSynthName : string;
-    FID : string;
-    FHost : string;
-    FPort : integer;
-    FOnChange : TNotifyEvent;
+    [Weak] FSynth: TG2GraphFMX;
+    FLogLines: TStringList;
+    FUSBConnection: boolean;
+    FSynthName: string;
+    FID: string;
+    FHost: string;
+    FPort: Integer;
+    FOnChange: TNotifyEvent;
     procedure SetSynth(const Value: TG2GraphFMX);
     procedure SetHost(const Value: string);
-    procedure SetPort(const Value: integer);
+    procedure SetPort(const Value: Integer);
     procedure SetSynthName(const Value: string);
     procedure SetUSBConnection(const Value: boolean);
   public
-    constructor Create(AOwner : TComponent); override;
+    constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure UpdateControls;
     procedure InitDefaults;
-    property ID : string read FID write FID;
-    property Synth : TG2GraphFMX read FSynth write SetSynth;
-    property SynthName : string read FSynthName write SetSynthName;
-    property USBConnection : boolean read FUSBConnection write SetUSBConnection;
-    property Host : string read FHost write SetHost;
-    property Port : integer read FPort write SetPort;
-    property OnChange : TNotifyEvent read FOnChange write FOnChange;
+    property ID: string read FID write FID;
+    property Synth: TG2GraphFMX read FSynth write SetSynth;
+    property SynthName: string read FSynthName write SetSynthName;
+    property USBConnection: boolean read FUSBConnection write SetUSBConnection;
+    property Host: string read FHost write SetHost;
+    property Port: Integer read FPort write SetPort;
+    property OnChange: TNotifyEvent read FOnChange write FOnChange;
   end;
+
 implementation
+
 {$R *.fmx}
+
 { TframeAppSynthSettings }
+
 procedure TframeAppSynthSettings.bfUSBConnectionChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
   FUSBConnection := bfUSBConnection.Value = 1;
   if assigned(FOnChange) then
-    FOnChange(self);
+    FOnChange(Self);
 end;
+
 procedure TframeAppSynthSettings.btEnableLogChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
   if aValue = 1 then
-    if assigned(FSynth) then begin
+    if assigned(FSynth) then
+    begin
       FSynth.LogLevel := btEnableLog.Value;
     end;
 end;
+
 procedure TframeAppSynthSettings.btSaveLogChangeValue(Sender: TObject;
   const aValue: Integer);
-var LogFileName : string;
+var
+  LogFileName: string;
 begin
-{$IF NOT Defined(ANDROID)}
-  if aValue = 1 then begin
-    if assigned(FSynth) and assigned(FSynth.LogLines) then begin
-{$IF Defined(MSWINDOWS)}
+  {$IFnDEF ANDROID}
+  if aValue = 1 then
+  begin
+    if assigned(FSynth) and assigned(FSynth.LogLines) then
+    begin
+      {$IFDEF MSWINDOWS}
       LogFileName := 'g2_editor_fmx_log_' + FloatToStr(Now) + '.txt';
-{$ELSE}
+      {$ELSE}
       LogFileName := GetHomePath + PathDelim + 'g2_editor_fmx_log_' + FloatToStr(Now) + '.txt';
-{$ENDIF}
+     {$ENDIF}
       FSynth.SaveLog(LogFileName);
       FSynth.ClearLog;
       TUtils.Open(LogFileName);
     end;
   end;
-{$ENDIF}
+  {$ENDIF}
 end;
+
 constructor TframeAppSynthSettings.Create(AOwner: TComponent);
 begin
   inherited;
@@ -128,73 +155,88 @@ procedure TframeAppSynthSettings.eHostExit(Sender: TObject);
 begin
   FHost := eHost.Text;
   if assigned(FOnChange) then
-    FOnChange(self);
+    FOnChange(Self);
 end;
+
 procedure TframeAppSynthSettings.ePortExit(Sender: TObject);
-var Value, Code : integer;
+var
+  Value, Code: Integer;
 begin
-  if ePort.Text <> '' then begin
+  if ePort.Text <> '' then
+  begin
     val(ePort.Text, Value, Code);
     if Code <> 0 then
       raise Exception.Create('Must enter a number.');
     FPort := Value;
     if assigned(FOnChange) then
-      FOnChange(self);
+      FOnChange(Self);
   end;
 end;
+
 procedure TframeAppSynthSettings.InitDefaults;
 begin
   FUSBConnection := True;
   FHost := '127.0.0.1';
-  FPort :=  2501;
+  FPort := 2501;
 end;
+
 procedure TframeAppSynthSettings.SetHost(const Value: string);
 begin
-  if FHost <> Value then begin
+  if FHost <> Value then
+  begin
     FHost := Value;
     UpdateControls;
   end;
 end;
-procedure TframeAppSynthSettings.SetPort(const Value: integer);
+
+procedure TframeAppSynthSettings.SetPort(const Value: Integer);
 begin
-  if FPort <> Value then begin
+  if FPort <> Value then
+  begin
     FPort := Value;
     UpdateControls;
   end;
 end;
+
 procedure TframeAppSynthSettings.SetSynth(const Value: TG2GraphFMX);
 begin
-  if Value <> FSynth then begin
+  if Value <> FSynth then
+  begin
     FSynth := Value;
     FSynthName := FSynth.SynthName;
-{$IF NOT Defined(ANDROID)}
+    {$IFnDEF ANDROID}
     FPort := FSynth.Port;
     FHost := FSynth.Host;
     FUSBConnection := FSynth.IsServer;
-{$ENDIF}
+    {$ENDIF}
     UpdateControls;
   end;
 end;
+
 procedure TframeAppSynthSettings.SetSynthName(const Value: string);
 begin
-  if Value <> FSynthName then begin
+  if Value <> FSynthName then
+  begin
     FSynthName := Value;
     UpdateControls;
   end;
 end;
+
 procedure TframeAppSynthSettings.SetUSBConnection(const Value: boolean);
 begin
-  if FUSBConnection <> Value then begin
+  if FUSBConnection <> Value then
+  begin
     FUSBConnection := Value;
     UpdateControls;
   end;
 end;
+
 procedure TframeAppSynthSettings.UpdateControls;
 begin
   if assigned(FSynth) then
-    lbCaption.LabelText := FSynth.SynthName +  ' connections'
+    lbCaption.LabelText := FSynth.SynthName + ' connections'
   else
-    lbCaption.LabelText := 'Unknown' +  ' connections';
+    lbCaption.LabelText := 'Unknown' + ' connections';
 
   if FUSBConnection then
     bfUSBConnection.Value := 1
@@ -203,4 +245,5 @@ begin
   eHost.Text := FHost;
   ePort.Text := IntToStr(FPort);
 end;
+
 end.

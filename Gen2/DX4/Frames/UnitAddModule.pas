@@ -1,36 +1,51 @@
 unit UnitAddModule;
 
-//  ////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////
 //
-//  Copyright (C) 2011 Bruno Verhue
+// Copyright (C) 2011 Bruno Verhue
 //
-//  This program is free software; you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation; either version 2 of the License, or
-//  (at your option) any later version.
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
 //
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
 //
-//  You should have received a copy of the GNU General Public License
-//  along with this program; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-//  ////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////
+
+{$I ..\Common\CompilerSettings.Inc}
 
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Rtti, System.Classes,
-  System.Variants, System.Generics.Collections, System.Generics.Defaults,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.Layouts,
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Rtti,
+  System.Classes,
+  System.Variants,
+  System.Generics.Collections,
+  System.Generics.Defaults,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.Layouts,
   FMX.StdCtrls,
-{$IF Defined(VER260) or Defined(VER270) or Defined(VER340)}
+  {$IFDEF VER260Up}
   FMX.Graphics,
-{$ENDIF}
-  BVE.NMG2Data, BVE.NMG2ControlsFMX, BVE.NMG2Types, BVE.NMG2GraphFMX,
+  {$ENDIF}
+  BVE.NMG2Data,
+  BVE.NMG2ControlsFMX,
+  BVE.NMG2Types,
+  BVE.NMG2GraphFMX,
   UnitSlot;
 
 type
@@ -50,13 +65,13 @@ type
       Shift: TShiftState; X, Y: Single);
     procedure btInsertModuleChangeValue(Sender: TObject; const aValue: Integer);
   private
-    [Weak] FframeSlot : TframeSlot;
-    [Weak] FModuleImageList : TObjectDictionary<integer, TBitmap>;
+    [Weak] FframeSlot: TframeSlot;
+    [Weak] FModuleImageList: TObjectDictionary<Integer, TBitmap>;
 
-    FAddModuleList : TModuleSelectionList;
+    FAddModuleList: TModuleSelectionList;
     procedure SetframeSlot(const Value: TframeSlot);
   public
-    constructor Create(AOwner : TComponent); override;
+    constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
 
     procedure UpdateControls;
@@ -68,11 +83,11 @@ type
     procedure NextTemplateModule;
     procedure PrevTemplateModule;
 
+    procedure SetStateStyles(aStateStyleList: TG2StateStyleList);
 
-    procedure SetStateStyles( aStateStyleList : TG2StateStyleList);
-
-    property ModuleImageList : TObjectDictionary<integer, TBitmap> read FModuleIMageList write FModuleImageList;
-    property frameSlot : TframeSlot read FframeSlot write SetframeSlot;
+    property ModuleImageList: TObjectDictionary<Integer, TBitmap>
+      read FModuleImageList write FModuleImageList;
+    property frameSlot: TframeSlot read FframeSlot write SetframeSlot;
   end;
 
 implementation
@@ -91,7 +106,7 @@ begin
   inherited;
 
   FAddModuleList := TModuleSelectionList.Create(False);
-  FAddmoduleList.Scrollbox := sbAddModule;
+  FAddModuleList.Scrollbox := sbAddModule;
   sbAddModule.AniCalculations.Animation := True;
   sbAddModule.AniCalculations.BoundsAnimation := True;
   sbAddModule.AniCalculations.TouchTracking := [ttVertical];
@@ -104,22 +119,21 @@ begin
 end;
 
 procedure TFrameAddModule.InsertModule;
-var TypeID : byte;
-    ModuleDef : TG2ModuleDef;
+var
+  TypeID: Byte;
+  ModuleDef: TG2ModuleDef;
 begin
   if FAddModuleList.ItemIndex = -1 then
-    exit;
+    Exit;
 
   if FframeSlot.SelectedLocation = ltPatch then
-    exit;
+    Exit;
 
   TypeID := FAddModuleList[FAddModuleList.ItemIndex].TypeID;
-  ModuleDef := GetDataModuleDef( TypeID);
+  ModuleDef := GetDataModuleDef(TypeID);
 
-  FframeSlot.Patch.MessAddModule( FframeSlot.SelectedLocation,
-                                  TypeID,
-                                  FframeSlot.ModuleCursor.Col,
-                                  FframeSlot.ModuleCursor.Row);
+  FframeSlot.Patch.MessAddModule(FframeSlot.SelectedLocation, TypeID,
+    FframeSlot.ModuleCursor.Col, FframeSlot.ModuleCursor.Row);
   FframeSlot.ModuleCursor.Row := FframeSlot.ModuleCursor.Row + ModuleDef.Height;
 end;
 
@@ -135,8 +149,8 @@ end;
 
 procedure TFrameAddModule.NextTemplateModule;
 begin
- if (FAddModuleList.ItemIndex + 1) < FAddModuleList.Count then
-   FAddModuleList.ItemIndex := FAddModuleList.ItemIndex + 1;
+  if (FAddModuleList.ItemIndex + 1) < FAddModuleList.Count then
+    FAddModuleList.ItemIndex := FAddModuleList.ItemIndex + 1;
 end;
 
 procedure TFrameAddModule.PrevModulePage;
@@ -151,8 +165,8 @@ end;
 
 procedure TFrameAddModule.PrevTemplateModule;
 begin
- if (FAddModuleList.ItemIndex - 1) >= 0 then
-   FAddModuleList.ItemIndex := FAddModuleList.ItemIndex - 1;
+  if (FAddModuleList.ItemIndex - 1) >= 0 then
+    FAddModuleList.ItemIndex := FAddModuleList.ItemIndex - 1;
 end;
 
 procedure TFrameAddModule.rbeModulePagesMouseUp(Sender: TObject;
@@ -166,10 +180,15 @@ procedure TFrameAddModule.rbeModulePagesPaintElement(Sender: TObject;
   const aElementType: TControlElementType; aElementIndex: Integer;
   aStyleSet: TG2StyleSet);
 begin
-  if aStyleSet.State <> csSelected then begin
+  if aStyleSet.State <> csSelected then
+  begin
     case aElementType of
-      ceBackGround: aStyleSet.Fill.Color := ConvertToAlpha(ModulePageColors[aElementIndex,0]);
-      ceText: aStyleSet.FontColor := ConvertToAlpha(ModulePageColors[aElementIndex,1]);
+      ceBackGround:
+        aStyleSet.Fill.Color :=
+          ConvertToAlpha(ModulePageColors[aElementIndex, 0]);
+      ceText:
+        aStyleSet.FontColor :=
+          ConvertToAlpha(ModulePageColors[aElementIndex, 1]);
     end;
   end;
 end;
@@ -181,20 +200,24 @@ end;
 
 procedure TFrameAddModule.sbAddModuleMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Single);
-var i : integer;
-    P : TPointF;
-    ModuleDef : TG2ModuleDef;
+var
+  i: Integer;
+  P: TPointF;
+  ModuleDef: TG2ModuleDef;
 begin
   FAddModuleList.ItemIndex := -1;
   P := sbAddModule.LocalToAbsolute(PointF(X, Y));
-  for i := 0 to FAddModuleList.Count - 1 do begin
-    if FAddModuleList[i].PointInObject(P.X, P.Y) then begin
+  for i := 0 to FAddModuleList.Count - 1 do
+  begin
+    if FAddModuleList[i].PointInObject(P.X, P.Y) then
+    begin
       FAddModuleList.ItemIndex := i;
 
-      ModuleDef := GetDataModuleDef( FAddModuleList[FAddModuleList.ItemIndex].TypeID);
+      ModuleDef := GetDataModuleDef
+        (FAddModuleList[FAddModuleList.ItemIndex].TypeID);
 
       frameSlot.ModuleCursor.UnitsHeight := ModuleDef.Height;
-      exit;
+      Exit;
     end;
   end;
 end;
@@ -211,13 +234,14 @@ begin
 end;
 
 procedure TFrameAddModule.UpdateControls;
-var Module : TG2GraphModuleFMX;
-    ModuleDefStream : TModuleDefStream;
-    Synth : TG2GraphFMX;
-    Item : TModuleListItem;
-    Pos : single;
-    PageNo, i : integer;
-    ModuleDef : TG2ModuleDef;
+var
+  Module: TG2GraphModuleFMX;
+  ModuleDefStream: TModuleDefStream;
+  Synth: TG2GraphFMX;
+  Item: TModuleListItem;
+  Pos: Single;
+  PageNo, i: Integer;
+  ModuleDef: TG2ModuleDef;
 begin
   sbAddModule.BeginUpdate;
   try
@@ -232,9 +256,11 @@ begin
 
     Pos := 0;
     i := 0;
-    for i in FModuleImageList.keys do begin
+    for i in FModuleImageList.keys do
+    begin
       ModuleDef := GetDataModuleDef(i);
-      if ord(ModuleDef.Page) = rbeModulePages.Value then begin
+      if ord(ModuleDef.Page) = rbeModulePages.Value then
+      begin
         Item := TModuleListItem.Create(sbAddModule);
         Item.Parent := sbAddModule;
 
@@ -244,11 +270,13 @@ begin
         Item.PageIndex := ModuleDef.PageIndex;
         Item.Fill.Color := FAddModuleList.FillColor;
         Item.ImageLabel.LabelText := ModuleDef.ModuleName;
-        Item.ImageLabel.StateStyleList.StateStyle[csDefault].FontColor := ConvertToAlpha(ModulePageColors[PageNo, 1]);
+        Item.ImageLabel.StateStyleList.StateStyle[csDefault].FontColor :=
+          ConvertToAlpha(ModulePageColors[PageNo, 1]);
         Item.Position.X := 0;
         Item.Position.Y := Pos;
         Item.Width := sbAddModule.Width;
-        Item.Height := 20 + ModuleDef.Height * (UNITS_ROW+UNIT_MARGIN*2) * Item.Width / (UNITS_COL+UNIT_MARGIN*2);
+        Item.Height := 20 + ModuleDef.Height * (UNITS_ROW + UNIT_MARGIN * 2) *
+          Item.Width / (UNITS_COL + UNIT_MARGIN * 2);
         Item.HitTest := False;
         Pos := Pos + Item.Height;
         Item.Image.Bitmap := FModuleImageList[i];
@@ -256,18 +284,19 @@ begin
     end;
 
     FAddModuleList.Sort(TComparer<TModuleListItem>.Construct(
-                           function (const L, R : TModuleListItem): integer
-                           begin
-                             if L.PageIndex < R.PageIndex then
-                               Result := -1
-                             else
-                               if L.PageIndex > R.PageIndex then
-                                 Result := +1
-                               else
-                                 Result := 0;
-                           end));
+      function(const L, R: TModuleListItem): Integer
+      begin
+        if L.PageIndex < R.PageIndex then
+          Result := -1
+        else if L.PageIndex > R.PageIndex then
+          Result := +1
+        else
+          Result := 0;
+      end));
+
     Pos := 0;
-    for Item in FAddModuleList do begin
+    for Item in FAddModuleList do
+    begin
       Item.Position.Y := Pos;
       Pos := Pos + Item.Height;
     end;

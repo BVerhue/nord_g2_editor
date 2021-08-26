@@ -4,19 +4,51 @@ object frmSynthSettings: TfrmSynthSettings
   Caption = 'Synth settings'
   ClientHeight = 424
   ClientWidth = 739
-  FormStyle = fsStayOnTop
+  FormStyle = StayOnTop
   FormFactor.Width = 320
   FormFactor.Height = 480
-  FormFactor.Devices = [dkDesktop, dkiPhone, dkiPad]
-  DesignerMobile = False
-  DesignerWidth = 0
-  DesignerHeight = 0
-  DesignerDeviceName = ''
-  DesignerOrientation = 0
-  DesignerOSVersion = ''
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  DesignerMasterStyle = 0
   inline frameSynthSettings: TframeSynthSettings
-    Align = alCenter
-    Height = 411.000000000000000000
-    Width = 723.000000000000000000
+    Align = Center
+    Size.Width = 723.000000000000000000
+    Size.Height = 411.000000000000000000
+    Size.PlatformDefault = False
+    inherited Rectangle1: TRectangle
+      inherited Panel2: TPanel
+        inherited bidMidiCHannelA: TG2BtnIncDec
+          TabOrder = 5
+        end
+        inherited bidMidiChannelB: TG2BtnIncDec
+          TabOrder = 6
+        end
+        inherited bidMidiChannelC: TG2BtnIncDec
+          TabOrder = 7
+        end
+        inherited BidMidiChannelD: TG2BtnIncDec
+          TabOrder = 8
+        end
+        inherited btMidiChannelAEnabled: TG2BtnText
+          TabOrder = 9
+        end
+        inherited btMidiChannelBEnabled: TG2BtnText
+          TabOrder = 10
+        end
+        inherited btMidiChannelCEnabled: TG2BtnText
+          TabOrder = 12
+        end
+      end
+      inherited Panel4: TPanel
+        inherited bidTuneSemi: TG2BtnIncDec
+          TabOrder = 3
+        end
+        inherited bidTuneCent: TG2BtnIncDec
+          TabOrder = 4
+        end
+        inherited btGlobalOctaveShiftEnable: TG2BtnText
+          TabOrder = 6
+        end
+      end
+    end
   end
 end

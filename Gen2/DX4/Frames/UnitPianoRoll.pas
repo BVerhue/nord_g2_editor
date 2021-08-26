@@ -1,15 +1,53 @@
 unit UnitPianoRoll;
+
+// ////////////////////////////////////////////////////////////////////////////
+//
+// Copyright (C) 2011 Bruno Verhue
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// ////////////////////////////////////////////////////////////////////////////
+
+{$I ..\..\Common\CompilerSettings.Inc}
+
 interface
+
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  System.Generics.Collections, System.UIConsts,
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Classes,
+  System.Variants,
+  System.Generics.Collections,
+  System.UIConsts,
   FMX.Types,
-{$IF Defined(VER260) or Defined(VER270) or Defined(VER340)}
+  {$IFDEF Ver260Up}
   FMX.Graphics,
-{$ENDIF}
-  FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
-  BVE.NMG2ControlsFMX, FMX.Layouts, BVE.NMG2File,
-  BVE.NMG2GraphFMX, BVE.NMG2Types, FMX.Objects, FMX.Controls.Presentation;
+  {$ENDIF}
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.StdCtrls,
+  FMX.Objects,
+  FMX.Controls.Presentation,
+  FMX.Layouts,
+  BVE.NMG2ControlsFMX,
+  BVE.NMG2File,
+  BVE.NMG2GraphFMX,
+  BVE.NMG2Types;
+
 type
   TframePianoRoll = class(TFrame)
     Layout1: TLayout;
@@ -155,96 +193,111 @@ type
     procedure btCloseChangeValue(Sender: TObject; const aValue: Integer);
     procedure sbPianoRollMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Single);
-    procedure NoteChangeValue(Sender: TObject; const aValue : integer);
+    procedure NoteChangeValue(Sender: TObject; const aValue: Integer);
     procedure btRandomChangeValue(Sender: TObject; const aValue: Integer);
     procedure btClearChangeValue(Sender: TObject; const aValue: Integer);
     procedure idTransposeButtonClick(Sender: TObject; const aIndex: Integer);
     procedure idRotateButtonClick(Sender: TObject; const aIndex: Integer);
     procedure FrameResize(Sender: TObject);
   private
-    FSeqModule : TG2GraphModuleFMX;
-    FNoteBtns : TObjectList<TG2BtnText>;
-    FLedGroupIndex : integer;
-    FLed : TRectangle;
-    FOnClose : TNotifyEvent;
-    FLedValue: integer;
+    FSeqModule: TG2GraphModuleFMX;
+    FNoteBtns: TObjectList<TG2BtnText>;
+    FLedGroupIndex: Integer;
+    FLed: TRectangle;
+    FOnClose: TNotifyEvent;
+    FLedValue: Integer;
     procedure SetSeqModule(const Value: TG2GraphModuleFMX);
-    procedure SetLedValue(const Value: integer);
+    procedure SetLedValue(const Value: Integer);
   public
-    constructor Create(AOwner : TComponent); override;
+    constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure UpdateControls;
 
-    function GetNoteRect( aNoteIndex : integer): TRectF;
+    function GetNoteRect(aNoteIndex: Integer): TRectF;
 
-    procedure SeqLed(Sender : TObject; const aLocation : TLocationType; const aModuleIndex, aGroupIndex, aCodeRef, aValue : byte);
+    procedure SeqLed(Sender: TObject; const aLocation: TLocationType;
+      const aModuleIndex, aGroupIndex, aCodeRef, aValue: byte);
 
     procedure ScrollInView;
-    property LedValue : integer read FLedValue write SetLedValue;
-    property SeqModule : TG2GraphModuleFMX read FSeqModule write SetSeqModule;
-    property OnClose : TNotifyEvent read FOnClose write FOnCLose;
+    property LedValue: Integer read FLedValue write SetLedValue;
+    property SeqModule: TG2GraphModuleFMX read FSeqModule write SetSeqModule;
+    property OnClose: TNotifyEvent read FOnClose write FOnClose;
   end;
+
 implementation
+
 {$R *.fmx}
+
 { TframePianoRoll }
+
 procedure TframePianoRoll.btClearChangeValue(Sender: TObject;
   const aValue: Integer);
-var i : integer;
+var
+  i: Integer;
 begin
   if not assigned(FSeqModule) then
-    exit;
-    for i := 0 to 15 do
-      FSeqModule.Parameter[ 0 + i].SetValue( 64);
+    Exit;
+
+  for i := 0 to 15 do
+    FSeqModule.Parameter[0 + i].SetValue(64);
   UpdateControls;
 end;
+
 procedure TframePianoRoll.btCloseChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
-  if aValue = 1 then begin
+  if aValue = 1 then
+  begin
     if assigned(FOnClose) then
       FOnClose(self)
     else
       Visible := False;
   end;
 end;
+
 procedure TframePianoRoll.btRandomChangeValue(Sender: TObject;
   const aValue: Integer);
-var i, j, k, d, nd : integer;
-    Value, Oct, Note : byte;
+var
+  i, j, k, d, nd: Integer;
+  Value, Oct, Note: Byte;
 begin
-  if not assigned( FSeqModule) then
-    exit;
+  if not assigned(FSeqModule) then
+    Exit;
 
-  if aValue = 0 then begin
-    for i := 0 to 15 do begin
-      Value := FSeqModule.Parameter[ 0 + i].GetValue + (trunc(Random * 36) - 18);
-      {if FNoteQuantCount > 0 then begin
+  if aValue = 0 then
+  begin
+    for i := 0 to 15 do
+    begin
+      Value := FSeqModule.Parameter[0 + i].GetValue + (trunc(Random * 36) - 18);
+      { if FNoteQuantCount > 0 then begin
         Oct := GetOctaaf( Value);
         Note := GetNoot( Value);
         d := 12;
         k := 0;
         for j := 0 to FNoteQuantCount - 1 do begin
-          nd := abs(FNoteQuant[j] - Note);
-          if nd<d then begin
-            d := nd;
-            k := j;
-          end
+        nd := abs(FNoteQuant[j] - Note);
+        if nd<d then begin
+        d := nd;
+        k := j;
+        end
         end;
         Value := GetValue(Oct, FNoteQuant[k]);
-      end;}
-      FSeqModule.Parameter[ 0 + i].SetValue( Value);
+        end; }
+      FSeqModule.Parameter[0 + i].SetValue(Value);
     end;
     UpdateControls;
   end;
 end;
+
 constructor TframePianoRoll.Create(AOwner: TComponent);
 begin
   inherited;
+
   FNoteBtns := TObjectList<TG2BtnText>.Create(False);
   FNoteBtns.Add(btNote1);
   FNoteBtns.Add(btNote2);
   FNoteBtns.Add(btNote3);
-  FNoteBtns.Add(btNote4);
+  FNoteBtns.Add(BtNote4);
   FNoteBtns.Add(btNote5);
   FNoteBtns.Add(btNote6);
   FNoteBtns.Add(btNote7);
@@ -257,156 +310,208 @@ begin
   FNoteBtns.Add(btNote14);
   FNoteBtns.Add(btNote15);
   FNoteBtns.Add(btNote16);
-  FLed := TRectangle.Create(self);
+
+  FLed := TRectangle.Create(Self);
   FLed.Fill.Kind := TBrushKind.bkNone;
   FLed.Stroke.Thickness := 3;
   FLed.Stroke.Color := claLime;
   FLed.Parent := sbPianoRoll;
   FLed.HitTest := False;
+
   LedValue := 0;
-  //sbPianoRoll.AniCalculations.Animation := True;
-  //sbPianoRoll.AniCalculations.BoundsAnimation := True;
-  //sbPianoRoll.AniCalculations.TouchTracking := [ttVertical];
+  // sbPianoRoll.AniCalculations.Animation := True;
+  // sbPianoRoll.AniCalculations.BoundsAnimation := True;
+  // sbPianoRoll.AniCalculations.TouchTracking := [ttVertical];
 end;
+
 destructor TframePianoRoll.Destroy;
 begin
   FNoteBtns.Free;
   inherited;
 end;
+
 procedure TframePianoRoll.FrameResize(Sender: TObject);
 begin
   UpdateControls;
 end;
-function TframePianoRoll.GetNoteRect(aNoteIndex: integer): TRectF;
-var Param : TG2FileParameter;
-    KeyNo : integer;
-    w, h : single;
+
+function TframePianoRoll.GetNoteRect(aNoteIndex: Integer): TRectF;
+var
+  Param: TG2FileParameter;
+  KeyNo: Integer;
+  w, h: Single;
 begin
   if not assigned(FSeqModule) then
-    exit;
+    Exit;
+
   Param := FSeqModule.Parameter[aNoteIndex];
   if not assigned(Param) then
-    exit;
+    Exit;
+
   KeyNo := Param.GetValue;
   w := (Width - 16 - lKeyboard.Width) / 16;
   h := 25;
+
   Result.Left := lKeyboard.Width + aNoteIndex * w;
-  Result.Top := lKeyBoard.Height - (KeyNo + 1) * 24;
+  Result.Top := lKeyboard.Height - (KeyNo + 1) * 24;
   Result.Right := Result.Left + w;
   Result.Bottom := Result.Top + h;
 end;
+
 procedure TframePianoRoll.idRotateButtonClick(Sender: TObject;
   const aIndex: Integer);
-var NoteValue, BtnValue : byte;
-    i : integer;
+var
+  NoteValue, BtnValue: Byte;
+  i: Integer;
 begin
   if not assigned(FSeqModule) then
-    exit;
-  if aIndex = 0 then begin
-    BtnValue  := FSeqModule.Parameter[16].GetValue;
+    Exit;
+
+  if aIndex = 0 then
+  begin
+    BtnValue := FSeqModule.Parameter[16].GetValue;
     NoteValue := FSeqModule.Parameter[0].GetValue;
-    for i := 1 to 15 do begin
-      FSeqModule.Parameter[16 + i - 1].SetValue( FSeqModule.Parameter[16 + i].GetValue);
-      FSeqModule.Parameter[ 0 + i - 1].SetValue( FSeqModule.Parameter[ 0 + i].GetValue);
+    for i := 1 to 15 do
+    begin
+      FSeqModule.Parameter[16 + i - 1].SetValue
+        (FSeqModule.Parameter[16 + i].GetValue);
+      FSeqModule.Parameter[0 + i - 1].SetValue
+        (FSeqModule.Parameter[0 + i].GetValue);
     end;
-    FSeqModule.Parameter[31].SetValue( BtnValue);
-    FSeqModule.Parameter[15].SetValue( NoteValue);
-  end else begin
-    BtnValue  := FSeqModule.Parameter[31].GetValue;
+    FSeqModule.Parameter[31].SetValue(BtnValue);
+    FSeqModule.Parameter[15].SetValue(NoteValue);
+  end
+  else
+  begin
+    BtnValue := FSeqModule.Parameter[31].GetValue;
     NoteValue := FSeqModule.Parameter[15].GetValue;
-    for i := 14 downto 0 do begin
-      FSeqModule.Parameter[16 + i + 1].SetValue( FSeqModule.Parameter[16 + i].GetValue);
-      FSeqModule.Parameter[ 0 + i + 1].SetValue( FSeqModule.Parameter[ 0 + i].GetValue);
+    for i := 14 downto 0 do
+    begin
+      FSeqModule.Parameter[16 + i + 1].SetValue
+        (FSeqModule.Parameter[16 + i].GetValue);
+      FSeqModule.Parameter[0 + i + 1].SetValue
+        (FSeqModule.Parameter[0 + i].GetValue);
     end;
-    FSeqModule.Parameter[16].SetValue( BtnValue);
-    FSeqModule.Parameter[ 0].SetValue( NoteValue);
+    FSeqModule.Parameter[16].SetValue(BtnValue);
+    FSeqModule.Parameter[0].SetValue(NoteValue);
   end;
   UpdateControls;
 end;
+
 procedure TframePianoRoll.idTransposeButtonClick(Sender: TObject;
   const aIndex: Integer);
-var i : integer;
-    Value : integer;
+var
+  i: Integer;
+  Value: Integer;
 begin
   if not assigned(FSeqModule) then
-    exit;
-  if aIndex = 0 then begin
-    for i := 0 to 15 do begin
-      Value := FSeqModule.Parameter[ 0 + i].GetValue;
+    Exit;
+  if aIndex = 0 then
+  begin
+    for i := 0 to 15 do
+    begin
+      Value := FSeqModule.Parameter[0 + i].GetValue;
       if Value > 0 then
         Value := Value - 1;
-      FSeqModule.Parameter[ 0 + i].SetValue( Value);
+      FSeqModule.Parameter[0 + i].SetValue(Value);
     end;
-  end else begin
-    for i := 0 to 15 do begin
-      Value := FSeqModule.Parameter[ 0 + i].GetValue;
+  end
+  else
+  begin
+    for i := 0 to 15 do
+    begin
+      Value := FSeqModule.Parameter[0 + i].GetValue;
       if Value < 127 then
         Value := Value + 1;
-      FSeqModule.Parameter[ 0 + i].SetValue( Value);
+      FSeqModule.Parameter[0 + i].SetValue(Value);
     end;
   end;
   UpdateControls;
 end;
+
 procedure TframePianoRoll.NoteChangeValue(Sender: TObject;
-  const aValue: integer);
-var Param : TG2FileParameter;
+  const aValue: Integer);
+var
+  Param: TG2FileParameter;
 begin
-  if Sender is TG2BtnText then begin
-    Param := FSeqModule.Parameter[16 + (Sender as TG2BtnText).Tag] as TG2FileParameter;
-  // TODO  Param.SelectControl( Sender as TG2BtnText);
-    Param.SetValue( aValue);
+  if Sender is TG2BtnText then
+  begin
+    Param := FSeqModule.Parameter[16 + (Sender as TG2BtnText).Tag]
+      as TG2FileParameter;
+    // TODO  Param.SelectControl( Sender as TG2BtnText);
+    Param.SetValue(aValue);
   end;
 end;
+
 procedure TframePianoRoll.sbPianoRollMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Single);
-var NoteNo, KeyNo : integer;
+var
+  NoteNo, KeyNo: Integer;
 begin
-  NoteNo := trunc(16 * (X - lKeyboard.Width) / (Width - lKeyboard.Width));
-  KeyNo := trunc(96 * (lKeyboard.Height - (Y + sbPianoRoll.ViewportPosition.Y)) / lKeyboard.Height);
-  if assigned(FSeqModule) then begin
-    FSeqModule.Parameter[NoteNo].SetValue( KeyNo);
+  NoteNo := Trunc(16 * (X - lKeyboard.Width) / (Width - lKeyboard.Width));
+  KeyNo := Trunc(96 * (lKeyboard.Height - (Y + sbPianoRoll.ViewportPosition.Y)) / lKeyboard.Height);
+
+  if assigned(FSeqModule) then
+  begin
+    FSeqModule.Parameter[NoteNo].SetValue(KeyNo);
     UpdateControls;
   end;
 end;
+
 procedure TframePianoRoll.ScrollInView;
-var Posy : single;
+var
+  Posy: Single;
 begin
   if not assigned(FSeqModule) then
-    exit;
-  PosY := lKeyBoard.Height - (FSeqModule.Parameter[0].GetValue + 1) * 24;
-  sbPianoRoll.ViewportPosition := PointF(0, (PosY - sbPianoRoll.Height/2));
+    Exit;
+
+  Posy := lKeyboard.Height - (FSeqModule.Parameter[0].GetValue + 1) * 24;
+  sbPianoRoll.ViewportPosition := PointF(0, (Posy - sbPianoRoll.Height / 2));
 end;
-procedure TframePianoRoll.SeqLed(Sender : TObject; const aLocation : TLocationType;
-  const aModuleIndex, aGroupIndex, aCodeRef, aValue : byte);
-var i : integer;
+
+procedure TframePianoRoll.SeqLed(Sender: TObject;
+  const aLocation: TLocationType; const aModuleIndex, aGroupIndex, aCodeRef,
+  aValue: Byte);
+var
+  i: Integer;
 begin
-  if (FSeqModule.Location = aLocation) and (FSeqModule.ModuleIndex = aModuleIndex) then
+  if (FSeqModule.Location = aLocation) and
+    (FSeqModule.ModuleIndex = aModuleIndex) then
     if aValue < 16 then
       LedValue := aValue;
 end;
-procedure TframePianoRoll.SetLedValue(const Value: integer);
-var Rect : TRectF;
+
+procedure TframePianoRoll.SetLedValue(const Value: Integer);
+var
+  Rect: TRectF;
 begin
   FLedValue := Value;
   Rect := GetNoteRect(Value);
-  FLed.Position.X := Rect.Left-3;
-  FLed.Position.Y := Rect.Top-3;
-  FLed.Width := (Rect.Right - Rect.Left)+6;
-  FLed.Height := (Rect.Bottom - Rect.Top)+6;
+  FLed.Position.X := Rect.Left - 3;
+  FLed.Position.Y := Rect.Top - 3;
+  FLed.Width := (Rect.Right - Rect.Left) + 6;
+  FLed.Height := (Rect.Bottom - Rect.Top) + 6;
 end;
+
 procedure TframePianoRoll.SetSeqModule(const Value: TG2GraphModuleFMX);
-var i : integer;
-    ModulePanel : TG2Module;
+var
+  i: Integer;
+  ModulePanel: TG2Module;
 begin
-  if Value <> FSeqModule then begin
+  if Value <> FSeqModule then
+  begin
     FSeqModule := Value;
-    if assigned(Value) then begin
+    if assigned(Value) then
+    begin
       ModulePanel := FSeqModule.G2Module;
       FLedGroupIndex := -1;
       i := 0;
-      while (i<ModulePanel.ChildrenCount) and not((ModulePanel.Children[i] is TG2Led) and ((ModulePanel.Children[i] as TG2Led).LedType = ltSequencer)) do
+      while (i < ModulePanel.ChildrenCount) and
+        not((ModulePanel.Children[i] is TG2Led) and
+        ((ModulePanel.Children[i] as TG2Led).LedType = ltSequencer)) do
         inc(i);
-      if (i<ModulePanel.ChildrenCount) then begin
+      if (i < ModulePanel.ChildrenCount) then
+      begin
         FLedGroupIndex := (ModulePanel.Children[i] as TG2Led).LedGroupID;
       end;
       LedValue := 0;
@@ -414,29 +519,34 @@ begin
     end;
   end;
 end;
+
 procedure TframePianoRoll.UpdateControls;
-var i, keyno, o, k : integer;
-    KeyType : TKeyType;
-    BtnPos : single;
-    ParamStep, ParamEvent : TG2FileParameter;
-    KeyName : string;
+var
+  i, KeyNo, o, k: Integer;
+  KeyType: TKeyType;
+  BtnPos: Single;
+  ParamStep, ParamEvent: TG2FileParameter;
+  KeyName: string;
 begin
   if not assigned(FSeqModule) then
-    exit;
-  for i := 0 to 15 do begin
+    Exit;
+
+  for i := 0 to 15 do
+  begin
     ParamStep := FSeqModule.Parameter[i];
     ParamEvent := FSeqModule.Parameter[16 + i];
     if not(assigned(ParamStep) and assigned(ParamEvent)) then
-      exit;
+      Exit;
 
     KeyNo := ParamStep.GetValue;
     KeyName := GetKeyName(KeyNo);
     FNoteBtns[i].ButtonText.Clear;
-    FNoteBtns[i].ButtonText.Add( KeyName);
-    FNoteBtns[i].ButtonText.Add( KeyName);
+    FNoteBtns[i].ButtonText.Add(KeyName);
+    FNoteBtns[i].ButtonText.Add(KeyName);
     FNoteBtns[i].Value := ParamEvent.GetValue;
     FNoteBtns[i].UnscaledRect := GetNoteRect(i);
     LedValue := FLedValue;
   end;
 end;
+
 end.

@@ -119,7 +119,11 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
+
     function CreatePerformance: TG2FilePerformance; override;
+
+    procedure LoadFileStream(aFilename: string);
+
     property SelectedSlot: TG2GraphSlotFMX read GetSelectedSlot;
     property SelectedControl: TG2BaseControl read FSelectedControl
       write SetSelectedControl;
@@ -614,6 +618,61 @@ end;
 function TG2GraphFMX.GetSelectedSlot: TG2GraphSlotFMX;
 begin
   Result := GetSlot(Performance.SelectedSlot) as TG2GraphSlotFMX;
+end;
+
+procedure TG2GraphFMX.LoadFileStream(aFilename: string);
+var
+  G2FileDataStream: TG2FileDataStream;
+  DataName: string;
+  i: Integer;
+  FileStream: TFileStream;
+  Lines: TStrings;
+  b: Byte;
+begin
+  FileStream := TFileStream.Create(aFilename, fmOpenRead);
+  try
+    aFilename := ExtractFilename(aFilename);
+
+    // Name patch max size = 16, if shorter end with 0
+    DataName := '';
+    i := 1;
+    while (i <= Length(aFilename)) and (i <= 16) and (aFilename[i] <> '.') do
+    begin
+      DataName := DataName + Char(Byte(aFilename[i]));
+      inc(i);
+    end;
+
+    Lines := nil;
+    if assigned(LogLines) then
+      Lines := LogLines;
+
+    // Check first Byte
+    FileStream.Read(b, 1);
+    FileStream.Position := 0;
+    case b of
+      $56:
+        G2FileDataStream := TG2FileDataStream.LoadFileData(Self,
+          FileStream, Lines);
+      $F0:
+        G2FileDataStream := TG2FileDataStream.LoadMidiData(Self,
+          FileStream, Lines);
+    else
+      raise Exception.Create('Unknown file data.');
+    end;
+
+    if G2FileDataStream is TG2FilePerformance then
+    begin
+      (Performance as TG2GraphPerformanceFMX).SendSetPerformanceMessage(
+        DataName, G2FileDataStream as TG2FilePerformance);
+    end else
+      if G2FileDataStream is TG2FilePatch then
+        SelectedSlot.SendSetPatchMessage(DataName,
+          G2FileDataStream as TG2FilePatch)
+      else
+        raise Exception.Create('Unknown data type');
+  finally
+    FileStream.Free;
+  end;
 end;
 
 procedure TG2GraphFMX.SelectControl(Sender: TObject);

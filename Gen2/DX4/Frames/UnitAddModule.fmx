@@ -1,8 +1,14 @@
 object FrameAddModule: TFrameAddModule
-  Height = 450.000000000000000000
-  Width = 260.000000000000000000
+  Size.Width = 260.000000000000000000
+  Size.Height = 450.000000000000000000
+  Size.PlatformDefault = False
   object rbeModulePages: TG2BtnRadioEdit
     Tag = 1
+    Align = Right
+    Position.X = 211.000000000000000000
+    Size.Width = 49.000000000000000000
+    Size.Height = 450.000000000000000000
+    Size.PlatformDefault = False
     Buffered = True
     StateStyleList.DefaultFont.Family = 'Roboto'
     StateStyleList.DefaultFont.Size = 7.000000000000000000
@@ -19,10 +25,6 @@ object FrameAddModule: TFrameAddModule
     StateStyleList.DisabledFont.Family = 'Roboto'
     StateStyleList.DisabledFont.Size = 7.000000000000000000
     StateStyleList.DisabledFontColor = claWhite
-    Align = alRight
-    Width = 49.000000000000000000
-    Height = 450.000000000000000000
-    Position.X = 211.000000000000000000
     ButtonText.Strings = (
       'In/Out'
       'Note'
@@ -41,6 +43,7 @@ object FrameAddModule: TFrameAddModule
       'Seq'
       'MIDI')
     ImageCount = 0
+    MouseEnable = True
     CanFocus = True
     TabOrder = 0
     OnMouseUp = rbeModulePagesMouseUp
@@ -50,17 +53,22 @@ object FrameAddModule: TFrameAddModule
     ButtonRows = 16
   end
   object Layout1: TLayout
-    Align = alClient
-    Height = 450.000000000000000000
-    Width = 211.000000000000000000
+    Align = Client
+    Size.Width = 211.000000000000000000
+    Size.Height = 450.000000000000000000
+    Size.PlatformDefault = False
     object ArrayLayout1: TArrayLayout
-      Align = alBottom
-      Height = 32.000000000000000000
+      Align = Bottom
       Position.Y = 418.000000000000000000
-      Width = 211.000000000000000000
+      Size.Width = 211.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
       Rows = 1
       Columns = 1
       object btInsertModule: TG2BtnText
+        Size.Width = 211.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
         Buffered = True
         StateStyleList.DefaultFont.Family = 'Roboto'
         StateStyleList.DefaultFont.Size = 7.000000000000000000
@@ -77,12 +85,11 @@ object FrameAddModule: TFrameAddModule
         StateStyleList.DisabledFont.Family = 'Roboto'
         StateStyleList.DisabledFont.Size = 7.000000000000000000
         StateStyleList.DisabledFontColor = claWhite
-        Width = 211.000000000000000000
-        Height = 32.000000000000000000
         ButtonText.Strings = (
           'Insert'
           'Insert')
         ImageCount = 0
+        MouseEnable = True
         CanFocus = True
         TabOrder = 0
         OnChangeValue = btInsertModuleChangeValue
@@ -91,13 +98,16 @@ object FrameAddModule: TFrameAddModule
       end
     end
     object sbAddModule: TVertScrollBox
-      Align = alClient
-      Height = 418.000000000000000000
-      ShowScrollBars = False
+      Align = Client
+      Size.Width = 211.000000000000000000
+      Size.Height = 418.000000000000000000
+      Size.PlatformDefault = False
       TabOrder = 1
-      Width = 211.000000000000000000
       OnDblClick = sbAddModuleDblClick
       OnMouseDown = sbAddModuleMouseDown
+      ShowScrollBars = False
+      Viewport.Width = 211.000000000000000000
+      Viewport.Height = 418.000000000000000000
     end
   end
 end

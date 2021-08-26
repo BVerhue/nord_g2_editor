@@ -1,13 +1,35 @@
 unit UnitUtils;
 
+// ////////////////////////////////////////////////////////////////////////////
+//
+// Copyright (C) 2011 Bruno Verhue
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// ////////////////////////////////////////////////////////////////////////////
+
+{$I ..\Common\CompilerSettings.Inc}
+
 interface
 
-{$IF Defined(MSWINDOWS)}
+{$IFDEF MSWINDOWS}
 uses
   Winapi.ShellAPI,
   Winapi.Windows;
 {$ENDIF}
-{$IF Defined(POSIX)}
+{$IFDEF POSIX}
 uses
   Posix.Stdlib;
 {$ENDIF}
@@ -21,12 +43,12 @@ implementation
 
 class procedure TUtils.Open(sCommand: string);
 begin
-{$IF Defined(MSWINDOWS)}
+  {$IFDEF MSWINDOWS}
   ShellExecute(0, 'OPEN', PChar(sCommand), '', '', SW_SHOWNORMAL);
-{$ENDIF}
-{$IF Defined(POSIX)}
+  {$ENDIF}
+  {$IFDEF POSIX}
   _system(PAnsiChar('open ' + AnsiString(sCommand)));
-{$ENDIF}
+  {$ENDIF}
 end;
 
 procedure ConvertXML;

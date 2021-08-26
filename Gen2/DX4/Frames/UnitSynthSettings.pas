@@ -1,33 +1,47 @@
 unit UnitSynthSettings;
 
-//  ////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////
 //
-//  Copyright (C) 2011 Bruno Verhue
+// Copyright (C) 2011 Bruno Verhue
 //
-//  This program is free software; you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation; either version 2 of the License, or
-//  (at your option) any later version.
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
 //
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
 //
-//  You should have received a copy of the GNU General Public License
-//  along with this program; if not, write to the Free Software
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-//  ////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////
+
+{$I ..\Common\CompilerSettings.Inc}
 
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Rtti, System.Classes,
-  System.Variants, FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs,
-  FMX.StdCtrls, FMX.Edit,
-  BVE.NMG2ControlsFMX, BVE.NMG2Types, BVE.NMG2GraphFMX, FMX.Objects,
-  FMX.Controls.Presentation;
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Rtti,
+  System.Classes,
+  System.Variants,
+  FMX.Types,
+  FMX.Controls,
+  FMX.Forms,
+  FMX.Dialogs,
+  FMX.StdCtrls,
+  FMX.Edit,
+  FMX.Objects,
+  FMX.Controls.Presentation,
+  BVE.NMG2ControlsFMX,
+  BVE.NMG2Types,
+  BVE.NMG2GraphFMX;
 
 type
   TframeSynthSettings = class(TFrame, IG2Observer)
@@ -155,19 +169,19 @@ type
     procedure btCCSnapshotChangeValue(Sender: TObject; const aValue: Integer);
     procedure btMidiDumpChangeValue(Sender: TObject; const aValue: Integer);
   private
-    [Weak] FSynth : TG2GraphFMX;
+    [Weak] FSynth: TG2GraphFMX;
 
     procedure Update(aG2Event: TG2Event);
-    procedure RemoveReference( aData : IG2Subject);
+    procedure RemoveReference(aData: IG2Subject);
 
     procedure SetSynth(const Value: TG2GraphFMX);
   public
     procedure UpdateControls;
     procedure UpdateSynth;
 
-    procedure SetStateStyles( aStateStyleList : TG2StateStyleList);
+    procedure SetStateStyles(aStateStyleList: TG2StateStyleList);
 
-    property Synth : TG2GraphFMX read FSynth write SetSynth;
+    property Synth: TG2GraphFMX read FSynth write SetSynth;
   end;
 
 implementation
@@ -258,8 +272,8 @@ begin
     Synth.SelectedSlot.SendControllerSnapshotMessage;
 end;
 
-procedure TframeSynthSettings.btGlobalOctaveShiftEnableChangeValue(
-  Sender: TObject; const aValue: Integer);
+procedure TframeSynthSettings.btGlobalOctaveShiftEnableChangeValue
+  (Sender: TObject; const aValue: Integer);
 begin
   Synth.GlobalOctaveShiftActive := aValue;
   UpdateSynth;
@@ -290,8 +304,10 @@ procedure TframeSynthSettings.btMidiChannelAEnabledChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
   case aValue of
-  0 : Synth.MidiChannelA := 16;
-  1 : Synth.MidiChannelA := 0;
+    0:
+      Synth.MidiChannelA := 16;
+    1:
+      Synth.MidiChannelA := 0;
   end;
   UpdateSynth;
 end;
@@ -300,8 +316,10 @@ procedure TframeSynthSettings.btMidiChannelBEnabledChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
   case aValue of
-  0 : Synth.MidiChannelA := 16;
-  1 : Synth.MidiChannelA := 1;
+    0:
+      Synth.MidiChannelA := 16;
+    1:
+      Synth.MidiChannelA := 1;
   end;
   UpdateSynth;
 end;
@@ -310,8 +328,10 @@ procedure TframeSynthSettings.btMidiChannelCEnabledChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
   case aValue of
-  0 : Synth.MidiChannelA := 16;
-  1 : Synth.MidiChannelA := 2;
+    0:
+      Synth.MidiChannelA := 16;
+    1:
+      Synth.MidiChannelA := 2;
   end;
   UpdateSynth;
 end;
@@ -320,8 +340,10 @@ procedure TframeSynthSettings.btMidiChannelDEnabledChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
   case aValue of
-  0 : Synth.MidiChannelA := 16;
-  1 : Synth.MidiChannelA := 3;
+    0:
+      Synth.MidiChannelA := 16;
+    1:
+      Synth.MidiChannelA := 3;
   end;
   UpdateSynth;
 end;
@@ -337,8 +359,10 @@ procedure TframeSynthSettings.btMidiGlobalEnabledChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
   case aValue of
-  0 : Synth.MidiGlobalChannel := 16;
-  1 : Synth.MidiGlobalChannel := 0;
+    0:
+      Synth.MidiGlobalChannel := 16;
+    1:
+      Synth.MidiGlobalChannel := 0;
   end;
   UpdateSynth;
 end;
@@ -368,14 +392,17 @@ procedure TframeSynthSettings.btSysExEnabledChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
   case aValue of
-  0 : Synth.SysExID := 16;
-  1 : Synth.SysExID := 0;
+    0:
+      Synth.SysExID := 16;
+    1:
+      Synth.SysExID := 0;
   end;
   UpdateSynth;
 end;
 
 procedure TframeSynthSettings.eMidiChannelAExit(Sender: TObject);
-var channel : integer;
+var
+  channel: Integer;
 begin
   channel := StrToInt(eMidiChannelA.Text);
   if (channel > 0) and (channel <= 16) then
@@ -384,7 +411,8 @@ begin
 end;
 
 procedure TframeSynthSettings.eMidiChannelBExit(Sender: TObject);
-var channel : integer;
+var
+  channel: Integer;
 begin
   channel := StrToInt(eMidiChannelB.Text);
   if (channel > 0) and (channel <= 16) then
@@ -393,7 +421,8 @@ begin
 end;
 
 procedure TframeSynthSettings.eMidiChannelCExit(Sender: TObject);
-var channel : integer;
+var
+  channel: Integer;
 begin
   channel := StrToInt(eMidiChannelC.Text);
   if (channel > 0) and (channel <= 16) then
@@ -402,7 +431,8 @@ begin
 end;
 
 procedure TframeSynthSettings.eMidiChannelDExit(Sender: TObject);
-var channel : integer;
+var
+  channel: Integer;
 begin
   channel := StrToInt(eMidiChannelD.Text);
   if (channel > 0) and (channel <= 16) then
@@ -411,7 +441,8 @@ begin
 end;
 
 procedure TframeSynthSettings.eMidiGlobalExit(Sender: TObject);
-var channel : integer;
+var
+  channel: Integer;
 begin
   channel := StrToInt(eMidiGlobal.Text);
   if (channel > 0) and (channel <= 16) then
@@ -426,7 +457,8 @@ begin
 end;
 
 procedure TframeSynthSettings.eSysExIDExit(Sender: TObject);
-var channel : integer;
+var
+  channel: Integer;
 begin
   channel := StrToInt(eSysExID.Text);
   if (channel > 0) and (channel <= 16) then
@@ -435,7 +467,8 @@ begin
 end;
 
 procedure TframeSynthSettings.eTuneCentExit(Sender: TObject);
-var TuneCent : integer;
+var
+  TuneCent: Integer;
 begin
   TuneCent := StrToInt(eTuneCent.Text);
   if (TuneCent >= -100) and (TuneCent <= 100) then
@@ -444,7 +477,8 @@ begin
 end;
 
 procedure TframeSynthSettings.eTuneSemiExit(Sender: TObject);
-var TuneSemi : integer;
+var
+  TuneSemi: Integer;
 begin
   TuneSemi := StrToInt(eTuneSemi.Text);
   if (TuneSemi >= -6) and (TuneSemi <= 6) then
@@ -456,11 +490,16 @@ procedure TframeSynthSettings.rbGlobalOctaveShiftChangeValue(Sender: TObject;
   const aValue: Integer);
 begin
   case aValue of
-  0 : Synth.GlobalOctaveShift := $FE;
-  1 : Synth.GlobalOctaveShift := $FF;
-  2 : Synth.GlobalOctaveShift := $00;
-  3 : Synth.GlobalOctaveShift := $01;
-  4 : Synth.GlobalOctaveShift := $02;
+    0:
+      Synth.GlobalOctaveShift := $FE;
+    1:
+      Synth.GlobalOctaveShift := $FF;
+    2:
+      Synth.GlobalOctaveShift := $00;
+    3:
+      Synth.GlobalOctaveShift := $01;
+    4:
+      Synth.GlobalOctaveShift := $02;
   end;
   UpdateSynth;
 end;
@@ -477,15 +516,16 @@ begin
   //
 end;
 
-procedure TframeSynthSettings.SetStateStyles(
-  aStateStyleList: TG2StateStyleList);
+procedure TframeSynthSettings.SetStateStyles(aStateStyleList
+  : TG2StateStyleList);
 begin
   ComponentSetStateStylesRecursive(self, aStateStyleList);
 end;
 
 procedure TframeSynthSettings.SetSynth(const Value: TG2GraphFMX);
 begin
-  if FSynth <> Value then begin
+  if FSynth <> Value then
+  begin
     if assigned(FSynth) then
       FSynth.RemoveObserver(self);
 
@@ -503,8 +543,9 @@ procedure TframeSynthSettings.tfCtrlPedalGainGetTextFunc(Sender: TObject;
 begin
   if not assigned(FSynth) then
     aTextFunc := '-'
-  else begin
-    aTextFunc := 'x1.' + IntToStr(trunc( 50 * Synth.ControlPedalGain / 32));
+  else
+  begin
+    aTextFunc := 'x1.' + IntToStr(trunc(50 * Synth.ControlPedalGain / 32));
   end;
 end;
 
@@ -513,7 +554,8 @@ procedure TframeSynthSettings.tfFreeMemGetTextFunc(Sender: TObject;
 begin
   if not assigned(FSynth) then
     aTextFunc := '-'
-  else begin
+  else
+  begin
     aTextFunc := '-';
   end;
 end;
@@ -523,7 +565,8 @@ procedure TframeSynthSettings.tfMasterTuneGetTextFunc(Sender: TObject;
 begin
   if not assigned(FSynth) then
     aTextFunc := '-'
-  else begin
+  else
+  begin
     aTextFunc := FreqDispValue(1, 69 + Synth.TuneSemi, 64 + Synth.TuneCent);
   end;
 end;
@@ -531,47 +574,84 @@ end;
 procedure TframeSynthSettings.Update(aG2Event: TG2Event);
 begin
   case aG2Event of
-    EvtUSBActiveChange: ;
-    EvtUSBError: ;
-    EvtBeforeSendMessage: ;
-    EvtReceiveResponseMessage: ;
-    EvtNextInitStep: ;
-    EvtAfterG2Init: ;
-    EvtAfterPerfInit: ;
-    EvtAfterSlotInit: ;
-    EvtPerfsSettingsUpdate: ;
-    EvtPerfUpdate: ;
+    EvtUSBActiveChange:
+      ;
+    EvtUSBError:
+      ;
+    EvtBeforeSendMessage:
+      ;
+    EvtReceiveResponseMessage:
+      ;
+    EvtNextInitStep:
+      ;
+    EvtAfterG2Init:
+      ;
+    EvtAfterPerfInit:
+      ;
+    EvtAfterSlotInit:
+      ;
+    EvtPerfsSettingsUpdate:
+      ;
+    EvtPerfUpdate:
+      ;
     EvtSynthSettingsUpdate:
       begin
         UpdateControls;
       end;
-    EvtBeforePatchUpdate: ;
-    EvtPatchUpdate: ;
-    EvtVariationChange: ;
-    EvtCopyVariation: ;
-    EvtMidiClockReceive: ;
-    EvtClockRunChange: ;
-    EvtClockBPMChange: ;
-    EvtMidiCCRecieve: ;
-    EvtAfterGetAssignedVoices: ;
-    EvtPatchLoadChange: ;
-    EvtSelectSlot: ;
-    EvtSelectLocation: ;
-    EvtSelectModule: ;
-    EvtSelectParam: ;
-    EvtLabelValueChange: ;
-    EvtMorphChange: ;
-    EvtDeleteModule: ;
-    EvtAfterRetreivePatch: ;
-    EvtAfterBankList: ;
-    EvtAfterStore: ;
-    EvtAfterClear: ;
-    EvtAfterClearBank: ;
-    EvtAfterBankDownload: ;
-    EvtDeassignKnob: ;
-    EvtAssignKnob: ;
-    EvtDeassignGlobalKnob: ;
-    EvtAssignGlobalKnob: ;
+    EvtBeforePatchUpdate:
+      ;
+    EvtPatchUpdate:
+      ;
+    EvtVariationChange:
+      ;
+    EvtCopyVariation:
+      ;
+    EvtMidiClockReceive:
+      ;
+    EvtClockRunChange:
+      ;
+    EvtClockBPMChange:
+      ;
+    EvtMidiCCRecieve:
+      ;
+    EvtAfterGetAssignedVoices:
+      ;
+    EvtPatchLoadChange:
+      ;
+    EvtSelectSlot:
+      ;
+    EvtSelectLocation:
+      ;
+    EvtSelectModule:
+      ;
+    EvtSelectParam:
+      ;
+    EvtLabelValueChange:
+      ;
+    EvtMorphChange:
+      ;
+    EvtDeleteModule:
+      ;
+    EvtAfterRetreivePatch:
+      ;
+    EvtAfterBankList:
+      ;
+    EvtAfterStore:
+      ;
+    EvtAfterClear:
+      ;
+    EvtAfterClearBank:
+      ;
+    EvtAfterBankDownload:
+      ;
+    EvtDeassignKnob:
+      ;
+    EvtAssignKnob:
+      ;
+    EvtDeassignGlobalKnob:
+      ;
+    EvtAssignGlobalKnob:
+      ;
   end;
 end;
 
@@ -579,28 +659,34 @@ procedure TframeSynthSettings.UpdateControls;
 begin
   eSynthName.Text := Synth.SynthName;
 
-  if Synth.MidiChannelA = 16 then begin
+  if Synth.MidiChannelA = 16 then
+  begin
     eMidiChannelA.Text := 'Off';
     eMidiChannelA.Enabled := False;
-    bidMidiChannelA.State := csDisabled;
+    bidMidiCHannelA.State := csDisabled;
     btMidiChannelAEnabled.Value := 0;
-  end else begin
-    eMidiChannelA.Text := IntToStr(Synth.MidiChannelA+1);
+  end
+  else
+  begin
+    eMidiChannelA.Text := IntToStr(Synth.MidiChannelA + 1);
     eMidiChannelA.Enabled := True;
-    bidMidiChannelA.LowValue := 0;
+    bidMidiCHannelA.LowValue := 0;
     bidMidiCHannelA.HighValue := 15;
-    bidMidiChannelA.Value := Synth.MidiChannelA;
-    bidMidiChannelA.State := csDefault;
+    bidMidiCHannelA.Value := Synth.MidiChannelA;
+    bidMidiCHannelA.State := csDefault;
     btMidiChannelAEnabled.Value := 1;
   end;
 
-  if Synth.MidiChannelB = 16 then begin
+  if Synth.MidiChannelB = 16 then
+  begin
     eMidiChannelB.Text := 'Off';
     eMidiChannelB.Enabled := False;
     bidMidiChannelB.State := csDisabled;
     btMidiChannelBEnabled.Value := 0;
-  end else begin
-    eMidiChannelB.Text := IntToStr(Synth.MidiChannelB+1);
+  end
+  else
+  begin
+    eMidiChannelB.Text := IntToStr(Synth.MidiChannelB + 1);
     bidMidiChannelB.LowValue := 0;
     bidMidiChannelB.HighValue := 15;
     bidMidiChannelB.Value := Synth.MidiChannelB;
@@ -608,13 +694,16 @@ begin
     btMidiChannelBEnabled.Value := 1;
   end;
 
-  if Synth.MidiChannelC = 16 then begin
+  if Synth.MidiChannelC = 16 then
+  begin
     eMidiChannelC.Text := 'Off';
     eMidiChannelC.Enabled := False;
     bidMidiChannelC.State := csDisabled;
     btMidiChannelCEnabled.Value := 0;
-  end else begin
-    eMidiChannelC.Text := IntToStr(Synth.MidiChannelC+1);
+  end
+  else
+  begin
+    eMidiChannelC.Text := IntToStr(Synth.MidiChannelC + 1);
     bidMidiChannelC.LowValue := 0;
     bidMidiChannelC.HighValue := 15;
     bidMidiChannelC.Value := Synth.MidiChannelC;
@@ -622,27 +711,33 @@ begin
     btMidiChannelCEnabled.Value := 1;
   end;
 
-  if Synth.MidiChannelD = 16 then begin
+  if Synth.MidiChannelD = 16 then
+  begin
     eMidiChannelD.Text := 'Off';
     eMidiChannelD.Enabled := False;
-    bidMidiChannelD.State := csDisabled;
+    BidMidiChannelD.State := csDisabled;
     btMidiChannelDEnabled.Value := 0;
-  end else begin
-    eMidiChannelD.Text := IntToStr(Synth.MidiChannelD+1);
-    bidMidiChannelD.LowValue := 0;
-    bidMidiChannelD.HighValue := 15;
-    bidMidiChannelD.Value := Synth.MidiChannelD;
-    bidMidiChannelD.State := csDefault;
+  end
+  else
+  begin
+    eMidiChannelD.Text := IntToStr(Synth.MidiChannelD + 1);
+    BidMidiChannelD.LowValue := 0;
+    BidMidiChannelD.HighValue := 15;
+    BidMidiChannelD.Value := Synth.MidiChannelD;
+    BidMidiChannelD.State := csDefault;
     btMidiChannelDEnabled.Value := 1;
   end;
 
-  if Synth.MidiGlobalChannel = 16 then begin
+  if Synth.MidiGlobalChannel = 16 then
+  begin
     eMidiGlobal.Text := 'Off';
     eMidiGlobal.Enabled := False;
     bidMidiGlobal.State := csDisabled;
     btMidiGlobalEnabled.Value := 0;
-  end else begin
-    eMidiGlobal.Text := IntToStr(Synth.MidiGlobalChannel+1);
+  end
+  else
+  begin
+    eMidiGlobal.Text := IntToStr(Synth.MidiGlobalChannel + 1);
     bidMidiGlobal.LowValue := 0;
     bidMidiGlobal.HighValue := 15;
     bidMidiGlobal.Value := Synth.MidiGlobalChannel;
@@ -650,16 +745,19 @@ begin
     btMidiGlobalEnabled.Value := 1;
   end;
 
-  if Synth.SysExID = 16 then begin
+  if Synth.SysExID = 16 then
+  begin
     eSysExID.Text := 'All';
     eSysExID.Enabled := False;
     bidSysExID.State := csDisabled;
     btSysExEnabled.Value := 0;
-  end else begin
+  end
+  else
+  begin
     eSysExID.Text := IntToStr(Synth.SysExID + 1);
     bidSysExID.LowValue := 0;
     bidSysExID.HighValue := 15;
-    bidSysExID.Value := Synth.SysexID;
+    bidSysExID.Value := Synth.SysExID;
     bidSysExID.State := csDefault;
     btSysExEnabled.Value := 1;
   end;
@@ -683,11 +781,16 @@ begin
 
   btGlobalOctaveShiftEnable.Value := Synth.GlobalOctaveShiftActive;
   case Synth.GlobalOctaveShift of
-  $FE : rbGlobalOctaveShift.Value := 0;
-  $FF : rbGlobalOctaveShift.Value := 1;
-  $00 : rbGlobalOctaveShift.Value := 2;
-  $01 : rbGlobalOctaveShift.Value := 3;
-  $02 : rbGlobalOctaveShift.Value := 4;
+    $FE:
+      rbGlobalOctaveShift.Value := 0;
+    $FF:
+      rbGlobalOctaveShift.Value := 1;
+    $00:
+      rbGlobalOctaveShift.Value := 2;
+    $01:
+      rbGlobalOctaveShift.Value := 3;
+    $02:
+      rbGlobalOctaveShift.Value := 4;
   end;
 
   btLocal.Value := Synth.LocalOn;
@@ -708,7 +811,7 @@ end;
 procedure TframeSynthSettings.UpdateSynth;
 begin
   Synth.SendSetSynthSettingsMessage;
-  //UpdateControls;
+  // UpdateControls;
 end;
 
 end.

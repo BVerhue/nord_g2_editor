@@ -15,7 +15,7 @@ uses
   BVE.NMG2File in '..\..\Common\BVE.NMG2File.pas',
   BVE.NMG2Mess in '..\..\Common\BVE.NMG2Mess.pas',
   BVE.NMG2USB in '..\..\Common\BVE.NMG2USB.pas',
-  {$IF Defined(TCPIPNETWORK)}
+  {$IFDEF TCPIPNETWORK}
   BVE.NMG2TCPIP in '..\..\Common\BVE.NMG2TCPIP.pas',
   {$ENDIF }
   BVE.NMG2GraphFMX in '..\..\Common\BVE.NMG2GraphFMX.pas',
@@ -56,25 +56,6 @@ var
   path : string;
 
 begin
-{$IFDEF MSWINDOWS}
-  // Use this on XP
-  //GlobalUseDirect2D := False;
-  GlobalUseDirect2D := true;
-{$ELSE}
-  //GlobalUseDirect2D := true;
-{$ENDIF}
-
-  GlobalUseHWEffects := false;
-  {GlobalUseHWEffects := true;
-  GlobalUseDirect2D := False;
-  GlobalUseDirect2DSoftware := False;
-  GlobalDisableFocusEffect := True;}
-
-  //GlobalUseGPUCanvas := True;
-
-  //path := ExtractFilePath(GetModuleName(0));
-  //PathDataList.LoadFromFile(path + 'symbols.svg');
-
   Application.Initialize;
   Application.CreateForm(TfrmEditorMain, frmEditorMain);
   Application.Run;

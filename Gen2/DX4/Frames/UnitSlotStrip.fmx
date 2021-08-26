@@ -1,17 +1,20 @@
 object frameSlotStrip: TframeSlotStrip
-  Height = 34.000000000000000000
-  Width = 1048.000000000000000000
+  Size.Width = 1048.000000000000000000
+  Size.Height = 34.000000000000000000
+  Size.PlatformDefault = False
   object bgRectangle: TRectangle
-    Align = alClient
+    Align = Client
     Fill.Color = claSilver
-    Height = 34.000000000000000000
-    Width = 1048.000000000000000000
+    Size.Width = 1048.000000000000000000
+    Size.Height = 34.000000000000000000
+    Size.PlatformDefault = False
     OnMouseUp = bgRectangleMouseUp
     object rbVariation: TG2BtnRadio
-      Height = 28.000000000000000000
       Position.X = 291.000000000000000000
       Position.Y = 3.000000000000000000
-      Width = 193.000000000000000000
+      Size.Width = 193.000000000000000000
+      Size.Height = 28.000000000000000000
+      Size.PlatformDefault = False
       Buffered = False
       StateStyleList.DefaultFont.Family = 'Roboto'
       StateStyleList.DefaultFont.Size = 7.000000000000000000
@@ -48,10 +51,11 @@ object frameSlotStrip: TframeSlotStrip
       UpsideDown = False
     end
     object btEnable: TG2BtnText
-      Height = 28.000000000000000000
       Position.X = 150.000000000000000000
       Position.Y = 3.000000000000000000
-      Width = 41.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 28.000000000000000000
+      Size.PlatformDefault = False
       Buffered = False
       StateStyleList.DefaultFont.Family = 'Roboto'
       StateStyleList.DefaultFont.Size = 7.000000000000000000
@@ -80,10 +84,11 @@ object frameSlotStrip: TframeSlotStrip
       ButtonKind = bkToggle
     end
     object btKeyb: TG2BtnText
-      Height = 28.000000000000000000
       Position.X = 197.000000000000000000
       Position.Y = 3.000000000000000000
-      Width = 41.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 28.000000000000000000
+      Size.PlatformDefault = False
       Buffered = False
       StateStyleList.DefaultFont.Family = 'Roboto'
       StateStyleList.DefaultFont.Size = 7.000000000000000000
@@ -112,10 +117,11 @@ object frameSlotStrip: TframeSlotStrip
       ButtonKind = bkToggle
     end
     object btHold: TG2BtnText
-      Height = 28.000000000000000000
       Position.X = 244.000000000000000000
       Position.Y = 3.000000000000000000
-      Width = 41.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 28.000000000000000000
+      Size.PlatformDefault = False
       Buffered = False
       StateStyleList.DefaultFont.Family = 'Roboto'
       StateStyleList.DefaultFont.Size = 7.000000000000000000
@@ -144,10 +150,11 @@ object frameSlotStrip: TframeSlotStrip
       ButtonKind = bkToggle
     end
     object btEditAllVars: TG2BtnText
-      Height = 28.000000000000000000
       Position.X = 490.000000000000000000
       Position.Y = 3.000000000000000000
-      Width = 41.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 28.000000000000000000
+      Size.PlatformDefault = False
       Buffered = False
       StateStyleList.DefaultFont.Family = 'Roboto'
       StateStyleList.DefaultFont.Size = 7.000000000000000000
@@ -176,10 +183,11 @@ object frameSlotStrip: TframeSlotStrip
       ButtonKind = bkToggle
     end
     object kVolume: TG2Knob
-      Height = 28.000000000000000000
       Position.X = 537.000000000000000000
       Position.Y = 3.000000000000000000
-      Width = 163.000000000000000000
+      Size.Width = 163.000000000000000000
+      Size.Height = 28.000000000000000000
+      Size.PlatformDefault = False
       Buffered = False
       StateStyleList.DefaultFont.Family = 'Roboto'
       StateStyleList.DefaultFont.Size = 10.000000000000000000
@@ -222,10 +230,11 @@ object frameSlotStrip: TframeSlotStrip
       SliderKnobStyles.DisabledFont.Size = 10.000000000000000000
       SliderKnobStyles.DisabledFontColor = claGray
       IncDecBtns.Locked = True
-      IncDecBtns.Height = 28.000000000000000000
       IncDecBtns.HitTest = False
       IncDecBtns.Position.X = 119.306449890136700000
-      IncDecBtns.Width = 43.693550109863280000
+      IncDecBtns.Size.Width = 43.693550109863280000
+      IncDecBtns.Size.Height = 28.000000000000000000
+      IncDecBtns.Size.PlatformDefault = False
       IncDecBtns.Buffered = False
       IncDecBtns.StateStyleList.DefaultFont.Family = 'Roboto'
       IncDecBtns.StateStyleList.DefaultFont.Size = 7.000000000000000000
@@ -262,10 +271,11 @@ object frameSlotStrip: TframeSlotStrip
       AutoCapture = True
     end
     object btMute: TG2BtnText
-      Height = 28.000000000000000000
       Position.X = 706.000000000000000000
       Position.Y = 3.000000000000000000
-      Width = 41.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 28.000000000000000000
+      Size.PlatformDefault = False
       Buffered = False
       StateStyleList.DefaultFont.Family = 'Roboto'
       StateStyleList.DefaultFont.Size = 7.000000000000000000
@@ -293,10 +303,11 @@ object frameSlotStrip: TframeSlotStrip
       ButtonKind = bkToggle
     end
     object bidVoices: TG2BtnIncDec
-      Height = 28.000000000000000000
       Position.X = 806.000000000000000000
       Position.Y = 3.000000000000000000
-      Width = 49.000000000000000000
+      Size.Width = 49.000000000000000000
+      Size.Height = 28.000000000000000000
+      Size.PlatformDefault = False
       Buffered = False
       StateStyleList.DefaultFont.Family = 'Roboto'
       StateStyleList.DefaultFont.Size = 7.000000000000000000
@@ -329,11 +340,12 @@ object frameSlotStrip: TframeSlotStrip
       LowValue = 0
     end
     object tfVoices: TG2TextField
-      Height = 28.000000000000000000
       HitTest = False
       Position.X = 753.000000000000000000
       Position.Y = 3.000000000000000000
-      Width = 50.000000000000000000
+      Size.Width = 50.000000000000000000
+      Size.Height = 28.000000000000000000
+      Size.PlatformDefault = False
       Buffered = False
       StateStyleList.DefaultFont.Family = 'Roboto'
       StateStyleList.DefaultFont.Size = 10.000000000000000000
@@ -353,63 +365,67 @@ object frameSlotStrip: TframeSlotStrip
       OnGetTextFunc = tfVoicesGetTextFunc
     end
     object lbSlot: TLabel
-      Align = alLeft
-      Font.Family = 'Roboto'
-      Font.Size = 24.000000000000000000
-      Font.Style = [fsBold]
+      Align = Left
       StyledSettings = []
-      Height = 34.000000000000000000
+      Size.Width = 29.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 24.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.HorzAlign = Center
       Text = 'A'
-      TextAlign = taCenter
-      Width = 29.000000000000000000
     end
     object lbMem: TLabel
-      Font.Family = 'Roboto'
-      Font.Size = 12.000000000000000000
       StyledSettings = []
-      Height = 28.000000000000000000
       Position.X = 960.000000000000000000
       Position.Y = 4.000000000000000000
+      Size.Width = 37.000000000000000000
+      Size.Height = 28.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
       Text = 'Mem'
-      Width = 37.000000000000000000
     end
     object lbCPU: TLabel
-      Font.Family = 'Roboto'
-      Font.Size = 12.000000000000000000
-      StyledSettings = [ssStyle]
-      Height = 28.000000000000000000
+      StyledSettings = [Style]
       Position.X = 860.000000000000000000
       Position.Y = 4.000000000000000000
+      Size.Width = 28.000000000000000000
+      Size.Height = 28.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
       Text = 'CPU'
-      Width = 28.000000000000000000
     end
     object ePatchName: TEdit
-      Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 12
-      Font.Family = 'Roboto'
-      Font.Size = 12.000000000000000000
+      TextSettings.Font.Family = 'Roboto'
       Position.X = 29.000000000000000000
       Position.Y = 1.000000000000000000
-      Width = 115.000000000000000000
-      Height = 32.000000000000000000
-      StyledSettings = [ssStyle, ssFontColor]
+      Size.Width = 115.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      StyledSettings = [Style, FontColor]
       KillFocusByReturn = True
       OnExit = ePatchNameExit
     end
     object Layout1: TLayout
-      Height = 26.000000000000000000
       Position.X = 891.000000000000000000
       Position.Y = 4.000000000000000000
-      Width = 64.000000000000000000
+      Size.Width = 64.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
       object Layout2: TLayout
-        Align = alLeft
-        Height = 26.000000000000000000
-        Width = 32.000000000000000000
+        Align = Left
+        Size.Width = 32.000000000000000000
+        Size.Height = 26.000000000000000000
+        Size.PlatformDefault = False
         object tfVACycles: TG2TextField
-          Align = alTop
-          Height = 13.000000000000000000
+          Align = Top
           HitTest = False
-          Width = 32.000000000000000000
+          Size.Width = 32.000000000000000000
+          Size.Height = 13.000000000000000000
+          Size.PlatformDefault = False
           Buffered = False
           StateStyleList.DefaultFont.Family = 'Roboto'
           StateStyleList.DefaultFont.Size = 10.000000000000000000
@@ -429,10 +445,11 @@ object frameSlotStrip: TframeSlotStrip
           OnGetTextFunc = tfVACyclesGetTextFunc
         end
         object tfFXCycles: TG2TextField
-          Align = alClient
-          Height = 13.000000000000000000
+          Align = Client
           HitTest = False
-          Width = 32.000000000000000000
+          Size.Width = 32.000000000000000000
+          Size.Height = 13.000000000000000000
+          Size.PlatformDefault = False
           Buffered = False
           StateStyleList.DefaultFont.Family = 'Roboto'
           StateStyleList.DefaultFont.Size = 10.000000000000000000
@@ -453,14 +470,16 @@ object frameSlotStrip: TframeSlotStrip
         end
       end
       object Layout3: TLayout
-        Align = alClient
-        Height = 26.000000000000000000
-        Width = 32.000000000000000000
+        Align = Client
+        Size.Width = 32.000000000000000000
+        Size.Height = 26.000000000000000000
+        Size.PlatformDefault = False
         object tfVAMem: TG2TextField
-          Align = alTop
-          Height = 13.000000000000000000
+          Align = Top
           HitTest = False
-          Width = 32.000000000000000000
+          Size.Width = 32.000000000000000000
+          Size.Height = 13.000000000000000000
+          Size.PlatformDefault = False
           Buffered = False
           StateStyleList.DefaultFont.Family = 'Roboto'
           StateStyleList.DefaultFont.Size = 10.000000000000000000
@@ -480,10 +499,11 @@ object frameSlotStrip: TframeSlotStrip
           OnGetTextFunc = tfVAMemGetTextFunc
         end
         object tfFXMem: TG2TextField
-          Align = alClient
-          Height = 13.000000000000000000
+          Align = Client
           HitTest = False
-          Width = 32.000000000000000000
+          Size.Width = 32.000000000000000000
+          Size.Height = 13.000000000000000000
+          Size.PlatformDefault = False
           Buffered = False
           StateStyleList.DefaultFont.Family = 'Roboto'
           StateStyleList.DefaultFont.Size = 10.000000000000000000

@@ -88,20 +88,14 @@ object frmEditorMain: TfrmEditorMain
                 258s
                 437s)
               inherited TabItem2: TTabItem
-                Size.Width = 55.000000000000000000
-                Size.Height = 25.000000000000000000
                 ExplicitSize.cx = 50.000000000000000000
                 ExplicitSize.cy = 50.000000000000000000
               end
               inherited TabItem1: TTabItem
-                Size.Width = 87.000000000000000000
-                Size.Height = 25.000000000000000000
                 ExplicitSize.cx = 50.000000000000000000
                 ExplicitSize.cy = 50.000000000000000000
               end
               inherited TabItem3: TTabItem
-                Size.Width = 49.000000000000000000
-                Size.Height = 25.000000000000000000
                 ExplicitSize.cx = 50.000000000000000000
                 ExplicitSize.cy = 50.000000000000000000
                 inherited rbModuleColor: TG2BtnRadioEdit
@@ -124,27 +118,21 @@ object frmEditorMain: TfrmEditorMain
             inherited tcParam: TTabControl
               Size.Height = 462.000000000000000000
               Sizes = (
-                258s
+                260s
                 437s
-                258s
+                260s
                 437s
-                258s
+                260s
                 437s)
               inherited TabItem6: TTabItem
-                Size.Width = 61.000000000000000000
-                Size.Height = 25.000000000000000000
                 ExplicitSize.cx = 50.000000000000000000
                 ExplicitSize.cy = 50.000000000000000000
               end
               inherited TabItem7: TTabItem
-                Size.Width = 94.000000000000000000
-                Size.Height = 25.000000000000000000
                 ExplicitSize.cx = 50.000000000000000000
                 ExplicitSize.cy = 50.000000000000000000
               end
               inherited TabItem1: TTabItem
-                Size.Width = 87.000000000000000000
-                Size.Height = 25.000000000000000000
                 ExplicitSize.cx = 50.000000000000000000
                 ExplicitSize.cy = 50.000000000000000000
               end
@@ -165,8 +153,8 @@ object frmEditorMain: TfrmEditorMain
               Size.Height = 504.000000000000000000
               inherited lbFiles: TListBox
                 Size.Height = 454.000000000000000000
-                Viewport.Width = 191.000000000000000000
-                Viewport.Height = 450.000000000000000000
+                Viewport.Width = 195.000000000000000000
+                Viewport.Height = 454.000000000000000000
               end
             end
           end

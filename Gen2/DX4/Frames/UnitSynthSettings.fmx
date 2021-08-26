@@ -276,7 +276,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 8
+        TabOrder = 7
         OnChangeValue = bidMidiCHannelAChangeValue
         Value = 0
         ButtonCount = 2
@@ -313,7 +313,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 9
+        TabOrder = 8
         OnChangeValue = bidMidiChannelBChangeValue
         Value = 0
         ButtonCount = 2
@@ -350,7 +350,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 10
+        TabOrder = 9
         OnChangeValue = bidMidiChannelCChangeValue
         Value = 0
         ButtonCount = 2
@@ -387,7 +387,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 11
+        TabOrder = 10
         OnChangeValue = BidMidiChannelDChangeValue
         Value = 0
         ButtonCount = 2
@@ -424,7 +424,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 12
+        TabOrder = 11
         OnChangeValue = btMidiChannelAEnabledChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
@@ -457,7 +457,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 13
+        TabOrder = 12
         OnChangeValue = btMidiChannelBEnabledChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
@@ -490,7 +490,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 14
+        TabOrder = 13
         OnChangeValue = btMidiChannelCEnabledChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
@@ -669,7 +669,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 4
+        TabOrder = 3
         OnChangeValue = bidMidiGlobalChangeValue
         Value = 0
         ButtonCount = 2
@@ -706,7 +706,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 5
+        TabOrder = 4
         OnChangeValue = bidSysExIDChangeValue
         Value = 0
         ButtonCount = 2
@@ -743,7 +743,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 6
+        TabOrder = 5
         OnChangeValue = btSendClockChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
@@ -776,7 +776,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 7
+        TabOrder = 6
         OnChangeValue = btIgnoreExtClockChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
@@ -809,7 +809,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 8
+        TabOrder = 7
         OnChangeValue = btCCReceiveChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
@@ -842,7 +842,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 9
+        TabOrder = 8
         OnChangeValue = btCCSendChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
@@ -875,7 +875,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 10
+        TabOrder = 9
         OnChangeValue = btProgChangeReceiveChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
@@ -908,7 +908,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 11
+        TabOrder = 10
         OnChangeValue = btProgChangeSendChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
@@ -941,7 +941,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 12
+        TabOrder = 11
         OnChangeValue = btMidiGlobalEnabledChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle
@@ -1171,7 +1171,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 6
+        TabOrder = 5
         OnChangeValue = bidTuneSemiChangeValue
         Value = 0
         ButtonCount = 2
@@ -1208,7 +1208,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 7
+        TabOrder = 6
         OnChangeValue = bidTuneCentChangeValue
         Value = 0
         ButtonCount = 2
@@ -1245,7 +1245,7 @@ object frameSynthSettings: TframeSynthSettings
         ImageCount = 0
         MouseEnable = True
         CanFocus = True
-        TabOrder = 8
+        TabOrder = 7
         OnChangeValue = btGlobalOctaveShiftEnableChangeValue
         ButtonType = bttPush
         ButtonKind = bkToggle

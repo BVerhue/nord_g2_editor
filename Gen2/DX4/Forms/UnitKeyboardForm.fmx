@@ -4,17 +4,17 @@ object frmKeyboard: TfrmKeyboard
   Caption = 'Keyboard'
   ClientHeight = 94
   ClientWidth = 894
-  FormStyle = fsStayOnTop
+  FormStyle = StayOnTop
   FormFactor.Width = 320
   FormFactor.Height = 480
-  FormFactor.Devices = [dkDesktop, dkiPhone, dkiPad]
-  DesignerMobile = False
-  DesignerWidth = 0
-  DesignerHeight = 0
-  DesignerDeviceName = ''
-  DesignerOrientation = 0
-  DesignerOSVersion = ''
-  object G2Keyboard: TG2Keyboard
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  DesignerMasterStyle = 0
+  object G2Keyboard: TG2KeyBoard
+    Align = Client
+    Size.Width = 894.000000000000000000
+    Size.Height = 94.000000000000000000
+    Size.PlatformDefault = False
+    Buffered = False
     StateStyleList.DefaultFont.Family = 'Roboto'
     StateStyleList.DefaultFont.Size = 10.000000000000000000
     StateStyleList.DefaultFontColor = xFF202020
@@ -38,9 +38,8 @@ object frmKeyboard: TfrmKeyboard
     OctaveButtons = False
     RangeSelect = False
     State = csDefault
-    Align = alClient
-    Width = 894.000000000000000000
-    Height = 94.000000000000000000
+    DownColor = claAqua
+    MouseEnable = True
     CanFocus = True
     TabOrder = 0
   end

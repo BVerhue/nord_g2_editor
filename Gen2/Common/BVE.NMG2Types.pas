@@ -40,6 +40,9 @@ uses
   System.Character;
 
 const
+  FILE_PATCH_EXT = '.pch2';
+  FILE_PERF_EXT = '.prf2';
+
   NMG2_VERSION = '0.26';
   PATCH_VERSION = 23;
   NMORPHS = 8;
