@@ -8,15 +8,15 @@
   <CTRL_MIDI_in_device_list/>
   <CTRL_MIDI_out_device_list/>
   <CTRL_MIDI_ASSIGNMENT_LIST/>
-  <MainForm PosX="104" PosY="104" SizeX="1291" SizeY="822" Visible="True"/>
+  <MainForm PosX="481" PosY="22" SizeX="1363" SizeY="907" Visible="True"/>
   <DirectorySettings G2oolsFolder="" ModuleHelpFile=""/>
-  <PatchBrowserSettings BaseFolder="" SelectedTab="2" ExternalSortCol="0" InternalSortCol="0"/>
+  <PatchBrowserSettings BaseFolder="" SelectedTab="3" ExternalSortCol="0" InternalSortCol="2"/>
   <PatchBufferSettings Folder=""/>
-  <PatchBrowserForm PosX="-667" PosY="183" SizeX="546" SizeY="796" Visible="False"/>
-  <PatchManagerForm PosX="0" PosY="208" SizeX="665" SizeY="560" Visible="False"/>
+  <PatchBrowserForm PosX="12" PosY="469" SizeX="546" SizeY="439" Visible="False"/>
+  <PatchManagerForm PosX="123" PosY="195" SizeX="665" SizeY="560" Visible="False"/>
   <PatchBufferForm PosX="0" PosY="52" SizeX="887" SizeY="592" Visible="False"/>
-  <SettingsForm PosX="0" PosY="0" SizeX="528" SizeY="467" Visible="False"/>
-  <ParameterPagesForm PosX="0" PosY="130" SizeX="575" SizeY="180" Visible="False"/>
+  <SettingsForm PosX="381" PosY="189" SizeX="528" SizeY="467" Visible="False"/>
+  <ParameterPagesForm PosX="1083" PosY="444" SizeX="575" SizeY="180" Visible="True"/>
   <PatchSettingsForm PosX="0" PosY="78" SizeX="608" SizeY="190" Visible="False"/>
   <EditorToolsForm PosX="0" PosY="156" SizeX="151" SizeY="266" Visible="False"/>
   <PatchNotesForm PosX="0" PosY="234" SizeX="367" SizeY="426" Visible="False"/>

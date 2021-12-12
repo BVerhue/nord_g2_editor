@@ -42,7 +42,11 @@ contains
   g2_mess in '..\..\Source\Common\g2_mess.pas',
   g2_midi in '..\..\Source\Common\g2_midi.pas',
   g2_database in '..\..\Source\Common\g2_database.pas',
-  LibUSBWinDyn in '..\..\Source\Common\LibUSBWinDyn.pas';
+  LibUSBWinDyn in '..\..\Source\Common\LibUSBWinDyn.pas',
+  g2_graph in '..\..\Source\Common\g2_graph.pas',
+  graph_util_vcl in '..\..\Source\Common\graph_util_vcl.pas',
+  fastbitmap in '..\..\Source\Common\fastbitmap.pas',
+  g2_classes in '..\..\Source\Common\g2_classes.pas';
 
 end.
 
